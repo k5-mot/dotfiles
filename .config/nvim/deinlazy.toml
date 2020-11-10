@@ -1,0 +1,232 @@
+## Denite {{{
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+depends = 'neomru.vim'
+on_cmd = 'Denite'
+hook_add = '''
+source ~/.config/nvim/plugins/denite.nvim.rc.vim
+'''
+hook_post_source = '''
+source ~/.config/nvim/plugins/denite.nvim_post.rc.vim
+'''
+
+[[plugins]]
+repo = 'Shougo/neomru.vim'
+## }}}
+
+### Unite {{{
+[[plugins]]
+repo = 'Shougo/unite.vim'
+depends = 'neomru.vim'
+on_cmd = 'Unite'
+hook_add = '''
+source ~/.config/nvim/plugins/unite.rc.vim
+'''
+hook_post_source = '''
+source ~/.config/nvim/plugins/unite_post.rc.vim
+'''
+
+[[plugins]]
+repo = 'Shougo/neomru.vim'
+
+[[plugins]]
+repo = 'Shougo/unite-outline'
+on_source = 'denite.nvim'
+
+[[plugins]]
+repo = 'tsukkee/unite-tag'
+on_source = 'unite.vim'
+
+[[plugins]]
+repo = 'osyo-manga/unite-quickfix'
+on_source = 'unite.vim'
+
+[[plugins]]
+repo = 'ujihisa/unite-colorscheme'
+hook_add = '''
+'''
+
+[[plugins]]
+repo = 'thinca/vim-qfreplace'
+on_source = 'denite.nvim'
+# }}}
+
+## Defx {{{
+[[plugins]]
+repo = 'Shougo/defx.nvim'
+on_cmd = 'Defx'
+depends = ['defx-icons', 'defx-git']
+hook_add = '''
+source ~/.config/nvim/plugins/defx.nvim.rc.vim
+'''
+hook_post_source = '''
+source ~/.config/nvim/plugins/defx.nvim_post.rc.vim
+'''
+
+[[plugins]]
+repo ='kristijanhusak/defx-icons'
+
+[[plugins]]
+repo ='kristijanhusak/defx-git'
+
+[[plugins]]
+repo = 'Shougo/vimfiler.vim'
+depends = 'unite.vim'
+on_cmd = ['VimFiler', 'VimFilerBufferDir']
+hook_add = '''
+source ~/.config/nvim/plugins/vimfiler.rc.vim
+'''
+## }}}
+
+# completion {{{
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
+
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+depends = 'context_filetype.vim'
+if = "has('nvim')"
+on_i = 1
+hook_source = '''
+source ~/.config/nvim/plugins/deoplete.rc.vim
+'''
+[[plugins]]
+repo = 'Shougo/neco-vim'
+
+[[plugins]]
+repo = 'Shougo/neoinclude.vim'
+on_if = 1
+
+[[plugins]]
+repo = 'Shougo/echodoc'
+on_if = 1
+hook_source = '''
+source ~/.config/nvim/plugins/echodoc.rc.vim
+'''
+
+[[plugins]]
+repo = 'cohama/lexima.vim'
+on_i = 1
+
+[[plugins]]
+repo = 'autozimu/LanguageClient-neovim'
+rev = 'next'
+build = 'bash install.sh'
+hook_source = '''
+source ~/.config/nvim/plugins/LanguageClient-neovim.rc.vim
+'''
+
+[[plugins]]
+repo = 'roxma/LanguageServer-php-neovim'
+on_ft = 'php'
+build = 'composer install && composer run-script parse-stubs'
+hook_source = '''
+source ~/.config/nvim/plugins/LanguageServer-php-neovim.rc.vim
+'''
+
+[[plugins]]
+repo = 'Shougo/neosnippet.vim'
+on_i  = 1
+on_ft = ['snippet']
+depends = ['neosnippet-snippets']
+hook_source = '''
+source ~/.config/nvim/plugins/neosnippet.rc.vim
+'''
+
+[[plugins]]
+repo = 'lvht/phpcd.vim'
+on_ft = 'php'
+build = 'composer install'
+hook_source = '''
+source ~/.config/nvim/plugins/phpcd.rc.vim
+'''
+# }}}
+
+
+## Gundo {{{
+[[plugins]]
+repo = 'sjl/gundo.vim'
+on_cmd = 'GundoToggle'
+hook_add = '''
+source ~/.config/nvim/plugins/gundo.rc.vim
+'''
+# }}}
+
+# PHP {{{
+# }}}
+
+## Golang {{{
+[[plugins]]
+repo = 'fatih/vim-go'
+on_ft = 'go'
+# }}}
+
+## Latex
+[[plugins]]
+repo = 'lervag/vimtex'
+hook_add = '''
+source ~/.config/nvim/plugins/vimtex.rc.vim
+'''
+
+## Verilog
+#[[plugins]]
+#repo = 'vhda/verilog_systemverilog.vim'
+#hook_add = '''
+#source ~/.config/nvim/plugins/verilog_systemverilog.rc.vim
+#'''
+
+## syntax {{{
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
+[[plugins]]
+repo = 'hail2u/vim-css3-syntax'
+on_ft = 'css'
+[[plugins]]
+repo = 'cakebaker/scss-syntax.vim'
+on_ft = 'sass'
+[[plugins]]
+repo = 'othree/html5-syntax.vim'
+on_ft = 'html'
+[[plugins]]
+repo = 'othree/javascript-syntax.vim'
+on_ft = 'javascript'
+[[plugins]]
+repo = 'tpope/vim-markdown'
+on_ft = 'markdown'
+[[plugins]]
+repo = 'StanAngeloff/php.vim'
+on_ft = 'php'
+hook_add = '''
+function! PhpSyntaxOverride()
+  hi! def link phpDocTags  phpDefine
+  hi! def link phpDocParam phpType
+endfunction
+
+augroup phpSyntaxOverride
+  autocmd!
+  autocmd FileType php call PhpSyntaxOverride()
+augroup END
+'''
+[[plugins]]
+repo = 'jwalton512/vim-blade'
+on_ft='blade'
+# }}}
+
+## indent {{{
+[[plugins]]
+repo = 'othree/html5.vim'
+on_ft = 'html'
+[[plugins]]
+repo = 'jiangmiao/simple-javascript-indenter'
+on_ft = 'javascript'
+[[plugins]]
+repo = '2072/PHP-Indenting-for-VIm'
+on_ft = 'php'
+hook_add = '''
+source ~/.config/nvim/plugins/PHP-Indenting-for-VIm.rc.vim
+'''
+[[plugins]]
+repo = 'stephpy/vim-yaml'
+on_ft = 'yml,yaml'
+# }}}
