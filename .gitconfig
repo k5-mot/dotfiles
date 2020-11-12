@@ -1,8 +1,8 @@
+[include]
+  # user
+  path=.gitconfig.user
 [color]
   ui = auto
-[user]
-  name = k5-mot
-  email = kmoto@pca.cis.nagasaki-u.ac.jp
 [alias]
   graph1 = log --graph --date=short --decorate=short --pretty=format:'%Cgreen%h %Cblue%cn %Cred%d %Creset%s'
   cln = clone --verbose --progress
