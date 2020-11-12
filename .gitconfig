@@ -4,6 +4,7 @@
 [color]
   ui = auto
 [alias]
-  graph1 = log --graph --date=short --decorate=short --pretty=format:'%Cgreen%h %Cblue%cn %Cred%d %Creset%s'
-  cln = clone --verbose --progress
   graph = log --oneline --decorate --graph --branches --tags --remotes --pretty=format:'%C(green)%h %C(blue)[%cd] %C(red)%d %C(reset)%s %C(cyan)<%an>%C(reset)' --date=format:'%Y/%m/%d %H:%M:%S'
+  cl = clone --verbose --progress
+  st = status -b
+  
