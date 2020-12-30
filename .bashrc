@@ -106,7 +106,12 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
 if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+  . ~/.bash_aliases
+fi
+
+# read local file
+if [ -f ~/.bashrc_local ]; then
+  . ~/.bashrc_local
 fi
 
 # enable programmable completion features (you don't need to enable
@@ -120,7 +125,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# pyenv
+# Setup pyenv
 if [ -e "$HOME/.pyenv" ]; then 
   export PYENV_ROOT=$HOME/.pyenv
   export PATH=$PYENV_ROOT/bin:$PATH
@@ -131,7 +136,7 @@ if [ -e "$HOME/.pyenv" ]; then
   fi
 fi
 
-# rbenv
+# Setup rbenv
 if [ -e "$HOME/.rbenv" ]; then 
   export RBENV_ROOT=$HOME/.rbenv
   export PATH=$RBENV_ROOT/bin:$PATH
@@ -141,7 +146,7 @@ if [ -e "$HOME/.rbenv" ]; then
   fi
 fi
 
-# nodenv
+# Setup nodenv
 if [ -e "$HOME/.nodenv" ]; then
   export NODENV_ROOT=$HOME/.nodenv
   export PATH=$NODENV_ROOT/bin:$PATH
@@ -151,14 +156,11 @@ if [ -e "$HOME/.nodenv" ]; then
   fi
 fi
 
-# VcXsrv
+# Setup VcXsrv
 if [ "$(uname)" == 'Linux' ]; then
   if [[ "$(uname -r)" == *microsoft* ]]; then
     export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
   fi
 fi
 
-# read local file
-if [ -f ~/.bashrc_local ]; then
-  source ~/.bashrc_local
-fi
+
