@@ -1,15 +1,44 @@
-$latex = 'platex -guess-input-enc -src-specials -interaction=nonstopmode -synctex=1';
-$latex_silent = 'platex -interaction=batchmode';
-$dvips = 'dvips';
-$bibtex = 'pbibtex';
-$makeindex = 'mendex -r -c -s jind.ist';
-$dvi_previewer = 'start dviout'; # -pv option
-$dvipdf = 'dvipdfmx %O -o %D %S';
-if ($^O eq 'darwin') {
-      $pdf_previewer = 'open -a Preview %S';
-} elsif ($^O eq 'linux') {
-      $pdf_previewer = 'evince';
+#!/usr/bin/env perl
+
+## LaTeX
+$latex_args        = '-shell-escape -synctex=1 -halt-on-error -file-line-error %O %S';
+$latex_silent_args = $latexargs . '-interaction=batchmode';
+$pdflatex_args     = '-syntex=1 -halt-on-error %O %S';
+$pdflatex          = 'pdflatex ' . $pdflatex_args;
+$latex             = 'platex ' . $latex_args;
+$latex_silint      = 'platex ' . $latex_silent_args;
+$max_repeat        = 5;
+
+## BibTeX
+$bibtex            = 'pbibtex %O %S';
+$biber             = 'biber --bblencoding=utf8 -u -U --output_safechars %O %S';
+
+## Index
+$makeindex         = 'mendex %O -o %D %S';
+
+## DVI, PDF
+$dvipdf            = 'dvipdfmx %O -o %D %S';
+#$pdf_mode         = 0;# PDFを生成しない
+#$pdf_mode         = 1;# pdflatexを用いる
+#$pdf_mode         = 2;# ps2pdfを用いる
+$pdf_mode          = 3;# dvipdfmxを用いる
+
+## Out directory
+$out_dir           = 'out';
+$aux_dir           = $out_dir;
+
+## Preview
+$pvc_view_file_via_temporary = 0;
+if ($^O eq 'linux') {
+    $dvi_previewer = "xdg-open %S";
+    $pdf_previewer = "xdg-open %S";
+} elsif ($^O eq 'darwin') {
+    $dvi_previewer = "open %S";
+    $pdf_previewer = "open %S";
+} else {
+    $dvi_previewer = "start %S";
+    $pdf_previewer = "start %S";
 }
-$preview_continuous_mode = 1;
-$pdf_mode = 3;
-$pdf_update_method = 4;
+
+## Clean up
+$clean_full_ext = "%R.synctex.gz"
