@@ -1,10 +1,27 @@
 [include]
-  # user
-  path=.gitconfig.user
+  path        = ~/.gitconfig_user
 [color]
-  ui = auto
+  ui          = auto
+[core]
+  editor      = vim
+  filemode    = false
+  excludefile = ~/.gitignore_global
+[merge]
+  tool        = vimdiff
 [alias]
-  graph = log --oneline --decorate --graph --branches --tags --remotes --pretty=format:'%C(green)%h %C(blue)[%cd] %C(red)%d %C(reset)%s %C(cyan)<%an>%C(reset)' --date=format:'%Y/%m/%d %H:%M:%S'
-  cl = clone --verbose --progress
-  st = status -b
-  
+  graph       = log --oneline --decorate --graph --branches --tags --remotes --pretty=format:'%C(green)%h %C(blue)[%cd] %C(red)%d %C(reset)%s %C(cyan)'
+  gr          = graph
+  aa          = add -A
+  cm          = commit
+  cmm         = commit -m
+  cmmr        = commit --amend -m
+  st          = status
+  stt         = status -uno
+  diffw       = diff --word-diff
+  difff       = diff --name-only
+  ps          = push --verbose --progress
+  pl          = pull --verbose --progress
+  cl          = clone -v --progress
+  co          = checkout
+  br          = branch
+  rb          = rebase
