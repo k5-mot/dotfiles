@@ -38,8 +38,6 @@ alias ls='ls -F --color=auto'
 alias ll='ls -l'
 alias la='ls -a'
 alias x=exit
-
-# Set up my aliases
 alias latexmk='latexmk -outdir=out'
 alias grep='grep --color=auto'
 
@@ -187,8 +185,52 @@ export GTK_IM_MODULE="ibus"
 export QT_IM_MODULE="ibus"
 export JSERVER="localhost"
 
+# set up tetris
+autoload -Uz tetris
+zle -N tetris
+bindkey '...' tetris
+
+# check powerline
+function check_powerline() {
+  echo "\ue0b0 \u00b1 \ue0a0 \u27a6 \u2718 \u26a1 \u2699"
+}
+
+# check 256 colors v1
+function check_colors() {
+  for c in {000..255}; do
+    #echo -n "\e[[30;48;5${c}m\e[[38;5;${((255 - %c))}m $c\e[[0m"
+    echo -n "\e[31;48;5;${c}m\e[38;5;${$((255 - $c))}m $c \e[0m"
+    if [ $(($c % 16)) -eq 15 ]; then
+      echo
+    fi
+    #[ $(($c%16)) -eq 15 ] && echo
+  done
+  echo
+}
+
+# check 256 colors v2
+function check_colors1() {
+  awk 'BEGIN{
+    s="/\\/\\/\\/\\/\\"; s=s s s s s s s s;
+    for (colnum = 0; colnum<77; colnum++) {
+      r = 255-(colnum*255/76);
+      g = (colnum*510/76);
+      b = (colnum*255/76);
+      if (g>255) g = 510-g;
+        printf "\033[48;2;%d;%d;%dm", r,g,b;
+        printf "\033[38;2;%d;%d;%dm", 255-r,255-g,255-b;
+        printf "%s\033[0m", substr(s,colnum+1,1);
+      }
+    printf "\n";
+  }'
+}
+
 # read local file
 if [ -f ~/.zshrc_local ]; then
   source ~/.zshrc_local
 fi
 
+# read config file for Antigen.
+if [ -f ~/.zshrc_antigen ]; then
+  source ~/.zshrc_antigen
+fi

@@ -4,6 +4,7 @@
  
  .<br>
  |-- README.md (This file)<br>
+ |-- Makefile<br>
  |-- .bashrc<br>
  |-- .bashrc_local<br>
  |-- .dircolors<br>
@@ -21,12 +22,15 @@
 
 ## Installation
  
+Case 1
+
 ```bash
 git clone https://github.com/k5-mot/dotfiles.git $HOME
 cd dotfiles
-make all
 ./install.sh
 ```
+
+Case 2
 
 ```bash
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/k5-mot/dotfiles/master/bin/install.sh)"
