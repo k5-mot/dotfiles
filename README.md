@@ -22,7 +22,14 @@
 ## Installation
  
 ```bash
-git clone https://github.com/k5-mot/dotfiles.git $HOME/dotfiles
+git clone https://github.com/k5-mot/dotfiles.git $HOME
+cd dotfiles
+make all
+./install.sh
+```
+
+```bash
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/k5-mot/dotfiles/master/bin/install.sh)"
 ```
  
 ## Note
