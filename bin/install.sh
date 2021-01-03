@@ -2,56 +2,58 @@
 
 ## dotfiles PATH
 DOTPATH="$HOME/dotfiles"
+OS="linux"
+SELECTPATH="$DOTPATH/$OS/"
 
 ## Check existence of command
 has() {
   type "$1" > /dev/null 2>&1
 }
 
+## Download dotfiles
 initialize() {
   if [ ! -d ${DOTPATH} ]; then
-
-  ## Download dotfiles
-  if has "git"; then
-    git clone https://github.com/k5-mot/dotfiles.git ${DOTPATH}
-  elif has "curl" || has "wget"; then
-    TARBALL="https://github.com/k5-mot/dotfiles/archive/master.tar.gz"
-    if has "curl"; then
+    echo 'Download dot files in your home directory...'
+    if has "git"; then
+      git clone -v https://github.com/k5-mot/dotfiles.git ${DOTPATH}
+    elif has "curl"; then
+      TARBALL="https://github.com/k5-mot/dotfiles/archive/master.tar.gz"
       curl -L ${TARBALL} -o master.tar.gz
+      tar -zxvf master.tar.gz
+      rm -f master.tar.gz
+      mv -f dotfiles-master "${DOTPATH}"
+    elif has "wget"; then
+      TARBALL="https://github.com/k5-mot/dotfiles/archive/master.tar.gz"
+      wget ${TARBALL}
+      tar -zxvf master.tar.gz
+      rm -f master.tar.gz
+      mv -f dotfiles-master "${DOTPATH}"
     else
-      wget ${TARBALL}        
+      echo "Required: git, curl or wget"
+      exit 1
     fi
-    tar -zxvf master.tar.gz
-    rm -f master.tar.gz
-    mv -f dotfiles-master "${DOTPATH}"
   else
-    echo "Required: git, curl or wget"
-    exit 1
-  fi
-  else
-    echo "Failed to install." 
-    echo "dotfiles already exists."
+    echo "Failed: dotfiles already exists."
     exit 1
   fi
 }
 
+## Deploy dotfiles.
 deploy () {
-  ## Deploy dotfiles.
-  cd ${DOTPATH}
-  for f in *; do
-    [[ "$f" == ".git" ]] && continue
-    [[ "$f" == ".gitignore" ]] && continue
-    [[ "$f" == ".gitmodules" ]] && continue
-    [[ "$f" == ".DS_Store" ]] && continue
-    [[ "$f" == "README.md" ]] && continue
-    [[ "$f" == "bin/install.sh" ]] && continue
-
-    ln -snf $DOTPATH/"$f" $HOME/".$f"
-    echo "Installed: $f"
+  echo 'Install dotfiles to home directory.'
+  for f in `\find "${SELECTPATH}" -type f`
+  do
+    filename=${f/$SELECTPATH/}
+    ln -snfv $f "$HOME/$filename"
   done
 }
 
-
 ## Initialize & Deploy
-initialize()
-deploy()
+if [ "$1" = "deploy" -o "$1" = "d" ]; then
+  deploy
+elif [ "$1" = "init" -o "$1" = "i" ]; then
+  initialize
+else 
+  initialize
+  deploy
+fi
