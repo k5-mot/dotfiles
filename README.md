@@ -12,7 +12,7 @@ Start up for various environment for Linux.
 * tmux
 * vim
 * neovim
-* zshrc
+* zsh
 
 Start up for various environment for Windows.
 
