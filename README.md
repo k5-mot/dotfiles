@@ -2,7 +2,32 @@
 
 ## Features
  
-Start up for various environment.
+Start up for various environment for Linux.
+
+* bash
+* emacs
+* git
+* latexmk
+* tcsh
+* tmux
+* vim
+* neovim
+* zshrc
+
+Start up for various environment for Windows.
+
+* PowerShell
+* Windows Terminal
+
+Set up for any applications.
+
+* pyenv
+* rbenv
+* nodenv
+
+Others' utility
+
+* apt
  
 ## Requirement
  
