@@ -47,7 +47,7 @@ cd dotfiles
 
 * Case 2<br>
 ```bash
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/k5-mot/dotfiles/master/bin/install.sh)"
+curl -L raw.github.com/k5-mot/dotfiles/master/install.sh | bash
 ```
  
 ## Note
