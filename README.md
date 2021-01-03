@@ -2,17 +2,7 @@
 
 ## Features
  
- .<br>
- |-- README.md (This file)<br>
- |-- Makefile<br>
- |-- .bashrc<br>
- |-- .bashrc_local<br>
- |-- .dircolors<br>
- |-- .gitconfig<br>
- |-- .gitconfig.user<br>
- |-- .latexmkrc<br>
- |-- .vimrc<br>
- `-- .zshrc<br>
+Start up for various environment.
  
 ## Requirement
  
@@ -22,7 +12,7 @@
 
 ## Installation
  
-Case 1
+* Case 1<br>
 
 ```bash
 git clone https://github.com/k5-mot/dotfiles.git $HOME
@@ -30,8 +20,8 @@ cd dotfiles
 ./install.sh
 ```
 
-Case 2
-
+* Case 2<br>
+WIP
 ```bash
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/k5-mot/dotfiles/master/bin/install.sh)"
 ```
@@ -44,4 +34,4 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/k5-mot/dotfiles/master/b
  
 ## License
  
-k5-mot/linux-scripts is under [MIT license](https://en.wikipedia.org/wiki/MIT_License).
+k5-mot/dotfiles is under [MIT license](https://en.wikipedia.org/wiki/MIT_License).
