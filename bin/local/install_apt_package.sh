@@ -1,5 +1,11 @@
 #!bin/sh
 
+## Install required packages by apt.
+sudo apt update
+sudo apt dist-upgrade -y
+sudo apt autoremove -y
+sudo apt autoclean
+
 ## Change package server to mirror servers
 sudo sed -i.bak -r 's!(deb|deb-src) \S+!\1 mirror://mirrors.ubuntu.com/mirrors.txt!' /etc/apt/
 

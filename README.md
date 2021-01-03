@@ -41,7 +41,6 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/k5-mot/dotfiles/master/b
 ## Author
  
 * k5-mot
-* keigo.mot@gmail.com
  
 ## License
  
