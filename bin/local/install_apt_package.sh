@@ -7,6 +7,8 @@ sudo sed -i.bak -r 's!(deb|deb-src) \S+!\1 mirror://mirrors.ubuntu.com/mirrors.t
 sudo apt install -y vim
 sudo apt install -y emacs
 sudo apt install -y neovim
+sudo apt install -y zsh
+sudo apt install -y tmux
 sudo apt install -y curl
 sudo apt install -y llvm
 sudo apt install -y sqlite3

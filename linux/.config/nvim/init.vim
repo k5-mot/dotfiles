@@ -22,6 +22,8 @@ if has('nvim')
   " Or if you have Neovim >= 0.1.5
   if (has("termguicolors"))
     set termguicolors
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
   endif
 elseif has('patch-7.4.1778')
   "set guicolors
@@ -75,9 +77,10 @@ colorscheme gruvbox
 
 " Provider
 if has('nvim')
-  let g:python3_host_prog = expand('~/.config/nvim/extensions/python3-provider/bin/python')
-  let g:python_host_prog = expand('~/.config/nvim/extensions/python2-provider/bin/python')
-  let g:ruby_host_prog = expand('~/.config/nvim/extensions/ruby-provider/ruby/2.7.0/bin/neovim-ruby-host')
+  let g:python3_host_prog = expand('~/.pyenv/versions/3.8.5/bin/python')
+  let g:python_host_prog = expand('~/.pyenv/versions/2.7.18/bin/python')
+  "let g:ruby_host_prog = expand('~/.rbenv/versions/2.5.8/bin/')
+  let g:node_host_prog = expand('~/.nodenv/versions/15.1.0/bin/neovim-node-host')
 endif
 
 " set関連

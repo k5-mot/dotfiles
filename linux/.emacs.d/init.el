@@ -17,7 +17,7 @@
 ;; 初期化
 (package-initialize)
 ;; パッケージ情報の更新
-(package-refresh-contents)
+;(package-refresh-contents)
 ;; インストールするパッケージ
 (defvar my/favorite-packages
   '(
@@ -52,7 +52,7 @@
 ;; スタートアップ画面を表示しないようにする
 (setq inhibit-startup-message t)
 ;; 背景を透過させる
-(set-frame-parameter nil 'alpha '(90 70))
+;(set-frame-parameter nil 'alpha '(90 70))
 ;; ツールバーを表示しないようにする（Official Emacs の場合は 0）
 (tool-bar-mode 0)
 ;; ツールバーを表示しないようにする（Official Emacs の場合は 0）
@@ -84,9 +84,19 @@
 ;; scratch の初期メッセージ消去
 (setq initial-scratch-message "")
 ;; スクロールは 1 行ごと
-(setq mouse-wheel-scroll-amount '(1 ((shift) . 5)))
+(setq mouse-wheel-scroll-amount '(5                ; 通常時 
+																	((shift) . 1)    ; SHIFT
+																	((control) . 20) ; CTRL
+																	))
 ;; スクロールの加速をやめる
 (setq mouse-wheel-progressive-speed nil)
+;; スクロールのステップ量
+(setq scroll-conservatively 1)
+;; スクロールのマージン
+(setq scroll-margin 10)
+;;
+(setq next-screen-context-lines 10)
+(setq scroll-preserve-screen-position t)
 ;; 大文字・小文字を区別しない
 (setq case-fold-search t)
 ;; dark-mode

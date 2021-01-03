@@ -104,25 +104,25 @@ hook_source = '''
 source ~/.config/nvim/plugins/echodoc.rc.vim
 '''
 
-[[plugins]]
-repo = 'cohama/lexima.vim'
-on_i = 1
+#[[plugins]]
+#repo = 'cohama/lexima.vim'
+#on_i = 1
+#
+#[[plugins]]
+#repo = 'autozimu/LanguageClient-neovim'
+#rev = 'next'
+#build = 'bash install.sh'
+#hook_source = '''
+#source ~/.config/nvim/plugins/LanguageClient-neovim.rc.vim
+#'''
 
-[[plugins]]
-repo = 'autozimu/LanguageClient-neovim'
-rev = 'next'
-build = 'bash install.sh'
-hook_source = '''
-source ~/.config/nvim/plugins/LanguageClient-neovim.rc.vim
-'''
-
-[[plugins]]
-repo = 'roxma/LanguageServer-php-neovim'
-on_ft = 'php'
-build = 'composer install && composer run-script parse-stubs'
-hook_source = '''
-source ~/.config/nvim/plugins/LanguageServer-php-neovim.rc.vim
-'''
+#[[plugins]]
+#repo = 'roxma/LanguageServer-php-neovim'
+#on_ft = 'php'
+#build = 'composer install && composer run-script parse-stubs'
+#hook_source = '''
+#source ~/.config/nvim/plugins/LanguageServer-php-neovim.rc.vim
+#'''
 
 [[plugins]]
 repo = 'Shougo/neosnippet.vim'
@@ -133,32 +133,32 @@ hook_source = '''
 source ~/.config/nvim/plugins/neosnippet.rc.vim
 '''
 
-[[plugins]]
-repo = 'lvht/phpcd.vim'
-on_ft = 'php'
-build = 'composer install'
-hook_source = '''
-source ~/.config/nvim/plugins/phpcd.rc.vim
-'''
+#[[plugins]]
+#repo = 'lvht/phpcd.vim'
+#on_ft = 'php'
+#build = 'composer install'
+#hook_source = '''
+#source ~/.config/nvim/plugins/phpcd.rc.vim
+#'''
 # }}}
 
 
 ## Gundo {{{
-[[plugins]]
-repo = 'sjl/gundo.vim'
-on_cmd = 'GundoToggle'
-hook_add = '''
-source ~/.config/nvim/plugins/gundo.rc.vim
-'''
+#[[plugins]]
+#repo = 'sjl/gundo.vim'
+#on_cmd = 'GundoToggle'
+#hook_add = '''
+#source ~/.config/nvim/plugins/gundo.rc.vim
+#'''
 # }}}
 
 # PHP {{{
 # }}}
 
 ## Golang {{{
-[[plugins]]
-repo = 'fatih/vim-go'
-on_ft = 'go'
+#[[plugins]]
+#repo = 'fatih/vim-go'
+#on_ft = 'go'
 # }}}
 
 ## Latex
@@ -179,54 +179,54 @@ source ~/.config/nvim/plugins/vimtex.rc.vim
 [[plugins]]
 repo = 'cespare/vim-toml'
 on_ft = 'toml'
-[[plugins]]
-repo = 'hail2u/vim-css3-syntax'
-on_ft = 'css'
-[[plugins]]
-repo = 'cakebaker/scss-syntax.vim'
-on_ft = 'sass'
-[[plugins]]
-repo = 'othree/html5-syntax.vim'
-on_ft = 'html'
-[[plugins]]
-repo = 'othree/javascript-syntax.vim'
-on_ft = 'javascript'
+#[[plugins]]
+#repo = 'hail2u/vim-css3-syntax'
+#on_ft = 'css'
+#[[plugins]]
+#repo = 'cakebaker/scss-syntax.vim'
+#on_ft = 'sass'
+#[[plugins]]
+#repo = 'othree/html5-syntax.vim'
+#on_ft = 'html'
+#[[plugins]]
+#repo = 'othree/javascript-syntax.vim'
+#on_ft = 'javascript'
 [[plugins]]
 repo = 'tpope/vim-markdown'
 on_ft = 'markdown'
-[[plugins]]
-repo = 'StanAngeloff/php.vim'
-on_ft = 'php'
-hook_add = '''
-function! PhpSyntaxOverride()
-  hi! def link phpDocTags  phpDefine
-  hi! def link phpDocParam phpType
-endfunction
-
-augroup phpSyntaxOverride
-  autocmd!
-  autocmd FileType php call PhpSyntaxOverride()
-augroup END
-'''
-[[plugins]]
-repo = 'jwalton512/vim-blade'
-on_ft='blade'
+#[[plugins]]
+#repo = 'StanAngeloff/php.vim'
+#on_ft = 'php'
+#hook_add = '''
+#function! PhpSyntaxOverride()
+#  hi! def link phpDocTags  phpDefine
+#  hi! def link phpDocParam phpType
+#endfunction
+#
+#augroup phpSyntaxOverride
+#  autocmd!
+#  autocmd FileType php call PhpSyntaxOverride()
+#augroup END
+#'''
+#[[plugins]]
+#repo = 'jwalton512/vim-blade'
+#on_ft='blade'
 # }}}
 
 ## indent {{{
-[[plugins]]
-repo = 'othree/html5.vim'
-on_ft = 'html'
-[[plugins]]
-repo = 'jiangmiao/simple-javascript-indenter'
-on_ft = 'javascript'
-[[plugins]]
-repo = '2072/PHP-Indenting-for-VIm'
-on_ft = 'php'
-hook_add = '''
-source ~/.config/nvim/plugins/PHP-Indenting-for-VIm.rc.vim
-'''
-[[plugins]]
-repo = 'stephpy/vim-yaml'
-on_ft = 'yml,yaml'
+#[[plugins]]
+#repo = 'othree/html5.vim'
+#on_ft = 'html'
+#[[plugins]]
+#repo = 'jiangmiao/simple-javascript-indenter'
+#on_ft = 'javascript'
+#[[plugins]]
+#repo = '2072/PHP-Indenting-for-VIm'
+#on_ft = 'php'
+#hook_add = '''
+#source ~/.config/nvim/plugins/PHP-Indenting-for-VIm.rc.vim
+#'''
+#[[plugins]]
+#repo = 'stephpy/vim-yaml'
+#on_ft = 'yml,yaml'
 # }}}

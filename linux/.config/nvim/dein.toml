@@ -78,11 +78,11 @@ hook_add = '''
 source ~/.config/nvim/plugins/neco-syntax.rc.vim
 '''
 
-[[plugins]]
-repo = 'airblade/vim-gitgutter'
-hook_add = '''
-source ~/.config/nvim/plugins/vim-gitgutter.rc.vim
-'''
+#[[plugins]]
+#repo = 'airblade/vim-gitgutter'
+#hook_add = '''
+#source ~/.config/nvim/plugins/vim-gitgutter.rc.vim
+#'''
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
@@ -90,11 +90,11 @@ hook_add = '''
 source ~/.config/nvim/plugins/vim-fugitive.rc.vim
 '''
 
-[[plugins]]
-repo = 'tpope/vim-commentary'
-hook_add = '''
-source ~/.config/nvim/plugins/vim-commentary.rc.vim
-'''
+#[[plugins]]
+#repo = 'tpope/vim-commentary'
+#hook_add = '''
+#source ~/.config/nvim/plugins/vim-commentary.rc.vim
+#'''
 
 #[[plugins]]
 #repo = 'vim-airline/vim-airline'
@@ -138,56 +138,56 @@ source ~/.config/nvim/plugins/vim-commentary.rc.vim
 #source ~/.config/nvim/plugins/vim-endwise.rc.vim
 #'''
 
-[[plugins]]
-repo = 'osyo-manga/vim-over'
-hook_add = '''
-source ~/.config/nvim/plugins/vim-over.rc.vim
-'''
-
-[[plugins]]
-repo = 'LeafCage/yankround.vim'
-hook_add = '''
-source ~/.config/nvim/plugins/yankround.rc.vim
-'''
-
-[[plugins]]
-repo = 't9md/vim-quickhl'
-hook_add = '''
-source ~/.config/nvim/plugins/vim-quickhl.rc.vim
-'''
-
-[[plugins]]
-repo = 'osyo-manga/vim-anzu'
-hook_add = '''
-source ~/.config/nvim/plugins/vim-anzu.rc.vim
-'''
+#[[plugins]]
+#repo = 'osyo-manga/vim-over'
+#hook_add = '''
+#source ~/.config/nvim/plugins/vim-over.rc.vim
+#'''
+#
+#[[plugins]]
+#repo = 'LeafCage/yankround.vim'
+#hook_add = '''
+#source ~/.config/nvim/plugins/yankround.rc.vim
+#'''
+#
+#[[plugins]]
+#repo = 't9md/vim-quickhl'
+#hook_add = '''
+#source ~/.config/nvim/plugins/vim-quickhl.rc.vim
+#'''
+#
+#[[plugins]]
+#repo = 'osyo-manga/vim-anzu'
+#hook_add = '''
+#source ~/.config/nvim/plugins/vim-anzu.rc.vim
+#'''
 
 [[plugins]]
 repo = 'tmhedberg/matchit'
 
-[[plugins]]
-repo = 'Lokaltog/vim-easymotion'
-hook_add = '''
-source ~/.config/nvim/plugins/vim-easymotion.rc.vim
-'''
-
-[[plugins]]
-repo = 'elzr/vim-json'
-hook_add = '''
-source ~/.config/nvim/plugins/vim-json.rc.vim
-'''
-
-[[plugins]]
-repo = 'junegunn/vim-easy-align'
-hook_add = '''
-source ~/.config/nvim/plugins/vim-easy-align.rc.vim
-'''
-
-[[plugins]]
-repo = 'LeafCage/foldCC.vim'
-hook_add = '''
-source ~/.config/nvim/plugins/foldCC.rc.vim
-'''
+#[[plugins]]
+#repo = 'Lokaltog/vim-easymotion'
+#hook_add = '''
+#source ~/.config/nvim/plugins/vim-easymotion.rc.vim
+#'''
+#
+#[[plugins]]
+#repo = 'elzr/vim-json'
+#hook_add = '''
+#source ~/.config/nvim/plugins/vim-json.rc.vim
+#'''
+#
+#[[plugins]]
+#repo = 'junegunn/vim-easy-align'
+#hook_add = '''
+#source ~/.config/nvim/plugins/vim-easy-align.rc.vim
+#'''
+#
+#[[plugins]]
+#repo = 'LeafCage/foldCC.vim'
+#hook_add = '''
+#source ~/.config/nvim/plugins/foldCC.rc.vim
+#'''
 
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
