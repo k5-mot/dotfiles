@@ -229,41 +229,38 @@ function check_colors1() {
 ## Set up anyenv.
 if [ $OSTYPE = linux-gnu -o $OSTYPE = linux ]; then
 
-  ## pyenv
+  ## Set up pyenv
   if [ -e "$HOME/.pyenv" ]; then
     export PYENV_ROOT=$HOME/.pyenv
     export PATH=$PYENV_ROOT/bin:$PATH
-    if command -v pyenv 1>/dev/null 2>&1
-    then
+    if command -v pyenv 1>/dev/null 2>&1; then
       eval "$(pyenv init -)"
       eval "$(pyenv virtualenv-init -)"
     fi
   fi
 
-  ## rbenv
+  ## Set up rbenv
   if [ -e "$HOME/.rbenv" ]; then
     export RBENV_ROOT=$HOME/.rbenv
     export PATH=$RBENV_ROOT/bin:$PATH
-    if command -v rbenv 1>/dev/null 2>&1
-    then
+    if command -v rbenv 1>/dev/null 2>&1; then
       eval "$(rbenv init -)"
     fi
   fi
 
-  ## nodenv
+  ## Set up nodenv
   if [ -e "$HOME/.nodenv" ]; then
     export NODENV_ROOT=$HOME/.nodenv
     export PATH=$NODENV_ROOT/bin:$PATH
-    if command -v nodenv 1>/dev/null 2>&1
-    then
+    if command -v nodenv 1>/dev/null 2>&1; then
       eval "$(nodenv init -)"
     fi
   fi
 fi
 
-# Setup VcXsrv
-if [ "$(uname)" == 'Linux' ]; then
-  if [[ "$(uname -r)" == *microsoft* ]]; then
+# Setup VcXsrv for WSL
+if [ `uname` = 'Linux' ]; then
+  if [[ `uname -r` = *microsoft* ]]; then
     export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
   fi
 fi
