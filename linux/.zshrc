@@ -37,6 +37,7 @@ alias h=history
 alias ls='ls -F --color=auto'
 alias ll='ls -l'
 alias la='ls -a'
+alias lla='ls -al'
 alias x=exit
 alias latexmk='latexmk -outdir=out'
 alias grep='grep --color=auto'
@@ -224,6 +225,48 @@ function check_colors1() {
     printf "\n";
   }'
 }
+
+## Set up anyenv.
+if [ $OSTYPE = linux-gnu -o $OSTYPE = linux ]; then
+
+  ## pyenv
+  if [ -e "$HOME/.pyenv" ]; then
+    export PYENV_ROOT=$HOME/.pyenv
+    export PATH=$PYENV_ROOT/bin:$PATH
+    if command -v pyenv 1>/dev/null 2>&1
+    then
+      eval "$(pyenv init -)"
+      eval "$(pyenv virtualenv-init -)"
+    fi
+  fi
+
+  ## rbenv
+  if [ -e "$HOME/.rbenv" ]; then
+    export RBENV_ROOT=$HOME/.rbenv
+    export PATH=$RBENV_ROOT/bin:$PATH
+    if command -v rbenv 1>/dev/null 2>&1
+    then
+      eval "$(rbenv init -)"
+    fi
+  fi
+
+  ## nodenv
+  if [ -e "$HOME/.nodenv" ]; then
+    export NODENV_ROOT=$HOME/.nodenv
+    export PATH=$NODENV_ROOT/bin:$PATH
+    if command -v nodenv 1>/dev/null 2>&1
+    then
+      eval "$(nodenv init -)"
+    fi
+  fi
+fi
+
+# Setup VcXsrv
+if [ "$(uname)" == 'Linux' ]; then
+  if [[ "$(uname -r)" == *microsoft* ]]; then
+    export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
+  fi
+fi
 
 # read local file
 if [ -f ~/.zshrc_local ]; then

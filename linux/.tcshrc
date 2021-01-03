@@ -1,0 +1,106 @@
+########
+# path #
+########
+setenv EDITOR /usr/bin/vim
+setenv PAGER /usr/bin/less
+
+#########
+# color #
+#########
+#tab押してもカラー表示
+set color
+#メッセージのカラー表示
+set colorcat
+#grep --color=autoのカラー表示
+setenv GREP_COLOR '1;43;30'
+
+##########
+# prompt #
+##########
+#プロンプトの設定(sshちっくに表示)末尾にスペースは絶対!
+#set prompt = '\n%{\e[04;30;42m%} %n %{\e[00;30;46m%} %m %{\e[00;30;45m%} %/ %{\e[00m%} \n %# '
+set prompt = '\n%{\e[00;32;40m%}%n%{\e[00;37;40m%}@%{\e[00;36;40m%}%M%{\e[00;37;40m%}:%{\e[00;35;40m%}%/%{\e[00m%} \n%# '
+#右側に出るプロンプトの設定(24時間表記の時計)末尾にスペースは絶対!
+#set rprompt = '%{\e[31m%}%B[%T]%b%{\e[0m%} '
+#set rprompt=''
+
+########
+# auto #
+########
+#ファイル名補完
+set filec
+#ファイル名の候補を表示
+set autolist
+#ファイル名補完時に候補から除外する拡張子
+set fignore=(.o .aux .log)
+#コマンドが間違っていたら、returnを押した時に直す
+set autocorrect
+#コマンドが間違っていたら、tabを押した時に直す
+set correct=cmd
+#補完時にヒストリを展開
+set autoexpand
+#ディレクトリ名のみで移動
+set implicitcd=verbose
+#大文字、小文字を無視
+set complete=enhance
+#cdを行う時の補完をディレクトリのみにする
+complete cd 'p/1/d/'
+
+########
+# beep #
+########
+#beep音を鳴らさない
+set nobeep
+#beep時に画面の明滅
+set visiblebell
+
+###########
+# history #
+###########
+#ヒストリの履歴の数
+set history = 50
+#コンソールを閉じてもヒストリを保持
+set savehist = 50
+#同じコマンドがヒストリにあったら、消す
+set histdup=erase
+
+##############
+# not logout #
+##############
+#ctrl-dでログアウトしない
+set ignoreeof
+
+###############
+# bindkey vim #
+###############
+#vimっぽいキーバインドにする
+#bindkey -v
+
+############
+# rm check #
+############
+#rmするときにチェックする
+set rmstar
+
+########
+# else #
+########
+#リダイレクトで上書きしたときにエラー
+set noclobber
+#中断時にすべてのジョブを表示
+set listjobs
+#ジョブの終了をすぐに知らせる
+set notify
+
+#########
+# alias #
+#########
+alias grep 'grep -E --color=auto'
+#alias ls 'ls -G'
+alias x 'exit'
+alias ls 'ls --color=auto'
+alias log 'tail /var/log/system.log'
+
+## Run Zsh.
+setenv SHELL '/bin/zsh'
+exec '/bin/zsh' --login
