@@ -15,6 +15,7 @@ sudo apt install -y emacs
 sudo apt install -y neovim
 sudo apt install -y zsh
 sudo apt install -y tmux
+sudo apt install -y make
 sudo apt install -y curl
 sudo apt install -y llvm
 sudo apt install -y sqlite3
