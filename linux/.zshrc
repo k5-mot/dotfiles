@@ -37,7 +37,7 @@ alias h=history
 alias ls='ls -F --color=auto'
 alias ll='ls -l'
 alias la='ls -a'
-alias lla='ls -al'
+alias lla='ls -la'
 alias x=exit
 alias latexmk='latexmk -outdir=out'
 alias grep='grep --color=auto'
@@ -256,11 +256,22 @@ if [ $OSTYPE = linux-gnu -o $OSTYPE = linux ]; then
       eval "$(nodenv init -)"
     fi
   fi
+
+  ## Set up homebrew
+  if [ -e "$HOME/.linuxbrew" ]; then
+    export HOMEBREW_ROOT=$HOME/.linuxbrew
+    export PATH=$HOMEBREW_ROOT/bin:$PATH
+    export PATH=$HOMEBREW_ROOT/sbin:$PATH
+    export MANPATH=$HOMEBREW_ROOT/share/man:$MANPATH
+    export INFOPATH=$HOMEBREW_ROOT/share/info:$INFOPATH
+    export LD_LIBRARY_PATH=$HOMEBREW_ROOT/lib:$LD_LIBRARY_PATH
+  fi
+
 fi
 
 # Setup VcXsrv for WSL
-if [ `uname` = 'Linux' ]; then
-  if [[ `uname -r` = *microsoft* ]]; then
+if [ "$(uname 2> /dev/null)" = Linux ]; then
+  if [[ "$(uname -r 2> /dev/null)" = *microsoft* ]]; then
     export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
   fi
 fi

@@ -6,25 +6,36 @@ if [ ! -d $HOME/.zsh/antigen/ ]; then
   git clone https://github.com/zsh-users/antigen.git $HOME/.zsh/antigen/
 fi
 
-## Load antigen.
-source $HOME/.zsh/antigen/antigen.zsh
+## oh my zsh
+if true; then
+  ## Load antigen.
+  source $HOME/.zsh/antigen/antigen.zsh
+  ## Load the oh-my-zsh's library.
+  antigen use oh-my-zsh
 
-## Load the oh-my-zsh's library.
-antigen use oh-my-zsh
+  ## Bundles from the default repo (robbyrussell's oh-my-zsh).
+  antigen bundle git
+  antigen bundle heroku
+  antigen bundle pip
+  antigen bundle lein
+  antigen bundle command-not-found
 
-## Bundles from the default repo (robbyrussell's oh-my-zsh).
-antigen bundle git
-antigen bundle heroku
-antigen bundle pip
-antigen bundle lein
-antigen bundle command-not-found
+  ## Syntax highlighting bundle.
+  antigen bundle zsh-users/zsh-syntax-highlighting
 
-## Syntax highlighting bundle.
-antigen bundle zsh-users/zsh-syntax-highlighting
+  ## Load the theme.
+  #antigen theme robbyrussell
+  #antigen theme agnoster
 
-## Load the theme.
-#antigen theme robbyrussell
-#antigen theme agnoster
+  ## Tell Antigen that you're done.
+  antigen apply
 
-## Tell Antigen that you're done.
-antigen apply
+fi
+
+## Prezto
+if false; then
+  antigen bundle sorin-ionescu/prezto
+
+fi
+
+
