@@ -6,10 +6,14 @@ if [ ! -d $HOME/.zsh/antigen/ ]; then
   git clone https://github.com/zsh-users/antigen.git $HOME/.zsh/antigen/
 fi
 
-## oh my zsh
+## Load antigen.
+source $HOME/.zsh/antigen/antigen.zsh
+
+
 if true; then
-  ## Load antigen.
-  source $HOME/.zsh/antigen/antigen.zsh
+
+  ## oh my zsh
+
   ## Load the oh-my-zsh's library.
   antigen use oh-my-zsh
 
@@ -30,11 +34,28 @@ if true; then
   ## Tell Antigen that you're done.
   antigen apply
 
-fi
+else
 
-## Prezto
-if false; then
+  ## Prezto
   antigen bundle sorin-ionescu/prezto
+
+  if [ ! -f ~/.zprezto ]; then
+    ln -s ~/.antigen/bundles/sorin-ionescu/prezto ~/.zprezto
+    #ln -s ~/.antigen/repos/.zprezto ~/.zprezto
+  fi
+  setopt EXTENDED_GLOB
+
+  for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
+    ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+  done
+
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+
+  ## Syntax highlighting bundle.
+  antigen bundle zsh-users/zsh-syntax-highlighting
+
+  ## Tell Antigen that you're done.
+  antigen apply
 
 fi
 

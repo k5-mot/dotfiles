@@ -229,6 +229,16 @@ function check_colors1() {
 ## Set up anyenv.
 if [ $OSTYPE = linux-gnu -o $OSTYPE = linux ]; then
 
+  ## Set up homebrew
+  if [ -e "$HOME/.linuxbrew" ]; then
+    export HOMEBREW_ROOT=$HOME/.linuxbrew
+    export PATH=$HOMEBREW_ROOT/bin:$PATH
+    export PATH=$HOMEBREW_ROOT/sbin:$PATH
+    export MANPATH=$HOMEBREW_ROOT/share/man:$MANPATH
+    export INFOPATH=$HOMEBREW_ROOT/share/info:$INFOPATH
+    export LD_LIBRARY_PATH=$HOMEBREW_ROOT/lib:$LD_LIBRARY_PATH
+  fi
+
   ## Set up pyenv
   if [ -e "$HOME/.pyenv" ]; then
     export PYENV_ROOT=$HOME/.pyenv
@@ -255,16 +265,6 @@ if [ $OSTYPE = linux-gnu -o $OSTYPE = linux ]; then
     if command -v nodenv 1>/dev/null 2>&1; then
       eval "$(nodenv init -)"
     fi
-  fi
-
-  ## Set up homebrew
-  if [ -e "$HOME/.linuxbrew" ]; then
-    export HOMEBREW_ROOT=$HOME/.linuxbrew
-    export PATH=$HOMEBREW_ROOT/bin:$PATH
-    export PATH=$HOMEBREW_ROOT/sbin:$PATH
-    export MANPATH=$HOMEBREW_ROOT/share/man:$MANPATH
-    export INFOPATH=$HOMEBREW_ROOT/share/info:$INFOPATH
-    export LD_LIBRARY_PATH=$HOMEBREW_ROOT/lib:$LD_LIBRARY_PATH
   fi
 
 fi
