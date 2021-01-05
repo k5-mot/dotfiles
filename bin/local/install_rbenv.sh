@@ -7,7 +7,7 @@
 ## Configure rbenv variable
 export RBENV_RUBY_VERSION=2.7.2
 export RBENV_ROOT=$HOME/.rbenv
-export RBENV_PLUGINS=$PYENV_ROOT/plugins
+export RBENV_PLUGINS=$RBENV_ROOT/plugins
 
 ## Install rbenv
 git clone https://github.com/sstephenson/rbenv.git $RBENV_ROOT
@@ -26,7 +26,10 @@ git pull
 
 ## Setup rbenv
 cd $HOME
-$RBENV_ROOT/bin/rbenv init
+export RBENV_ROOT=$HOME/.rbenv
+export PATH=$RBENV_ROOT/bin:$PATH
+eval "$(rbenv init -)"
+#$RBENV_ROOT/bin/rbenv init
 
 ## Install Ruby
 rbenv install $RBENV_RUBY_VERSION
@@ -41,3 +44,4 @@ gem install neovim
 mkdir $RBENV_ROOT/scripts
 cd $RBENV_ROOT/scripts
 curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash
+

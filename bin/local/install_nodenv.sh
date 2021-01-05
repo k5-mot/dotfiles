@@ -31,7 +31,10 @@ git pull
 
 ## Setup nodenv
 cd $HOME
-$NODENV_ROOT/bin/nodenv init
+export NODENV_ROOT=$HOME/.nodenv
+export PATH=$NODENV_ROOT/bin:$PATH
+eval "$(nodenv init -)"
+#$NODENV_ROOT/bin/nodenv init
 
 ## Install node.js
 nodenv install $NODENV_NODEJS_VERSION

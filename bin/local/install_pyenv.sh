@@ -32,7 +32,10 @@ git pull
 
 ## Setup pyenv
 cd $HOME/
-$PYENV_ROOT/bin/pyenv init
+export PYENV_ROOT=$HOME/.pyenv
+export PATH=$PYENV_ROOT/bin:$PATH
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 
 ## Install Python2
 pyenv install $PYENV_PYTHON2_VERSION
