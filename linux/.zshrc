@@ -189,7 +189,12 @@ export JSERVER="localhost"
 # set up tetris
 autoload -Uz tetris
 zle -N tetris
-bindkey '...' tetris
+#bindkey '...' tetris
+
+# set up tetris 1
+autoload -Uz tetriscurses
+#alias tetris=tetriscurses
+
 
 # check powerline
 function check_powerline() {
@@ -285,3 +290,4 @@ fi
 if [ -f ~/.zshrc_antigen ]; then
   source ~/.zshrc_antigen
 fi
+
