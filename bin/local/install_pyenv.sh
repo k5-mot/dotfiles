@@ -5,10 +5,10 @@
 ## Install basic packages by pip
 
 ## Configure pyenv variable
+export PYENV_PYTHON3_VERSION=$(pyenv install --list | grep -v '[a-zA-Z]' | grep -e '3\.[0-9]\.[0-9]' | tail -1)
+export PYENV_PYTHON2_VERSION=$(pyenv install --list | grep -v '[a-zA-Z]' | grep -e '2\.[0-9]\.[0-9]' | tail -1)
 #export PYENV_PYTHON3_VERSION=3.8.6
 #export PYENV_PYTHON2_VERSION=2.7.18
-export PYENV_PYTHON3_VERSION=$(pyenv install -l | grep -v '[a-zA-Z]' | grep -e '\s3\.?*' | tail -1)
-export PYENV_PYTHON2_VERSION=$(pyenv install -l | grep -v '[a-zA-Z]' | grep -e '\s2\.?*' | tail -1)
 export PYENV_ROOT=$HOME/.pyenv
 export PYENV_PLUGINS=$PYENV_ROOT/plugins
 
@@ -48,11 +48,11 @@ eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
 ## Install Python2
-pyenv install $PYENV_PYTHON2_VERSION
+pyenv install --skip-existing $PYENV_PYTHON2_VERSION
 pyenv rehash
 
 ## Install Python3
-pyenv install $PYENV_PYTHON3_VERSION
+pyenv install --skip-existing $PYENV_PYTHON3_VERSION
 pyenv rehash
 
 ## Install packages of Python2

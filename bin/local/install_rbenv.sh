@@ -5,23 +5,29 @@
 ## Install basic packages by gem
 
 ## Configure rbenv variable
-#export RBENV_RUBY_VERSION=$(rbenv install -l | grep -v '[a-zA-Z]' | grep -e '\s3\.?*' | tail -1)
-export RBENV_RUBY_VERSION=2.7.2
+export RBENV_RUBY_VERSION=$(rbenv install --list-all | grep -v '[a-zA-Z]' | grep -e '[0-9]\.[0-9]\.[0-9]' | tail -1)
+#export RBENV_RUBY_VERSION=2.7.2
 export RBENV_ROOT=$HOME/.rbenv
 export RBENV_PLUGINS=$RBENV_ROOT/plugins
 
 ## Install rbenv
-git clone https://github.com/sstephenson/rbenv.git $RBENV_ROOT
+if [ ! -e $RBENV_ROOT ]; then
+  git clone https://github.com/sstephenson/rbenv.git $RBENV_ROOT
+fi
 cd $RBENV_ROOT
 git pull
 
 ## Install ruby-build
-git clone https://github.com/sstephenson/ruby-build.git $RBENV_PLUGINS/ruby-build
+if [ ! -e $RBENV_PLUGINS/ruby-build ]; then
+  git clone https://github.com/sstephenson/ruby-build.git $RBENV_PLUGINS/ruby-build
+fi
 cd $RBENV_PLUGINS/ruby-build
 git pull
 
 ## Install rbenv-update
-git clone https://github.com/rkh/rbenv-update.git $RBENV_PLUGINS/rbenv-update
+if [ ! -e $RBENV_PLUGINS/rbenv-update ]; then
+  git clone https://github.com/rkh/rbenv-update.git $RBENV_PLUGINS/rbenv-update
+fi
 cd $RBENV_PLUGINS/rbenv-update
 git pull
 
