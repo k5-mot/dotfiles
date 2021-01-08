@@ -1,4 +1,5 @@
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+#sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 export HOMEBREW_ROOT=$HOME/.linuxbrew
 export PATH=$HOMEBREW_ROOT/bin:$PATH
 export PATH=$HOMEBREW_ROOT/sbin:$PATH

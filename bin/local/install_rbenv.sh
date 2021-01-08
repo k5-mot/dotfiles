@@ -5,6 +5,7 @@
 ## Install basic packages by gem
 
 ## Configure rbenv variable
+#export RBENV_RUBY_VERSION=$(rbenv install -l | grep -v '[a-zA-Z]' | grep -e '\s3\.?*' | tail -1)
 export RBENV_RUBY_VERSION=2.7.2
 export RBENV_ROOT=$HOME/.rbenv
 export RBENV_PLUGINS=$RBENV_ROOT/plugins
