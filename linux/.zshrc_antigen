@@ -1,9 +1,16 @@
 ## Install antigen, if not install.
 if [ ! -d $HOME/.zsh ]; then
-  mkdir .zsh
+  mkdir -p .zsh
 fi
 if [ ! -d $HOME/.zsh/antigen/ ]; then
   git clone https://github.com/zsh-users/antigen.git $HOME/.zsh/antigen/
+fi
+
+if [ ! -d $HOME/.antigen ]; then
+  mkdir -p $HOME/.antigen
+fi
+if [ ! -e $HOME/.antigen/debug.log ]; then
+  touch $HOME/.antigen/debug.log
 fi
 
 ## Load antigen.
