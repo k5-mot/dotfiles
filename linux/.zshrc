@@ -281,6 +281,9 @@ if [ "$(uname 2> /dev/null)" = Linux ]; then
   fi
 fi
 
+export PATH=$PATH:$HOME/dotfiles/bin
+export PATH=$PATH:$HOME/dotfiles/bin/local
+
 # read local file
 if [ -f ~/.zshrc_local ]; then
   source ~/.zshrc_local
