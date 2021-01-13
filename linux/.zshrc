@@ -39,7 +39,7 @@ alias ll='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
 alias x=exit
-alias latexmk='latexmk -outdir=out'
+#alias latexmk='latexmk -outdir=out'
 alias grep='grep --color=auto'
 
 # List only directories and symbolic

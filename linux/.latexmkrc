@@ -24,7 +24,7 @@ $dvipdf            = 'dvipdfmx %O -o %D %S';
 $pdf_mode          = 3;# dvipdfmxを用いる
 
 ## Out directory
-$out_dir           = 'out';
+$out_dir           = 'build';
 $aux_dir           = $out_dir;
 
 ## Preview
@@ -42,3 +42,4 @@ if ($^O eq 'linux') {
 
 ## Clean up
 $clean_full_ext = "%R.synctex.gz"
+
