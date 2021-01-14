@@ -9,13 +9,17 @@
 [merge]
   tool        = vimdiff
 [alias]
+  # Logを綺麗に表示
   graph       = log --oneline --decorate --graph --branches --tags --remotes --pretty=format:'%C(green)%h %C(blue)[%cd] %C(red)%d %C(reset)%s %C(cyan)'
   gr          = graph
   aa          = add -A
+  au          = add -u
+  aup         = add -u -p
   cm          = commit
   cmm         = commit -m
   cmmr        = commit --amend -m
   st          = status
+  sts         = status -s
   stt         = status -uno
   diffw       = diff --word-diff
   difff       = diff --name-only
@@ -23,5 +27,12 @@
   pl          = pull --verbose --progress
   cl          = clone --verbose --progress
   co          = checkout
+  cob         = checkout -b
   br          = branch
+  brm         = branch -m
+  brd         = branch -d
   rb          = rebase
+  unstage     = reset HEAD
+  mg          = merge --no-ff
+  mgff        = merge --ff
+  cp          = cherry-pick
