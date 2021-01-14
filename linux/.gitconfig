@@ -21,7 +21,7 @@
   difff       = diff --name-only
   ps          = push --verbose --progress
   pl          = pull --verbose --progress
-  cl          = clone -v --progress
+  cl          = clone --verbose --progress
   co          = checkout
   br          = branch
   rb          = rebase
