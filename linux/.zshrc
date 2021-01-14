@@ -234,14 +234,32 @@ function check_colors1() {
 ## Set up anyenv.
 if [ $OSTYPE = linux-gnu -o $OSTYPE = linux ]; then
 
+  ## Set up local build applications.
+  #if [ false ]; then
+  #  export LOCALAPP_ROOT=$HOME/.local
+  #  export PATH=$LOCALAPP_ROOT/bin:$PATH
+  #  export PATH=$LOCALAPP_ROOT/scripts:$PATH
+  #  export MANPATH=$LOCALAPP_ROOT/share/man:$MANPATH
+  #  export INFOPATH=$LOCALAPP_ROOT/share/info:$INFOPATH
+  #  export LD_LIBRARY_PATH=$LOCALAPP_ROOT/lib:$LD_LIBRARY_PATH
+  #  export LD_LIBRARY_PATH=$LOCALAPP_ROOT/lib64:$LD_LIBRARY_PATH
+  #fi
+
   ## Set up homebrew
   if [ -e "$HOME/.linuxbrew" ]; then
     export HOMEBREW_ROOT=$HOME/.linuxbrew
     export PATH=$HOMEBREW_ROOT/bin:$PATH
-    export PATH=$HOMEBREW_ROOT/sbin:$PATH
-    export MANPATH=$HOMEBREW_ROOT/share/man:$MANPATH
-    export INFOPATH=$HOMEBREW_ROOT/share/info:$INFOPATH
-    export LD_LIBRARY_PATH=$HOMEBREW_ROOT/lib:$LD_LIBRARY_PATH
+    #export PATH=$HOMEBREW_ROOT/sbin:$PATH
+    #export MANPATH=$HOMEBREW_ROOT/share/man:$MANPATH
+    #export INFOPATH=$HOMEBREW_ROOT/share/info:$INFOPATH
+    #export LD_LIBRARY_PATH=$HOMEBREW_ROOT/lib:$LD_LIBRARY_PATH
+    export XDG_DATA_DIRS=$HOME/.linuxbrew/share:$XDG_DATA_DIRS
+    ## Optional
+    export HOMEBREW_NO_ENV_FILTERING=1
+    export HOMEBREW_DEVELOPER=1
+    export HOMEBREW_CURL_PATH=$HOME/.local/bin/curl
+    export HOMEBREW_GIT_PATH=$HOME/.local/bin/git
+    eval "$($HOME/.linuxbrew/bin/brew shellenv)"
   fi
 
   ## Set up pyenv
