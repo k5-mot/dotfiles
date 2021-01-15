@@ -245,6 +245,13 @@ if [ $OSTYPE = linux-gnu -o $OSTYPE = linux ]; then
   #  export LD_LIBRARY_PATH=$LOCALAPP_ROOT/lib64:$LD_LIBRARY_PATH
   #fi
 
+  ## Set up GNU environment variables.
+  #export CPATH=$CPATH:$HOME/include
+  #export C_INCLUDE_PATH=$C_INCLUDE_PATH:
+  #export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:
+  #export LIBRARY_PATH=$LIBRARY_PATH:$HOME/lib
+  #export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/lib
+
   ## Set up homebrew
   if [ -e "$HOME/.linuxbrew" ]; then
     export HOMEBREW_ROOT=$HOME/.linuxbrew
@@ -299,6 +306,7 @@ if [ "$(uname 2> /dev/null)" = Linux ]; then
   fi
 fi
 
+# Set up scripts of dotfiles.
 export PATH=$PATH:$HOME/dotfiles/bin
 export PATH=$PATH:$HOME/dotfiles/bin/local
 
