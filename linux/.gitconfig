@@ -28,7 +28,7 @@
   ## Synchronize local & remote branch.
   refresh     = !git fetch origin && git remote prune origin
   ## Stage all files.
-  stage       = !git add -A && git add -u && git status -s
+  stageall    = !git add -A && git add -u && git status -s
   ## Find in managed files by git.
   find        = "!git ls-files | grep -i"
   ## Check aliases.
@@ -59,22 +59,42 @@
   aup         = add -u -p
   ## Abbreviate 'git commit'.
   cm          = commit
+  ## Abbreviate 'git commit -m'.
   cmm         = commit -m
+  ## Abbreviate 'git commit --amend -m'.
   cmmr        = commit --amend -m
+  ## Abbreviate 'git status'.
   st          = status
+  ## Abbreviate 'git status -s'.
   sts         = status -s
+  ## Abbreviate 'git status -uno'.
   stt         = status -uno
+  ## Abbreviate 'git diff --word-diff'.
   diffw       = diff --word-diff
+  ## Abbreviate 'git diff --name-only'.
   difff       = diff --name-only
+  ## Abbreviate 'git push'.
   ps          = push --verbose --progress
+  ## Abbreviate 'git pull'.
   pl          = pull --verbose --progress
+  ## Abbreviate 'git clone'.
   cl          = clone --verbose --progress
+  ## Abbreviate 'git checkout'.
   co          = checkout
+  ## Abbreviate 'git checkout -b'.
   cob         = checkout -b
+  ## Abbreviate 'git branch'.
   br          = branch
+  ## Abbreviate 'git branch -m'.
   brm         = branch -m
+  ## Abbreviate 'git branch -d'.
   brd         = branch -d
+  ## Abbreviate 'git rebase'.
   rb          = rebase
+  ## Abbreviate 'git merge'.
   mg          = merge --no-ff
+  ## Abbreviate 'git merge --ff'.
   mgff        = merge --ff
+  ## Abbreviate 'git cherry-pick'.
   cp          = cherry-pick
+
