@@ -91,8 +91,8 @@ runtime! ./functions.rc.vim
 runtime! ./keymaps.rc.vim
 
 " ローカル設定
-if filereadable(expand('~/.vimrc.local'))
-  source ~/.vimrc.local
+if filereadable(expand('~/.vimrc_local'))
+  source ~/.vimrc_local
 endif
 
 " プロジェクト設定
@@ -102,7 +102,7 @@ augroup vimrc-local
 augroup END
 
 function! s:vimrc_local(loc)
-  let files = findfile('.vimrc.local', escape(a:loc, ' ') . ';', -1)
+  let files = findfile('.vimrc_local', escape(a:loc, ' ') . ';', -1)
   for i in reverse(filter(files, 'filereadable(v:val)'))
     source `=i`
   endfor

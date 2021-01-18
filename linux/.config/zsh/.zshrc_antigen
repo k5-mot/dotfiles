@@ -1,0 +1,69 @@
+## Install antigen, if not install.
+if [ ! -d $HOME/.zsh ]; then
+  mkdir -p .zsh
+fi
+if [ ! -d $HOME/.zsh/antigen/ ]; then
+  git clone https://github.com/zsh-users/antigen.git $HOME/.zsh/antigen/
+fi
+
+if [ ! -d $HOME/.antigen ]; then
+  mkdir -p $HOME/.antigen
+fi
+if [ ! -e $HOME/.antigen/debug.log ]; then
+  touch $HOME/.antigen/debug.log
+fi
+
+## Load antigen.
+source $HOME/.zsh/antigen/antigen.zsh
+
+
+if true; then
+
+  ## oh my zsh
+
+  ## Load the oh-my-zsh's library.
+  antigen use oh-my-zsh
+
+  ## Bundles from the default repo (robbyrussell's oh-my-zsh).
+  antigen bundle git
+  antigen bundle heroku
+  antigen bundle pip
+  antigen bundle lein
+  antigen bundle command-not-found
+
+  ## Syntax highlighting bundle.
+  antigen bundle zsh-users/zsh-syntax-highlighting
+
+  ## Load the theme.
+  #antigen theme robbyrussell
+  #antigen theme agnoster
+
+  ## Tell Antigen that you're done.
+  antigen apply
+
+else
+
+  ## Prezto
+  antigen bundle sorin-ionescu/prezto
+
+  if [ ! -f ~/.zprezto ]; then
+    ln -s ~/.antigen/bundles/sorin-ionescu/prezto ~/.zprezto
+    #ln -s ~/.antigen/repos/.zprezto ~/.zprezto
+  fi
+  setopt EXTENDED_GLOB
+
+  for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
+    ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+  done
+
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+
+  ## Syntax highlighting bundle.
+  antigen bundle zsh-users/zsh-syntax-highlighting
+
+  ## Tell Antigen that you're done.
+  antigen apply
+
+fi
+
+

@@ -212,7 +212,7 @@ set fileformats=unix,dos,mac
 
 " undofile
 set undofile
-set undodir=$HOME/.vim/undodir
+set undodir=$HOME/.cache/vim/undodir
 
 " vimの矩形選択で文字が無くても右へ進める
 set virtualedit=block

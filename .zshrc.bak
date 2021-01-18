@@ -6,6 +6,7 @@
 # options, key bindings, etc.
 #
 
+
 # read up colors
 autoload -Uz colors
 colors
@@ -195,6 +196,12 @@ zle -N tetris
 autoload -Uz tetriscurses
 #alias tetris=tetriscurses
 
+# Benchmark zsh.
+function benchmark_zsh() {
+  for i in $(seq 1 10); do
+    time ( zsh -i -c exit )
+  done
+}
 
 # check powerline
 function check_powerline() {
@@ -231,74 +238,6 @@ function check_colors1() {
   }'
 }
 
-## Set up anyenv.
-if [ $OSTYPE = linux-gnu -o $OSTYPE = linux ]; then
-
-  ## Set up local build applications.
-  #if [ false ]; then
-  #  export LOCALAPP_ROOT=$HOME/.local
-  #  export PATH=$LOCALAPP_ROOT/bin:$PATH
-  #  export PATH=$LOCALAPP_ROOT/scripts:$PATH
-  #  export MANPATH=$LOCALAPP_ROOT/share/man:$MANPATH
-  #  export INFOPATH=$LOCALAPP_ROOT/share/info:$INFOPATH
-  #  export LD_LIBRARY_PATH=$LOCALAPP_ROOT/lib:$LD_LIBRARY_PATH
-  #  export LD_LIBRARY_PATH=$LOCALAPP_ROOT/lib64:$LD_LIBRARY_PATH
-  #fi
-
-  ## Set up GNU environment variables.
-  #export CPATH=$CPATH:$HOME/include
-  #export C_INCLUDE_PATH=$C_INCLUDE_PATH:
-  #export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:
-  #export LIBRARY_PATH=$LIBRARY_PATH:$HOME/lib
-  #export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/lib
-
-  ## Set up homebrew
-  if [ -e "$HOME/.linuxbrew" ]; then
-    export HOMEBREW_ROOT=$HOME/.linuxbrew
-    export PATH=$HOMEBREW_ROOT/bin:$PATH
-    #export PATH=$HOMEBREW_ROOT/sbin:$PATH
-    #export MANPATH=$HOMEBREW_ROOT/share/man:$MANPATH
-    #export INFOPATH=$HOMEBREW_ROOT/share/info:$INFOPATH
-    #export LD_LIBRARY_PATH=$HOMEBREW_ROOT/lib:$LD_LIBRARY_PATH
-    export XDG_DATA_DIRS=$HOME/.linuxbrew/share:$XDG_DATA_DIRS
-    ## Optional
-    export HOMEBREW_NO_ENV_FILTERING=1
-    export HOMEBREW_DEVELOPER=1
-    export HOMEBREW_CURL_PATH=$HOME/.local/bin/curl
-    export HOMEBREW_GIT_PATH=$HOME/.local/bin/git
-    eval "$($HOME/.linuxbrew/bin/brew shellenv)"
-  fi
-
-  ## Set up pyenv
-  if [ -e "$HOME/.pyenv" ]; then
-    export PYENV_ROOT=$HOME/.pyenv
-    export PATH=$PYENV_ROOT/bin:$PATH
-    if command -v pyenv 1>/dev/null 2>&1; then
-      eval "$(pyenv init -)"
-      eval "$(pyenv virtualenv-init -)"
-    fi
-  fi
-
-  ## Set up rbenv
-  if [ -e "$HOME/.rbenv" ]; then
-    export RBENV_ROOT=$HOME/.rbenv
-    export PATH=$RBENV_ROOT/bin:$PATH
-    if command -v rbenv 1>/dev/null 2>&1; then
-      eval "$(rbenv init -)"
-    fi
-  fi
-
-  ## Set up nodenv
-  if [ -e "$HOME/.nodenv" ]; then
-    export NODENV_ROOT=$HOME/.nodenv
-    export PATH=$NODENV_ROOT/bin:$PATH
-    if command -v nodenv 1>/dev/null 2>&1; then
-      eval "$(nodenv init -)"
-    fi
-  fi
-
-fi
-
 # Setup VcXsrv for WSL
 if [ "$(uname 2> /dev/null)" = Linux ]; then
   if [[ "$(uname -r 2> /dev/null)" = *microsoft* ]]; then
@@ -306,17 +245,18 @@ if [ "$(uname 2> /dev/null)" = Linux ]; then
   fi
 fi
 
-# Set up scripts of dotfiles.
-export PATH=$PATH:$HOME/dotfiles/bin
-export PATH=$PATH:$HOME/dotfiles/bin/local
-
-# read local file
+# Read local file
 if [ -f ~/.zshrc_local ]; then
   source ~/.zshrc_local
 fi
 
-# read config file for Antigen.
+# Read config file for Antigen.
 if [ -f ~/.zshrc_antigen ]; then
   source ~/.zshrc_antigen
+fi
+
+# Compile .zshrc only once at first.
+if [ ~/.zshrc -nt ~/.zshrc.zwc ]; then
+  zcompile ~/.zshrc
 fi
 
