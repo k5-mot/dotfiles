@@ -63,14 +63,14 @@ colors
 ## Remove file mark.
 unsetopt list_types
 ## Color list
-local DEFAULT=$'%{^[[m%}'$
-local RED=$'%{^[[1;31m%}'$
-local GREEN=$'%{^[[1;32m%}'$
-local YELLOW=$'%{^[[1;33m%}'$
-local BLUE=$'%{^[[1;34m%}'$
-local PURPLE=$'%{^[[1;35m%}'$
-local LIGHT_BLUE=$'%{^[[1;36m%}'$
-local WHITE=$'%{^[[1;37m%}'$
+#local DEFAULT=$'%{^[[m%}'$
+#local RED=$'%{^[[1;31m%}'$
+#local GREEN=$'%{^[[1;32m%}'$
+#local YELLOW=$'%{^[[1;33m%}'$
+#local BLUE=$'%{^[[1;34m%}'$
+#local PURPLE=$'%{^[[1;35m%}'$
+#local LIGHT_BLUE=$'%{^[[1;36m%}'$
+#local WHITE=$'%{^[[1;37m%}'$
 ## }}}
 
 ## Completion {{{
@@ -81,11 +81,11 @@ zstyle ':completion:*:default' menu select=1
 # 補完関数の表示を強化する
 zstyle ':completion:*' verbose yes
 zstyle ':completion:*' completer _expand _complete _match _prefix _approximate _list _history
-zstyle ':completion:*:messages' format '%F{YELLOW}%d'$DEFAULT
-zstyle ':completion:*:warnings' format '%F{RED}No matches for:''%F{YELLOW} %d'$DEFAULT
-zstyle ':completion:*:descriptions' format '%F{YELLOW}completing %B%d%b'$DEFAULT
+zstyle ':completion:*:messages' format '%F{YELLOW}%d'"$DEFAULT"
+zstyle ':completion:*:warnings' format '%F{RED}No matches for:''%F{YELLOW} %d'"$DEFAULT"
+zstyle ':completion:*:descriptions' format '%F{YELLOW}completing %B%d%b'"$DEFAULT"
 zstyle ':completion:*:options' description 'yes'
-zstyle ':completion:*:descriptions' format '%F{yellow}Completing %B%d%b%f'$DEFAULT
+zstyle ':completion:*:descriptions' format '%F{yellow}Completing %B%d%b%f'"$DEFAULT"
 # マッチ種別を別々に表示
 zstyle ':completion:*' group-name ''
 # セパレータを設定する
