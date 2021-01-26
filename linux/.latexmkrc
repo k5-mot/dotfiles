@@ -1,9 +1,9 @@
 #!/usr/bin/env perl
 
 ## LaTeX
-$latex_args        = '-shell-escape -synctex=1 -halt-on-error -file-line-error %O %S';
-$latex_silent_args = $latexargs . '-interaction=batchmode';
-$pdflatex_args     = '-syntex=1 -halt-on-error %O %S';
+$latex_args        = '-shell-escape -synctex=1 -halt-on-error -file-line-error %O %S ';
+$latex_silent_args = $latex_args . '-interaction=batchmode ';
+$pdflatex_args     = '-syntex=1 -halt-on-error %O %S ';
 $pdflatex          = 'pdflatex ' . $pdflatex_args;
 $latex             = 'platex ' . $latex_args;
 $latex_silint      = 'platex ' . $latex_silent_args;
