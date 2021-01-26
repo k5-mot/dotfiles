@@ -1,0 +1,24 @@
+winget install -e --id Microsoft.PowerShell
+winget install -e --id Microsoft.WindowsTerminal
+winget install -e --id Microsoft.VisualStudioCode
+winget install -e --id Git.Git
+winget install -e --id marha.VcXsrv
+winget install -e --id WinSCP.WinSCP
+winget install -e --id TortoiseGit.TortoiseGit
+winget install -e --id Microsoft.PowerToys
+winget install -e --id 7zip.7zip
+winget install -e --id Adobe.AdobeAcrobatReaderDC
+winget install -e --id Autodesk.Fusion360
+winget install -e --id BlenderFoundation.Blender
+winget install -e --id Mozilla.Firefox
+winget install -e --id FreeCAD.FreeCAD
+winget install -e --id GIMP.GIMP
+winget install -e --id Google.Chrome
+winget install -e --id Inkscape.Inkscape
+winget install -e --id JetBrains.Toolbox
+winget install -e --id Logitech.Options
+winget install -e --id Spotify.Spotify
+winget install -e --id Python.Python
+winget install -e --id UnityTechnologies.UnityHub
+winget install -e --id TUG.TeXLive
+
