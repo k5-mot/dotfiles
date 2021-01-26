@@ -86,8 +86,8 @@ export PATH=$PATH:/usr/local/libexec
 export PATH=$PATH:/opt/bin
 ## Search path for the cd command
 export CDPATH
-export CDPATH=$CDPATH:..
-export CDPATH=$CDPATH:~
+#export CDPATH=$CDPATH:..
+#export CDPATH=$CDPATH:~
 #cdpath=(.. ~ ~/src ~/zsh)
 ## Search path for the man command
 export MANPATH
@@ -128,7 +128,6 @@ man() {
 ## Set up environment variables for local build applications.
 export LOCAL_ROOT=$HOME/.local
 export PATH=$LOCAL_ROOT/bin:$PATH
-export PATH=$LOCAL_ROOT/scripts:$PATH
 export MANPATH=$LOCAL_ROOT/share/man:$MANPATH
 export INFOPATH=$LOCAL_ROOT/share/info:$INFOPATH
 export LD_LIBRARY_PATH=$LOCAL_ROOT/lib:$LD_LIBRARY_PATH
