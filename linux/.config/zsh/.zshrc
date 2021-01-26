@@ -222,9 +222,9 @@ if [ $OSTYPE = linux-gnu -o $OSTYPE = linux ]; then
     ## Optional
     export HOMEBREW_NO_ENV_FILTERING=1
     export HOMEBREW_DEVELOPER=1
-    export HOMEBREW_CURL_PATH=$HOME/.local/bin/curl
-    export HOMEBREW_GIT_PATH=$HOME/.local/bin/git
-    eval "$($HOME/.linuxbrew/bin/brew shellenv)"
+    #export HOMEBREW_CURL_PATH=$HOME/.local/bin/curl
+    #export HOMEBREW_GIT_PATH=$HOME/.local/bin/git
+    eval "$($HOMEBREW_ROOT/bin/brew shellenv)"
   fi
 
 fi
@@ -274,6 +274,13 @@ fi
 #  fi
 #fi
 ### }}}
+GOPATH=$HOME/.golang
+function _update_ps1() {
+  PS1="$($GOPATH/bin/powerline-go -error $?)"
+}
+if [ "$TERM" != "linux" ] && [ -f "$GOPATH/bin/powerline-go" ]; then
+  PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+fi
 
 # Read local file
 if [ -f ~/.zshrc_local ]; then

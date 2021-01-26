@@ -15,67 +15,67 @@ repo = 'Shougo/neomru.vim'
 ## }}}
 
 ### Unite {{{
-[[plugins]]
-repo = 'Shougo/unite.vim'
-depends = 'neomru.vim'
-on_cmd = 'Unite'
-hook_add = '''
-source ~/.config/nvim/plugins/unite.rc.vim
-'''
-hook_post_source = '''
-source ~/.config/nvim/plugins/unite_post.rc.vim
-'''
-
-[[plugins]]
-repo = 'Shougo/neomru.vim'
-
-[[plugins]]
-repo = 'Shougo/unite-outline'
-on_source = 'denite.nvim'
-
-[[plugins]]
-repo = 'tsukkee/unite-tag'
-on_source = 'unite.vim'
-
-[[plugins]]
-repo = 'osyo-manga/unite-quickfix'
-on_source = 'unite.vim'
-
-[[plugins]]
-repo = 'ujihisa/unite-colorscheme'
-hook_add = '''
-'''
-
-[[plugins]]
-repo = 'thinca/vim-qfreplace'
-on_source = 'denite.nvim'
-# }}}
-
-## Defx {{{
-[[plugins]]
-repo = 'Shougo/defx.nvim'
-on_cmd = 'Defx'
-depends = ['defx-icons', 'defx-git']
-hook_add = '''
-source ~/.config/nvim/plugins/defx.nvim.rc.vim
-'''
-hook_post_source = '''
-source ~/.config/nvim/plugins/defx.nvim_post.rc.vim
-'''
-
-[[plugins]]
-repo ='kristijanhusak/defx-icons'
-
-[[plugins]]
-repo ='kristijanhusak/defx-git'
-
-[[plugins]]
-repo = 'Shougo/vimfiler.vim'
-depends = 'unite.vim'
-on_cmd = ['VimFiler', 'VimFilerBufferDir']
-hook_add = '''
-source ~/.config/nvim/plugins/vimfiler.rc.vim
-'''
+#[[plugins]]
+#repo = 'Shougo/unite.vim'
+#depends = 'neomru.vim'
+#on_cmd = 'Unite'
+#hook_add = '''
+#source ~/.config/nvim/plugins/unite.rc.vim
+#'''
+#hook_post_source = '''
+#source ~/.config/nvim/plugins/unite_post.rc.vim
+#'''
+#
+#[[plugins]]
+#repo = 'Shougo/neomru.vim'
+#
+#[[plugins]]
+#repo = 'Shougo/unite-outline'
+#on_source = 'denite.nvim'
+#
+#[[plugins]]
+#repo = 'tsukkee/unite-tag'
+#on_source = 'unite.vim'
+#
+#[[plugins]]
+#repo = 'osyo-manga/unite-quickfix'
+#on_source = 'unite.vim'
+#
+#[[plugins]]
+#repo = 'ujihisa/unite-colorscheme'
+#hook_add = '''
+#'''
+#
+#[[plugins]]
+#repo = 'thinca/vim-qfreplace'
+#on_source = 'denite.nvim'
+## }}}
+#
+### Defx {{{
+#[[plugins]]
+#repo = 'Shougo/defx.nvim'
+#on_cmd = 'Defx'
+#depends = ['defx-icons', 'defx-git']
+#hook_add = '''
+#source ~/.config/nvim/plugins/defx.nvim.rc.vim
+#'''
+#hook_post_source = '''
+#source ~/.config/nvim/plugins/defx.nvim_post.rc.vim
+#'''
+#
+#[[plugins]]
+#repo ='kristijanhusak/defx-icons'
+#
+#[[plugins]]
+#repo ='kristijanhusak/defx-git'
+#
+#[[plugins]]
+#repo = 'Shougo/vimfiler.vim'
+#depends = 'unite.vim'
+#on_cmd = ['VimFiler', 'VimFilerBufferDir']
+#hook_add = '''
+#source ~/.config/nvim/plugins/vimfiler.rc.vim
+#'''
 ## }}}
 
 # completion {{{
@@ -90,19 +90,19 @@ on_i = 1
 hook_source = '''
 source ~/.config/nvim/plugins/deoplete.rc.vim
 '''
-[[plugins]]
-repo = 'Shougo/neco-vim'
-
-[[plugins]]
-repo = 'Shougo/neoinclude.vim'
-on_if = 1
-
-[[plugins]]
-repo = 'Shougo/echodoc'
-on_if = 1
-hook_source = '''
-source ~/.config/nvim/plugins/echodoc.rc.vim
-'''
+#[[plugins]]
+#repo = 'Shougo/neco-vim'
+#
+#[[plugins]]
+#repo = 'Shougo/neoinclude.vim'
+#on_if = 1
+#
+#[[plugins]]
+#repo = 'Shougo/echodoc'
+#on_if = 1
+#hook_source = '''
+#source ~/.config/nvim/plugins/echodoc.rc.vim
+#'''
 
 #[[plugins]]
 #repo = 'cohama/lexima.vim'
