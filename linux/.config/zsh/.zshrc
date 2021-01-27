@@ -261,7 +261,7 @@ bindkey '^W' backward-kill-word
 setopt prompt_subst
 ## Set prompts
 export PROMPT="
-%F{blue}%M%f:%F{cyan}%~%f
+%F{green}%n%f@%F{blue}%M%f:%F{cyan}%~%f
 $ "
 export PROMPT2=
 ## }}}

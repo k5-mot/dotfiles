@@ -186,6 +186,10 @@ set incsearch
 " 検索文字列をハイライト表示
 set hlsearch
 
+" concealをOFF
+set conceallevel=0
+let g:vim_json_syntax_conceal = 0
+
 " grep
 if has('win32')
   set grepprg=jvgrep
