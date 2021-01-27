@@ -52,8 +52,7 @@ set runtimepath+=~/.config/nvim/plugins
 if dein#load_state(s:dein_cache_path)
   call dein#begin(s:dein_cache_path)
 
-  "call dein#load_toml('~/.config/nvim/dein.toml', {'lazy' : 0})
-  call dein#load_toml('~/.config/nvim/dein.toml')
+  call dein#load_toml('~/.config/nvim/dein.toml', {'lazy' : 0})
   call dein#load_toml('~/.config/nvim/deinlazy.toml', {'lazy' : 1})
   call dein#load_toml('~/.config/nvim/deinft.toml')
 
@@ -76,10 +75,14 @@ colorscheme gruvbox
 
 " Provider
 if has('nvim')
-  let g:python3_host_prog = $HOME . '/.pyenv/versions/3.8.5/bin/python'
-  let g:python_host_prog  = $HOME . '/.pyenv/versions/2.7.18/bin/python'
-  let g:ruby_host_prog    = $HOME . '/.rbenv/versions/3.0.0/bin/neovim-ruby-host'
-  let g:node_host_prog    = $HOME . '/.nodenv/versions/15.5.0/bin/neovim-node-host'
+  let g:python3_host_prog = $HOME . '/.anyenv/envs/pyenv/versions/3.9.1/bin/python'
+  let g:python_host_prog  = $HOME . '/.anyenv/envs/pyenv/versions/2.7.18/bin/python'
+  let g:ruby_host_prog    = $HOME . '/.anyenv/envs/rbenv/versions/3.0.0/bin/neovim-ruby-host'
+  let g:node_host_prog    = $HOME . '/.anyenv/envs/nodenv/versions/15.6.0/bin/neovim-node-host'
+  "let g:python3_host_prog = $HOME . '/.pyenv/versions/3.8.5/bin/python'
+  "let g:python_host_prog  = $HOME . '/.pyenv/versions/2.7.18/bin/python'
+  "let g:ruby_host_prog    = $HOME . '/.rbenv/versions/3.0.0/bin/neovim-ruby-host'
+  "let g:node_host_prog    = $HOME . '/.nodenv/versions/15.5.0/bin/neovim-node-host'
 endif
 
 " set関連
