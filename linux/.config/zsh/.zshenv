@@ -139,6 +139,8 @@ export CPLUS_INCLUDE_PATH=$LOCAL_ROOT/include:$CPLUS_INCLUDE_PATH
 export LIBRARY_PATH=$LOCAL_ROOT/lib:$LIBRARY_PATH
 export LIBRARY_PATH=$LOCAL_ROOT/lib64:$LIBRARY_PATH
 ### }}}
+export NVIM_PYTHON_LOG_FILE=$HOME/.cache/nvim/log
+export NVIM_PYTHON_LOG_LEVEL=DEBUG
 
 ## Set up local PATH.
 if [ -e $HOME/.zshenv_local ]; then

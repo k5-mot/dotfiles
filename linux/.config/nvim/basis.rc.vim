@@ -107,7 +107,7 @@ set cinoptions+=:0
 set cmdheight=2
 
 " ステータス行を常に表示
-set laststatus=2
+"set laststatus=2
 
 " コマンドラインの履歴を10000件保存
 set history=10000
