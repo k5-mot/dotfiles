@@ -221,18 +221,19 @@ if [ $OSTYPE = linux-gnu -o $OSTYPE = linux ]; then
   ## Set up homebrew
   export HOMEBREW_ROOT=$HOME/.linuxbrew
   if [ -e $HOMEBREW_ROOT ]; then
-    export PATH=$HOMEBREW_ROOT/bin:$PATH
+    #export PATH=$HOMEBREW_ROOT/bin:$PATH
     #export PATH=$HOMEBREW_ROOT/sbin:$PATH
     #export MANPATH=$HOMEBREW_ROOT/share/man:$MANPATH
     #export INFOPATH=$HOMEBREW_ROOT/share/info:$INFOPATH
     #export LD_LIBRARY_PATH=$HOMEBREW_ROOT/lib:$LD_LIBRARY_PATH
     #export XDG_DATA_DIRS=$HOME/.linuxbrew/share:$XDG_DATA_DIRS
     ## Optional
-    export HOMEBREW_NO_ENV_FILTERING=1
-    export HOMEBREW_DEVELOPER=1
+    #export HOMEBREW_NO_ENV_FILTERING=1
+    #export HOMEBREW_DEVELOPER=1
     #export HOMEBREW_CURL_PATH=$HOME/.local/bin/curl
     #export HOMEBREW_GIT_PATH=$HOME/.local/bin/git
-    eval "$($HOMEBREW_ROOT/bin/brew shellenv)"
+
+    #eval "$($HOMEBREW_ROOT/bin/brew shellenv)"
   fi
 
 fi
