@@ -132,6 +132,14 @@ make test
 porg -lp qhull --logdir=$HOME/.local/var/log/porg make install PREFIX=$HOME/.local/usr
 porg --logdir=$HOME/.local/var/log/porg qhull
 
+# git
+wget https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.29.2.tar.gz
+tar -xzvf git-2.29.2.tar.gz
+cd git-2.29.2/
+make prefix=$HOME/.local/usr all
+porg -lp git-2.29.2 --logdir=$HOME/.local/var/log/porg make prefix=$HOME/.local/usr install
+porg --logdir=$HOME/.local/var/log/porg git-2.29.2 
+
 # Octave
 cd $HOME/.local/src
 mkdir octave
