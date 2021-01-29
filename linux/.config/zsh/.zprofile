@@ -31,6 +31,9 @@ alias -g M='|more'
 alias -g H='|head'
 alias -g T='|tail'
 
+# Check porg
+alias porg-check='porg --logdir=$HOME/.local/var/log/porg'
+
 # Shell functions
 function setenv()
 {

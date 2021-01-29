@@ -127,15 +127,20 @@ man() {
 ### Local Build Program {{{
 ## Set up environment variables for local build applications.
 export LOCAL_ROOT=$HOME/.local
+export PATH=$LOCAL_ROOT/usr/bin:$PATH
 export PATH=$LOCAL_ROOT/bin:$PATH
 export MANPATH=$LOCAL_ROOT/share/man:$MANPATH
 export INFOPATH=$LOCAL_ROOT/share/info:$INFOPATH
+export LD_LIBRARY_PATH=$LOCAL_ROOT/usr/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$LOCAL_ROOT/usr/lib64:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=$LOCAL_ROOT/lib:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=$LOCAL_ROOT/lib64:$LD_LIBRARY_PATH
 ## Set up GNU environment variables for local build applications.
 export CPATH=$LOCAL_ROOT/include:$CPATH
 export C_INCLUDE_PATH=$LOCAL_ROOT/include:$C_INCLUDE_PATH
 export CPLUS_INCLUDE_PATH=$LOCAL_ROOT/include:$CPLUS_INCLUDE_PATH
+export LIBRARY_PATH=$LOCAL_ROOT/usr/lib:$LIBRARY_PATH
+export LIBRARY_PATH=$LOCAL_ROOT/usr/lib64:$LIBRARY_PATH
 export LIBRARY_PATH=$LOCAL_ROOT/lib:$LIBRARY_PATH
 export LIBRARY_PATH=$LOCAL_ROOT/lib64:$LIBRARY_PATH
 ### }}}
