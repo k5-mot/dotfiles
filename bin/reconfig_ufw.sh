@@ -10,9 +10,7 @@ ufw reset
 ufw allow to any port 80
 ufw allow to any port 443
 ## SSH
-#ufw allow from 192.168.2.1/24 to any port 22
-#ufw allow from 192.168.2.1/24 to any port 58632
-ufw allow to any port 58632
+ufw allow from 192.168.2.1/24 to any port 22
 ## VNC
 ufw allow from 192.168.2.1/24 to any port 5900
 ## Samba
