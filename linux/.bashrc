@@ -100,40 +100,40 @@ alias l='ls -CF'
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-## Set up anyenv.
-if [ $OSTYPE = linux-gnu -o $OSTYPE = linux ]; then
-
-  ## pyenv
-  if [ -e "$HOME/.pyenv" ]; then
-    export PYENV_ROOT=$HOME/.pyenv
-    export PATH=$PYENV_ROOT/bin:$PATH
-    if command -v pyenv 1>/dev/null 2>&1
-    then
-      eval "$(pyenv init -)"
-      eval "$(pyenv virtualenv-init -)"
-    fi
-  fi
-
-  ## rbenv
-  if [ -e "$HOME/.rbenv" ]; then
-    export RBENV_ROOT=$HOME/.rbenv
-    export PATH=$RBENV_ROOT/bin:$PATH
-    if command -v rbenv 1>/dev/null 2>&1
-    then
-      eval "$(rbenv init -)"
-    fi
-  fi
-
-  ## nodenv
-  if [ -e "$HOME/.nodenv" ]; then
-    export NODENV_ROOT=$HOME/.nodenv
-    export PATH=$NODENV_ROOT/bin:$PATH
-    if command -v nodenv 1>/dev/null 2>&1
-    then
-      eval "$(nodenv init -)"
-    fi
-  fi
-fi
+### Set up anyenv.
+#if [ $OSTYPE = linux-gnu -o $OSTYPE = linux ]; then
+#
+#  ## pyenv
+#  if [ -e "$HOME/.pyenv" ]; then
+#    export PYENV_ROOT=$HOME/.pyenv
+#    export PATH=$PYENV_ROOT/bin:$PATH
+#    if command -v pyenv 1>/dev/null 2>&1
+#    then
+#      eval "$(pyenv init -)"
+#      eval "$(pyenv virtualenv-init -)"
+#    fi
+#  fi
+#
+#  ## rbenv
+#  if [ -e "$HOME/.rbenv" ]; then
+#    export RBENV_ROOT=$HOME/.rbenv
+#    export PATH=$RBENV_ROOT/bin:$PATH
+#    if command -v rbenv 1>/dev/null 2>&1
+#    then
+#      eval "$(rbenv init -)"
+#    fi
+#  fi
+#
+#  ## nodenv
+#  if [ -e "$HOME/.nodenv" ]; then
+#    export NODENV_ROOT=$HOME/.nodenv
+#    export PATH=$NODENV_ROOT/bin:$PATH
+#    if command -v nodenv 1>/dev/null 2>&1
+#    then
+#      eval "$(nodenv init -)"
+#    fi
+#  fi
+#fi
 
 # Setup VcXsrv
 if [ "$(uname)" == 'Linux' ]; then
@@ -146,14 +146,14 @@ fi
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
-if [ -f ~/.bash_aliases ]; then
-  . ~/.bash_aliases
-fi
-
-# read local file
-if [ -f ~/.bashrc_local ]; then
-  . ~/.bashrc_local
-fi
+#if [ -f ~/.bash_aliases ]; then
+#  . ~/.bash_aliases
+#fi
+#
+## read local file
+#if [ -f ~/.bashrc_local ]; then
+#  . ~/.bashrc_local
+#fi
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile

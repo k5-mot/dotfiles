@@ -40,6 +40,8 @@ function setenv()
   typeset -x "${1}${1:+=}${(@)argv[2,$#]}"
 }  # csh compatibility
 
+alias echopath="echo $PATH | sed -e 's/:/\n/g'"
+
 function freload() {
   while (( $# )); do;
     unfunction $1;
