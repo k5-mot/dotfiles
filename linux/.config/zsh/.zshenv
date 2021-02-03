@@ -1,39 +1,41 @@
 #!/usr/bin/env zsh
 
 ### Locale {{{
-if false; then
-  ## Basic locale
-  export LANG="ja_JP.UTF-8"
-  ## Translation priorities
-  export LANGUAGE=
-  ## Character types, their comparisons and classifications
-  export LC_CTYPE="ja_JP.UTF-8"
-  ## Number format
-  export LC_NUMERIC="ja_JP.UTF-8"
-  ## Date, time
-  export LC_TIME="ja_JP.UTF-8"
-  ## Collation and alignment of characters
-  export LC_COLLATE="ja_JP.UTF-8"
-  ## Currency
-  export LC_MONETARY="ja_JP.UTF-8"
-  ## Display message
-  export LC_MESSAGES="ja_JP.UTF-8"
-  ## Paper standard
-  export LC_PAPER="ja_JP.UTF-8"
-  ## Name
-  export LC_NAME="ja_JP.UTF-8"
-  ## Address
-  export LC_ADDRESS="ja_JP.UTF-8"
-  ## Telephone service
-  export LC_TELEPHONE="ja_JP.UTF-8"
-  ## Mesurement
-  export LC_MEASUREMENT="ja_JP.UTF-8"
-  ## Metadata
-  export LC_IDENTIFICATION="ja_JP.UTF-8"
-else
+  #locale-gen "ja_JP.UTF-8"
+  ### Basic locale
+  #export LANG="ja_JP.UTF-8"
+  ### Translation priorities
+  #export LANGUAGE=
+  ### Character types, their comparisons and classifications
+  #export LC_CTYPE="ja_JP.UTF-8"
+  ### Number format
+  #export LC_NUMERIC="ja_JP.UTF-8"
+  ### Date, time
+  #export LC_TIME="ja_JP.UTF-8"
+  ### Collation and alignment of characters
+  #export LC_COLLATE="ja_JP.UTF-8"
+  ### Currency
+  #export LC_MONETARY="ja_JP.UTF-8"
+  ### Display message
+  #export LC_MESSAGES="ja_JP.UTF-8"
+  ### Paper standard
+  #export LC_PAPER="ja_JP.UTF-8"
+  ### Name
+  #export LC_NAME="ja_JP.UTF-8"
+  ### Address
+  #export LC_ADDRESS="ja_JP.UTF-8"
+  ### Telephone service
+  #export LC_TELEPHONE="ja_JP.UTF-8"
+  ### Mesurement
+  #export LC_MEASUREMENT="ja_JP.UTF-8"
+  ### Metadata
+  #export LC_IDENTIFICATION="ja_JP.UTF-8"
+  ##locale-gen "en_US.UTF-8"
   ## All locale
-  export LC_ALL="en_US.UTF-8"
-fi
+  #export LANG="en_US.UTF-8"
+  #export LANGUAGE="en_US"
+  #export LC_ALL="en_US.UTF-8"
+  #eval `dbus-launch --sh-syntax`
 ### }}}
 
 ### Environment variable {{{
@@ -74,16 +76,18 @@ export QT_IM_MODULE="ibus"
 export JSERVER="localhost"
 
 ## Initialize $PATH
+#echo $PATH | sed -e 's/:/\n/g'
 export PATH
-export PATH=$PATH:/bin
 export PATH=$PATH:/sbin
-export PATH=$PATH:/usr/bin
+#export PATH=/sbin
 export PATH=$PATH:/usr/sbin
-export PATH=$PATH:/usr/libexec
-export PATH=$PATH:/usr/local/bin
-export PATH=$PATH:/usr/local/sbin
-export PATH=$PATH:/usr/local/libexec
 export PATH=$PATH:/opt/bin
+export PATH=$PATH:/bin
+export PATH=$PATH:/usr/bin
+export PATH=$PATH:/usr/libexec
+#export PATH=$PATH:/usr/local/bin
+#export PATH=$PATH:/usr/local/sbin
+#export PATH=$PATH:/usr/local/libexec
 ## Search path for the cd command
 export CDPATH
 #export CDPATH=$CDPATH:..
@@ -91,14 +95,14 @@ export CDPATH
 #cdpath=(.. ~ ~/src ~/zsh)
 ## Search path for the man command
 export MANPATH
+export MANPATH=$MANPATH:/opt/share/man
 export MANPATH=$MANPATH:/usr/share/man
 export MANPATH=$MANPATH:/usr/local/share/man
-export MANPATH=$MANPATH:/opt/share/man
 ## Search path for the info command
 export MANPATH
+export MANPATH=$MANPATH:/opt/share/info
 export MANPATH=$MANPATH:/usr/share/info
 export MANPATH=$MANPATH:/usr/local/share/info
-export MANPATH=$MANPATH:/opt/share/info
 ## Directory for run-help function to find docs
 export HELPDIR=/usr/local/lib/zsh/help
 ## xdgconfig
@@ -128,21 +132,26 @@ man() {
 ## Set up environment variables for local build applications.
 export LOCAL_ROOT=$HOME/.local
 export PATH=$LOCAL_ROOT/usr/bin:$PATH
-export PATH=$LOCAL_ROOT/bin:$PATH
-export MANPATH=$LOCAL_ROOT/share/man:$MANPATH
-export INFOPATH=$LOCAL_ROOT/share/info:$INFOPATH
+export MANPATH=$LOCAL_ROOT/usr/share/man:$MANPATH
+export INFOPATH=$LOCAL_ROOT/usr/share/info:$INFOPATH
 export LD_LIBRARY_PATH=$LOCAL_ROOT/usr/lib:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=$LOCAL_ROOT/usr/lib64:$LD_LIBRARY_PATH
-export LD_LIBRARY_PATH=$LOCAL_ROOT/lib:$LD_LIBRARY_PATH
-export LD_LIBRARY_PATH=$LOCAL_ROOT/lib64:$LD_LIBRARY_PATH
+#export PATH=$LOCAL_ROOT/bin:$PATH
+#export MANPATH=$LOCAL_ROOT/share/man:$MANPATH
+#export INFOPATH=$LOCAL_ROOT/share/info:$INFOPATH
+#export LD_LIBRARY_PATH=$LOCAL_ROOT/lib:$LD_LIBRARY_PATH
+#export LD_LIBRARY_PATH=$LOCAL_ROOT/lib64:$LD_LIBRARY_PATH
 ## Set up GNU environment variables for local build applications.
-export CPATH=$LOCAL_ROOT/include:$CPATH
-export C_INCLUDE_PATH=$LOCAL_ROOT/include:$C_INCLUDE_PATH
-export CPLUS_INCLUDE_PATH=$LOCAL_ROOT/include:$CPLUS_INCLUDE_PATH
+export CPATH=$LOCAL_ROOT/usr/include:$CPATH
+export C_INCLUDE_PATH=$LOCAL_ROOT/usr/include:$C_INCLUDE_PATH
+export CPLUS_INCLUDE_PATH=$LOCAL_ROOT/usr/include:$CPLUS_INCLUDE_PATH
 export LIBRARY_PATH=$LOCAL_ROOT/usr/lib:$LIBRARY_PATH
 export LIBRARY_PATH=$LOCAL_ROOT/usr/lib64:$LIBRARY_PATH
-export LIBRARY_PATH=$LOCAL_ROOT/lib:$LIBRARY_PATH
-export LIBRARY_PATH=$LOCAL_ROOT/lib64:$LIBRARY_PATH
+#export CPATH=$LOCAL_ROOT/include:$CPATH
+#export C_INCLUDE_PATH=$LOCAL_ROOT/include:$C_INCLUDE_PATH
+#export CPLUS_INCLUDE_PATH=$LOCAL_ROOT/include:$CPLUS_INCLUDE_PATH
+#export LIBRARY_PATH=$LOCAL_ROOT/lib:$LIBRARY_PATH
+#export LIBRARY_PATH=$LOCAL_ROOT/lib64:$LIBRARY_PATH
 ### }}}
 export NVIM_PYTHON_LOG_FILE=$HOME/.cache/nvim/log
 export NVIM_PYTHON_LOG_LEVEL=DEBUG
@@ -154,7 +163,6 @@ fi
 
 # Set up scripts of dotfiles.
 export FPATH=$FPATH:$HOME/dotfiles/bin
-export FPATH=$FPATH:$HOME/dotfiles/bin/local
 
 ## automatically remove duplicates from these arrays
 typeset -U path PATH
