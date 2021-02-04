@@ -78,16 +78,28 @@ export JSERVER="localhost"
 ## Initialize $PATH
 #echo $PATH | sed -e 's/:/\n/g'
 export PATH
-export PATH=$PATH:/sbin
 #export PATH=/sbin
+export PATH=$PATH:/sbin
 export PATH=$PATH:/usr/sbin
 export PATH=$PATH:/opt/bin
 export PATH=$PATH:/bin
 export PATH=$PATH:/usr/bin
 export PATH=$PATH:/usr/libexec
-#export PATH=$PATH:/usr/local/bin
-#export PATH=$PATH:/usr/local/sbin
-#export PATH=$PATH:/usr/local/libexec
+export PATH=$PATH:/usr/local/bin
+export PATH=$PATH:/usr/local/sbin
+export PATH=$PATH:/usr/local/libexec
+export LD_LIBRARY_PATH
+#export LD_LIBRARY_PATH=/lib
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/lib
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/lib64
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib64
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib64
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/lib
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/lib64
+#export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/x86-64-linux-gnu
+
 ## Search path for the cd command
 export CDPATH
 #export CDPATH=$CDPATH:..
@@ -95,14 +107,14 @@ export CDPATH
 #cdpath=(.. ~ ~/src ~/zsh)
 ## Search path for the man command
 export MANPATH
-export MANPATH=$MANPATH:/opt/share/man
 export MANPATH=$MANPATH:/usr/share/man
 export MANPATH=$MANPATH:/usr/local/share/man
+export MANPATH=$MANPATH:/opt/share/man
 ## Search path for the info command
-export MANPATH
-export MANPATH=$MANPATH:/opt/share/info
-export MANPATH=$MANPATH:/usr/share/info
-export MANPATH=$MANPATH:/usr/local/share/info
+export INFOPATH
+export INFOPATH=$INFOPATH:/usr/share/info
+export INFOPATH=$INFOPATH:/usr/local/share/info
+export INFOPATH=$INFOPATH:/opt/share/info
 ## Directory for run-help function to find docs
 export HELPDIR=/usr/local/lib/zsh/help
 ## xdgconfig
@@ -126,32 +138,27 @@ man() {
         LESS_TERMCAP_us=$(printf "\e[1;32m") \
         man "$@"
 }
+export LESS_TERMCAP_mb=$(printf "\e[1;33m")
+export LESS_TERMCAP_md=$(printf "\e[1;36m")
+export LESS_TERMCAP_me=$(printf "\e[0m")
+export LESS_TERMCAP_se=$(printf "\e[0m")
+export LESS_TERMCAP_so=$(printf "\e[1;44;33m")
+export LESS_TERMCAP_ue=$(printf "\e[0m")
+export LESS_TERMCAP_us=$(printf "\e[1;32m")
 ### }}}
 
 ### Local Build Program {{{
 ## Set up environment variables for local build applications.
-export LOCAL_ROOT=$HOME/.local
-export PATH=$LOCAL_ROOT/usr/bin:$PATH
-export MANPATH=$LOCAL_ROOT/usr/share/man:$MANPATH
-export INFOPATH=$LOCAL_ROOT/usr/share/info:$INFOPATH
-export LD_LIBRARY_PATH=$LOCAL_ROOT/usr/lib:$LD_LIBRARY_PATH
-export LD_LIBRARY_PATH=$LOCAL_ROOT/usr/lib64:$LD_LIBRARY_PATH
-#export PATH=$LOCAL_ROOT/bin:$PATH
-#export MANPATH=$LOCAL_ROOT/share/man:$MANPATH
-#export INFOPATH=$LOCAL_ROOT/share/info:$INFOPATH
-#export LD_LIBRARY_PATH=$LOCAL_ROOT/lib:$LD_LIBRARY_PATH
-#export LD_LIBRARY_PATH=$LOCAL_ROOT/lib64:$LD_LIBRARY_PATH
-## Set up GNU environment variables for local build applications.
-export CPATH=$LOCAL_ROOT/usr/include:$CPATH
-export C_INCLUDE_PATH=$LOCAL_ROOT/usr/include:$C_INCLUDE_PATH
-export CPLUS_INCLUDE_PATH=$LOCAL_ROOT/usr/include:$CPLUS_INCLUDE_PATH
-export LIBRARY_PATH=$LOCAL_ROOT/usr/lib:$LIBRARY_PATH
-export LIBRARY_PATH=$LOCAL_ROOT/usr/lib64:$LIBRARY_PATH
-#export CPATH=$LOCAL_ROOT/include:$CPATH
-#export C_INCLUDE_PATH=$LOCAL_ROOT/include:$C_INCLUDE_PATH
-#export CPLUS_INCLUDE_PATH=$LOCAL_ROOT/include:$CPLUS_INCLUDE_PATH
-#export LIBRARY_PATH=$LOCAL_ROOT/lib:$LIBRARY_PATH
-#export LIBRARY_PATH=$LOCAL_ROOT/lib64:$LIBRARY_PATH
+#export LOCAL_ROOT=$HOME/.local
+#export PATH=$LOCAL_ROOT/usr/bin:$PATH
+#export MANPATH=$LOCAL_ROOT/usr/share/man:$MANPATH
+#export INFOPATH=$LOCAL_ROOT/usr/share/info:$INFOPATH
+#export LD_LIBRARY_PATH=$LOCAL_ROOT/usr/lib:$LD_LIBRARY_PATH
+#export LD_LIBRARY_PATH=$LOCAL_ROOT/usr/lib64:$LD_LIBRARY_PATH
+### Set up GNU environment variables for local build applications.
+#export CPATH=$LOCAL_ROOT/usr/include:$CPATH
+#export C_INCLUDE_PATH=$CPATH
+#export CPLUS_INCLUDE_PATH=$CPATH
 ### }}}
 export NVIM_PYTHON_LOG_FILE=$HOME/.cache/nvim/log
 export NVIM_PYTHON_LOG_LEVEL=DEBUG
@@ -162,11 +169,27 @@ if [ -e $HOME/.zshenv_local ]; then
 fi
 
 # Set up scripts of dotfiles.
+export FPATH
 export FPATH=$FPATH:$HOME/dotfiles/bin
+## Set
+export LIBRARY_PATH
+export LIBRARY_PATH=$LD_LIBRARY_PATH
 
 ## automatically remove duplicates from these arrays
 typeset -U path PATH
-typeset -U cdpath cdpath
+typeset -U cdpath CDPATH
 typeset -U fpath FPATH
 typeset -U manpath MANPATH
 typeset -U infopath INFOPATH
+
+typeset -T LD_LIBRARY_PATH ld_library_path
+typeset -U ld_library_path
+typeset -T LIBRARY_PATH library_path
+typeset -U library_path
+typeset -T CPATH cpath
+typeset -U cpath
+typeset -T C_INCLUDE_PATH c_include_path
+typeset -U c_include_path
+typeset -T CPLUS_INCLUDE_PATH cplus_include_path
+typeset -U cplus_include_path
+

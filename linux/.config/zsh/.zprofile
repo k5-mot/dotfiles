@@ -41,6 +41,8 @@ function setenv()
 }  # csh compatibility
 
 alias echopath="echo $PATH | sed -e 's/:/\n/g'"
+alias echolibpath="echo $LD_LIBRARY_PATH | sed -e 's/:/\n/g'"
+alias echolibpath2="echo $LIBRARY_PATH | sed -e 's/:/\n/g'"
 
 function freload() {
   while (( $# )); do;
