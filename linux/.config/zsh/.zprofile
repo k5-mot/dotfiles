@@ -33,6 +33,8 @@ alias -g T='|tail'
 
 # Check porg
 alias porg-check='porg --logdir=$HOME/.local/var/log/porg'
+#
+alias porg-install='porg --logdir=$HOME/.local/var/log/porg -lp'
 
 # Shell functions
 function setenv()

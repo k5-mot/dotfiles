@@ -95,7 +95,7 @@ cd src/
 mkdir build
 cd build/
 ../configure --with-features=huge --enable-gui=gtk2 --enable-multibyte --enable-nls --enable-python3interp --with-python3-command=$HOME/.anyenv/envs/pyenv/versions/3.9.1/bin/python3 --enable-pythoninterp --with-python-command=$HOME/.anyenv/envs/pyenv/versions/2.7.18/bin/python2 --enable-rubyinterp --with-ruby-command=$HOME/.anyenv/envs/rbenv/versions/3.0.0/bin/ruby --enable-fail-if-missing --prefix=$HOME/.local/usr
-make 
+make
 porg -lp vim-8.2 --logdir=$HOME/.local/var/log/porg make install
 porg --logdir=$HOME/.local/var/log/porg vim
 
@@ -108,7 +108,7 @@ make CMAKE_BUILD_TYPE=Release
 porg -lp neovim --logdir=$HOME/.local/var/log/porg make CMAKE_INSTALL_PREFIX=$HOME/.local/usr install
 porg --logdir=$HOME/.local/var/log/porg nvim
 
-# cmake 
+# cmake
 cd $HOME/.local/src
 mkdir cmake
 cd cmake/
@@ -138,7 +138,13 @@ tar -xzvf git-2.29.2.tar.gz
 cd git-2.29.2/
 make prefix=$HOME/.local/usr all
 porg -lp git-2.29.2 --logdir=$HOME/.local/var/log/porg make prefix=$HOME/.local/usr install
-porg --logdir=$HOME/.local/var/log/porg git-2.29.2 
+porg --logdir=$HOME/.local/var/log/porg git-2.29.2
+
+## GLM
+cd $HOME/.local/src/
+git clone https://github.com/g-truc/glm.git
+cd glm
+
 
 # Octave
 cd $HOME/.local/src

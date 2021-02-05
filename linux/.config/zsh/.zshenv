@@ -98,7 +98,11 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib64
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/lib
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/lib64
-#export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/x86-64-linux-gnu
+export CPATH
+#export CPATH=$CPATH:/usr/include
+export CPATH=/usr/include
+export CPATH=$CPATH:/usr/local/include
+export CPATH=$CPATH:/opt/include
 
 ## Search path for the cd command
 export CDPATH
@@ -149,16 +153,16 @@ export LESS_TERMCAP_us=$(printf "\e[1;32m")
 
 ### Local Build Program {{{
 ## Set up environment variables for local build applications.
-#export LOCAL_ROOT=$HOME/.local
-#export PATH=$LOCAL_ROOT/usr/bin:$PATH
-#export MANPATH=$LOCAL_ROOT/usr/share/man:$MANPATH
-#export INFOPATH=$LOCAL_ROOT/usr/share/info:$INFOPATH
-#export LD_LIBRARY_PATH=$LOCAL_ROOT/usr/lib:$LD_LIBRARY_PATH
-#export LD_LIBRARY_PATH=$LOCAL_ROOT/usr/lib64:$LD_LIBRARY_PATH
-### Set up GNU environment variables for local build applications.
-#export CPATH=$LOCAL_ROOT/usr/include:$CPATH
-#export C_INCLUDE_PATH=$CPATH
-#export CPLUS_INCLUDE_PATH=$CPATH
+export LOCAL_ROOT=$HOME/.local
+export PATH=$LOCAL_ROOT/usr/bin:$PATH
+export MANPATH=$LOCAL_ROOT/usr/share/man:$MANPATH
+export INFOPATH=$LOCAL_ROOT/usr/share/info:$INFOPATH
+export LD_LIBRARY_PATH=$LOCAL_ROOT/usr/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$LOCAL_ROOT/usr/lib64:$LD_LIBRARY_PATH
+## Set up GNU environment variables for local build applications.
+export CPATH=$LOCAL_ROOT/usr/include:$CPATH
+export C_INCLUDE_PATH=$CPATH
+export CPLUS_INCLUDE_PATH=$CPATH
 ### }}}
 export NVIM_PYTHON_LOG_FILE=$HOME/.cache/nvim/log
 export NVIM_PYTHON_LOG_LEVEL=DEBUG
