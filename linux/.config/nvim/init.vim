@@ -6,6 +6,10 @@ augroup MyAutoCmd
   autocmd!
 augroup END
 
+let $CACHE = empty($XDG_CACHE_HOME) ? expand('$HOME/.cache') : $XDG_CACHE_HOME
+let $CONFIG = empty($XDG_CONFIG_HOME) ? expand('$HOME/.config') : $XDG_CONFIG_HOME
+let $DATA = empty($XDG_DATA_HOME) ? expand('$HOME/.local/share') : $XDG_DATA_HOME
+
 if !has('nvim')
   let &t_TI = ""
   let &t_TE = ""
@@ -71,6 +75,8 @@ endif
 
 filetype plugin indent on
 syntax enable
+
+
 augroup TransparentBG
   autocmd!
   autocmd Colorscheme * highlight Normal ctermbg=none
@@ -79,13 +85,22 @@ augroup TransparentBG
 	autocmd Colorscheme * highlight Folded ctermbg=none
 	autocmd Colorscheme * highlight EndOfBuffer ctermbg=none
 augroup END
+set background=dark
 colorscheme gruvbox
 "colorscheme iceberg
 "colorscheme molokai
 "colorscheme tender
 
+
+"colorscheme gruvbox  "example
+highlight Normal ctermbg=NONE guibg=NONE
+highlight NonText ctermbg=NONE guibg=NONE
+highlight LineNr ctermbg=NONE guibg=NONE
+highlight Folded ctermbg=NONE guibg=NONE
+highlight EndOfBuffer ctermbg=NONE guibg=NONE
+
 " Set up external provider
-if has('nvim')
+"if has('nvim')
   let g:python3_host_prog = $HOME . '/.anyenv/envs/pyenv/versions/3.9.1/bin/python'
   let g:python_host_prog  = $HOME . '/.anyenv/envs/pyenv/versions/2.7.18/bin/python'
   let g:ruby_host_prog    = $HOME . '/.anyenv/envs/rbenv/versions/3.0.0/bin/neovim-ruby-host'
@@ -94,7 +109,7 @@ if has('nvim')
   "let g:python_host_prog  = $HOME . '/.pyenv/versions/2.7.18/bin/python'
   "let g:ruby_host_prog    = $HOME . '/.rbenv/versions/3.0.0/bin/neovim-ruby-host'
   "let g:node_host_prog    = $HOME . '/.nodenv/versions/15.5.0/bin/neovim-node-host'
-endif
+"endif
 
 " Base
 runtime! ./basis.rc.vim

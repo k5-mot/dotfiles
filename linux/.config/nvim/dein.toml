@@ -1,9 +1,15 @@
-### package manager {{{
+### Package manager {{{
 [[plugins]]
 repo = 'Shougo/dein.vim'
 ### }}}
 
-### built-in shell {{{
+### Shell {{{
+#[[plugins]]
+#repo = 'Shougo/deol.nvim'
+#hook_add = '''
+#source ~/.config/nvim/plugins/deol.rc.vim
+#'''
+
 [[plugins]]
 repo = 'Shougo/vimproc.vim'
 build = 'make'
@@ -14,291 +20,75 @@ build = 'make'
 ### }}}
 
 ### colorscheme {{{
-#[[plugins]]
-#repo = 'altercation/vim-color_solarized'
-#hook_add = '''
-#source ~/.config/nvim/plugins/color_solarized_al.rc.vim
-#'''
+[[plugins]]
+repo = 'croaker/mustang-vim'
 
-#[[plugins]]
-#repo = 'croaker/mustang-vim'
-#hook_add = '''
-#source ~/.config/nvim/plugins/color_mustang.rc.vim
-#'''
+[[plugins]]
+repo = 'nanotech/jellybeans.vim'
 
-#[[plugins]]
-#repo = 'nanotech/jellybeans.vim'
-#hook_add = '''
-#source ~/.config/nvim/plugins/color_jellybeans.rc.vim
-#'''
+[[plugins]]
+repo = 'tomasr/molokai'
 
-#[[plugins]]
-#repo = 'tomasr/molokai'
-#hook_add = '''
-#source ~/.config/nvim/plugins/color_molokai.rc.vim
-#'''
+[[plugins]]
+repo = 'dracula/vim'
 
-#[[plugins]]
-#repo = 'dracula/vim'
-#hook_add = '''
-#source ~/.config/nvim/plugins/color_dracula.rc.vim
-#'''
+[[plugins]]
+repo = 'cocopon/iceberg.vim'
+
+[[plugins]]
+repo = 'joshdick/onedark.vim'
+
+[[plugins]]
+repo = 'jacoborus/tender.vim'
 
 [[plugins]]
 repo = 'morhetz/gruvbox'
-hook_add = '''
-source ~/.config/nvim/plugins/color_gruvbox.rc.vim
-'''
-
-#[[plugins]]
-#repo = 'illicium/vim-colors-solarized'
-#rev = 'cb5b184d05dece1b7ed74ad2313f009bb18f63fc'
-#hook_add = '''
-#source ~/.config/nvim/plugins/color_solarized.rc.vim
-#'''
-
-#[[plugins]]
-#repo = 'cocopon/iceberg.vim'
-#hook_add = '''
-#source ~/.config/nvim/plugins/color_iceberg.rc.vim
-#'''
-
-#[[plugins]]
-#repo = 'joshdick/onedark.vim'
-#hook_add = '''
-#source ~/.config/nvim/plugins/color_onedark.rc.vim
-#'''
-
-#[[plugins]]
-#repo = 'jacoborus/tender.vim'
-#hook_add = '''
-#source ~/.config/nvim/plugins/color_tender.rc.vim
-#'''
 ### }}}
 
-### statusline {{{
+### appearances {{{
 [[plugins]]
 repo = 'itchyny/lightline.vim'
 hook_add = '''
 source ~/.config/nvim/plugins/lightline.rc.vim
 '''
+
+[[plugins]]
+repo = 'ryanoasis/vim-devicons'
 ### }}}
 
-
-#[[plugins]]
-#repo = 'Shougo/neco-syntax'
-#hook_add = '''
-#source ~/.config/nvim/plugins/neco-syntax.rc.vim
-#'''
-
-#[[plugins]]
-#repo = 'airblade/vim-gitgutter'
-#hook_add = '''
-#source ~/.config/nvim/plugins/vim-gitgutter.rc.vim
-#'''
-
-#[[plugins]]
-#repo = 'tpope/vim-fugitive'
-#hook_add = '''
-#source ~/.config/nvim/plugins/vim-fugitive.rc.vim
-#'''
-
-#[[plugins]]
-#repo = 'tpope/vim-commentary'
-#hook_add = '''
-#source ~/.config/nvim/plugins/vim-commentary.rc.vim
-#'''
-
-##[[plugins]]
-#repo = 'vim-airline/vim-airline'
-#depends = ['vim-airline-themes']
-#hook_add = '''
-#source ~/.config/nvim/plugins/vim-airline.rc.vim
-#'''
-#
-#[[plugins]]
-#repo = 'vim-airline/vim-airline-themes'
-#
-#[[plugins]]
-#repo = 'ryanoasis/vim-devicons'
-
-#[[plugins]]
-#repo = 'Yggdroot/indentLine'
-#hook_add = '''
-#source ~/.config/nvim/plugins/indentLine.rc.vim
-#'''
-
-#[[plugins]]
-#repo = 'Townk/vim-autoclose'
-#hook_add = '''
-#source ~/.config/nvim/plugins/vim-autoclose.rc.vim
-#'''
-
-#[[plugins]]
-#repo = 'scrooloose/nerdtree'
-#hook_add = '''
-#source ~/.config/nvim/plugins/nerdtree.rc.vim
-#'''
-
-#[[plugins]]
-#repo = 'thinca/vim-quickrun'
-#hook_add = '''
-#source ~/.config/nvim/plugins/vim-quickrun.rc.vim
-#'''
-#
-#[[plugins]]
-#repo = 'tpope/vim-endwise'
-#hook_add = '''
-#source ~/.config/nvim/plugins/vim-endwise.rc.vim
-#'''
-
-#[[plugins]]
-#repo = 'osyo-manga/vim-over'
-#hook_add = '''
-#source ~/.config/nvim/plugins/vim-over.rc.vim
-#'''
-#
-#[[plugins]]
-#repo = 'LeafCage/yankround.vim'
-#hook_add = '''
-#source ~/.config/nvim/plugins/yankround.rc.vim
-#'''
-#
-#[[plugins]]
-#repo = 't9md/vim-quickhl'
-#hook_add = '''
-#source ~/.config/nvim/plugins/vim-quickhl.rc.vim
-#'''
-#
-#[[plugins]]
-#repo = 'osyo-manga/vim-anzu'
-#hook_add = '''
-#source ~/.config/nvim/plugins/vim-anzu.rc.vim
-#'''
-
+### Syntax {{{
 [[plugins]]
-repo = 'tmhedberg/matchit'
-
-#[[plugins]]
-#repo = 'Lokaltog/vim-easymotion'
-#hook_add = '''
-#source ~/.config/nvim/plugins/vim-easymotion.rc.vim
-#'''
-#
-#[[plugins]]
-#repo = 'elzr/vim-json'
-#hook_add = '''
-#source ~/.config/nvim/plugins/vim-json.rc.vim
-#'''
-#
-#[[plugins]]
-#repo = 'junegunn/vim-easy-align'
-#hook_add = '''
-#source ~/.config/nvim/plugins/vim-easy-align.rc.vim
-#'''
-#
-#[[plugins]]
-#repo = 'LeafCage/foldCC.vim'
-#hook_add = '''
-#source ~/.config/nvim/plugins/foldCC.rc.vim
-#'''
-
-[[plugins]]
-repo = 'Shougo/neosnippet-snippets'
-
-#[[plugins]]
-#repo = 'nixprime/cpsm'
-#repo = 'ptzz/cpsm'
-#build = 'env PY3=ON ./install.sh'
-
-#[[plugins]]
-#repo = 'scrooloose/syntastic'
-#hook_post_source = '''
-#source ~/.config/nvim/plugins/syntastic.rc.vim
-#'''
-
-#[[plugins]]
-#repo = 'itchyny/lightline.vim'
-#hook_add = '''
-#source ~/.config/nvim/plugins/lightline.rc.vim
-#'''
+repo = 'autozimu/LanguageClient-neovim'
+rev = 'next'
+build = 'bash install.sh'
+hook_add = '''
+source ~/.config/nvim/plugins/LanguageClient-neovim.rc.vim
+'''
 
 [[plugins]]
 repo = 'w0rp/ale'
+on_cmd = ['ALEComplete']
 hook_add = '''
 source ~/.config/nvim/plugins/ale.rc.vim
 '''
 
-#[[plugins]]
-#repo = 'maximbaz/lightline-ale'
-#depends = ['lightline.vim', 'ale']
-#hook_add = '''
-#source ~/.config/nvim/plugins/lightline-ale.rc.vim
-#'''
-
-#[[plugins]]
-#repo = 'editorconfig/editorconfig-vim'
-
-#[[plugins]]
-#repo = 'cohama/lexima.vim'
-
-#[[plugins]]
-#repo     = 'ryanoasis/vim-devicons'
-#hook_add = '''
-#source ~/.config/nvim/plugins/vim-devicons.rc.vim
-#'''
-
-### vim-operator-user {{{
-#[[plugins]]
-#repo = 'kana/vim-operator-user'
-
-#[[plugins]]
-#repo = 'kana/vim-operator-replace'
-#depends = 'vim-operator-user'
-#hook_add = '''
-#source ~/.config/nvim/plugins/vim-operator-replace.rc.vim
-#'''
-
-#[[plugins]]
-#repo = 'osyo-manga/vim-operator-search'
-#depends = 'vim-operator-user'
-#hook_add = '''
-#source ~/.config/nvim/plugins/vim-operator-search.rc.vim
-#'''
+[[plugins]]
+repo = 'maximbaz/lightline-ale'
+depends = ['lightline.vim', 'ale']
+hook_add = '''
+source ~/.config/nvim/plugins/lightline-ale.rc.vim
+'''
 ### }}}
 
-### vim-textobj {{{
-#[[plugins]]
-#repo = 'kana/vim-textobj-user'
 
-#[[plugins]]
-# af, if
-#repo = 'kana/vim-textobj-function'
+[[plugins]]
+repo = 'tmhedberg/matchit'
 
-#[[plugins]]
-#repo = 'kentaro/vim-textobj-function-php'
-#depends = 'vim-textobj-function'
+[[plugins]]
+repo = 'Shougo/neco-vim'
 
-#[[plugins]]
-# al, il
-#repo = 'kana/vim-textobj-line'
+[[plugins]]
+repo = 'Shougo/neco-syntax'
 
-#[[plugins]]
-# ada, ida
-#repo = 'kana/vim-textobj-datetime'
-
-#[[plugins]]
-# ac, ic
-#repo = 'thinca/vim-textobj-comment'
-
-#[[plugins]]
-# asb, isb
-#repo = 'osyo-manga/vim-textobj-multiblock'
-#hook_add = '''
-#source ~/.config/nvim/plugins/vim-textobj-multiblock.rc.vim
-#'''
-
-#[[plugins]]
-# ao, io
-#repo = 'glts/vim-textobj-indblock'
-### }}}
+[[plugins]]
+repo = 'ujihisa/neco-look'

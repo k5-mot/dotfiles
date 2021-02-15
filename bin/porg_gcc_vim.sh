@@ -92,9 +92,27 @@ cd $HOME/.local/src
 git clone https://github.com/vim/vim.git
 cd vim/
 cd src/
+
 mkdir build
 cd build/
-../configure --with-features=huge --enable-gui=gtk2 --enable-multibyte --enable-nls --enable-python3interp --with-python3-command=$HOME/.anyenv/envs/pyenv/versions/3.9.1/bin/python3 --enable-pythoninterp --with-python-command=$HOME/.anyenv/envs/pyenv/versions/2.7.18/bin/python2 --enable-rubyinterp --with-ruby-command=$HOME/.anyenv/envs/rbenv/versions/3.0.0/bin/ruby --enable-fail-if-missing --prefix=$HOME/.local/usr
+../configure \
+--with-features=huge \
+--enable-gui=gtk2 \
+--enable-cscope \
+--enable-terminal \
+--enable-fontset \
+--enable-multibyte \
+--enable-nls \
+--enable-fail-if-missing \
+--enable-python3interp \
+--enable-pythoninterp \
+--enable-rubyinterp \
+--enable-luainterp \
+--with-python3-command=$HOME/.anyenv/envs/pyenv/versions/3.9.1/bin/python3 \
+--with-python-command=$HOME/.anyenv/envs/pyenv/versions/2.7.18/bin/python2 \
+--with-ruby-command=$HOME/.anyenv/envs/rbenv/versions/3.0.0/bin/ruby \
+--with-lua-prefix=$HOME/.anyenv/envs/luaenv/versions/5.4.2/ \
+--prefix=$HOME/.local/usr
 make
 porg -lp vim-8.2 --logdir=$HOME/.local/var/log/porg make install
 porg --logdir=$HOME/.local/var/log/porg vim
@@ -178,13 +196,3 @@ git clone https://github.com/nigels-com/glew.git
 #mkdir build
 #cd build/
 #../configure --prefix=$HOME/.local/usr
-
-
-
-
-
-
-
-
-
-

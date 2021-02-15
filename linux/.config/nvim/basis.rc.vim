@@ -186,6 +186,9 @@ set incsearch
 " 検索文字列をハイライト表示
 set hlsearch
 
+set equalalways
+"set noequalalways
+
 " concealをOFF
 set conceallevel=0
 let g:vim_json_syntax_conceal = 0
@@ -196,7 +199,8 @@ if has('win32')
 endif
 
 " 全角文字専用の設定
-set ambiwidth=double
+set ambiwidth=single
+"set ambiwidth=double
 
 " タグファイルを指定
 set tags+=.tags,./.tags

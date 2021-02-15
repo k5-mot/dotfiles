@@ -1,5 +1,5 @@
 " ○や□の文字が崩れる問題を回避
-set ambiwidth=double
+"set ambiwidth=double
 
 " タブを有効にする
 let g:airline#extensions#tabline#enabled = 1

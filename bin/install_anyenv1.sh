@@ -37,8 +37,8 @@ anyenv install --list
 anyenv install --skip-existing pyenv
 anyenv install --skip-existing rbenv
 anyenv install --skip-existing nodenv
+anyenv install --skip-existing luaenv
 #anyenv install --skip-existing plenv
 
 ## Rerun.
 exec $SHELL -l
-
