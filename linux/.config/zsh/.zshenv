@@ -100,7 +100,7 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/lib
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/lib64
 export CPATH
 #export CPATH=$CPATH:/usr/include
-export CPATH=/usr/include
+export CPATH=$CPATH:/usr/include
 export CPATH=$CPATH:/usr/local/include
 export CPATH=$CPATH:/opt/include
 
@@ -161,8 +161,6 @@ export LD_LIBRARY_PATH=$LOCAL_ROOT/usr/lib:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=$LOCAL_ROOT/usr/lib64:$LD_LIBRARY_PATH
 ## Set up GNU environment variables for local build applications.
 export CPATH=$LOCAL_ROOT/usr/include:$CPATH
-export C_INCLUDE_PATH=$CPATH
-export CPLUS_INCLUDE_PATH=$CPATH
 ### }}}
 export NVIM_PYTHON_LOG_FILE=$HOME/.cache/nvim/log
 export NVIM_PYTHON_LOG_LEVEL=DEBUG
@@ -178,6 +176,10 @@ export FPATH=$FPATH:$HOME/dotfiles/bin
 ## Set
 export LIBRARY_PATH
 export LIBRARY_PATH=$LD_LIBRARY_PATH
+export C_INCLUDE_PATH
+export C_INCLUDE_PATH=$C_INCLUDE_PATH:$CPATH
+export CPLUS_INCLUDE_PATH
+export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:$CPATH
 
 ## automatically remove duplicates from these arrays
 typeset -U path PATH

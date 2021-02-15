@@ -133,6 +133,7 @@ porg -lp qhull --logdir=$HOME/.local/var/log/porg make install PREFIX=$HOME/.loc
 porg --logdir=$HOME/.local/var/log/porg qhull
 
 # git
+cd $HOME/.local/src
 wget https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.29.2.tar.gz
 tar -xzvf git-2.29.2.tar.gz
 cd git-2.29.2/
@@ -140,23 +141,43 @@ make prefix=$HOME/.local/usr all
 porg -lp git-2.29.2 --logdir=$HOME/.local/var/log/porg make prefix=$HOME/.local/usr install
 porg --logdir=$HOME/.local/var/log/porg git-2.29.2
 
+## Freeglut
+cd $HOME/.local/src
+mkdir -p freeglut
+cd freeglut/
+wget --content-disposition https://sourceforge.net/projects/freeglut/files/freeglut/3.2.1/freeglut-3.2.1.tar.gz/download
+cmake -DCMAKE_INSTALL_PREFIX=$HOME/.local/usr/
+make
+porg -lp freeglut-3.2.1 --logdir=$HOME/.local/var/log/porg make prefix=$HOME/.local/usr install
+porg --logdir=$HOME/.local/var/log/porg freeglut-3.2.1
+
 ## GLM
 cd $HOME/.local/src/
 git clone https://github.com/g-truc/glm.git
-cd glm
+cd glm/
+cp -rf glm/ $HOME/.local/include/
+#$mkdir build
+#$cd build/
+#$cmake -DCMAKE_INSTALL_PREFIX=$HOME/.local/usr/ ..
+#$make
+#$porg -lp glm --logdir=$HOME/.local/var/log/porg make prefix=$HOME/.local/usr install
+#$porg --logdir=$HOME/.local/var/log/porg glm
 
+## GLEW
+cd $HOME/.local/src/
+git clone https://github.com/nigels-com/glew.git
 
 # Octave
-cd $HOME/.local/src
-mkdir octave
-cd octave/
-wget https://ftp.jaist.ac.jp/pub/GNU/octave/octave-6.1.0.tar.gz
-wget https://ftp.jaist.ac.jp/pub/GNU/octave/octave-6.1.0.tar.gz.sig
-tar -zxvf octave-6.1.0.tar.gz
-cd octave-6.1.0/
-mkdir build
-cd build/
-../configure --prefix=$HOME/.local/usr
+#cd $HOME/.local/src
+#mkdir octave
+#cd octave/
+#wget https://ftp.jaist.ac.jp/pub/GNU/octave/octave-6.1.0.tar.gz
+#wget https://ftp.jaist.ac.jp/pub/GNU/octave/octave-6.1.0.tar.gz.sig
+#tar -zxvf octave-6.1.0.tar.gz
+#cd octave-6.1.0/
+#mkdir build
+#cd build/
+#../configure --prefix=$HOME/.local/usr
 
 
 
