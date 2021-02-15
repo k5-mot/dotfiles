@@ -2,7 +2,7 @@
 
 # Set up aliases
 alias mv='nocorrect mv -i'       # no spelling correction on mv
-alias cp='nocorrect cp -i'       # no spelling correction on cp
+#alias cp='nocorrect cp -i'       # no spelling correction on cp
 alias rm='nocorrect rm -i'       # no spelling correction on rm
 alias mkdir='nocorrect mkdir' # no spelling correction on mkdir
 alias j=jobs
@@ -32,8 +32,10 @@ alias -g H='|head'
 alias -g T='|tail'
 
 # Check porg
+# porg --logdir=$HOME/.local/var/log/porg (app name)
 alias porg-check='porg --logdir=$HOME/.local/var/log/porg'
-#
+# Install by porg
+# porg -lp (app name) --logdir=$HOME/.local/var/log/porg make install
 alias porg-install='porg --logdir=$HOME/.local/var/log/porg -lp'
 
 # Shell functions
@@ -41,10 +43,6 @@ function setenv()
 {
   typeset -x "${1}${1:+=}${(@)argv[2,$#]}"
 }  # csh compatibility
-
-alias echopath="echo $PATH | sed -e 's/:/\n/g'"
-alias echolibpath="echo $LD_LIBRARY_PATH | sed -e 's/:/\n/g'"
-alias echolibpath2="echo $LIBRARY_PATH | sed -e 's/:/\n/g'"
 
 function freload() {
   while (( $# )); do;
@@ -79,8 +77,28 @@ function check_colors() {
   echo
 }
 
+# Check path.
 function check_path() {
+  echo "PATH"
   echo $PATH | sed -e "s/:/\n/g"
+}
+
+# Check library path.
+function check_libpath() {
+  echo "LD_LIBRARY_PATH"
+  echo $LD_LIBRARY_PATH | sed -e 's/:/\n/g'
+  echo "LIBRARY_PATH"
+  echo $LIBRARY_PATH | sed -e 's/:/\n/g'
+}
+
+# Check include path
+function check_includepath() {
+  echo "CPATH"
+  echo $CPATH | sed -e 's/:/\n/g'
+  echo "C_INCLUDE_PATH"
+  echo $C_INCLUDE_PATH | sed -e 's/:/\n/g'
+  echo "CPLUS_INCLUDE_PATH"
+  echo $CPLUS_INCLUDE_PATH | sed -e 's/:/\n/g'
 }
 
 # check 256 colors v2
