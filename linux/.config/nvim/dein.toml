@@ -1,6 +1,9 @@
+### package manager {{{
 [[plugins]]
 repo = 'Shougo/dein.vim'
+### }}}
 
+### built-in shell {{{
 [[plugins]]
 repo = 'Shougo/vimproc.vim'
 build = 'make'
@@ -8,6 +11,7 @@ build = 'make'
 [[plugins]]
 repo = 'Shougo/vimshell'
 build = 'make'
+### }}}
 
 ### colorscheme {{{
 #[[plugins]]
@@ -46,12 +50,6 @@ hook_add = '''
 source ~/.config/nvim/plugins/color_gruvbox.rc.vim
 '''
 
-[[plugins]]
-repo = 'morhetz/gruvbox'
-hook_add = '''
-source ~/.config/nvim/plugins/color_gruvbox.rc.vim
-'''
-
 #[[plugins]]
 #repo = 'illicium/vim-colors-solarized'
 #rev = 'cb5b184d05dece1b7ed74ad2313f009bb18f63fc'
@@ -78,6 +76,15 @@ source ~/.config/nvim/plugins/color_gruvbox.rc.vim
 #'''
 ### }}}
 
+### statusline {{{
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+hook_add = '''
+source ~/.config/nvim/plugins/lightline.rc.vim
+'''
+### }}}
+
+
 #[[plugins]]
 #repo = 'Shougo/neco-syntax'
 #hook_add = '''
@@ -102,18 +109,18 @@ source ~/.config/nvim/plugins/color_gruvbox.rc.vim
 #source ~/.config/nvim/plugins/vim-commentary.rc.vim
 #'''
 
+##[[plugins]]
+#repo = 'vim-airline/vim-airline'
+#depends = ['vim-airline-themes']
+#hook_add = '''
+#source ~/.config/nvim/plugins/vim-airline.rc.vim
+#'''
+#
 #[[plugins]]
-repo = 'vim-airline/vim-airline'
-depends = ['vim-airline-themes']
-hook_add = '''
-source ~/.config/nvim/plugins/vim-airline.rc.vim
-'''
-
-[[plugins]]
-repo = 'vim-airline/vim-airline-themes'
-
-[[plugins]]
-repo = 'ryanoasis/vim-devicons'
+#repo = 'vim-airline/vim-airline-themes'
+#
+#[[plugins]]
+#repo = 'ryanoasis/vim-devicons'
 
 #[[plugins]]
 #repo = 'Yggdroot/indentLine'

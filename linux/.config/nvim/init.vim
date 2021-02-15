@@ -30,9 +30,9 @@ elseif !has('gui_running')
 endif
 
 if has('nvim')
-  let s:dein_cache_path = expand('~/.cache/nvim/dein')
+  let s:dein_cache_path = expand('$HOME/.cache/nvim/dein')
 else
-  let s:dein_cache_path = expand('~/.cache/vim/dein')
+  let s:dein_cache_path = expand('$HOME/.cache/vim/dein')
 endif
 
 let s:dein_dir = s:dein_cache_path
@@ -71,9 +71,20 @@ endif
 
 filetype plugin indent on
 syntax enable
+augroup TransparentBG
+  autocmd!
+  autocmd Colorscheme * highlight Normal ctermbg=none
+	autocmd Colorscheme * highlight NonText ctermbg=none
+	autocmd Colorscheme * highlight LineNr ctermbg=none
+	autocmd Colorscheme * highlight Folded ctermbg=none
+	autocmd Colorscheme * highlight EndOfBuffer ctermbg=none
+augroup END
 colorscheme gruvbox
+"colorscheme iceberg
+"colorscheme molokai
+"colorscheme tender
 
-" Provider
+" Set up external provider
 if has('nvim')
   let g:python3_host_prog = $HOME . '/.anyenv/envs/pyenv/versions/3.9.1/bin/python'
   let g:python_host_prog  = $HOME . '/.anyenv/envs/pyenv/versions/2.7.18/bin/python'
@@ -85,18 +96,18 @@ if has('nvim')
   "let g:node_host_prog    = $HOME . '/.nodenv/versions/15.5.0/bin/neovim-node-host'
 endif
 
-" set関連
+" Base
 runtime! ./basis.rc.vim
 
-" 関数関連
+" Functions
 runtime! ./functions.rc.vim
 
-" キーマップ関連
+" Keymapping
 runtime! ./keymaps.rc.vim
 
-" ローカル設定
-if filereadable(expand('~/.vimrc_local'))
-  source ~/.vimrc_local
+" Load local settings.
+if filereadable(expand('$HOME/.vimrc_local'))
+  source $HOME/.vimrc_local
 endif
 
 " プロジェクト設定

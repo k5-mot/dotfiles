@@ -1,3 +1,2 @@
-"runtime! ~/.config/nvim/init.vim
+" Load configuration for NeoVim.
 source ~/.config/nvim/init.vim
-
