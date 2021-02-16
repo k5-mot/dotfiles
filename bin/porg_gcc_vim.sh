@@ -12,6 +12,48 @@ make
 ./porg/porg -lD make install
 porg --logdir=$HOME/.local/var/log/porg porg
 
+# libevent
+cd $HOME/.local/src
+mkdir libevent
+cd libevent
+wget https://github.com/libevent/libevent/releases/download/release-2.1.12-stable/libevent-2.1.12-stable.tar.gz
+tar -zxvf libevent-2.1.12-stable.tar.gz
+cd libevent-2.1.12-stable
+./configure --prefix=$HOME/.local/usr
+make
+porg -lp libevent-2.1.12 --logdir=$HOME/.local/var/log/porg make install
+porg --logdir=$HOME/.local/var/log/porg libevent
+
+# ncurses
+cd $HOME/.local/src
+mkdir ncurses
+cd ncurses
+wget ftp://ftp.invisible-island.net/ncurses/ncurses.tar.gz
+tar -xzvf ncurses-6.2.tar.gz
+cd ncurses-6.2
+mkdir build
+cd build
+../configure --enable-pc-files --prefix=$HOME/.local/usr --with-pkg-config-libdir=$HOME/.local/usr/lib/pkgconfig --with-termlib
+make
+porg -lp ncurses-6.2 --logdir=$HOME/.local/var/log/porg make install
+porg --logdir=$HOME/.local/var/log/porg ncurses
+
+# tmux
+cd $HOME/.local/src
+mkdir tmux
+cd tmux
+wget https://github.com/tmux/tmux/releases/download/3.1/tmux-3.1.tar.gz
+tar -xzvf tmux-3.1.tar.gz
+cd tmux-3.1
+mkdir build
+cd build
+#../configure --prefix=$HOME/.local/usr --enable-static
+#PKG_CONFIG_PATH=$HOME/.local/usr/lib/pkgconfig ../configure --prefix=$HOME/.local/usr --enable-static LDFLAGS="-L$HOME/.local/usr/lib" CFLAGS="-I$HOME/.local/usr/include"
+PKG_CONFIG_PATH=$HOME/.local/usr/lib/pkgconfig ../configure --prefix=$HOME/.local/usr LDFLAGS="-L$HOME/.local/usr/lib" CFLAGS="-I$HOME/.local/usr/include"
+make
+porg -lp tmux-3.1 --logdir=$HOME/.local/var/log/porg make install
+porg --logdir=$HOME/.local/var/log/porg tmux
+
 # gmp
 cd $HOME/.local/src
 mkdir gmp

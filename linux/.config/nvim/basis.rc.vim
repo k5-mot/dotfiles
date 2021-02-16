@@ -104,7 +104,9 @@ set matchtime=3
 set cinoptions+=:0
 
 " メッセージ表示欄を2行確保
-set cmdheight=2
+"set cmdheight=2
+" メッセージ表示欄を1行確保
+set cmdheight=1
 
 " ステータス行を常に表示
 "set laststatus=2

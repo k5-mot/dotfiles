@@ -44,11 +44,11 @@ repo ='kristijanhusak/defx-git'
 repo = 'Shougo/deoplete.nvim'
 depends = ['context_filetype.vim','neosnippet']
 on_event = 'InsertEnter'
+if = 'has("python3")'
+in_i = 1
 hook_source = '''
 source ~/.config/nvim/plugins/deoplete.rc.vim
 '''
-#if = 'has("nvim")'
-#in_i = 1
 
 [[plugins]]
 repo = 'Shougo/neosnippet'
