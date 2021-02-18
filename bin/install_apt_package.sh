@@ -29,5 +29,6 @@ sudo apt install -y python-tk
 sudo apt install -y python3-tk
 sudo apt install -y tk-dev
 sudo apt install -y aria2
-sudo apt install -y ccache
+sudo apt install -y octave
+#sudo apt install -y ccache
 
