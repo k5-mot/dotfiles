@@ -173,6 +173,8 @@ fi
 # Set up scripts of dotfiles.
 export FPATH
 export FPATH=$FPATH:$HOME/dotfiles/bin
+export PATH=$PATH:$HOME/dotfiles/bin
+
 ## Set
 export LIBRARY_PATH
 export LIBRARY_PATH=$LD_LIBRARY_PATH
