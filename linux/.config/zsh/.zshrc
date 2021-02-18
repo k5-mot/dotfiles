@@ -170,9 +170,12 @@ bindkey '^W' backward-kill-word
 ## Prompt {{{
 setopt prompt_subst
 ## Set prompts
-export PROMPT="
-%F{green}%n%f@%F{blue}%M%f:%F{cyan}%~%f
-$ "
+#export PROMPT="
+#%F{green}%n%f@%F{blue}%M%f:%F{cyan}%~%f
+#$ "
+#export PROMPT="
+#%F{green}%n%f@%F{blue}%m%f$ "
+export PROMPT="%F{green}%n%f@%F{blue}%m%f$ "
 export PROMPT2=
 ## }}}
 
@@ -186,10 +189,16 @@ zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
 #zstyle ':vcs_info:*' actionformats '[%b|%a]'
 zstyle ':vcs_info:*' formats '%F{green}(%s)-[%b]%f'
 zstyle ':vcs_info:*' actionformats '%F{red}(%s)-[%b|%a]%f'
-precmd () { vcs_info }
+function precmd() {
+  if [ ! -z $TMUX ]; then
+    tmux refresh-client -S
+  fi
+  vcs_info
+}
 #RPROMPT="%{${fg[blue]}%}[%~]%{${reset_color}%}"
 #RPROMPT=$RPROMPT'${vcs_info_msg_0_}'
-RPROMPT='${vcs_info_msg_0_}'
+#RPROMPT='${vcs_info_msg_0_}'
+RPROMPT=""
 
 ## Others {{{
 # ディレクトリ選択時、最後の/を残す
