@@ -14,8 +14,13 @@ if [ ! -e $ANYENV_ROOT/envs/pyenv/plugins/pyenv-pip-update ]; then
   git clone https://github.com/massongit/pyenv-pip-update $ANYENV_ROOT/envs/pyenv/plugins/pyenv-pip-update
 fi
 
+if [ ! -e $ANYENV_ROOT/envs/pyenv/plugins/pyenv-update ]; then
+  git clone git://github.com/sstephenson/ruby-build.git $ANYENV_ROOT/envs/rbenv/plugins/ruby-build
+fi
+
 anyenv update
 pyenv update
+rbenv update
 
 ## Get latest version of each environment.
 export PYENV_PYTHON3_VERSION=$(pyenv install --list | grep -v '[a-zA-Z]' | grep -e '3\.[0-9]*\.[0-9]*' | tail -1 | sed 's/^[ \t]*//')
