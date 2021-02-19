@@ -81,6 +81,7 @@ gem install neovim
 ## Install packages of Node.js
 nodenv global $NODENV_NODEJS_VERSION
 npm update
+npm install --global npm@7.5.4
 npm install --global neovim
 
 ## Lua
