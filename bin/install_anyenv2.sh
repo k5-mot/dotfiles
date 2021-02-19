@@ -14,7 +14,7 @@ if [ ! -e $ANYENV_ROOT/envs/pyenv/plugins/pyenv-pip-update ]; then
   git clone https://github.com/massongit/pyenv-pip-update $ANYENV_ROOT/envs/pyenv/plugins/pyenv-pip-update
 fi
 
-if [ ! -e $ANYENV_ROOT/envs/pyenv/plugins/pyenv-update ]; then
+if [ ! -e $ANYENV_ROOT/envs/rbenv/plugins/ruby-build ]; then
   git clone git://github.com/sstephenson/ruby-build.git $ANYENV_ROOT/envs/rbenv/plugins/ruby-build
 fi
 
