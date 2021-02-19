@@ -41,11 +41,11 @@ echo "Lua     : $LUAENV_LUA_VERSION"
 echo ''
 
 ## Install latest version of each environment.
-pyenv install --skip-existing $PYENV_PYTHON3_VERSION
-pyenv install --skip-existing $PYENV_PYTHON2_VERSION
-rbenv install --skip-existing $RBENV_RUBY_VERSION
+CONFIGURE_OPTS="--enable-shared" pyenv install --skip-existing $PYENV_PYTHON3_VERSION
+CONFIGURE_OPTS="--enable-shared" pyenv install --skip-existing $PYENV_PYTHON2_VERSION
+CONFIGURE_OPTS="--enable-shared" rbenv install --skip-existing $RBENV_RUBY_VERSION
 nodenv install --skip-existing $NODENV_NODEJS_VERSION
-luaenv install --skip-existing $LUAENV_LUA_VERSION
+CONFIGURE_OPTS="--enable-shared" luaenv install --skip-existing $LUAENV_LUA_VERSION
 #plenv install --skip-existing $PLENV_PERL_VERSION
 
 ## Check versions.
@@ -67,6 +67,7 @@ pip list
 pyenv global $PYENV_PYTHON3_VERSION
 pip install --upgrade pip
 pip install pip-review
+pip install matplotlib
 pip install numpy
 pip install scipy
 pip install neovim
@@ -86,6 +87,7 @@ npm install --global neovim
 
 ## Lua
 luaenv global $LUAENV_LUA_VERSION
+lua -v
 
 ## Install packages of Perl
 #plenv global $PLENV_PERL_VERSION

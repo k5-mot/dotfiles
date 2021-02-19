@@ -133,27 +133,25 @@ porg --logdir=$HOME/.local/var/log/porg gcc
 cd $HOME/.local/src
 git clone https://github.com/vim/vim.git
 cd vim/
-cd src/
-
-mkdir build
-cd build/
-../configure \
---with-features=huge \
---enable-gui=gtk2 \
+#--enable-gui=gtk2 \
+#--with-luajit \
+LDFLAGS="-Wl,-rpath=$HOME/.anyenv/envs/pyenv/versions/2.7.18/lib:$HOME/.anyenv/envs/pyenv/versions/3.9.1/lib" ./configure \
 --enable-cscope \
 --enable-terminal \
 --enable-fontset \
 --enable-multibyte \
 --enable-nls \
 --enable-fail-if-missing \
+--enable-tclinterp \
 --enable-python3interp \
 --enable-pythoninterp \
 --enable-rubyinterp \
 --enable-luainterp \
+--with-features=huge \
 --with-python3-command=$HOME/.anyenv/envs/pyenv/versions/3.9.1/bin/python3 \
 --with-python-command=$HOME/.anyenv/envs/pyenv/versions/2.7.18/bin/python2 \
 --with-ruby-command=$HOME/.anyenv/envs/rbenv/versions/3.0.0/bin/ruby \
---with-lua-prefix=$HOME/.anyenv/envs/luaenv/versions/5.4.2/ \
+--with-lua-prefix=$HOME/.anyenv/envs/luaenv/versions/5.4.2 \
 --prefix=$HOME/.local/usr
 make
 porg -lp vim-8.2 --logdir=$HOME/.local/var/log/porg make install

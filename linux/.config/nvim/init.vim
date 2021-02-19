@@ -6,6 +6,26 @@ augroup MyAutoCmd
   autocmd!
 augroup END
 
+"" PATHの自動更新関数
+"" | 指定された path が $PATH に存在せず、ディレクトリとして存在している場合
+"" | のみ $PATH に加える
+"function! IncludePath(path)
+"  " define delimiter depends on platform
+"  if has('win16') || has('win32') || has('win64')
+"    let delimiter = ";"
+"  else
+"    let delimiter = ":"
+"  endif
+"  let pathlist = split($PATH, delimiter)
+"  if isdirectory(a:path) && index(pathlist, a:path) == -1
+"    let $PATH=a:path.delimiter.$PATH
+"  endif
+"endfunction
+"
+"" ~/.pyenv/shims を $PATH に追加する
+"" これを行わないとpythonが正しく検索されない
+"IncludePath(expand("~/.anyenv/envs/pyenv/shims"))
+
 let $CACHE = empty($XDG_CACHE_HOME) ? expand('$HOME/.cache') : $XDG_CACHE_HOME
 let $CONFIG = empty($XDG_CONFIG_HOME) ? expand('$HOME/.config') : $XDG_CONFIG_HOME
 let $DATA = empty($XDG_DATA_HOME) ? expand('$HOME/.local/share') : $XDG_DATA_HOME
