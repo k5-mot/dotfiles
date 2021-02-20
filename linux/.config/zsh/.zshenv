@@ -99,8 +99,8 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib64
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/lib
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/lib64
 export CPATH
+export CPATH=/usr/include
 #export CPATH=$CPATH:/usr/include
-export CPATH=$CPATH:/usr/include
 export CPATH=$CPATH:/usr/local/include
 export CPATH=$CPATH:/opt/include
 
@@ -179,9 +179,9 @@ export PATH=$PATH:$HOME/dotfiles/bin
 export LIBRARY_PATH
 export LIBRARY_PATH=$LD_LIBRARY_PATH
 export C_INCLUDE_PATH
-export C_INCLUDE_PATH=$C_INCLUDE_PATH:$CPATH
+export C_INCLUDE_PATH=$CPATH
 export CPLUS_INCLUDE_PATH
-export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:$CPATH
+export CPLUS_INCLUDE_PATH=$CPATH
 
 ## automatically remove duplicates from these arrays
 typeset -U path PATH

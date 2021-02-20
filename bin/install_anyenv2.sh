@@ -26,11 +26,11 @@ if [ ! -e $ANYENV_ROOT/envs/nodenv/plugins/nodenv-update ]; then
 fi
 
 if [ ! -e $ANYENV_ROOT/envs/luaenv/plugins/lua-build ]; then
-  git clone git://github.com/cehoffman/lua-build.git $ENYENV_ROOT/envs/luaenv/plugins/lua-build
+  git clone https://github.com/cehoffman/lua-build.git $ANYENV_ROOT/envs/luaenv/plugins/lua-build
 fi
 
 if [ ! -e $ANYENV_ROOT/envs/plenv/plugins/perl-build ]; then
-  git clone git://github.com/tokuhirom/Perl-Build.git $ANYENV_ROOT/envs/plenv/plugins/perl-build/
+  git clone https://github.com/tokuhirom/Perl-Build.git $ANYENV_ROOT/envs/plenv/plugins/perl-build/
 fi
 
 anyenv update

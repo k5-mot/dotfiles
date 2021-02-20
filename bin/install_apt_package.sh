@@ -33,6 +33,18 @@ sudo apt install -y python3-tk
 sudo apt install -y tk-dev
 sudo apt install -y aria2
 sudo apt install -y octave
+sudo apt install -y autoconf
+sudo apt install -y bison
+sudo apt install -y build-essential
+sudo apt install -y libssl-dev
+sudo apt install -y libyaml-dev
+sudo apt install -y libreadline6-dev
+sudo apt install -y zlib1g-dev
+sudo apt install -y libncurses5-dev
+sudo apt install -y libffi-dev
+sudo apt install -y libgdbm6
+sudo apt install -y libgdbm-dev
+sudo apt install -y libdb-dev
 sudo npm install -g n
 sudo n stable
 #sudo apt install -y ccache
