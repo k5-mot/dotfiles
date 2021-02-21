@@ -176,7 +176,8 @@ setopt prompt_subst
 #$ "
 #export PROMPT="
 #%F{green}%n%f@%F{blue}%m%f$ "
-export PROMPT="%F{green}%n%f@%F{blue}%m%f$ "
+#export PROMPT="%F{green}%n%f@%F{blue}%m%f$ "
+export PROMPT="%F{green}$%f "
 export PROMPT2=
 ## }}}
 

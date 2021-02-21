@@ -6,26 +6,6 @@ augroup MyAutoCmd
   autocmd!
 augroup END
 
-"" PATHの自動更新関数
-"" | 指定された path が $PATH に存在せず、ディレクトリとして存在している場合
-"" | のみ $PATH に加える
-"function! IncludePath(path)
-"  " define delimiter depends on platform
-"  if has('win16') || has('win32') || has('win64')
-"    let delimiter = ";"
-"  else
-"    let delimiter = ":"
-"  endif
-"  let pathlist = split($PATH, delimiter)
-"  if isdirectory(a:path) && index(pathlist, a:path) == -1
-"    let $PATH=a:path.delimiter.$PATH
-"  endif
-"endfunction
-"
-"" ~/.pyenv/shims を $PATH に追加する
-"" これを行わないとpythonが正しく検索されない
-"IncludePath(expand("~/.anyenv/envs/pyenv/shims"))
-
 let $CACHE = empty($XDG_CACHE_HOME) ? expand('$HOME/.cache') : $XDG_CACHE_HOME
 let $CONFIG = empty($XDG_CONFIG_HOME) ? expand('$HOME/.config') : $XDG_CONFIG_HOME
 let $DATA = empty($XDG_DATA_HOME) ? expand('$HOME/.local/share') : $XDG_DATA_HOME
@@ -59,8 +39,7 @@ else
   let s:dein_cache_path = expand('$HOME/.cache/vim/dein')
 endif
 
-let s:dein_dir = s:dein_cache_path
-      \ .'/repos/github.com/Shougo/dein.vim'
+let s:dein_dir = s:dein_cache_path .'/repos/github.com/Shougo/dein.vim'
 
 if &runtimepath !~ '/dein.vim'
   if !isdirectory(s:dein_dir)
@@ -70,20 +49,20 @@ if &runtimepath !~ '/dein.vim'
 endif
 
 " runtimepathの設定
-set runtimepath+=~/.config/nvim/
-set runtimepath+=~/.config/nvim/plugins
+set runtimepath+=$HOME/.config/nvim/
+set runtimepath+=$HOME/.config/nvim/plugins
 
 if dein#load_state(s:dein_cache_path)
   call dein#begin(s:dein_cache_path)
-
-  call dein#load_toml('~/.config/nvim/dein.toml', {'lazy' : 0})
-  call dein#load_toml('~/.config/nvim/deinlazy.toml', {'lazy' : 1})
-  call dein#load_toml('~/.config/nvim/deinft.toml')
 
   if !has('nvim')
     call dein#add('roxma/nvim-yarp')
     call dein#add('roxma/vim-hug-neovim-rpc')
   endif
+
+  call dein#load_toml('$HOME/.config/nvim/dein.toml', {'lazy' : 0})
+  call dein#load_toml('$HOME/.config/nvim/deinlazy.toml', {'lazy' : 1})
+  call dein#load_toml('$HOME/.config/nvim/deinft.toml')
 
   call dein#end()
   call dein#save_state()
@@ -91,6 +70,12 @@ endif
 
 if dein#check_install()
   call dein#install()
+endif
+
+let s:removed_plugins = dein#check_clean()
+if len(s:removed_plugins) > 0
+  call map(s:removed_plugins, "delete(v:val, 'rf')")
+  call dein#recache_runtimepath()
 endif
 
 filetype plugin indent on

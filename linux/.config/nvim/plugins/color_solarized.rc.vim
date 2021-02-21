@@ -1,7 +1,7 @@
 au MyAutoCmd VimEnter * nested colorscheme solarized
 colorscheme solarized
 
-let g:lightline_color = 'solarized'
+"let g:lightline_color = 'solarized'
 
 " カラースキームをダークテーマに
 set background=dark

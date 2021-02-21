@@ -1,8 +1,7 @@
 set laststatus=2
 set noshowmode
 
-let g:lightline_color = 'seoul256'
-
+let g:lightline_color = "default"
 
 let g:lightline = {
   \ 'enable': { 'tabline': 1 },
