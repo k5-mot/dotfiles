@@ -177,7 +177,25 @@ setopt prompt_subst
 #export PROMPT="
 #%F{green}%n%f@%F{blue}%m%f$ "
 #export PROMPT="%F{green}%n%f@%F{blue}%m%f$ "
-export PROMPT="%F{green}$%f "
+#export PROMPT="%F{green}$%f "
+#case $(whoami) in
+#  'root')
+#    export PROMPT="%F{cyan}%~%f
+#%F{red}#%f "
+#    ;;
+#  *)
+#    export PROMPT="%F{cyan}%~%f
+#%F{green}$%f "
+#    ;;
+#esac
+case $(whoami) in
+  'root')
+    export PROMPT="%F{red}#%f "
+    ;;
+  *)
+    export PROMPT="%F{green}$%f "
+    ;;
+esac
 export PROMPT2=
 ## }}}
 
