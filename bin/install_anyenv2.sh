@@ -105,6 +105,7 @@ nodenv global $NODENV_NODEJS_VERSION
 npm update
 npm install --global npm
 npm install --global neovim
+npm install --global yarn
 npm -g list
 
 ## Lua

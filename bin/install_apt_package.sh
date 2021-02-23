@@ -46,7 +46,8 @@ sudo apt install -y libgdbm6
 sudo apt install -y libgdbm-dev
 sudo apt install -y libdb-dev
 sudo apt install -y clang-tools
-sudo apt install -y clangd
+#sudo apt install -y clangd
+sudo apt install -y ccls
 sudo npm install -g n
 sudo n stable
 #sudo apt install -y ccache
