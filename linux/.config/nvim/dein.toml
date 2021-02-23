@@ -45,28 +45,28 @@ repo = 'jacoborus/tender.vim'
 repo = 'morhetz/gruvbox'
 ### }}}
 
-### appearances {{{
-[[plugins]]
-repo = 'itchyny/lightline.vim'
-hook_add = '''
-source ~/.config/nvim/plugins/lightline.rc.vim
-'''
-
-[[plugins]]
-repo = 'ryanoasis/vim-devicons'
-### }}}
-
 ### Syntax {{{
 [[plugins]]
-repo = 'autozimu/LanguageClient-neovim'
-rev = 'next'
-build = 'bash install.sh'
-hook_add = '''
-source ~/.config/nvim/plugins/LanguageClient-neovim.rc.vim
-'''
+repo = "neoclide/coc.nvim"
+merge = 0
+rev = "release"
+hook_add = """
+source ~/.config/nvim/plugins/coc.rc.vim
+"""
 
 [[plugins]]
-repo = 'takiyu/lightline-languageclient.vim'
+repo = 'josa42/vim-lightline-coc'
+
+#[[plugins]]
+#repo = 'autozimu/LanguageClient-neovim'
+#rev = 'next'
+#build = 'bash install.sh'
+#hook_add = '''
+#source ~/.config/nvim/plugins/LanguageClient-neovim.rc.vim
+#'''
+#
+#[[plugins]]
+#repo = 'takiyu/lightline-languageclient.vim'
 
 #[[plugins]]
 #repo = 'w0rp/ale'
@@ -83,6 +83,16 @@ repo = 'takiyu/lightline-languageclient.vim'
 #'''
 ### }}}
 
+### appearances {{{
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+hook_add = '''
+source ~/.config/nvim/plugins/lightline.rc.vim
+'''
+
+[[plugins]]
+repo = 'ryanoasis/vim-devicons'
+### }}}
 
 [[plugins]]
 repo = 'tmhedberg/matchit'

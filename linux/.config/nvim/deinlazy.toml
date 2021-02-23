@@ -40,15 +40,15 @@ repo ='kristijanhusak/defx-git'
 
 
 ### Deoplete {{{
-[[plugins]]
-repo = 'Shougo/deoplete.nvim'
-depends = ['context_filetype.vim','neosnippet']
-on_event = 'InsertEnter'
-if = 'has("python3")'
-in_i = 1
-hook_source = '''
-source ~/.config/nvim/plugins/deoplete.rc.vim
-'''
+#[[plugins]]
+#repo = 'Shougo/deoplete.nvim'
+#depends = ['context_filetype.vim','neosnippet']
+#on_event = 'InsertEnter'
+#if = 'has("python3")'
+#in_i = 1
+#hook_source = '''
+#source ~/.config/nvim/plugins/deoplete.rc.vim
+#'''
 
 [[plugins]]
 repo = 'Shougo/neosnippet'
@@ -66,23 +66,6 @@ repo = 'Shougo/neosnippet-snippets'
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
 ###}}}
-
-### Asyncomplete {{{
-#[[plugins]]
-#repo = 'prabirshrestha/async.vim'
-#
-#[[plugins]]
-#repo = 'prabirshrestha/vim-lsp'
-#
-#[[plugins]]
-#repo = 'prabirshrestha/asyncomplete.vim'
-#
-#[[plugins]]
-#repo = 'prabirshrestha/asyncomplete-lsp.vim'
-#
-#[[plugins]]
-#repo = 'mattn/vim-lsp-settings'
-### }}}
 
 ## Latex
 [[plugins]]
