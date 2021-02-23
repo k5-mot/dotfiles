@@ -78,6 +78,7 @@
 
   // Controls whether the editor shows CodeLens.
   "editor.codeLens": true,
+  //"editor.codeLens": false,
 
   // Controls the font family for CodeLens.
   "editor.codeLensFontFamily": "",
@@ -166,7 +167,8 @@
   "editor.definitionLinkOpensInPeek": false,
 
   // Controls whether `editor.tabSize#` and `#editor.insertSpaces` will be automatically detected when a file is opened based on the file contents.
-  "editor.detectIndentation": true,
+  //"editor.detectIndentation": true,
+  "editor.detectIndentation": false,
 
   // Controls whether the editor should allow moving selections via drag and drop.
   "editor.dragAndDrop": true,
@@ -252,7 +254,7 @@
 
   // This setting is deprecated, please use separate settings like 'editor.editor.gotoLocation.multipleDefinitions' or 'editor.editor.gotoLocation.multipleImplementations' instead.
   //
-  "editor.gotoLocation.multiple": null,
+  //"editor.gotoLocation.multiple": null,
 
   // Controls the behavior the 'Go to Declaration'-command when multiple target locations exist.
   //  - peek: Show peek view of the results (default)
@@ -321,7 +323,8 @@
   "editor.lightbulb.enabled": true,
 
   // Controls the line height. Use 0 to compute the line height from the font size.
-  "editor.lineHeight": 0,
+  //"editor.lineHeight": 0,
+  "editor.lineHeight": 24,
 
   // Controls the display of line numbers.
   //  - off: Line numbers are not rendered.
@@ -423,7 +426,7 @@
 
   // Deprecated, use `editor.linkedEditing` instead.
   // Controls whether the editor auto renames on type.
-  "editor.renameOnType": false,
+  //"editor.renameOnType": false,
 
   // Controls whether the editor should render control characters.
   "editor.renderControlCharacters": false,
@@ -511,7 +514,7 @@
 
   // This setting is deprecated, please use separate settings like 'editor.suggest.showKeywords' or 'editor.suggest.showSnippets' instead.
   //
-  "editor.suggest.filteredTypes": {},
+  //"editor.suggest.filteredTypes": {},
 
   // Controls whether filtering and sorting suggestions accounts for small typos.
   "editor.suggest.filterGraceful": true,
@@ -526,7 +529,7 @@
 
   // This setting is deprecated. The suggest widget can now be resized.
   //
-  "editor.suggest.maxVisibleSuggestions": 0,
+  //"editor.suggest.maxVisibleSuggestions": 0,
 
   // Controls whether remembered suggestion selections are shared between multiple workspaces and windows (needs `editor.suggestSelection`).
   "editor.suggest.shareSuggestSelections": false,
@@ -649,14 +652,15 @@
   "editor.tabCompletion": "off",
 
   // The number of spaces a tab is equal to. This setting is overridden based on the file contents when `editor.detectIndentation` is on.
-  "editor.tabSize": 4,
+  //"editor.tabSize": 4,
+  "editor.tabSize": 2,
 
   // Overrides editor syntax colors and font style from the currently selected color theme.
   "editor.tokenColorCustomizations": {},
 
   // Use `editor.semanticTokenColorCustomizations` instead.
   //
-  "editor.tokenColorCustomizationsExperimental": {},
+  //"editor.tokenColorCustomizationsExperimental": {},
 
   // Remove trailing auto inserted whitespace.
   "editor.trimAutoWhitespace": true,
@@ -690,7 +694,8 @@
   //  - on: Lines will wrap at the viewport width.
   //  - wordWrapColumn: Lines will wrap at `editor.wordWrapColumn`.
   //  - bounded: Lines will wrap at the minimum of viewport and `editor.wordWrapColumn`.
-  "editor.wordWrap": "off",
+  //"editor.wordWrap": "off",
+  "editor.wordWrap": "on",
 
   // Controls the wrapping column of the editor when `editor.wordWrap` is `wordWrapColumn` or `bounded`.
   "editor.wordWrapColumn": 80,
@@ -1035,7 +1040,8 @@
   //  - toggle: Menu is hidden but can be displayed via Alt key.
   //  - hidden: Menu is always hidden.
   //  - compact: Menu is displayed as a compact button in the sidebar. This value is ignored when `window.titleBarStyle` is `native`.
-  "window.menuBarVisibility": "default",
+  //"window.menuBarVisibility": "default",
+  "window.menuBarVisibility": "toggle",
 
   // Controls the dimensions of opening a new window when at least one window is already opened. Note that this setting does not have an impact on the first window that is opened. The first window will always restore the size and location as you left it before closing.
   //  - default: Open new windows in the center of the screen.
@@ -1091,7 +1097,8 @@
   // - `${remoteName}`: e.g. SSH
   // - `${dirty}`: a dirty indicator if the active editor is dirty.
   // - `${separator}`: a conditional separator (" - ") that only shows when surrounded by variables with values or static text.
-  "window.title": "${dirty}${activeEditorShort}${separator}${rootName}${separator}${appName}",
+  //"window.title": "${dirty}${activeEditorShort}${separator}${rootName}${separator}${appName}",
+  "window.title": "${dirty}${activeEditorShort} / ${rootName}",
 
   // Adjust the appearance of the window title bar. On Linux and Windows, this setting also affects the application and context menu appearances. Changes require a full restart to apply.
   "window.titleBarStyle": "custom",
@@ -1100,7 +1107,8 @@
   "window.titleSeparator": " - ",
 
   // Adjust the zoom level of the window. The original size is 0 and each increment above (e.g. 1) or below (e.g. -1) represents zooming 20% larger or smaller. You can also enter decimals to adjust the zoom level with a finer granularity.
-  "window.zoomLevel": 0,
+  //"window.zoomLevel": 0,
+  "window.zoomLevel": -1,
 
   // Configure file associations to languages (e.g. `"*.extension": "html"`). These have precedence over the default associations of the languages installed.
   "files.associations": {},
@@ -1342,7 +1350,7 @@
 
   // This setting is deprecated. Please use drag and drop instead by dragging the search icon.
   // Controls whether the search will be shown as a view in the sidebar or as a panel in the panel area for more horizontal space.
-  "search.location": "sidebar",
+  //"search.location": "sidebar",
 
   // When enabled, the searchService process will be kept alive instead of being shut down after an hour of inactivity. This will keep the file search cache in memory.
   "search.maintainFileSearchCache": false,
@@ -1411,14 +1419,14 @@
 
   // Deprecated. PCRE2 will be used automatically when using regex features that are only supported by PCRE2.
   // Whether to use the PCRE2 regex engine in text search. This enables using some advanced regex features like lookahead and backreferences. However, not all PCRE2 features are supported - only features that are also supported by JavaScript.
-  "search.usePCRE2": false,
+  //"search.usePCRE2": false,
 
   // Controls whether to open Replace Preview when selecting or replacing a match.
   "search.useReplacePreview": true,
 
   // Deprecated. Consider "search.usePCRE2" for advanced regex feature support.
   // This setting is deprecated and now falls back on "search.usePCRE2".
-  "search.useRipgrep": true,
+  //"search.useRipgrep": true,
 
   // The proxy setting to use. If not set, will be inherited from the `http_proxy` and `https_proxy` environment variables.
   "http.proxy": "",
@@ -1440,7 +1448,7 @@
 
   // This setting is deprecated, please use 'update.mode' instead.
   // Configure whether you receive automatic updates. Requires a restart after change. The updates are fetched from a Microsoft online service.
-  "update.channel": "default",
+  //"update.channel": "default",
 
   // Enable to download and install new VS Code Versions in the background on Windows
   "update.enableWindowsBackgroundUpdates": true,
@@ -1592,7 +1600,7 @@
 
   // Deprecated in favor of `editor.linkedEditing`
   // Enable/disable mirroring cursor on matching HTML tag.
-  "html.mirrorCursorOnMatchingTag": false,
+  //"html.mirrorCursorOnMatchingTag": false,
 
   // Controls whether the built-in HTML language support suggests HTML5 tags, properties and values.
   "html.suggest.html5": true,
@@ -1608,7 +1616,7 @@
 
   // The setting `json.colorDecorators.enable` has been deprecated in favor of `editor.colorDecorators`.
   // Enables or disables color decorators
-  "json.colorDecorators.enable": true,
+  //"json.colorDecorators.enable": true,
 
   // Enable/disable default JSON formatter
   "json.format.enable": true,
@@ -1739,11 +1747,11 @@
 
   // This setting has been deprecated in favor of `js/ts.implicitProjectConfig.checkJs`.
   // Enable/disable semantic checking of JavaScript files. Existing `jsconfig.json` or `tsconfig.json` files override this setting.
-  "javascript.implicitProjectConfig.checkJs": false,
+  //"javascript.implicitProjectConfig.checkJs": false,
 
   // This setting has been deprecated in favor of `js/ts.implicitProjectConfig.experimentalDecorators`.
   // Enable/disable `experimentalDecorators` in JavaScript files that are not part of a project. Existing `jsconfig.json` or `tsconfig.json` files override this setting.
-  "javascript.implicitProjectConfig.experimentalDecorators": false,
+  //"javascript.implicitProjectConfig.experimentalDecorators": false,
 
   // Preferred path style for auto imports.
   //  - shortest: Prefers a non-relative import only if one is available that has fewer path segments than a relative import.
@@ -1764,7 +1772,7 @@
 
   // The setting 'typescript.preferences.renameShorthandProperties' has been deprecated in favor of 'typescript.preferences.useAliasesForRenames'
   // Enable/disable introducing aliases for object shorthand properties during renames. Requires using TypeScript 3.4 or newer in the workspace.
-  "javascript.preferences.renameShorthandProperties": true,
+  //"javascript.preferences.renameShorthandProperties": true,
 
   // Enable/disable introducing aliases for object shorthand properties during renames. Requires using TypeScript 3.4 or newer in the workspace.
   "javascript.preferences.useAliasesForRenames": true,
@@ -1923,7 +1931,7 @@
 
   // The setting 'typescript.preferences.renameShorthandProperties' has been deprecated in favor of 'typescript.preferences.useAliasesForRenames'
   // Enable/disable introducing aliases for object shorthand properties during renames. Requires using TypeScript 3.4 or newer in the workspace.
-  "typescript.preferences.renameShorthandProperties": true,
+  //"typescript.preferences.renameShorthandProperties": true,
 
   // Enable/disable introducing aliases for object shorthand properties during renames. Requires using TypeScript 3.4 or newer in the workspace.
   "typescript.preferences.useAliasesForRenames": true,
@@ -2248,7 +2256,7 @@
 
   // This setting is deprecated. Use extensions.ignoreRecommendations setting to control recommendation notifications. Use Extensions view's visibility actions to hide Recommended view by default.
   //
-  "extensions.showRecommendationsOnlyOnDemand": false,
+  //"extensions.showRecommendationsOnlyOnDemand": false,
 
   // Enable web worker extension host.
   "extensions.webWorker": false,
@@ -3153,7 +3161,7 @@
 
   // This setting is now deprecated, please use `github.gitAuthentication` instead.
   //
-  "git.githubAuthentication": null,
+  //"git.githubAuthentication": null,
 
   // List of git repositories to ignore.
   "git.ignoredRepositories": [],
@@ -3373,7 +3381,7 @@
 
   // The NPM Script Explorer is now available in 'Views' menu in the Explorer in all folders.
   // Enable an explorer view for npm scripts when there is no top-level 'package.json' file.
-  "npm.enableScriptExplorer": false,
+  //"npm.enableScriptExplorer": false,
 
   // Configure glob patterns for folders that should be excluded from automatic script detection.
   "npm.exclude": "",
@@ -4119,7 +4127,7 @@
   "latex-workshop.viewer.pdf.internal.keyboardEvent": "auto",
 
   // Define the port to listen on for communicating with the internal viewer. The default value "0" means the port is chosen randomly by the application.
-  "latex-workshop.viewer.pdf.internal.port": "0",
+  //"latex-workshop.viewer.pdf.internal.port": "0",
 
   // The command to run after cloning the dotfiles repository. Defaults to `~/dotfiles/install.sh`.
   "dotfiles.installCommand": "~/dotfiles/install.sh",
@@ -4171,7 +4179,7 @@
 
   // Deprecated, please use `remote.SSH.localServerDownload`
   // If downloading the VS Code server fails on the host, this allows the extension to fall back to downloading on the client and transferring it to the host with scp.
-  "remote.SSH.allowLocalServerDownload": true,
+  //"remote.SSH.allowLocalServerDownload": true,
 
   // The absolute file path to a custom SSH config file.
   "remote.SSH.configFile": "",
@@ -4198,7 +4206,7 @@
   //  - auto: The server will first be downloaded on the host, and if that fails, will fall back to downloading locally
   //  - always: The server will only be downloaded locally and transferred to the host
   //  - off: The server will only be downloaded on the host
-  "remote.SSH.localServerDownload": false,
+  //"remote.SSH.localServerDownload": false,
 
   // Whether to keep lockfiles in `/tmp` instead of in the server's install folder. Useful for connecting to hosts which have issues with locking, such as hosts with a home directory using NFS or another distributed filesystem.
   "remote.SSH.lockfilesInTmp": false,
@@ -4232,7 +4240,7 @@
 
   // Deprecated: Please use `remote.SSH.remotePlatorm` instead
   // **Deprecated**: Enables experimental support for connecting to Windows remotes. Add the names of windows remotes to this list.
-  "remote.SSH.windowsRemotes": [],
+  //"remote.SSH.windowsRemotes": [],
 
   // If set, the output in the WSL log shows debug information.
   "remote.WSL.debug": false,
