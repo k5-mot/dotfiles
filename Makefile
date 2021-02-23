@@ -29,10 +29,13 @@ reinstall:
 	@make clean
 	@make install
 
+vscode-extension:
+	@cd $(MAKEPATH)/linux/.config/Code
+	@sh ./install_extensions.sh
+
 help: ## Self-documented Makefile
 	@echo 'Copyright (c) 2020 k5-mot All Rights Reserved.'
 	@echo ''
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
 		| sort \
 		| awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
-
