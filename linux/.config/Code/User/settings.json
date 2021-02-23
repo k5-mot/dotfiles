@@ -102,7 +102,8 @@
   "editor.copyWithSyntaxHighlighting": true,
 
   // Control the cursor animation style.
-  "editor.cursorBlinking": "blink",
+  //"editor.cursorBlinking": "blink",
+  "editor.cursorBlinking": "smooth",
 
   // Controls whether the smooth caret animation should be enabled.
   "editor.cursorSmoothCaretAnimation": false,
@@ -119,7 +120,8 @@
   "editor.cursorSurroundingLinesStyle": "default",
 
   // Controls the width of the cursor when `editor.cursorStyle` is set to `line`.
-  "editor.cursorWidth": 0,
+  //"editor.cursorWidth": 0,
+  "editor.cursorWidth": 5,
 
   // Defines a default formatter which takes precedence over all other formatter settings. Must be the identifier of an extension contributing a formatter.
   //  - null: None
@@ -209,19 +211,22 @@
   "editor.foldingStrategy": "auto",
 
   // Controls the font family.
-  "editor.fontFamily": "Consolas, 'Courier New', monospace",
+  //"editor.fontFamily": "Consolas, 'Courier New', monospace",
+  "editor.fontFamily": "'CaskaydiaCove Nerd Font Mono', 'Cascadia Code', 'Ricty Diminished Discord', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
 
   // Configures font ligatures or font features. Can be either a boolean to enable/disable ligatures or a string for the value of the CSS 'font-feature-settings' property.
   "editor.fontLigatures": false,
 
   // Controls the font size in pixels.
-  "editor.fontSize": 14,
+  //"editor.fontSize": 14,
+  "editor.fontSize": 17,
 
   // Controls the font weight. Accepts "normal" and "bold" keywords or numbers between 1 and 1000.
   "editor.fontWeight": "normal",
 
   // Controls whether the editor should automatically format the pasted content. A formatter must be available and the formatter should be able to format a range in a document.
-  "editor.formatOnPaste": false,
+  //"editor.formatOnPaste": false,
+  "editor.formatOnPaste": true,
 
   // Format a file on save. A formatter must be available, the file must not be saved after delay, and the editor must not be shutting down.
   "editor.formatOnSave": false,
@@ -232,7 +237,8 @@
   "editor.formatOnSaveMode": "file",
 
   // Controls whether the editor should automatically format the line after typing.
-  "editor.formatOnType": false,
+  //"editor.formatOnType": false,
+  "editor.formatOnType": true,
 
   // Controls whether the editor should render the vertical glyph margin. Glyph margin is mostly used for debugging.
   "editor.glyphMargin": true,
@@ -317,7 +323,8 @@
   "editor.largeFileOptimizations": true,
 
   // Controls the letter spacing in pixels.
-  "editor.letterSpacing": 0,
+  //"editor.letterSpacing": 0,
+  "editor.letterSpacing": -1,
 
   // Enables the code action lightbulb in the editor.
   "editor.lightbulb.enabled": true,
@@ -349,16 +356,19 @@
   "editor.minimap.enabled": true,
 
   // Limit the width of the minimap to render at most a certain number of columns.
-  "editor.minimap.maxColumn": 120,
+  //"editor.minimap.maxColumn": 120,
+  "editor.minimap.maxColumn": 40,
 
   // Render the actual characters on a line as opposed to color blocks.
-  "editor.minimap.renderCharacters": true,
+  //"editor.minimap.renderCharacters": true,
+  "editor.minimap.renderCharacters": false,
 
   // Scale of content drawn in the minimap: 1, 2 or 3.
   "editor.minimap.scale": 1,
 
   // Controls when the minimap slider is shown.
-  "editor.minimap.showSlider": "mouseover",
+  //"editor.minimap.showSlider": "mouseover",
+  "editor.minimap.showSlider": "always",
 
   // Controls the side where to render the minimap.
   "editor.minimap.side": "right",
@@ -370,7 +380,8 @@
   "editor.minimap.size": "proportional",
 
   // A multiplier to be used on the `deltaX` and `deltaY` of mouse wheel scroll events.
-  "editor.mouseWheelScrollSensitivity": 1,
+  //"editor.mouseWheelScrollSensitivity": 1,
+  "editor.mouseWheelScrollSensitivity": 0.7,
 
   // Zoom the font of the editor when using mouse wheel and holding `Ctrl`.
   "editor.mouseWheelZoom": false,
@@ -412,10 +423,15 @@
   "editor.peekWidgetDefaultFocus": "tree",
 
   // Controls whether suggestions should automatically show up while typing.
+  // "editor.quickSuggestions": {
+  //   "other": true,
+  //   "comments": false,
+  //   "strings": false
+  // },
   "editor.quickSuggestions": {
-    "other": true,
-    "comments": false,
-    "strings": false
+    "comments": false, // コメント内では無効
+    "strings": true,   // 文字列内では有効
+    "other": true      //  その他の場所で有効
   },
 
   // Controls the delay in milliseconds after which quick suggestions will show up.
@@ -429,7 +445,8 @@
   //"editor.renameOnType": false,
 
   // Controls whether the editor should render control characters.
-  "editor.renderControlCharacters": false,
+  //"editor.renderControlCharacters": false,
+  "editor.renderControlCharacters": true,
 
   // Render last line number when the file ends with a newline.
   "editor.renderFinalNewline": true,
@@ -442,7 +459,8 @@
   //  - gutter
   //  - line
   //  - all: Highlights both the gutter and the current line.
-  "editor.renderLineHighlight": "line",
+  //"editor.renderLineHighlight": "line",
+  "editor.renderLineHighlight": "all",
 
   // Controls if the editor should render the current line highlight only when the editor is focused
   "editor.renderLineHighlightOnlyWhenFocus": false,
@@ -775,9 +793,37 @@
 
   // Controls the visibility of the activity bar in the workbench.
   "workbench.activityBar.visible": true,
+  //"workbench.activityBar.visible": false,
 
   // Overrides colors from the currently selected color theme.
   "workbench.colorCustomizations": {},
+  //"workbench.colorCustomizations": { // カラーテーマに上書きする個別の設定
+  //  "statusBar.background": "#000000", // ステータスバー背景色
+  //  "statusBar.noFolderBackground": "#000000",
+  //  "statusBar.foreground": "#ffffff", // ステータスバー前景色
+  //  "statusBar.noFolderForeground": "#ffffff",
+  //  "statusBar.border": "#ffffff", // ステータスバーの境界線
+  //  "sideBar.background": "#000000", // サイドバーの背景色
+  //  "sideBar.foreground": "#ffffff", // サイドバーの前景色
+  //  "sideBar.border": "#ffffff", // サイドバーの境界線
+  //  "activityBar.background": "#000000", // アクティビティバーの背景色
+  //  "activityBar.foreground": "#ffffff", // アクティビティバーの前景色
+  //  "activityBar.border": "#ffffff", // アクティビティバーの境界線
+  //  "editor.background": "#121817", // エディタ背景色
+  //  "editor.lineHighlightBackground": "#002255", // 選択している行の強調色
+  //  "editor.selectionBackground": "#660000", // 選択領域の強調色
+  //  "editorError.border": "#ff0000", // エラー部分の下線
+  //  "editorLineNumber.foreground": "#0077ffbb",
+  //  "editorLineNumber.activeForeground": "#ffffff",
+  //  "scrollbarSlider.background": "#0077ff99", // スクロールバーの色
+  //  "scrollbarSlider.hoverBackground": "#00ccffcc", // 移動中のスクロールバーの色
+  //  "tab.activeBorder": "#ffffff", // アクティブタブの下線
+  //  "tab.inactiveForeground": "#999999", // 非選択タブの文字色
+  //  "editorBracketMatch.background": "#ffff0077",// 対応する括弧の背景色
+  //  "editorSuggestWidget.selectedBackground": "#0044ff", // サジェスト欄,選択中項目の背景色
+  //  "scrollbar.shadow": "#0077ff99",
+  //  "editorLink.activeForeground": "#5555ce",
+  //},
 
   // Specifies the color theme used in the workbench.
   "workbench.colorTheme": "Default Dark+",
@@ -878,7 +924,8 @@
   // Controls the sizing of editor tabs. This value is ignored when `workbench.editor.showTabs` is disabled.
   //  - fit: Always keep tabs large enough to show the full editor label.
   //  - shrink: Allow tabs to get smaller when the available space is not enough to show all tabs at once.
-  "workbench.editor.tabSizing": "fit",
+  // "workbench.editor.tabSizing": "fit",
+  "workbench.editor.tabSizing": "shrink",
 
   // Controls the height of the scrollbars used for tabs and breadcrumbs in the editor title area.
   //  - default: The default size.
@@ -1114,7 +1161,8 @@
   "files.associations": {},
 
   // When enabled, the editor will attempt to guess the character set encoding when opening files. This setting can also be configured per language.
-  "files.autoGuessEncoding": false,
+  // "files.autoGuessEncoding": false,
+  "files.autoGuessEncoding": true,
 
   // Controls auto save of dirty editors. Read more about autosave [here](https://code.visualstudio.com/docs/editor/codebasics#_save-auto-save).
   //  - off: A dirty editor is never automatically saved.
@@ -1186,15 +1234,33 @@
   //  - \n: LF
   //  - \r\n: CRLF
   //  - auto: Uses operating system specific end of line character.
-  "files.eol": "auto",
+  //"files.eol": "auto",
+  "files.eol": "\n",
 
   // Configure glob patterns for excluding files and folders. For example, the file Explorer decides which files and folders to show or hide based on this setting. Refer to the `search.exclude` setting to define search specific excludes. Read more about glob patterns [here](https://code.visualstudio.com/docs/editor/codebasics#_advanced-search-options).
+  // "files.exclude": {
+  //   "**/.git": true,
+  //   "**/.svn": true,
+  //   "**/.hg": true,
+  //   "**/CVS": true,
+  //   "**/.DS_Store": true
+  // },
   "files.exclude": {
     "**/.git": true,
     "**/.svn": true,
     "**/.hg": true,
     "**/CVS": true,
-    "**/.DS_Store": true
+    "**/.DS_Store": true,
+    "**/bin": true,
+    //"**/*.exe": true,
+    "**/*.o": true,
+    "**/*.obj": true,
+    "**/*.ilk": true,
+    "**/*.pdb": true,
+    "**/*.tlog": true,
+    "**/*.idb": true,
+    "**/*.dll": true
+    // "**.vs": true,
   },
 
   // Controls whether unsaved files are remembered between sessions, allowing the save prompt when exiting the editor to be skipped.
@@ -1204,7 +1270,8 @@
   "files.hotExit": "onExit",
 
   // When enabled, insert a final new line at the end of the file when saving it.
-  "files.insertFinalNewline": false,
+  // "files.insertFinalNewline": false,
+  "files.insertFinalNewline": true,
 
   // Controls the memory available to VS Code after restart when trying to open large files. Same effect as specifying `--max-memory=NEWSIZE` on the command line.
   "files.maxMemoryForLargeFilesMB": 4096,
@@ -2521,10 +2588,12 @@
   "terminal.integrated.flowControl": true,
 
   // Controls the font family of the terminal, this defaults to `editor.fontFamily`'s value.
-  "terminal.integrated.fontFamily": "",
+  //"terminal.integrated.fontFamily": "",
+  "terminal.integrated.fontFamily": "'CaskaydiaCove Nerd Font Mono', 'Cascadia Code', 'Ricty Diminished Discord', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
 
   // Controls the font size in pixels of the terminal.
-  "terminal.integrated.fontSize": 14,
+  //"terminal.integrated.fontSize": 14,
+  "terminal.integrated.fontSize": 22,
 
   // The font weight to use within the terminal for non-bold text. Accepts "normal" and "bold" keywords or numbers between 1 and 1000.
   "terminal.integrated.fontWeight": "normal",
@@ -2602,7 +2671,8 @@
   "terminal.integrated.shell.osx": null,
 
   // The path of the shell that the terminal uses on Windows (default: C:\Program Files\PowerShell\7\pwsh.exe). [Read more about configuring the shell](https://code.visualstudio.com/docs/editor/integrated-terminal#_configuration).
-  "terminal.integrated.shell.windows": null,
+  //"terminal.integrated.shell.windows": null,
+  "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\wsl.exe",
 
   // The command line arguments to use when on the Linux terminal. [Read more about configuring the shell](https://code.visualstudio.com/docs/editor/integrated-terminal#_configuration).
   "terminal.integrated.shellArgs.linux": [],
@@ -2775,10 +2845,12 @@
 
   // Enable crash reports to be sent to a Microsoft online service.
   // This option requires restart to take effect.
-  "telemetry.enableCrashReporter": true,
+  // "telemetry.enableCrashReporter": true,
+  "telemetry.enableCrashReporter": false,
 
   // Enable usage data and errors to be sent to a Microsoft online service. Read our privacy statement [here](https://go.microsoft.com/fwlink/?LinkId=786907).
-  "telemetry.enableTelemetry": true,
+  // "telemetry.enableTelemetry": true,
+  "telemetry.enableTelemetry": false,
 
   // Render Outline Elements with Icons.
   "outline.icons": true,
@@ -2879,6 +2951,12 @@
   // The number of items to show in the Timeline view by default and when loading more items. Setting to `null` (the default) will automatically choose a page size based on the visible area of the Timeline view
   "timeline.pageSize": null,
 
+  // Configure settings to be overridden for [bibtex] language.
+  "[bibtex]": {
+    // インデント幅を2にする
+    "editor.tabSize": 2
+  },
+
   // Configure settings to be overridden for [c] language.
   "[c]":  {
     "editor.wordBasedSuggestions": false,
@@ -2952,7 +3030,11 @@
   // Configure settings to be overridden for [latex] language.
   "[latex]":  {
     "editor.formatOnPaste": false,
-    "editor.suggestSelection": "recentlyUsedByPrefix"
+    "editor.suggestSelection": "recentlyUsedByPrefix",
+    // スニペット補完中にも補完を使えるようにする
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    // インデント幅を2にする
+    "editor.tabSize": 2
   },
 
   // Configure settings to be overridden for [less] language.
@@ -2989,6 +3071,14 @@
   // Configure settings to be overridden for [shellscript] language.
   "[shellscript]":  {
     "files.eol": "\n"
+  },
+
+  // Configure settings to be overridden for [tex] language.
+  "[tex]": {
+    // スニペット補完中にも補完を使えるようにする
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    // インデント幅を2にする
+    "editor.tabSize": 2
   },
 
   // Configure settings to be overridden for [yaml] language.
@@ -3669,13 +3759,16 @@
     "*.glg",
     "*.glo",
     "*.gls",
+    "*.ist",
     "*.fls",
     "*.log",
     "*.fdb_latexmk",
     "*.snm",
     "*.synctex(busy)",
     "*.synctex.gz(busy)",
-    "*.nav"
+    "*.nav",
+    "*.dvi",
+    "*.synctex.gz"
   ],
 
   // Delete LaTeX auxiliary files recursively in sub-folders of `latex-workshop.latex.outDir`.
@@ -3708,7 +3801,8 @@
   // Both relative and absolute paths are supported. Relative path start from the root file location, so beware if it is located in sub-directory. The path must not contain a trailing slash.
   // The LaTeX toolchain should output files to this path.
   // For a list of supported placeholders, please visit https://github.com/James-Yu/LaTeX-Workshop/wiki/Compile#placeholders.
-  "latex-workshop.latex.outDir": "%DIR%",
+  // "latex-workshop.latex.outDir": "%DIR%",
+  "latex-workshop.latex.outDir": "build",
 
   // Delay before reloading a PDF file after last change, in milliseconds. You must reload VSCode to take into account a change in this configuration.
   "latex-workshop.latex.pdfWatch.delay": 250,
@@ -4272,7 +4366,8 @@
   "C_Cpp.clang_format_fallbackStyle": "Visual Studio",
 
   // The full path of the clang-format executable. If not specified, and clang-format is available in the environment path, that is used.  If not found in the environment path, a copy of clang-format bundled with the extension will be used.
-  "C_Cpp.clang_format_path": "",
+  //"C_Cpp.clang_format_path": "",
+  "C_Cpp.clang_format_path": null,
 
   // If set, overrides the include sorting behavior determined by the SortIncludes parameter.
   "C_Cpp.clang_format_sortIncludes": null,
@@ -4368,7 +4463,8 @@
   //  - vcFormat: The Visual C++ formatting engine will be used to format code.
   //  - Default: clang-format will be used to format code.
   //  - Disabled: Code formatting will be disabled.
-  "C_Cpp.formatting": "clangFormat",
+  // "C_Cpp.formatting": "clangFormat",
+  "C_Cpp.formatting": "Default",
 
   // Controls the background coloring of inactive preprocessor blocks. Input is in the form a hexadecimal color code or a valid Theme Color. If not set, this defaults to transparent. This setting only applies when inactive region dimming is enabled.
   "C_Cpp.inactiveRegionBackgroundColor": "",
