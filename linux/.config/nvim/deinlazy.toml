@@ -67,6 +67,23 @@ repo = 'Shougo/neosnippet-snippets'
 repo = 'Shougo/context_filetype.vim'
 ###}}}
 
+### Asyncomplete {{{
+#[[plugins]]
+#repo = 'prabirshrestha/async.vim'
+#
+#[[plugins]]
+#repo = 'prabirshrestha/vim-lsp'
+#
+#[[plugins]]
+#repo = 'prabirshrestha/asyncomplete.vim'
+#
+#[[plugins]]
+#repo = 'prabirshrestha/asyncomplete-lsp.vim'
+#
+#[[plugins]]
+#repo = 'mattn/vim-lsp-settings'
+### }}}
+
 ## Latex
 [[plugins]]
 repo = 'lervag/vimtex'

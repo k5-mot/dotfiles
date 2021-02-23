@@ -66,18 +66,21 @@ source ~/.config/nvim/plugins/LanguageClient-neovim.rc.vim
 '''
 
 [[plugins]]
-repo = 'w0rp/ale'
-on_cmd = ['ALEComplete']
-hook_add = '''
-source ~/.config/nvim/plugins/ale.rc.vim
-'''
+repo = 'takiyu/lightline-languageclient.vim'
 
-[[plugins]]
-repo = 'maximbaz/lightline-ale'
-depends = ['lightline.vim', 'ale']
-hook_add = '''
-source ~/.config/nvim/plugins/lightline-ale.rc.vim
-'''
+#[[plugins]]
+#repo = 'w0rp/ale'
+#on_cmd = ['ALEComplete']
+#hook_add = '''
+#source ~/.config/nvim/plugins/ale.rc.vim
+#'''
+#
+#[[plugins]]
+#repo = 'maximbaz/lightline-ale'
+#depends = ['lightline.vim', 'ale']
+#hook_add = '''
+#source ~/.config/nvim/plugins/lightline-ale.rc.vim
+#'''
 ### }}}
 
 
