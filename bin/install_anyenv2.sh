@@ -88,6 +88,7 @@ pip install pip-review
 pip install matplotlib
 pip install numpy
 pip install scipy
+pip isntall compiledb
 pip install neovim
 pip-review --auto
 pip list
