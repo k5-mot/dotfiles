@@ -838,7 +838,8 @@
   "workbench.editor.centeredLayoutAutoResize": true,
 
   // Controls the behavior of empty editor groups when the last tab in the group is closed. When enabled, empty groups will automatically close. When disabled, empty groups will remain part of the grid.
-  "workbench.editor.closeEmptyGroups": true,
+  //"workbench.editor.closeEmptyGroups": true,
+  "workbench.editor.closeEmptyGroups": false,
 
   // Controls whether editors showing a file that was opened during the session should close automatically when getting deleted or renamed by some other process. Disabling this will keep the editor open  on such an event. Note that deleting from within the application will always close the editor and that dirty files will never close to preserve your data.
   "workbench.editor.closeOnFileDelete": false,
@@ -2528,7 +2529,8 @@
   "terminal.integrated.confirmOnExit": false,
 
   // Controls whether text selected in the terminal will be copied to the clipboard.
-  "terminal.integrated.copyOnSelection": false,
+  //"terminal.integrated.copyOnSelection": false,
+  "terminal.integrated.copyOnSelection": true,
 
   // Controls whether the terminal cursor blinks.
   "terminal.integrated.cursorBlinking": false,
