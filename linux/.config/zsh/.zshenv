@@ -1,41 +1,36 @@
 #!/usr/bin/env zsh
 
 ### Locale {{{
-  #locale-gen "ja_JP.UTF-8"
-  ### Basic locale
-  #export LANG="ja_JP.UTF-8"
-  ### Translation priorities
-  #export LANGUAGE=
-  ### Character types, their comparisons and classifications
-  #export LC_CTYPE="ja_JP.UTF-8"
-  ### Number format
-  #export LC_NUMERIC="ja_JP.UTF-8"
-  ### Date, time
-  #export LC_TIME="ja_JP.UTF-8"
-  ### Collation and alignment of characters
-  #export LC_COLLATE="ja_JP.UTF-8"
-  ### Currency
-  #export LC_MONETARY="ja_JP.UTF-8"
-  ### Display message
-  #export LC_MESSAGES="ja_JP.UTF-8"
-  ### Paper standard
-  #export LC_PAPER="ja_JP.UTF-8"
-  ### Name
-  #export LC_NAME="ja_JP.UTF-8"
-  ### Address
-  #export LC_ADDRESS="ja_JP.UTF-8"
-  ### Telephone service
-  #export LC_TELEPHONE="ja_JP.UTF-8"
-  ### Mesurement
-  #export LC_MEASUREMENT="ja_JP.UTF-8"
-  ### Metadata
-  #export LC_IDENTIFICATION="ja_JP.UTF-8"
-  ##locale-gen "en_US.UTF-8"
-  ## All locale
-  #export LANG="en_US.UTF-8"
-  #export LANGUAGE="en_US"
-  #export LC_ALL="en_US.UTF-8"
-  #eval `dbus-launch --sh-syntax`
+## Basic locale
+export LANG="en_US.UTF-8"
+## Translation priorities
+export LANGUAGE="en_US"
+### Character types, their comparisons and classifications
+#export LC_CTYPE="en_US.UTF-8"
+### Number format
+#export LC_NUMERIC="en_US.UTF-8"
+### Date, time
+#export LC_TIME="en_US.UTF-8"
+### Collation and alignment of characters
+#export LC_COLLATE="en_US.UTF-8"
+### Currency
+#export LC_MONETARY="en_US.UTF-8"
+### Display message
+#export LC_MESSAGES="en_US.UTF-8"
+### Paper standard
+#export LC_PAPER="en_US.UTF-8"
+### Name
+#export LC_NAME="en_US.UTF-8"
+### Address
+#export LC_ADDRESS="en_US.UTF-8"
+### Telephone service
+#export LC_TELEPHONE="en_US.UTF-8"
+### Mesurement
+#export LC_MEASUREMENT="en_US.UTF-8"
+### Metadata
+#export LC_IDENTIFICATION="en_US.UTF-8"
+## All locale
+export LC_ALL="en_US.UTF-8"
 ### }}}
 
 ### Environment variable {{{
@@ -73,6 +68,8 @@ export DIRSTACKSIZE=20
 export XMODIFIERS="@im=ibus"
 export GTK_IM_MODULE="ibus"
 export QT_IM_MODULE="ibus"
+#export GTK_IM_MODULE="xim"
+#export QT_IM_MODULE="xim"
 export JSERVER="localhost"
 
 ## Initialize $PATH
@@ -173,7 +170,7 @@ fi
 # Set up scripts of dotfiles.
 export FPATH
 export FPATH=$FPATH:$HOME/dotfiles/bin
-export PATH=$PATH:$HOME/dotfiles/bin
+#export PATH=$PATH:$HOME/dotfiles/bin
 
 ## Set
 export LIBRARY_PATH
@@ -200,4 +197,3 @@ typeset -T C_INCLUDE_PATH c_include_path
 typeset -U c_include_path
 typeset -T CPLUS_INCLUDE_PATH cplus_include_path
 typeset -U cplus_include_path
-
