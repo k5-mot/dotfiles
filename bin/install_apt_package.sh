@@ -12,6 +12,7 @@ sudo sed -i.bak -r 's!(deb|deb-src) \S+!\1 mirror://mirrors.ubuntu.com/mirrors.t
 ## Install packages
 sudo apt install -y make
 sudo apt install -y gcc
+sudo apt install -y git
 sudo apt install -y libssl-dev
 sudo apt install -y libreadline-dev
 sudo apt install -y zlib1g-dev
@@ -19,6 +20,7 @@ sudo apt install -y libbz2-dev
 sudo apt install -y libsqlite3-dev
 sudo apt install -y libncurses5-dev
 sudo apt install -y libncursesw5-dev
+sudo apt install -y libkrb5-dev
 sudo apt install -y npm
 sudo apt install -y vim
 sudo apt install -y emacs
@@ -28,6 +30,8 @@ sudo apt install -y tmux
 sudo apt install -y curl
 sudo apt install -y llvm
 sudo apt install -y sqlite3
+sudo apt install -y python
+sudo apt install -y python3
 sudo apt install -y python-tk
 sudo apt install -y python3-tk
 sudo apt install -y tk-dev
