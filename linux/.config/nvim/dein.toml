@@ -47,16 +47,35 @@ repo = 'morhetz/gruvbox'
 
 ### Syntax {{{
 [[plugins]]
-repo = "neoclide/coc.nvim"
-merge = 0
-rev = "release"
-hook_add = """
-source ~/.config/nvim/plugins/coc.rc.vim
-"""
+repo = 'prabirshrestha/asyncomplete.vim'
 
 [[plugins]]
-repo = 'josa42/vim-lightline-coc'
+repo = 'prabirshrestha/async.vim'
 
+[[plugins]]
+repo = 'prabirshrestha/vim-lsp'
+depends = ['async.vim']
+hook_source = '''
+source ~/.config/nvim/plugins/vim-lsp.rc.vim
+'''
+
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete-lsp.vim'
+
+[[plugins]]
+repo = 'mattn/vim-lsp-settings'
+
+#[[plugins]]
+#repo = "neoclide/coc.nvim"
+#merge = 0
+#rev = "release"
+#hook_add = """
+#source ~/.config/nvim/plugins/coc.rc.vim
+#"""
+#
+#[[plugins]]
+#repo = 'josa42/vim-lightline-coc'
+#
 #[[plugins]]
 #repo = 'autozimu/LanguageClient-neovim'
 #rev = 'next'
