@@ -15,8 +15,8 @@ alias ll='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
 alias x=exit
-#alias latexmk='latexmk -outdir=out'
 alias grep='grep --color=auto'
+alias wget="wget --hsts-file $HOME/.config/wget/wget-hsts"
 
 # List only directories and symbolic
 # links that point to directories
