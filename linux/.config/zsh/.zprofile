@@ -39,8 +39,7 @@ alias porg-check='porg --logdir=$HOME/.local/var/log/porg'
 alias porg-install='porg --logdir=$HOME/.local/var/log/porg -lp'
 
 # Shell functions
-function setenv()
-{
+function setenv() {
   typeset -x "${1}${1:+=}${(@)argv[2,$#]}"
 }  # csh compatibility
 
@@ -50,6 +49,10 @@ function freload() {
     autoload -U $1;
     shift;
   done
+}
+
+function refresh_zsh() {
+  exec $SHELL -l
 }
 
 # Benchmark zsh.
