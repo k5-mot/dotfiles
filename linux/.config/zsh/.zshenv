@@ -105,7 +105,6 @@ export CPATH=$CPATH:/opt/include
 export CDPATH
 #export CDPATH=$CDPATH:..
 #export CDPATH=$CDPATH:~
-#cdpath=(.. ~ ~/src ~/zsh)
 ## Search path for the man command
 export MANPATH
 export MANPATH=$MANPATH:/usr/share/man
