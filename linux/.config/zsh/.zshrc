@@ -224,11 +224,13 @@ RPROMPT=""
 # ディレクトリ選択時、最後の/を残す
 setopt no_auto_remove_slash
 # Set/unset  shell options
-setopt   notify globdots correct pushdtohome cdablevars autolist
-setopt   correctall autocd recexact longlistjobs
-setopt   autoresume histignoredups pushdsilent noclobber
-setopt   autopushd pushdminus extendedglob rcquotes mailwarning
-setopt   ignoreeof
+setopt notify globdots correct pushdtohome cdablevars autolist
+setopt correctall autocd recexact longlistjobs
+setopt autoresume histignoredups pushdsilent noclobber
+setopt autopushd pushdminus extendedglob rcquotes mailwarning
+setopt ignoreeof
+setopt no_beep
+setopt nolistbeep
 unsetopt bgnice autoparamslash
 # Autoload zsh modules when they are referenced
 zmodload -a zsh/stat stat
