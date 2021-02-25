@@ -26,24 +26,38 @@ let g:lightline.component = {
   \ 'close': '%999X X '
   \ }
 
-" Register the components:
-let g:lightline.component_expand = {
-  \   'linter_warnings': 'lightline#coc#warnings',
-  \   'linter_errors': 'lightline#coc#errors',
-  \   'linter_info': 'lightline#coc#info',
-  \   'linter_hints': 'lightline#coc#hints',
-  \   'linter_ok': 'lightline#coc#ok',
-  \   'status': 'lightline#coc#status',
-  \ }
 
-" Set color to the components:
-let g:lightline.component_type = {
-  \   'linter_warnings': 'warning',
-  \   'linter_errors': 'error',
-  \   'linter_info': 'info',
-  \   'linter_hints': 'hints',
-  \   'linter_ok': 'left',
-  \ }
+
+" Register the components:
+"let g:lightline.component_expand = {
+"  \   'linter_warnings': 'lightline#coc#warnings',
+"  \   'linter_errors': 'lightline#coc#errors',
+"  \   'linter_info': 'lightline#coc#info',
+"  \   'linter_hints': 'lightline#coc#hints',
+"  \   'linter_ok': 'lightline#coc#ok',
+"  \   'status': 'lightline#coc#status',
+"  \ }
+"
+"" Set color to the components:
+"let g:lightline.component_type = {
+"  \   'linter_warnings': 'warning',
+"  \   'linter_errors': 'error',
+"  \   'linter_info': 'info',
+"  \   'linter_hints': 'hints',
+"  \   'linter_ok': 'left',
+"  \ }
+
+"let g:lightline.component_expand = {
+"  \   'lsp_warnings': 'lightline_lsp#warnings',
+"  \   'lsp_errors':   'lightline_lsp#errors',
+"  \   'lsp_ok':       'lightline_lsp#ok',
+"  \ }
+"
+"let g:lightline.component_type = {
+"  \   'lsp_warnings': 'warning',
+"  \   'lsp_errors':   'error',
+"  \   'lsp_ok':       'middle',
+"  \ }
 
 let g:lightline = {
   \ 'enable': { 'tabline': 1 },
@@ -54,7 +68,7 @@ let g:lightline = {
   \   'left': [
   \     ['mode', 'paste'],
   \     ['readonly', 'filename', 'modified'],
-  \     [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ]
+  \     ['lsp_errors', 'lsp_warnings', 'lsp_ok'],
   \   ],
   \   'right': [
   \     ['lineinfo'],
@@ -71,13 +85,46 @@ let g:lightline = {
   \     ['percent']
   \   ]
   \ },
-  \ 'component_function': {
-  \   'lsp': 'LSPStatus',
+  \ 'component_expand': {
+  \   'lsp_warnings': 'LightlineLSPWarnings',
+  \   'lsp_errors':   'LightlineLSPErrors',
+  \   'lsp_ok':       'LightlineLSPOk',
+  \ },
+  \ 'component_type': {
+  \   'lsp_warnings': 'warning',
+  \   'lsp_errors':   'error',
+  \   'lsp_ok':       'normal',
   \ },
 \ }
 
+function! LightlineLSPWarnings() abort
+  let l:counts = lsp#get_buffer_diagnostics_counts()
+  let l:sign = get(g:lsp_diagnostics_signs_warning, 'text', 'W')
+  return l:counts.warning == 0 ? '' : printf('%s %d', l:sign, l:counts.warning)
+endfunction
+
+function! LightlineLSPErrors() abort
+  let l:counts = lsp#get_buffer_diagnostics_counts()
+  let l:sign = get(g:lsp_diagnostics_signs_error, 'text', 'E')
+  return l:counts.error == 0 ? '' : printf('%s %d', l:sign, l:counts.error)
+endfunction
+
+"let g:lightline_lsp_signs_ok = "\uf00c "
+let g:lightline_lsp_signs_ok = "\uf058 "
+function! LightlineLSPOk() abort
+  let l:counts =  lsp#get_buffer_diagnostics_counts()
+  let l:total = l:counts.error + l:counts.warning
+  let l:sign = get(g:, 'lightline_lsp_signs_ok', 'O')
+  return l:total == 0 ? l:sign : ''
+endfunction
+
+augroup LightLineOnLSP
+  autocmd!
+  autocmd User lsp_diagnostics_updated call lightline#update()
+augroup END
 
 
+" \     [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ]
 
 
 

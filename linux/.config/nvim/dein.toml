@@ -47,23 +47,45 @@ repo = 'morhetz/gruvbox'
 
 ### Syntax {{{
 [[plugins]]
-repo = 'prabirshrestha/asyncomplete.vim'
-
-[[plugins]]
 repo = 'prabirshrestha/async.vim'
 
 [[plugins]]
-repo = 'prabirshrestha/vim-lsp'
-depends = ['async.vim']
-hook_source = '''
-source ~/.config/nvim/plugins/vim-lsp.rc.vim
-'''
+repo = 'prabirshrestha/asyncomplete.vim'
 
 [[plugins]]
 repo = 'prabirshrestha/asyncomplete-lsp.vim'
 
 [[plugins]]
+repo = 'prabirshrestha/asyncomplete-buffer.vim'
+
+[[plugins]]
+repo = 'prabirshrestha/vim-lsp'
+depends = ['async.vim']
+hook_add = '''
+source ~/.config/nvim/plugins/vim-lsp.rc.vim
+'''
+hook_source = '''
+source ~/.config/nvim/plugins/vim-lsp_post.rc.vim
+'''
+
+[[plugins]]
 repo = 'mattn/vim-lsp-settings'
+
+#[[plugins]]
+#repo = 'mattn/vim-lsp-icons'
+
+[[plugins]]
+repo = 'hrsh7th/vim-vsnip'
+
+[[plugins]]
+repo = 'hrsh7th/vim-vsnip-integ'
+
+[[plugins]]
+repo = 'prabirshrestha/vsnip-snippets'
+
+
+#[[plugins]]
+#repo = 'halkn/lightline-lsp'
 
 #[[plugins]]
 #repo = "neoclide/coc.nvim"
