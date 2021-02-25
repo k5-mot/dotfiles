@@ -336,7 +336,7 @@ if [ -f $ZDOTDIR/zplug.zsh ]; then
 fi
 
 if [ -f $HOME/.cache/tmux/plugins/tpm ]; then
-  git clone https://github.com/tmux-plugins/tpm $HOME/.cache/tmux/plugins/tpm
+  git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
 fi
 
 # Compile .zshrc only once at first.
