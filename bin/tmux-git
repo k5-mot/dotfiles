@@ -7,9 +7,10 @@ SUBSEPARATOR_LEFT="\ue0b1 "
 SUBSEPARATOR_RIGHT="\ue0b3 "
 
 ## Git symbols
-UNSTAGE="\uf06d"
-STAGE="\uf134"
-COMMIT="\uf00c"
+UNSTAGE="\uf658"
+STAGE="\uf071"
+COMMIT="\uf058"
+
 
 if git_status=$(cd $1 && git status 2>/dev/null ); then
   git_branch="$(echo $git_status | awk 'NR==1 {print $3}')"
