@@ -484,4 +484,5 @@
   // "vsintellicode.modify.editor.suggestSelection": "enabled",
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
 
+  "emmet.triggerExpansionOnTab": true
 }

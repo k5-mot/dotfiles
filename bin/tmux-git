@@ -16,11 +16,25 @@ if git_status=$(cd $1 && git status 2>/dev/null ); then
   git_branch="$(echo $git_status | awk 'NR==1 {print $3}')"
   case $git_status in
     *Changes\ not\ staged* )
-      git_info="#[bg=colour196]${SEPARATOR_LEFT}#[bg=colour196,fg=colour250] ${git_branch} ${UNSTAGE} #[bg=default,fg=colour196]${SEPARATOR_LEFT}" ;;
+      git_symbol=${UNSTAGE} ;;
     *Changes\ to\ be\ committed* )
-      git_info="#[bg=colour136]${SEPARATOR_LEFT}#[bg=colour136,fg=colour235] ${git_branch} ${STAGE} #[bg=default,fg=colour136]${SEPARATOR_LEFT}" ;;
+      git_symbol=${STAGE} ;;
     * )
-      git_info="#[bg=colour148]${SEPARATOR_LEFT}#[bg=colour148,fg=colour22] ${git_branch} ${COMMIT} #[bg=default,fg=colour148]${SEPARATOR_LEFT}" ;;
+      git_symbol=${COMMIT} ;;
+  esac
+  case $git_branch in
+    master )
+      git_info="#[bg=colour148]${SEPARATOR_LEFT}#[bg=colour148,fg=colour022] ${git_branch} ${git_symbol} #[bg=default,fg=colour148]${SEPARATOR_LEFT}" ;;
+    develop )
+      git_info="#[bg=colour023]${SEPARATOR_LEFT}#[bg=colour023,fg=colour231] ${git_branch} ${git_symbol} #[bg=default,fg=colour023]${SEPARATOR_LEFT}" ;;
+    *feature* )
+      git_info="#[bg=colour136]${SEPARATOR_LEFT}#[bg=colour136,fg=colour235] ${git_branch} ${git_symbol} #[bg=default,fg=colour136]${SEPARATOR_LEFT}" ;;
+    release )
+      git_info="#[bg=colour055]${SEPARATOR_LEFT}#[bg=colour055,fg=colour241] ${git_branch} ${git_symbol} #[bg=default,fg=colour055]${SEPARATOR_LEFT}" ;;
+    *hotfix* )
+      git_info="#[bg=colour196]${SEPARATOR_LEFT}#[bg=colour196,fg=colour250] ${git_branch} ${git_symbol} #[bg=default,fg=colour196]${SEPARATOR_LEFT}" ;;
+    * )
+      git_info="#[bg=colour031]${SEPARATOR_LEFT}#[bg=colour031,fg=colour117] ${git_branch} ${git_symbol} #[bg=default,fg=colour031]${SEPARATOR_LEFT}" ;;
   esac
 else
   git_info=""
