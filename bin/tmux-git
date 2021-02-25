@@ -1,11 +1,12 @@
 #!/bin/zsh
 
+## Separator symbols
 SEPARATOR_LEFT="\ue0b0"
 SEPARATOR_RIGHT="\ue0b2 "
 SUBSEPARATOR_LEFT="\ue0b1 "
 SUBSEPARATOR_RIGHT="\ue0b3 "
 
-#±
+## Git symbols
 UNSTAGE="\uf06d"
 STAGE="\uf134"
 COMMIT="\ue62d"
