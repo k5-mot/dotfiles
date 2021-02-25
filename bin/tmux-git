@@ -26,15 +26,15 @@ if git_status=$(cd $1 && git status 2>/dev/null ); then
     master )
       git_info="#[bg=colour148]${SEPARATOR_LEFT}#[bg=colour148,fg=colour022] ${git_branch} ${git_symbol} #[bg=default,fg=colour148]${SEPARATOR_LEFT}" ;;
     develop )
-      git_info="#[bg=colour023]${SEPARATOR_LEFT}#[bg=colour023,fg=colour231] ${git_branch} ${git_symbol} #[bg=default,fg=colour023]${SEPARATOR_LEFT}" ;;
+      git_info="#[bg=colour024]${SEPARATOR_LEFT}#[bg=colour024,fg=colour117] ${git_branch} ${git_symbol} #[bg=default,fg=colour024]${SEPARATOR_LEFT}" ;;
     *feature* )
-      git_info="#[bg=colour136]${SEPARATOR_LEFT}#[bg=colour136,fg=colour235] ${git_branch} ${git_symbol} #[bg=default,fg=colour136]${SEPARATOR_LEFT}" ;;
+      git_info="#[bg=colour208]${SEPARATOR_LEFT}#[bg=colour208,fg=colour088] ${git_branch} ${git_symbol} #[bg=default,fg=colour208]${SEPARATOR_LEFT}" ;;
     release )
-      git_info="#[bg=colour055]${SEPARATOR_LEFT}#[bg=colour055,fg=colour241] ${git_branch} ${git_symbol} #[bg=default,fg=colour055]${SEPARATOR_LEFT}" ;;
+      git_info="#[bg=colour055]${SEPARATOR_LEFT}#[bg=colour055,fg=colour189] ${git_branch} ${git_symbol} #[bg=default,fg=colour055]${SEPARATOR_LEFT}" ;;
     *hotfix* )
       git_info="#[bg=colour196]${SEPARATOR_LEFT}#[bg=colour196,fg=colour250] ${git_branch} ${git_symbol} #[bg=default,fg=colour196]${SEPARATOR_LEFT}" ;;
     * )
-      git_info="#[bg=colour031]${SEPARATOR_LEFT}#[bg=colour031,fg=colour117] ${git_branch} ${git_symbol} #[bg=default,fg=colour031]${SEPARATOR_LEFT}" ;;
+      git_info="#[bg=colour252]${SEPARATOR_LEFT}#[bg=colour252,fg=colour241] ${git_branch} ${git_symbol} #[bg=default,fg=colour252]${SEPARATOR_LEFT}" ;;
   esac
 else
   git_info=""
