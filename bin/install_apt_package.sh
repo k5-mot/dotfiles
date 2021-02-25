@@ -10,8 +10,9 @@ sudo apt autoclean
 sudo sed -i.bak -r 's!(deb|deb-src) \S+!\1 mirror://mirrors.ubuntu.com/mirrors.txt!' /etc/apt/
 
 ## Install packages
-sudo apt install -y make
-sudo apt install -y gcc
+sudo apt install -y build-essential
+#sudo apt install -y make
+#sudo apt install -y gcc
 sudo apt install -y git
 #sudo apt install -y libssl-dev
 #sudo apt install -y libreadline-dev
@@ -38,8 +39,7 @@ sudo apt install -y python3
 #sudo apt install -y aria2
 #sudo apt install -y octave
 #sudo apt install -y autoconf
-sudo apt install -y bison
-sudo apt install -y build-essential
+#sudo apt install -y bison
 #sudo apt install -y libssl-dev
 #sudo apt install -y libyaml-dev
 #sudo apt install -y libreadline6-dev
