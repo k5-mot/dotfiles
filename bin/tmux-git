@@ -1,18 +1,24 @@
 #!/bin/zsh
 
 SEPARATOR_LEFT="\ue0b0"
-SEPARATOR_RIGHT="\ue0b2"
-SUBSEPARATOR_LEFT="\ue0b1"
-SUBSEPARATOR_RIGHT="\ue0b3"
+SEPARATOR_RIGHT="\ue0b2 "
+SUBSEPARATOR_LEFT="\ue0b1 "
+SUBSEPARATOR_RIGHT="\ue0b3 "
+
+#±
+UNSTAGE="\uf06d"
+STAGE="\uf134"
+COMMIT="\ue729"
+
 if git_status=$(cd $1 && git status 2>/dev/null ); then
   git_branch="$(echo $git_status | awk 'NR==1 {print $3}')"
   case $git_status in
     *Changes\ not\ staged* )
-      git_info="#[bg=colour196]${SEPARATOR_LEFT}#[bg=colour196,fg=colour250] ${git_branch} ± #[bg=default,fg=colour196]${SEPARATOR_LEFT}" ;;
+      git_info="#[bg=colour196]${SEPARATOR_LEFT}#[bg=colour196,fg=colour250] ${git_branch} ${UNSTAGE} #[bg=default,fg=colour196]${SEPARATOR_LEFT}" ;;
     *Changes\ to\ be\ committed* )
-      git_info="#[bg=colour136]${SEPARATOR_LEFT}#[bg=colour136,fg=colour235] ${git_branch} + #[bg=default,fg=colour136]${SEPARATOR_LEFT}" ;;
+      git_info="#[bg=colour136]${SEPARATOR_LEFT}#[bg=colour136,fg=colour235] ${git_branch} ${STAGE} #[bg=default,fg=colour136]${SEPARATOR_LEFT}" ;;
     * )
-      git_info="#[bg=colour148]${SEPARATOR_LEFT}#[bg=colour148,fg=colour22] ${git_branch} ✔ #[bg=default,fg=colour148]${SEPARATOR_LEFT}" ;;
+      git_info="#[bg=colour148]${SEPARATOR_LEFT}#[bg=colour148,fg=colour22] ${git_branch} ${COMMIT} #[bg=default,fg=colour148]${SEPARATOR_LEFT}" ;;
   esac
 else
   git_info=""
