@@ -30,8 +30,8 @@
 ### Metadata
 #export LC_IDENTIFICATION="en_US.UTF-8"
 ## All locale
-#export LC_ALL="en_US.UTF-8"
-export LC_ALL="ja_JP.UTF-8"
+export LC_ALL="en_US.UTF-8"
+#export LC_ALL="ja_JP.UTF-8"
 ### }}}
 
 ### Environment variable {{{
