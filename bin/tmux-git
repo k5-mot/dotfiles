@@ -37,7 +37,7 @@ if git_status=$(cd $1 && git status 2>/dev/null ); then
       git_info="#[bg=colour252]${SEPARATOR_LEFT}#[bg=colour252,fg=colour241] ${git_branch} ${git_symbol} #[bg=default,fg=colour252]${SEPARATOR_LEFT}" ;;
   esac
 else
-  git_info=""
+  git_info="#[bg=default]${SEPARATOR_LEFT}"
 fi
 
 echo "$git_info"
