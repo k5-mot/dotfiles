@@ -39,15 +39,24 @@ endif
 
 " Set up external provider
 "if has('nvim')
+if !isdirectory('$HOME/.anyenv/envs/pyenv')
   let g:python3_host_prog = $HOME . '/.anyenv/envs/pyenv/versions/3.9.2/bin/python'
   let g:python_host_prog  = $HOME . '/.anyenv/envs/pyenv/versions/2.7.18/bin/python'
+endif
+if !isdirectory('$HOME/.anyenv/envs/rbenv')
   let g:ruby_host_prog    = $HOME . '/.anyenv/envs/rbenv/versions/3.0.0/bin/neovim-ruby-host'
+endif
+if !isdirectory('$HOME/.anyenv/envs/nodenv')
   let g:node_host_prog    = $HOME . '/.anyenv/envs/nodenv/versions/15.10.0/bin/neovim-node-host'
-  "let g:perl_host_prog    = $HOME . '/.anyenv/envs/nodenv/versions/15.6.0/bin/neovim-node-host'
-  "let g:python3_host_prog = $HOME . '/.pyenv/versions/3.8.5/bin/python'
-  "let g:python_host_prog  = $HOME . '/.pyenv/versions/2.7.18/bin/python'
-  "let g:ruby_host_prog    = $HOME . '/.rbenv/versions/3.0.0/bin/neovim-ruby-host'
-  "let g:node_host_prog    = $HOME . '/.nodenv/versions/15.5.0/bin/neovim-node-host'
+endif
+if !isdirectory('$HOME/.anyenv/envs/plenv')
+  let g:perl_host_prog    = $HOME . '/.anyenv/envs/nodenv/versions/5.32.1/bin'
+endif
+"let g:perl_host_prog    = $HOME . '/.anyenv/envs/nodenv/versions/15.6.0/bin/neovim-node-host'
+"let g:python3_host_prog = $HOME . '/.pyenv/versions/3.8.5/bin/python'
+"let g:python_host_prog  = $HOME . '/.pyenv/versions/2.7.18/bin/python'
+"let g:ruby_host_prog    = $HOME . '/.rbenv/versions/3.0.0/bin/neovim-ruby-host'
+"let g:node_host_prog    = $HOME . '/.nodenv/versions/15.5.0/bin/neovim-node-host'
 "endif
 
 "if has('nvim')
@@ -72,7 +81,6 @@ let s:settings_data_dir = expand(s:settings_config_dir . '/data')
 set runtimepath+=s:settings_config_dir
 set runtimepath+=s:settings_plugin_dir
 set runtimepath+=s:settings_data_dir
-
 
 
 if dein#load_state(s:dein_cache_path)
