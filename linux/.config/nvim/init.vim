@@ -19,6 +19,9 @@ if !has('nvim')
   let &t_TE = ""
 endif
 
+set vb t_vb=
+set belloff=all
+
 " キーマップリーダーを最初に定義
 let mapleader = ','
 
