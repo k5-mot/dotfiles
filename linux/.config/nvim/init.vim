@@ -50,11 +50,11 @@ endif
   "let g:node_host_prog    = $HOME . '/.nodenv/versions/15.5.0/bin/neovim-node-host'
 "endif
 
-if has('nvim')
+"if has('nvim')
   let s:dein_cache_path = expand('$HOME/.cache/nvim/dein')
-else
-  let s:dein_cache_path = expand('$HOME/.cache/vim/dein')
-endif
+"else
+"  let s:dein_cache_path = expand('$HOME/.cache/vim/dein')
+"endif
 
 let s:dein_dir = s:dein_cache_path .'/repos/github.com/Shougo/dein.vim'
 
@@ -66,8 +66,14 @@ if &runtimepath !~ '/dein.vim'
 endif
 
 " runtimepathの設定
-set runtimepath+=$HOME/.config/nvim/
-set runtimepath+=$HOME/.config/nvim/plugins
+let s:settings_config_dir = expand('~/.config/nvim')
+let s:settings_plugin_dir = expand(s:settings_config_dir . '/plugins')
+let s:settings_data_dir = expand(s:settings_config_dir . '/data')
+set runtimepath+=s:settings_config_dir
+set runtimepath+=s:settings_plugin_dir
+set runtimepath+=s:settings_data_dir
+
+
 
 if dein#load_state(s:dein_cache_path)
   call dein#begin(s:dein_cache_path)

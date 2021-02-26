@@ -47,6 +47,13 @@ repo = 'morhetz/gruvbox'
 
 ### Syntax {{{
 [[plugins]]
+repo ='prabirshrestha/vital.vim'
+rev = 'popup'
+
+[[plugins]]
+repo = 'prabirshrestha/callbag.vim'
+
+[[plugins]]
 repo = 'prabirshrestha/async.vim'
 
 [[plugins]]
@@ -77,8 +84,6 @@ repo = 'mattn/vim-lsp-settings'
 #[[plugins]]
 #repo = 'mattn/vim-lsp-icons'
 
-
-
 [[plugins]]
 repo = 'SirVer/ultisnips'
 hook_add = '''
@@ -94,12 +99,12 @@ hook_source = '''
 source ~/.config/nvim/plugins/asyncomplete-ultisnips.rc.vim
 '''
 
-
 [[plugins]]
 repo = 'thomasfaingnaert/vim-lsp-snippets'
 
 [[plugins]]
 repo = 'thomasfaingnaert/vim-lsp-ultisnips'
+
 
 #[[plugins]]
 #repo = 'hrsh7th/vim-vsnip'
