@@ -5,4 +5,5 @@ if has('python3')
         \ 'allowlist': ['*'],
         \ 'completor': function('asyncomplete#sources#ultisnips#completor'),
         \ }))
+
 endif
