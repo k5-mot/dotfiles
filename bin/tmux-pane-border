@@ -1,22 +1,54 @@
 #!/bin/zsh
 
+## Separator symbols
+SEPARATOR_LEFT="\ue0b0"
+SEPARATOR_RIGHT="\ue0b2 "
+SUBSEPARATOR_LEFT="\ue0b1 "
+SUBSEPARATOR_RIGHT="\ue0b3 "
+
+## Git symbols
+GIT_SYMBOL="\ue725"
+UNSTAGE="\uf658"
+STAGE="\uf071"
+COMMIT="\uf058"
+
 if git_status=$(cd $1 && git status 2>/dev/null ); then
-  git_branch="$(echo $git_status| awk 'NR==1 {print $3}')"
+  git_branch="$(echo $git_status | awk 'NR==1 {print $3}')"
   case $git_status in
-    *Changes\ not\ staged* ) state="#[bg=colour013,fg=black] ± #[fg=default]" ;;
-    *Changes\ to\ be\ committed* ) state="#[bg=blue,fg=black] + #[default]" ;;
-    * ) state="#[bg=green,fg=black] ✔ #[default]" ;;
+    *Changes\ not\ staged* )
+      stage_symbol=${UNSTAGE} ;;
+    *Changes\ to\ be\ committed* )
+      stage_symbol=${STAGE} ;;
+    * )
+      stage_symbol=${COMMIT} ;;
   esac
-  if [[ $git_branch = "master" ]]; then
-    git_info="#[underscore]#[bg=black,fg=blue] ⭠ ${git_branch} #[default]${state}"
-  else
-    git_info="#[underscore]#[bg=black,fg=colour014] ⭠ ${git_branch} #[default]${state}"
-  fi
+  case $git_branch in
+    master )
+      git_info="#[bg=colour148]${SEPARATOR_LEFT}#[bg=colour148,fg=colour022] ${GIT_SYMBOL} ${git_branch} ${stage_symbol} #[bg=default,fg=colour148]${SEPARATOR_LEFT}" ;;
+    develop )
+      git_info="#[bg=colour024]${SEPARATOR_LEFT}#[bg=colour024,fg=colour117] ${GIT_SYMBOL} ${git_branch} ${stage_symbol} #[bg=default,fg=colour024]${SEPARATOR_LEFT}" ;;
+    *feature* )
+      git_info="#[bg=colour208]${SEPARATOR_LEFT}#[bg=colour208,fg=colour088] ${GIT_SYMBOL} ${git_branch} ${stage_symbol} #[bg=default,fg=colour208]${SEPARATOR_LEFT}" ;;
+    release )
+      git_info="#[bg=colour055]${SEPARATOR_LEFT}#[bg=colour055,fg=colour189] ${GIT_SYMBOL} ${git_branch} ${stage_symbol} #[bg=default,fg=colour055]${SEPARATOR_LEFT}" ;;
+    *hotfix* )
+      git_info="#[bg=colour196]${SEPARATOR_LEFT}#[bg=colour196,fg=colour250] ${GIT_SYMBOL} ${git_branch} ${stage_symbol} #[bg=default,fg=colour196]${SEPARATOR_LEFT}" ;;
+    * )
+      git_info="#[bg=colour252]${SEPARATOR_LEFT}#[bg=colour252,fg=colour241] ${GIT_SYMBOL} ${git_branch} ${stage_symbol} #[bg=default,fg=colour252]${SEPARATOR_LEFT}" ;;
+  esac
 else
-  git_info=""
+  git_info="#[bg=default]${SEPARATOR_LEFT}"
 fi
 
-directory="#[underscore]#[bg=black,fg=cyan]$1#[default]"
+username="#(whoami)"
+hostname="#h"
 
-echo "$git_info"
+if [ "$2" -eq "1" ]; then
+  echo "#[fg=colour22,bg=colour148,bold] ${username}@${hostname} #[fg=colour148,bg=colour240]${SEPARATOR_LEFT}#[fg=colour231,bg=colour240,bold] $1 #[fg=colour240]${git_info})#[default]"
+else
+  echo "#[fg=colour235,bg=colour241,bold] ${username}@${hostname} #[fg=colour241,bg=colour235]${SEPARATOR_LEFT}#[fg=colour240,bg=colour235,bold] $1 #[fg=colour235]#[bg=default]${SEPARATOR_LEFT}"
+fi
 
+
+
+#echo "#[fg=colour117,bg=colour024,bold] ${username}@${hostname} #[fg=colour024,bg=colour031]${SEPARATOR_LEFT}#[fg=colour117,bg=colour031,bold] #{pane_current_path} #[fg=colour031]${git_info})#[default]"
