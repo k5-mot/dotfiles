@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue Mar  2 05:02:01 2021
+# Make data base, printed on Tue Mar  2 05:08:21 2021
 
 # Variables
 
@@ -113,7 +113,7 @@ VSCODE_LOG_STACK = false
 # environment
 ANYENV_ROOT = /home/kmoto/.anyenv
 # environment
-VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-af785083-834c-4880-919f-8fb90b59f769.sock
+VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-960d2d5f-3770-41a9-86c1-65df00337837.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -259,8 +259,8 @@ BROWSER = /home/kmoto/.vscode-server/bin/622cb03f7e070a9670c94bae1a45d78d7181fbd
 # environment
 ZPLUG_USE_CACHE = true
 # environment
- 
 ZPLUG_ROOT = /home/kmoto/.cache/zsh/zplug/repos/zplug/zplug
+ 
 # environment
 WT_PROFILE_ID = {2c4de342-38b7-51cf-b940-2309a097f518}
 # environment
@@ -432,6 +432,6 @@ install:
 # strcache performance: lookups = 34 / hit rate = 35%
 # hash-table stats:
 # Load=22/8192=0%, Rehash=0, Collisions=1/34=3%
-# Finished Make data base on Tue Mar  2 05:02:01 2021
+# Finished Make data base on Tue Mar  2 05:08:21 2021
 
  
