@@ -24,162 +24,162 @@
   //"editor.formatOnPaste": false,
   //"editor.formatOnPaste": true,
 
-//  // Controls whether the editor should automatically format the line after typing.
-//  //"editor.formatOnType": false,
-//  "editor.formatOnType": true,
-//
-//  // Controls the letter spacing in pixels.
-//  //"editor.letterSpacing": 0,
-//  "editor.letterSpacing": -1,
-//
-//  // Controls the line height. Use 0 to compute the line height from the font size.
-//  //"editor.lineHeight": 0,
-//  //"editor.lineHeight": 24,
-//
-//  // Limit the width of the minimap to render at most a certain number of columns.
-//  //"editor.minimap.maxColumn": 120,
-//  "editor.minimap.maxColumn": 40,
-//
-//  // Render the actual characters on a line as opposed to color blocks.
-//  //"editor.minimap.renderCharacters": true,
-//  "editor.minimap.renderCharacters": false,
-//
-//  // Controls when the minimap slider is shown.
-//  //"editor.minimap.showSlider": "mouseover",
-//  "editor.minimap.showSlider": "always",
-//
-//  // A multiplier to be used on the `deltaX` and `deltaY` of mouse wheel scroll events.
-//  //"editor.mouseWheelScrollSensitivity": 1,
-//  "editor.mouseWheelScrollSensitivity": 0.7,
-//
-//  // Controls whether suggestions should automatically show up while typing.
-//  // "editor.quickSuggestions": {
-//  //   "other": true,
-//  //   "comments": false,
-//  //   "strings": false
-//  // },
-//  "editor.quickSuggestions": {
-//    "comments": false, // コメント内では無効
-//    "strings": true,   // 文字列内では有効
-//    "other": true      //  その他の場所で有効
-//  },
-//
-//  // Controls whether the editor should render control characters.
-//  //"editor.renderControlCharacters": false,
-//  "editor.renderControlCharacters": true,
-//
-//  // Controls how the editor should render the current line highlight.
-//  //  - none
-//  //  - gutter
-//  //  - line
-//  //  - all: Highlights both the gutter and the current line.
-//  //"editor.renderLineHighlight": "line",
-//  "editor.renderLineHighlight": "all",
-//
-//  // Controls how suggestions are pre-selected when showing the suggest list.
-//  //  - first: Always select the first suggestion.
-//  //  - recentlyUsed: Select recent suggestions unless further typing selects one, e.g. `console.| -> console.log` because `log` has been completed recently.
-//  //  - recentlyUsedByPrefix: Select suggestions based on previous prefixes that have completed those suggestions, e.g. `co -> console` and `con -> const`.
-//  // "editor.suggestSelection": "recentlyUsed",
-//  "editor.suggestSelection": "first",
-//
-//  // The number of spaces a tab is equal to. This setting is overridden based on the file contents when `editor.detectIndentation` is on.
-//  //"editor.tabSize": 4,
-//  "editor.tabSize": 2,
-//
-//  // Characters that will be used as word separators when doing word related navigations or operations.
-//  //"editor.wordSeparators": "`~!@#$%^&*()-=+[{]}\\|;:'\",.<>/?",
-//  "editor.wordSeparators": "./\\()\"'-:,.;<>~!@#$%^&*|+=[]{}`~?　、。「」【】『』（）！？てにをはがのともへでや",
-//
-//  // Controls how lines should wrap.
-//  //  - off: Lines will never wrap.
-//  //  - on: Lines will wrap at the viewport width.
-//  //  - wordWrapColumn: Lines will wrap at `editor.wordWrapColumn`.
-//  //  - bounded: Lines will wrap at the minimum of viewport and `editor.wordWrapColumn`.
-//  //"editor.wordWrap": "off",
-//  "editor.wordWrap": "on",
-//
-//  // Controls the visibility of the activity bar in the workbench.
-//  //"workbench.activityBar.visible": true,
-//  //"workbench.activityBar.visible": false,
-//
-//  // Overrides colors from the currently selected color theme.
-//  "workbench.colorCustomizations": {},
-//  //"workbench.colorCustomizations": { // カラーテーマに上書きする個別の設定
-//  //  "statusBar.background": "#000000", // ステータスバー背景色
-//  //  "statusBar.noFolderBackground": "#000000",
-//  //  "statusBar.foreground": "#ffffff", // ステータスバー前景色
-//  //  "statusBar.noFolderForeground": "#ffffff",
-//  //  "statusBar.border": "#ffffff", // ステータスバーの境界線
-//  //  "sideBar.background": "#000000", // サイドバーの背景色
-//  //  "sideBar.foreground": "#ffffff", // サイドバーの前景色
-//  //  "sideBar.border": "#ffffff", // サイドバーの境界線
-//  //  "activityBar.background": "#000000", // アクティビティバーの背景色
-//  //  "activityBar.foreground": "#ffffff", // アクティビティバーの前景色
-//  //  "activityBar.border": "#ffffff", // アクティビティバーの境界線
-//  //  "editor.background": "#121817", // エディタ背景色
-//  //  "editor.lineHighlightBackground": "#002255", // 選択している行の強調色
-//  //  "editor.selectionBackground": "#660000", // 選択領域の強調色
-//  //  "editorError.border": "#ff0000", // エラー部分の下線
-//  //  "editorLineNumber.foreground": "#0077ffbb",
-//  //  "editorLineNumber.activeForeground": "#ffffff",
-//  //  "scrollbarSlider.background": "#0077ff99", // スクロールバーの色
-//  //  "scrollbarSlider.hoverBackground": "#00ccffcc", // 移動中のスクロールバーの色
-//  //  "tab.activeBorder": "#ffffff", // アクティブタブの下線
-//  //  "tab.inactiveForeground": "#999999", // 非選択タブの文字色
-//  //  "editorBracketMatch.background": "#ffff0077",// 対応する括弧の背景色
-//  //  "editorSuggestWidget.selectedBackground": "#0044ff", // サジェスト欄,選択中項目の背景色
-//  //  "scrollbar.shadow": "#0077ff99",
-//  //  "editorLink.activeForeground": "#5555ce",
-//  //},
-//
-//  // Controls the sizing of editor tabs. This value is ignored when `workbench.editor.showTabs` is disabled.
-//  //  - fit: Always keep tabs large enough to show the full editor label.
-//  //  - shrink: Allow tabs to get smaller when the available space is not enough to show all tabs at once.
-//  // "workbench.editor.tabSizing": "fit",
-//  //"workbench.editor.tabSizing": "shrink",
-//
-//  // Control the visibility of the menu bar. A setting of 'toggle' means that the menu bar is hidden and a single press of the Alt key will show it. By default, the menu bar will be visible, unless the window is full screen.
-//  //  - default: Menu is only hidden in full screen mode.
-//  //  - visible: Menu is always visible even in full screen mode.
-//  //  - toggle: Menu is hidden but can be displayed via Alt key.
-//  //  - hidden: Menu is always hidden.
-//  //  - compact: Menu is displayed as a compact button in the sidebar. This value is ignored when `window.titleBarStyle` is `native`.
-//  //"window.menuBarVisibility": "default",
-//  "window.menuBarVisibility": "toggle",
-//
-//  // Controls the window title based on the active editor. Variables are substituted based on the context:
-//  // - `${activeEditorShort}`: the file name (e.g. myFile.txt).
-//  // - `${activeEditorMedium}`: the path of the file relative to the workspace folder (e.g. myFolder/myFileFolder/myFile.txt).
-//  // - `${activeEditorLong}`: the full path of the file (e.g. /Users/Development/myFolder/myFileFolder/myFile.txt).
-//  // - `${activeFolderShort}`: the name of the folder the file is contained in (e.g. myFileFolder).
-//  // - `${activeFolderMedium}`: the path of the folder the file is contained in, relative to the workspace folder (e.g. myFolder/myFileFolder).
-//  // - `${activeFolderLong}`: the full path of the folder the file is contained in (e.g. /Users/Development/myFolder/myFileFolder).
-//  // - `${folderName}`: name of the workspace folder the file is contained in (e.g. myFolder).
-//  // - `${folderPath}`: file path of the workspace folder the file is contained in (e.g. /Users/Development/myFolder).
-//  // - `${rootName}`: name of the opened workspace or folder (e.g. myFolder or myWorkspace).
-//  // - `${rootPath}`: file path of the opened workspace or folder (e.g. /Users/Development/myWorkspace).
-//  // - `${appName}`: e.g. VS Code.
-//  // - `${remoteName}`: e.g. SSH
-//  // - `${dirty}`: a dirty indicator if the active editor is dirty.
-//  // - `${separator}`: a conditional separator (" - ") that only shows when surrounded by variables with values or static text.
-//  //"window.title": "${dirty}${activeEditorShort}${separator}${rootName}${separator}${appName}",
-//  "window.title": "${dirty}${activeEditorShort} / ${rootName}",
-//
-//  // Adjust the zoom level of the window. The original size is 0 and each increment above (e.g. 1) or below (e.g. -1) represents zooming 20% larger or smaller. You can also enter decimals to adjust the zoom level with a finer granularity.
-//  //"window.zoomLevel": 0,
-//  "window.zoomLevel": -1,
-//
-//  // When enabled, the editor will attempt to guess the character set encoding when opening files. This setting can also be configured per language.
-//  // "files.autoGuessEncoding": false,
-//  "files.autoGuessEncoding": true,
-//
-//  // The default end of line character.
-//  //  - \n: LF
-//  //  - \r\n: CRLF
-//  //  - auto: Uses operating system specific end of line character.
-//  //"files.eol": "auto",
-//  "files.eol": "\n",
+  // Controls whether the editor should automatically format the line after typing.
+  //"editor.formatOnType": false,
+  //"editor.formatOnType": true,
+
+  // Controls the letter spacing in pixels.
+  //"editor.letterSpacing": 0,
+  //"editor.letterSpacing": -1,
+
+  // Controls the line height. Use 0 to compute the line height from the font size.
+  //"editor.lineHeight": 0,
+  //"editor.lineHeight": 24,
+
+  // Limit the width of the minimap to render at most a certain number of columns.
+  //"editor.minimap.maxColumn": 120,
+  //"editor.minimap.maxColumn": 40,
+
+  // Render the actual characters on a line as opposed to color blocks.
+  //"editor.minimap.renderCharacters": true,
+  "editor.minimap.renderCharacters": false,
+
+  // Controls when the minimap slider is shown.
+  //"editor.minimap.showSlider": "mouseover",
+  "editor.minimap.showSlider": "always",
+
+  // A multiplier to be used on the `deltaX` and `deltaY` of mouse wheel scroll events.
+  //"editor.mouseWheelScrollSensitivity": 1,
+  "editor.mouseWheelScrollSensitivity": 0.7,
+
+  // Controls whether suggestions should automatically show up while typing.
+  // "editor.quickSuggestions": {
+  //   "other": true,
+  //   "comments": false,
+  //   "strings": false
+  // },
+  "editor.quickSuggestions": {
+    "comments": false, // コメント内では無効
+    "strings": true,   // 文字列内では有効
+    "other": true      //  その他の場所で有効
+  },
+
+  // Controls whether the editor should render control characters.
+  //"editor.renderControlCharacters": false,
+  "editor.renderControlCharacters": true,
+
+  // Controls how the editor should render the current line highlight.
+  //  - none
+  //  - gutter
+  //  - line
+  //  - all: Highlights both the gutter and the current line.
+  //"editor.renderLineHighlight": "line",
+  "editor.renderLineHighlight": "all",
+
+  // Controls how suggestions are pre-selected when showing the suggest list.
+  //  - first: Always select the first suggestion.
+  //  - recentlyUsed: Select recent suggestions unless further typing selects one, e.g. `console.| -> console.log` because `log` has been completed recently.
+  //  - recentlyUsedByPrefix: Select suggestions based on previous prefixes that have completed those suggestions, e.g. `co -> console` and `con -> const`.
+  // "editor.suggestSelection": "recentlyUsed",
+  "editor.suggestSelection": "first",
+
+  // The number of spaces a tab is equal to. This setting is overridden based on the file contents when `editor.detectIndentation` is on.
+  //"editor.tabSize": 4,
+  "editor.tabSize": 2,
+
+  // Characters that will be used as word separators when doing word related navigations or operations.
+  //"editor.wordSeparators": "`~!@#$%^&*()-=+[{]}\\|;:'\",.<>/?",
+  "editor.wordSeparators": "./\\()\"'-:,.;<>~!@#$%^&*|+=[]{}`~?　、。「」【】『』（）！？てにをはがのともへでや",
+
+  // Controls how lines should wrap.
+  //  - off: Lines will never wrap.
+  //  - on: Lines will wrap at the viewport width.
+  //  - wordWrapColumn: Lines will wrap at `editor.wordWrapColumn`.
+  //  - bounded: Lines will wrap at the minimum of viewport and `editor.wordWrapColumn`.
+  //"editor.wordWrap": "off",
+  "editor.wordWrap": "on",
+
+  // Controls the visibility of the activity bar in the workbench.
+  //"workbench.activityBar.visible": true,
+  //"workbench.activityBar.visible": false,
+
+  // Overrides colors from the currently selected color theme.
+  "workbench.colorCustomizations": {},
+  //"workbench.colorCustomizations": { // カラーテーマに上書きする個別の設定
+  //  "statusBar.background": "#000000", // ステータスバー背景色
+  //  "statusBar.noFolderBackground": "#000000",
+  //  "statusBar.foreground": "#ffffff", // ステータスバー前景色
+  //  "statusBar.noFolderForeground": "#ffffff",
+  //  "statusBar.border": "#ffffff", // ステータスバーの境界線
+  //  "sideBar.background": "#000000", // サイドバーの背景色
+  //  "sideBar.foreground": "#ffffff", // サイドバーの前景色
+  //  "sideBar.border": "#ffffff", // サイドバーの境界線
+  //  "activityBar.background": "#000000", // アクティビティバーの背景色
+  //  "activityBar.foreground": "#ffffff", // アクティビティバーの前景色
+  //  "activityBar.border": "#ffffff", // アクティビティバーの境界線
+  //  "editor.background": "#121817", // エディタ背景色
+  //  "editor.lineHighlightBackground": "#002255", // 選択している行の強調色
+  //  "editor.selectionBackground": "#660000", // 選択領域の強調色
+  //  "editorError.border": "#ff0000", // エラー部分の下線
+  //  "editorLineNumber.foreground": "#0077ffbb",
+  //  "editorLineNumber.activeForeground": "#ffffff",
+  //  "scrollbarSlider.background": "#0077ff99", // スクロールバーの色
+  //  "scrollbarSlider.hoverBackground": "#00ccffcc", // 移動中のスクロールバーの色
+  //  "tab.activeBorder": "#ffffff", // アクティブタブの下線
+  //  "tab.inactiveForeground": "#999999", // 非選択タブの文字色
+  //  "editorBracketMatch.background": "#ffff0077",// 対応する括弧の背景色
+  //  "editorSuggestWidget.selectedBackground": "#0044ff", // サジェスト欄,選択中項目の背景色
+  //  "scrollbar.shadow": "#0077ff99",
+  //  "editorLink.activeForeground": "#5555ce",
+  //},
+
+  // Controls the sizing of editor tabs. This value is ignored when `workbench.editor.showTabs` is disabled.
+  //  - fit: Always keep tabs large enough to show the full editor label.
+  //  - shrink: Allow tabs to get smaller when the available space is not enough to show all tabs at once.
+  "workbench.editor.tabSizing": "fit",
+  //"workbench.editor.tabSizing": "shrink",
+
+  // Control the visibility of the menu bar. A setting of 'toggle' means that the menu bar is hidden and a single press of the Alt key will show it. By default, the menu bar will be visible, unless the window is full screen.
+  //  - default: Menu is only hidden in full screen mode.
+  //  - visible: Menu is always visible even in full screen mode.
+  //  - toggle: Menu is hidden but can be displayed via Alt key.
+  //  - hidden: Menu is always hidden.
+  //  - compact: Menu is displayed as a compact button in the sidebar. This value is ignored when `window.titleBarStyle` is `native`.
+  //"window.menuBarVisibility": "default",
+  "window.menuBarVisibility": "toggle",
+
+  // Controls the window title based on the active editor. Variables are substituted based on the context:
+  // - `${activeEditorShort}`: the file name (e.g. myFile.txt).
+  // - `${activeEditorMedium}`: the path of the file relative to the workspace folder (e.g. myFolder/myFileFolder/myFile.txt).
+  // - `${activeEditorLong}`: the full path of the file (e.g. /Users/Development/myFolder/myFileFolder/myFile.txt).
+  // - `${activeFolderShort}`: the name of the folder the file is contained in (e.g. myFileFolder).
+  // - `${activeFolderMedium}`: the path of the folder the file is contained in, relative to the workspace folder (e.g. myFolder/myFileFolder).
+  // - `${activeFolderLong}`: the full path of the folder the file is contained in (e.g. /Users/Development/myFolder/myFileFolder).
+  // - `${folderName}`: name of the workspace folder the file is contained in (e.g. myFolder).
+  // - `${folderPath}`: file path of the workspace folder the file is contained in (e.g. /Users/Development/myFolder).
+  // - `${rootName}`: name of the opened workspace or folder (e.g. myFolder or myWorkspace).
+  // - `${rootPath}`: file path of the opened workspace or folder (e.g. /Users/Development/myWorkspace).
+  // - `${appName}`: e.g. VS Code.
+  // - `${remoteName}`: e.g. SSH
+  // - `${dirty}`: a dirty indicator if the active editor is dirty.
+  // - `${separator}`: a conditional separator (" - ") that only shows when surrounded by variables with values or static text.
+  //"window.title": "${dirty}${activeEditorShort}${separator}${rootName}${separator}${appName}",
+  "window.title": "${dirty}${activeEditorShort} / ${rootName}",
+
+  // Adjust the zoom level of the window. The original size is 0 and each increment above (e.g. 1) or below (e.g. -1) represents zooming 20% larger or smaller. You can also enter decimals to adjust the zoom level with a finer granularity.
+  "window.zoomLevel": 0,
+  //"window.zoomLevel": -1,
+
+  // When enabled, the editor will attempt to guess the character set encoding when opening files. This setting can also be configured per language.
+  // "files.autoGuessEncoding": false,
+  "files.autoGuessEncoding": true,
+
+  // The default end of line character.
+  //  - \n: LF
+  //  - \r\n: CRLF
+  //  - auto: Uses operating system specific end of line character.
+  //"files.eol": "auto",
+  "files.eol": "\n",
 
   // Configure glob patterns for excluding files and folders. For example, the file Explorer decides which files and folders to show or hide based on this setting. Refer to the `search.exclude` setting to define search specific excludes. Read more about glob patterns [here](https://code.visualstudio.com/docs/editor/codebasics#_advanced-search-options).
   // "files.exclude": {
@@ -221,7 +221,8 @@
 
   // The path of the shell that the terminal uses on Windows (default: C:\Program Files\PowerShell\7\pwsh.exe). [Read more about configuring the shell](https://code.visualstudio.com/docs/editor/integrated-terminal#_configuration).
   //"terminal.integrated.shell.windows": null,
-  "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\wsl.exe",
+  //"terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\wsl.exe",
+  //"terminal.integrated.shell.linux": "/bin/zsh",
 
   // Enable crash reports to be sent to a Microsoft online service.
   // This option requires restart to take effect.
@@ -330,42 +331,42 @@
       "tools": [
         "latexmk"
       ]
-    }//,
-    //{
-    //  "name": "latexmk (latexmkrc)",
-    //  "tools": [
-    //    "latexmk_rconly"
-    //  ]
-    //},
-    //{
-    //  "name": "latexmk (lualatex)",
-    //  "tools": [
-    //    "lualatexmk"
-    //  ]
-    //},
-    //{
-    //  "name": "pdflatex ➞ bibtex ➞ pdflatex × 2",
-    //  "tools": [
-    //    "pdflatex",
-    //    "bibtex",
-    //    "pdflatex",
-    //    "pdflatex"
-    //  ]
-    //},
-    //{
-    //  "name": "Compile Rnw files",
-    //  "tools": [
-    //    "rnw2tex",
-    //    "latexmk"
-    //  ]
-    //},
-    //{
-    //  "name": "Compile Jnw files",
-    //  "tools": [
-    //    "jnw2tex",
-    //    "latexmk"
-    //  ]
-    //}
+    },
+    {
+      "name": "latexmk (latexmkrc)",
+      "tools": [
+        "latexmk_rconly"
+      ]
+    },
+    {
+      "name": "latexmk (lualatex)",
+      "tools": [
+        "lualatexmk"
+      ]
+    },
+    {
+      "name": "pdflatex ➞ bibtex ➞ pdflatex × 2",
+      "tools": [
+        "pdflatex",
+        "bibtex",
+        "pdflatex",
+        "pdflatex"
+      ]
+    },
+    {
+      "name": "Compile Rnw files",
+      "tools": [
+        "rnw2tex",
+        "latexmk"
+      ]
+    },
+    {
+      "name": "Compile Jnw files",
+      "tools": [
+        "jnw2tex",
+        "latexmk"
+      ]
+    }
   ],
 
   // Define LaTeX compiling tools to be used in recipes.
@@ -485,6 +486,6 @@
   // "vsintellicode.modify.editor.suggestSelection": "enabled",
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
 
-"emmet.triggerExpansionOnTab": true,
-"workbench.startupEditor": "newUntitledFile",
+  "emmet.triggerExpansionOnTab": false,
+  "workbench.startupEditor": "newUntitledFile",
 }

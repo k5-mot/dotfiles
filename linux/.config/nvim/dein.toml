@@ -10,13 +10,13 @@ repo = 'Shougo/dein.vim'
 #source ~/.config/nvim/plugins/deol.rc.vim
 #'''
 
-[[plugins]]
-repo = 'Shougo/vimproc.vim'
-build = 'make'
-
-[[plugins]]
-repo = 'Shougo/vimshell'
-build = 'make'
+#[[plugins]]
+#repo = 'Shougo/vimproc.vim'
+#build = 'make'
+#
+#[[plugins]]
+#repo = 'Shougo/vimshell'
+#build = 'make'
 ### }}}
 
 ### colorscheme {{{
@@ -46,16 +46,16 @@ repo = 'morhetz/gruvbox'
 ### }}}
 
 ### Syntax {{{
-[[plugins]]
-repo ='prabirshrestha/vital.vim'
-rev = 'popup'
+#[[plugins]]
+#repo ='prabirshrestha/vital.vim'
+#rev = 'popup'
+#
+#[[plugins]]
+#repo = 'prabirshrestha/callbag.vim'
 
-[[plugins]]
-repo = 'prabirshrestha/callbag.vim'
-
-[[plugins]]
-repo = 'prabirshrestha/async.vim'
-
+#[[plugins]]
+#repo = 'prabirshrestha/async.vim'
+#
 [[plugins]]
 repo = 'prabirshrestha/asyncomplete.vim'
 hook_add = '''
@@ -67,6 +67,7 @@ repo = 'prabirshrestha/asyncomplete-lsp.vim'
 
 #[[plugins]]
 #repo = 'prabirshrestha/asyncomplete-buffer.vim'
+
 
 [[plugins]]
 repo = 'prabirshrestha/vim-lsp'
@@ -84,20 +85,25 @@ repo = 'mattn/vim-lsp-settings'
 #[[plugins]]
 #repo = 'mattn/vim-lsp-icons'
 
-[[plugins]]
-repo = 'SirVer/ultisnips'
-hook_add = '''
-source ~/.config/nvim/plugins/ultisnips.rc.vim
-'''
-
-[[plugins]]
-repo = 'honza/vim-snippets'
-
-[[plugins]]
-repo = 'thomasfaingnaert/vim-lsp-snippets'
-
-[[plugins]]
-repo = 'thomasfaingnaert/vim-lsp-ultisnips'
+#[[plugins]]
+#repo = 'SirVer/ultisnips'
+#hook_add = '''
+#source ~/.config/nvim/plugins/ultisnips.rc.vim
+#'''
+#[[plugins]]
+#repo = 'prabirshrestha/asyncomplete-ultisnips.vim'
+#hook_source = '''
+#source ~/.config/nvim/plugins/asyncomplete-ultisnips.rc.vim
+#'''
+#
+#[[plugins]]
+#repo = 'honza/vim-snippets'
+#
+#[[plugins]]
+#repo = 'thomasfaingnaert/vim-lsp-snippets'
+#
+#[[plugins]]
+#repo = 'thomasfaingnaert/vim-lsp-ultisnips'
 
 
 #[[plugins]]

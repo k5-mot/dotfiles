@@ -6,6 +6,7 @@ set autoread
 
 set completeopt=menuone,noselect
 
+
 " スクロール時の余白行数
 set scrolloff=5
 set sidescrolloff=6

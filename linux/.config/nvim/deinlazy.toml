@@ -21,11 +21,6 @@ repo = 'Shougo/neomru.vim'
 repo = 'Shougo/neoyank.vim'
 ### }}}
 
-[[plugins]]
-repo = 'prabirshrestha/asyncomplete-ultisnips.vim'
-hook_source = '''
-source ~/.config/nvim/plugins/asyncomplete-ultisnips.rc.vim
-'''
 
 ### Defx {{{
 # File explorer
