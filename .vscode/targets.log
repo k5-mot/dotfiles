@@ -1,0 +1,424 @@
+make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+# GNU Make 4.2.1
+# Built for x86_64-pc-linux-gnu
+# Copyright (C) 1988-2016 Free Software Foundation, Inc.
+# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+# This is free software: you are free to change and redistribute it.
+# There is NO WARRANTY, to the extent permitted by law.
+
+# Make data base, printed on Sun Feb 28 21:54:23 2021
+
+# Variables
+
+# environment
+ZDOTCACHE = /home/kmoto/.cache/zsh
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# automatic
+?F = $(notdir $?)
+# environment
+WSLENV = ELECTRON_RUN_AS_NODE/w:WT_SESSION::WT_PROFILE_ID
+# environment
+PROMPT2 = 
+# default
+.SHELLFLAGS := -c
+# environment
+VSCODE_AGENT_FOLDER = /home/kmoto/.vscode-server
+# environment
+PYENV_ROOT = /home/kmoto/.anyenv/envs/pyenv
+# environment
+ZPLUG_LOG_LOAD_FAILURE = false
+# environment
+NODENV_SHELL = zsh
+# environment
+PLENV_SHELL = zsh
+# automatic
+@F = $(notdir $@)
+# environment
+XMODIFIERS = @im=ibus
+# environment
+PERIOD = 30
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# makefile
+CURDIR := /home/kmoto/dotfiles
+# environment
+RBENV_SHELL = zsh
+# environment
+MANPAGER = less -iMR
+# environment
+VSCODE_NLS_CONFIG = {"locale":"en","availableLanguages":{}}
+# environment
+_ZPLUG_CONFIG_SUBSHELL = :
+# environment
+_ = /mnt/c/Users/aldog/AppData/Local/Programs/Microsoft VS Code/bin/code
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# environment
+SAVEHIST = 1000
+# makefile (from 'Makefile', line 1)
+MAKEFILE_LIST :=  Makefile
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# environment
+LUAENV_ROOT = /home/kmoto/.anyenv/envs/luaenv
+# 'override' directive
+GNUMAKEFLAGS := 
+# environment
+LESS_TERMCAP_se = [0m
+# environment
+VSCODE_VERBOSE_LOGGING = true
+# environment
+ZPLUG_THREADS = 16
+# environment
+ZPLUG_FILTER = fzf-tmux:fzf:peco:percol:fzy:zaw
+# environment
+INFOPATH = /home/kmoto/.local/usr/share/info::/usr/share/info:/usr/local/share/info:/opt/share/info
+# environment
+_ZPLUG_VERSION = 2.4.2
+# default
+MAKE_HOST := x86_64-pc-linux-gnu
+# environment
+PATH = /home/kmoto/.vscode-server/bin/622cb03f7e070a9670c94bae1a45d78d7181fbd4/bin:/home/kmoto/.cache/zsh/zplug/repos/zplug/zplug/bin:/home/kmoto/.cache/zsh/zplug/bin:/home/kmoto/.anyenv/envs/rbenv/shims:/home/kmoto/.anyenv/envs/rbenv/bin:/home/kmoto/.anyenv/envs/pyenv/shims:/home/kmoto/.anyenv/envs/pyenv/bin:/home/kmoto/.anyenv/envs/plenv/shims:/home/kmoto/.anyenv/envs/plenv/bin:/home/kmoto/.anyenv/envs/nodenv/shims:/home/kmoto/.anyenv/envs/nodenv/bin:/home/kmoto/.anyenv/envs/luaenv/shims:/home/kmoto/.anyenv/envs/luaenv/bin:/home/kmoto/.anyenv/bin:/home/kmoto/.local/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/mnt/c/Program Files (x86)/VMware/VMware Player/bin/:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/dotnet/:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/TortoiseGit/bin:/mnt/c/Program Files/PowerShell/7/:/mnt/c/Users/aldog/AppData/Local/Programs/Python/Python39/Scripts/:/mnt/c/Users/aldog/AppData/Local/Programs/Python/Python39/:/mnt/c/Users/aldog/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/aldog/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/ProgramData/TeXLive/2020/bin/win32:/mnt/c/Users/aldog/.dotnet/tools:/opt/bin:/usr/libexec:/usr/local/libexec:/home/kmoto/dotfiles/bin
+# environment
+LESS_TERMCAP_mb = [1;33m
+# environment
+LUAENV_SHELL = zsh
+# environment
+ZDOTDIR = /home/kmoto/.config/zsh
+# environment
+C_INCLUDE_PATH = :/home/kmoto/.local/usr/include:/usr/include:/usr/local/include:/opt/include
+# environment
+LIBRARY_PATH = :/home/kmoto/.local/usr/lib64:/home/kmoto/.local/usr/lib:/lib:/lib64:/usr/lib:/usr/lib64:/usr/local/lib:/usr/local/lib64:/opt/lib:/opt/lib64
+# environment
+CPATH = /home/kmoto/.local/usr/include::/usr/include:/usr/local/include:/opt/include
+# environment
+FPATH = /home/kmoto/.cache/zsh/zplug/repos/zplug/zplug/misc/completions:/home/kmoto/.cache/zsh/zplug/repos/zplug/zplug/base/sources:/home/kmoto/.cache/zsh/zplug/repos/zplug/zplug/autoload:/home/kmoto/.cache/zsh/zplug/repos/zplug/zplug/base/utils:/home/kmoto/.cache/zsh/zplug/repos/zplug/zplug/base/job:/home/kmoto/.cache/zsh/zplug/repos/zplug/zplug/base/log:/home/kmoto/.cache/zsh/zplug/repos/zplug/zplug/base/io:/home/kmoto/.cache/zsh/zplug/repos/zplug/zplug/base/core:/home/kmoto/.cache/zsh/zplug/repos/zplug/zplug/base/base:/home/kmoto/.cache/zsh/zplug/repos/zplug/zplug/autoload/commands:/home/kmoto/.cache/zsh/zplug/repos/zplug/zplug/autoload/options:/home/kmoto/.cache/zsh/zplug/repos/zplug/zplug/autoload/tags:/usr/local/share/zsh/site-functions:/usr/share/zsh/vendor-functions:/usr/share/zsh/vendor-completions:/usr/share/zsh/functions/Calendar:/usr/share/zsh/functions/Chpwd:/usr/share/zsh/functions/Completion:/usr/share/zsh/functions/Completion/AIX:/usr/share/zsh/functions/Completion/BSD:/usr/share/zsh/functions/Completion/Base:/usr/share/zsh/functions/Completion/Cygwin:/usr/share/zsh/functions/Completion/Darwin:/usr/share/zsh/functions/Completion/Debian:/usr/share/zsh/functions/Completion/Linux:/usr/share/zsh/functions/Completion/Mandriva:/usr/share/zsh/functions/Completion/Redhat:/usr/share/zsh/functions/Completion/Solaris:/usr/share/zsh/functions/Completion/Unix:/usr/share/zsh/functions/Completion/X:/usr/share/zsh/functions/Completion/Zsh:/usr/share/zsh/functions/Completion/openSUSE:/usr/share/zsh/functions/Exceptions:/usr/share/zsh/functions/MIME:/usr/share/zsh/functions/Math:/usr/share/zsh/functions/Misc:/usr/share/zsh/functions/Newuser:/usr/share/zsh/functions/Prompts:/usr/share/zsh/functions/TCP:/usr/share/zsh/functions/VCS_Info:/usr/share/zsh/functions/VCS_Info/Backends:/usr/share/zsh/functions/Zftp:/usr/share/zsh/functions/Zle:/home/kmoto/dotfiles/bin:/home/kmoto/.cache/zsh/zplug/repos/zsh-users/zsh-completions/src:/home/kmoto/.config/zsh/completion
+# environment
+ZPLUG_HOME = /home/kmoto/.cache/zsh/zplug
+# environment
+ZPLUG_CACHE_DIR = /home/kmoto/.cache/zsh/zplug/cache
+# environment
+GOPATH = /home/kmoto/.golang
+# environment
+CARGO_ROOT = /home/kmoto/.cargo
+# environment
+VSCODE_LOG_STACK = false
+# environment
+ANYENV_ROOT = /home/kmoto/.anyenv
+# environment
+VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-7c846581-f963-4424-982d-00e932bab3b9.sock
+# default
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
+# environment
+CDPATH = 
+# environment
+LS_COLORS = rs=0:di=01;33:ln=01;36:mh=00:pi=01;33:so=01;35:do=01;35:bd=01;33:cd=01;33:or=01;31:su=02;31:sg=02;33:ca=01;31:tw=01;32:ow=01;31:st=01;34:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.axv=01;35:*.anx=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.axa=00;36:*.oga=00;36:*.spx=00;36:*.xspf=00;36:
+# environment
+CPLUS_INCLUDE_PATH = /usr/include/c++/9::/home/kmoto/.local/usr/include:/usr/include:/usr/local/include:/opt/include
+# automatic
+%F = $(notdir $%)
+# environment
+DISPLAY = 172.25.112.1:0
+# environment
+LESS_TERMCAP_me = [0m
+# environment
+LOCAL_IP = 172.25.112.1
+# environment
+GTK_IM_MODULE = ibus
+# environment
+VSCODE_PIPE_LOGGING = true
+# environment
+ZPLUG_PROTOCOL = HTTPS
+# environment
+PWD = /home/kmoto/dotfiles
+# environment
+LOCAL_ROOT = /home/kmoto/.local
+# default
+.LOADED := 
+# environment
+WSL_INTEROP = /run/WSL/3296_interop
+# environment
+PKG_CONFIG_PATH = :/usr/local/lib/pkgconfig
+# environment
+WT_SESSION = b894327f-826e-475d-82f0-1cc01497cee6
+# environment
+LESS_TERMCAP_ue = [0m
+# environment
+_ZPLUG_URL = https://github.com/zplug/zplug
+# environment
+MANPATH = /home/kmoto/.local/usr/share/man::/usr/share/man:/usr/local/share/man:/opt/share/man
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/server/remoteExtensionHostProcess
+# environment
+PYENV_SHELL = zsh
+# environment
+HOME = /home/kmoto
+# environment
+LD_LIBRARY_PATH = /home/kmoto/.local/usr/lib64:/home/kmoto/.local/usr/lib::/lib:/lib64:/usr/lib:/usr/lib64:/usr/local/lib:/usr/local/lib64:/opt/lib:/opt/lib64
+# environment
+LOGNAME = kmoto
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+# environment
+ZPLUG_LOG_LOAD_SUCCESS = false
+# automatic
++F = $(notdir $+)
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# environment
+ZPLUG_BIN = /home/kmoto/.cache/zsh/zplug/bin
+# environment
+LESS_TERMCAP_md = [1;36m
+# environment
+_ZPLUG_PREZTO = sorin-ionescu/prezto
+# environment
+MAKELEVEL := 0
+# makefile (from 'Makefile', line 9)
+DOTDIRS :=  .config .config/Code .config/Code/User .config/Code/User/snippets .config/zsh .config/nvim .config/nvim/plugins .config/nvim/plugins/trash .emacs.d
+# makefile (from 'Makefile', line 4)
+DOTPATH := /home/kmoto/dotfiles/linux/
+# environment
+HISTFILE = /home/kmoto/.cache/zsh/.zsh_history
+# default
+MAKE = $(MAKE_COMMAND)
+# default
+MAKECMDGOALS := all
+# environment
+QT_IM_MODULE = ibus
+# environment
+SHLVL = 1
+# environment
+LESS_TERMCAP_so = [1;44;33m
+# environment
+JSERVER = localhost
+# default
+MAKE_VERSION := 4.2.1
+# environment
+USER = kmoto
+# environment
+NVIM_PYTHON_LOG_FILE = /home/kmoto/.cache/nvim/log
+# makefile (from 'Makefile', line 12)
+.DEFAULT_GOAL := help
+# environment
+NAME = Code
+# environment
+LESS = -iMR
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# environment
+VSCODE_WSL_EXT_LOCATION = /mnt/c/Users/aldog/.vscode/extensions/ms-vscode-remote.remote-wsl-0.53.4
+# default
+MAKE_COMMAND := make
+# environment
+OLDPWD = /mnt/c/Users/aldog/AppData/Local/Programs/Microsoft VS Code
+# environment
+NVIM_PYTHON_LOG_LEVEL = DEBUG
+# default
+.VARIABLES := 
+# automatic
+*F = $(notdir $*)
+# makefile (from 'Makefile', line 2)
+OS := linux
+# environment
+_ZPLUG_AWKPATH = /home/kmoto/.cache/zsh/zplug/repos/zplug/zplug/misc/contrib
+# makefile
+MAKEFLAGS = pqrR
+# environment
+PROMPT = %F{green}$%f 
+# environment
+MFLAGS = -pqrR
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# environment
+LESS_TERMCAP_us = [1;32m
+# makefile (from 'Makefile', line 6)
+DOTFILES := .gitconfig .vimrc .tmux.conf .zshenv .config/Code/extension-list .config/Code/install_extension.sh .config/Code/User/defaultSettings.json .config/Code/User/settings.json .config/Code/User/keybindings.json .config/Code/User/snippets/latex.json .config/zsh/.dircolors .config/zsh/zplug.zsh .config/zsh/.zshenv .config/zsh/.zshrc .config/zsh/.zprofile .config/nvim/init.vim .config/nvim/keymaps.rc.vim .config/nvim/basis.rc.vim .config/nvim/plugins/trash/vim-fugitive.rc.vim .config/nvim/plugins/trash/unite.rc.vim .config/nvim/plugins/trash/vim-operator-replace.rc.vim .config/nvim/plugins/trash/vim-over.rc.vim .config/nvim/plugins/trash/vim-airline.rc.vim .config/nvim/plugins/trash/color_gruvbox.rc.vim .config/nvim/plugins/trash/unite_post.rc.vim .config/nvim/plugins/trash/LanguageClient-neovim.rc.vim .config/nvim/plugins/trash/vim-endwise.rc.vim .config/nvim/plugins/trash/syntastic.rc.vim .config/nvim/plugins/trash/color_molokai.rc.vim .config/nvim/plugins/trash/coc.rc.vim .config/nvim/plugins/trash/color_solarized.rc.vim .config/nvim/plugins/trash/vim-autoclose.rc.vim .config/nvim/plugins/trash/color_iceberg.rc.vim .config/nvim/plugins/trash/PHP-Indenting-for-VIm.rc.vim .config/nvim/plugins/trash/nerdtree.rc.vim .config/nvim/plugins/trash/color_tender.rc.vim .config/nvim/plugins/trash/LanguageServer-php-neovim.rc.vim .config/nvim/plugins/trash/vim-anzu.rc.vim .config/nvim/plugins/trash/vim-gitgutter.rc.vim .config/nvim/plugins/trash/gundo.rc.vim .config/nvim/plugins/trash/yankround.rc.vim .config/nvim/plugins/trash/vim-quickrun.rc.vim .config/nvim/plugins/trash/phpcd.rc.vim .config/nvim/plugins/trash/vim-operator-search.rc.vim .config/nvim/plugins/trash/color_onedark.rc.vim .config/nvim/plugins/trash/vim-quickhl.rc.vim .config/nvim/plugins/trash/vim-textobj-multiblock.rc.vim .config/nvim/plugins/trash/lightline-ale.rc.vim .config/nvim/plugins/trash/foldCC.rc.vim .config/nvim/plugins/trash/vim-json.rc.vim .config/nvim/plugins/trash/color_solarized_al.rc.vim .config/nvim/plugins/trash/vim-commentary.rc.vim .config/nvim/plugins/trash/ale.rc.vim .config/nvim/plugins/trash/indentLine.rc.vim .config/nvim/plugins/trash/vim-easy-align.rc.vim .config/nvim/plugins/trash/vim-easymotion.rc.vim .config/nvim/plugins/asyncomplete.rc.vim .config/nvim/plugins/neco-syntax.rc.vim .config/nvim/plugins/denite.nvim.rc.vim .config/nvim/plugins/denite_post.nvim.rc.vim .config/nvim/plugins/deoplete.rc.vim .config/nvim/plugins/denite.nvim_post.rc.vim .config/nvim/plugins/neosnippet.rc.vim .config/nvim/plugins/deol.rc.vim .config/nvim/plugins/neomru.rc.vim .config/nvim/plugins/defx-git.rc.vim .config/nvim/plugins/denite.rc.vim .config/nvim/plugins/asyncomplete-ultisnips.rc.vim .config/nvim/plugins/vim-lsp.rc.vim .config/nvim/plugins/defx.nvim_post.rc.vim .config/nvim/plugins/vim-lsp_post.rc.vim .config/nvim/plugins/vimfiler.rc.vim .config/nvim/plugins/lightline.rc.vim .config/nvim/plugins/ultisnips.rc.vim .config/nvim/plugins/vimtex.rc.vim .config/nvim/plugins/vim-devicons.rc.vim .config/nvim/plugins/vim-vsnip.rc.vim .config/nvim/plugins/verilog_systemverilog.rc.vim .config/nvim/plugins/echodoc.rc.vim .config/nvim/plugins/defx.nvim.rc.vim .config/nvim/deinft.toml .config/nvim/dein.toml .config/nvim/functions.rc.vim .config/nvim/deinlazy.toml .latexmkrc .gitconfig_user_sample .bashrc .gitignore_global .emacs.d/init.el .tcshrc
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# makefile
+SHELL = /bin/sh
+# environment
+LESSCHARSET = utf-8
+# environment
+BROWSER = /home/kmoto/.vscode-server/bin/622cb03f7e070a9670c94bae1a45d78d7181fbd4/bin/helpers/browser.sh
+# environment
+ZPLUG_USE_CACHE = true
+# environment
+ZPLUG_ROOT = /home/kmoto/.cache/zsh/zplug/repos/zplug/zplug
+# environment
+WT_PROFILE_ID = {2c4de342-38b7-51cf-b940-2309a097f518}
+# environment
+ZPLUG_REPOS = /home/kmoto/.cache/zsh/zplug/repos
+# 'override' directive
+.SHELLSTATUS := 0
+# default
+MAKEFILES := 
+# makefile (from 'Makefile', line 3)
+MAKEPATH := /home/kmoto/dotfiles
+# environment
+HOMEBREW_ROOT = /home/kmoto/.linuxbrew
+# makefile (from 'Makefile', line 10)
+LINKDIRS := /home/kmoto/.config /home/kmoto/.config/Code /home/kmoto/.config/Code/User /home/kmoto/.config/Code/User/snippets /home/kmoto/.config/zsh /home/kmoto/.config/nvim /home/kmoto/.config/nvim/plugins /home/kmoto/.config/nvim/plugins/trash /home/kmoto/.emacs.d
+# automatic
+<F = $(notdir $<)
+# environment
+LIBGL_ALWAYS_INDIRECT = 1
+# environment
+ 
+XDG_CONFIG_HOME = /home/kmoto/.config
+# environment
+EDITOR = nvim
+# environment
+PAGER = less -iMR
+# environment
+LC_ALL = en_US.UTF-8
+# environment
+MAILCHECK = 0
+# environment
+DIRSTACKSIZE = 20
+# environment
+_ZPLUG_OHMYZSH = robbyrussell/oh-my-zsh
+# environment
+HOSTTYPE = x86_64
+# automatic
+^F = $(notdir $^)
+# environment
+ZPLUG_ERROR_LOG = /home/kmoto/.cache/zsh/zplug/.error_log
+# default
+SUFFIXES := 
+# environment
+HISTSIZE = 100
+# environment
+NODENV_ROOT = /home/kmoto/.anyenv/envs/nodenv
+# default
+.INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
+# environment
+VSCODE_INJECT_NODE_MODULE_LOOKUP_PATH = /home/kmoto/.vscode-server/bin/622cb03f7e070a9670c94bae1a45d78d7181fbd4/remote/node_modules
+# environment
+PLENV_ROOT = /home/kmoto/.anyenv/envs/plenv
+# environment
+HELPDIR = :/usr/local/lib/zsh/help
+# default
+.RECIPEPREFIX := 
+# environment
+RBENV_ROOT = /home/kmoto/.anyenv/envs/rbenv
+# environment
+ZPLUG_LOADFILE = /home/kmoto/.cache/zsh/zplug/packages.zsh
+# makefile (from 'Makefile', line 7)
+SELECTFILES := linux/.gitconfig linux/.vimrc linux/.tmux.conf linux/.zshenv linux/.config/Code/extension-list linux/.config/Code/install_extension.sh linux/.config/Code/User/defaultSettings.json linux/.config/Code/User/settings.json linux/.config/Code/User/keybindings.json linux/.config/Code/User/snippets/latex.json linux/.config/zsh/.dircolors linux/.config/zsh/zplug.zsh linux/.config/zsh/.zshenv linux/.config/zsh/.zshrc linux/.config/zsh/.zprofile linux/.config/nvim/init.vim linux/.config/nvim/keymaps.rc.vim linux/.config/nvim/basis.rc.vim linux/.config/nvim/plugins/trash/vim-fugitive.rc.vim linux/.config/nvim/plugins/trash/unite.rc.vim linux/.config/nvim/plugins/trash/vim-operator-replace.rc.vim linux/.config/nvim/plugins/trash/vim-over.rc.vim linux/.config/nvim/plugins/trash/vim-airline.rc.vim linux/.config/nvim/plugins/trash/color_gruvbox.rc.vim linux/.config/nvim/plugins/trash/unite_post.rc.vim linux/.config/nvim/plugins/trash/LanguageClient-neovim.rc.vim linux/.config/nvim/plugins/trash/vim-endwise.rc.vim linux/.config/nvim/plugins/trash/syntastic.rc.vim linux/.config/nvim/plugins/trash/color_molokai.rc.vim linux/.config/nvim/plugins/trash/coc.rc.vim linux/.config/nvim/plugins/trash/color_solarized.rc.vim linux/.config/nvim/plugins/trash/vim-autoclose.rc.vim linux/.config/nvim/plugins/trash/color_iceberg.rc.vim linux/.config/nvim/plugins/trash/PHP-Indenting-for-VIm.rc.vim linux/.config/nvim/plugins/trash/nerdtree.rc.vim linux/.config/nvim/plugins/trash/color_tender.rc.vim linux/.config/nvim/plugins/trash/LanguageServer-php-neovim.rc.vim linux/.config/nvim/plugins/trash/vim-anzu.rc.vim linux/.config/nvim/plugins/trash/vim-gitgutter.rc.vim linux/.config/nvim/plugins/trash/gundo.rc.vim linux/.config/nvim/plugins/trash/yankround.rc.vim linux/.config/nvim/plugins/trash/vim-quickrun.rc.vim linux/.config/nvim/plugins/trash/phpcd.rc.vim linux/.config/nvim/plugins/trash/vim-operator-search.rc.vim linux/.config/nvim/plugins/trash/color_onedark.rc.vim linux/.config/nvim/plugins/trash/vim-quickhl.rc.vim linux/.config/nvim/plugins/trash/vim-textobj-multiblock.rc.vim linux/.config/nvim/plugins/trash/lightline-ale.rc.vim linux/.config/nvim/plugins/trash/foldCC.rc.vim linux/.config/nvim/plugins/trash/vim-json.rc.vim linux/.config/nvim/plugins/trash/color_solarized_al.rc.vim linux/.config/nvim/plugins/trash/vim-commentary.rc.vim linux/.config/nvim/plugins/trash/ale.rc.vim linux/.config/nvim/plugins/trash/indentLine.rc.vim linux/.config/nvim/plugins/trash/vim-easy-align.rc.vim linux/.config/nvim/plugins/trash/vim-easymotion.rc.vim linux/.config/nvim/plugins/asyncomplete.rc.vim linux/.config/nvim/plugins/neco-syntax.rc.vim linux/.config/nvim/plugins/denite.nvim.rc.vim linux/.config/nvim/plugins/denite_post.nvim.rc.vim linux/.config/nvim/plugins/deoplete.rc.vim linux/.config/nvim/plugins/denite.nvim_post.rc.vim linux/.config/nvim/plugins/neosnippet.rc.vim linux/.config/nvim/plugins/deol.rc.vim linux/.config/nvim/plugins/neomru.rc.vim linux/.config/nvim/plugins/defx-git.rc.vim linux/.config/nvim/plugins/denite.rc.vim linux/.config/nvim/plugins/asyncomplete-ultisnips.rc.vim linux/.config/nvim/plugins/vim-lsp.rc.vim linux/.config/nvim/plugins/defx.nvim_post.rc.vim linux/.config/nvim/plugins/vim-lsp_post.rc.vim linux/.config/nvim/plugins/vimfiler.rc.vim linux/.config/nvim/plugins/lightline.rc.vim linux/.config/nvim/plugins/ultisnips.rc.vim linux/.config/nvim/plugins/vimtex.rc.vim linux/.config/nvim/plugins/vim-devicons.rc.vim linux/.config/nvim/plugins/vim-vsnip.rc.vim linux/.config/nvim/plugins/verilog_systemverilog.rc.vim linux/.config/nvim/plugins/echodoc.rc.vim linux/.config/nvim/plugins/defx.nvim.rc.vim linux/.config/nvim/deinft.toml linux/.config/nvim/dein.toml linux/.config/nvim/functions.rc.vim linux/.config/nvim/deinlazy.toml linux/.latexmkrc linux/.gitconfig_user_sample linux/.bashrc linux/.gitignore_global linux/.emacs.d/init.el linux/.tcshrc
+# environment
+LANG = C.UTF-8
+# environment
+TERM = xterm-256color
+# environment
+VSCODE_EXTHOST_WILL_SEND_SOCKET = true
+# environment
+WSL_DISTRO_NAME = Ubuntu
+# variable set hash-table stats:
+# Load=152/1024=15%, Rehash=0, Collisions=22/199=11%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# . (device 2064, inode 40556): 10 files, no impossibilities.
+
+# 10 files, no impossibilities in 1 directories.
+
+# Implicit Rules
+
+# No implicit rules.
+
+# Files
+
+reinstall:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 29):
+	@make clean
+	@make install
+
+all:
+#  Command line target.
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2021-02-25 13:07:17.2
+#  File has been updated.
+#  Successfully updated.
+
+vscode-extension:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 33):
+	@cd $(MAKEPATH)/linux/.config/Code
+	@sh ./install_extensions.sh
+
+help:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 37):
+	@echo 'Copyright (c) 2020 k5-mot All Rights Reserved.'
+	@echo ''
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
+		| sort \
+		| awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+clean:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 25):
+	@echo 'Remove dot files in your home directory...'
+	@$(foreach val, $(DOTFILES), rm -vrf $(HOME)/$(val);)
+
+list:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 17):
+	@$(foreach val, $(SELECTFILES), ls -dF $(val);)
+
+install:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 20):
+	@echo 'Install dotfiles to home directory.'
+	@$(foreach val, $(LINKDIRS), mkdir -pv $(val);)
+	@$(foreach val, $(DOTFILES), ln -sfnv $(abspath $(addprefix $(OS)/,$(val))) $(HOME)/$(val);)
+
+# files hash-table stats:
+# Load=10/1024=1%, Rehash=0, Collisions=0/21=0%
+# VPATH Search Paths
+
+# No 'vpath' search paths.
+
+# No general ('VPATH' variable) search path.
+
+# strcache buffers: 1 (0) / strings = 21 / storage = 165 B / avg = 7 B
+# current buf: size = 8162 B / used = 165 B / count = 21 / avg = 7 B
+
+# strcache performance: lookups = 33 / hit rate = 36%
+# hash-table stats:
+# Load=21/8192=0%, Rehash=0, Collisions=1/33=3%
+# Finished Make data base on Sun Feb 28 21:54:24 2021
+
+ 

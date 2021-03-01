@@ -30,8 +30,7 @@ reinstall:
 	@make install
 
 vscode-extension:
-	@cd $(MAKEPATH)/linux/.config/Code
-	@sh ./install_extensions.sh
+	@bash $(MAKEPATH)/linux/.config/Code/install_extension.sh $(MAKEPATH)/linux/.config/Code/extension-list
 
 help: ## Self-documented Makefile
 	@echo 'Copyright (c) 2020 k5-mot All Rights Reserved.'

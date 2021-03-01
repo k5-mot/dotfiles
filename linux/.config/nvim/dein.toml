@@ -94,12 +94,6 @@ source ~/.config/nvim/plugins/ultisnips.rc.vim
 repo = 'honza/vim-snippets'
 
 [[plugins]]
-repo = 'prabirshrestha/asyncomplete-ultisnips.vim'
-hook_source = '''
-source ~/.config/nvim/plugins/asyncomplete-ultisnips.rc.vim
-'''
-
-[[plugins]]
 repo = 'thomasfaingnaert/vim-lsp-snippets'
 
 [[plugins]]
