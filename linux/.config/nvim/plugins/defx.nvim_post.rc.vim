@@ -1,27 +1,27 @@
-" options
+"" options
 let s:defx_win_width_percent = 0.85
 let s:defx_win_height_percent = 0.7
-call defx#custom#option('_', {
-      \ 'split': 'floating',
-      \ 'toggle': v:true,
-      \ 'winwidth': float2nr(&columns * s:defx_win_width_percent),
-      \ 'wincol': float2nr((&columns - (&columns * s:defx_win_width_percent)) / 2),
-      \ 'winheight': float2nr(&lines * s:defx_win_height_percent),
-      \ 'winrow': float2nr((&lines - (&lines * s:defx_win_height_percent)) / 2),
-      \ 'show_ignored_files': v:true,
-      \ 'columns': 'mark:indent:git:icons:filename:type',
-      \ })
-call defx#custom#column('mark', {
-      \ 'readonly_icon': "\ue0a2",
-      \ 'selected_icon': "\uf00c",
-      \ })
+"call defx#custom#option('_', {
+"      \ 'split': 'floating',
+"      \ 'toggle': v:true,
+"      \ 'winwidth': float2nr(&columns * s:defx_win_width_percent),
+"      \ 'wincol': float2nr((&columns - (&columns * s:defx_win_width_percent)) / 2),
+"      \ 'winheight': float2nr(&lines * s:defx_win_height_percent),
+"      \ 'winrow': float2nr((&lines - (&lines * s:defx_win_height_percent)) / 2),
+"      \ 'show_ignored_files': v:true,
+"      \ 'columns': 'mark:indent:git:icons:filename:type',
+"      \ })
+"call defx#custom#column('mark', {
+"      \ 'readonly_icon': "\ue0a2",
+"      \ 'selected_icon': "\uf00c",
+"      \ })
 
 " keymap
 autocmd FileType defx call s:defx_my_settings()
 function! s:defx_my_settings() abort
   " file open
   nnoremap <silent><buffer><expr> <CR> defx#is_directory() ? defx#do_action('open') : defx#do_action('multi', ['drop', 'quit'])
-  nnoremap <silent><buffer><expr> vs   defx#is_directory() ? defx#do_action('open') : defx#do_action('multi', [['drop', 'vsplit'], 'quit'])
+  nnoremap <silent><buffer><expr> vs   defx#is_directory() ? defx#do_action('open') : defx#do_action('multi', [['drop', 'vsplit'], 'quit']
   nnoremap <silent><buffer><expr> s    defx#is_directory() ? defx#do_action('open') : defx#do_action('multi', [['drop', 'split'], 'quit'])
   nnoremap <silent><buffer><expr> P    defx#do_action('open', 'pedit')
   " file operation

@@ -23,20 +23,20 @@ repo = 'Shougo/neoyank.vim'
 
 
 ### Defx {{{
-# File explorer
-#[[plugins]]
-#repo = 'Shougo/defx.nvim'
-#on_cmd = 'Defx'
-#depends = ['defx-icons', 'defx-git']
-#hook_done_update = '''
-#source ~/.config/nvim/plugins/defx.nvim.rc.vim
-#'''
-#
-#[[plugins]]
-#repo ='kristijanhusak/defx-icons'
-#
-#[[plugins]]
-#repo ='kristijanhusak/defx-git'
+## File explorer
+[[plugins]]
+repo = 'Shougo/defx.nvim'
+on_cmd = 'Defx'
+depends = ['defx-icons', 'defx-git']
+hook_done_update = '''
+source ~/.config/nvim/plugins/defx.nvim.rc.vim
+'''
+
+[[plugins]]
+repo ='kristijanhusak/defx-icons'
+
+[[plugins]]
+repo ='kristijanhusak/defx-git'
 ### }}}
 
 
