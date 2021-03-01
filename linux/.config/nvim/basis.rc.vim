@@ -1,3 +1,6 @@
+
+echo 'Basis settings'
+
 " 編集中でもファイルを開けるように
 set hidden
 
@@ -5,7 +8,6 @@ set hidden
 set autoread
 
 set completeopt=menuone,noselect
-
 
 " スクロール時の余白行数
 set scrolloff=5

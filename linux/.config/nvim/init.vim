@@ -10,9 +10,9 @@ augroup vimrc
   autocmd!
 augroup END
 
-let $CACHE = empty($XDG_CACHE_HOME) ? expand('$HOME/.cache') : $XDG_CACHE_HOME
-let $CONFIG = empty($XDG_CONFIG_HOME) ? expand('$HOME/.config') : $XDG_CONFIG_HOME
-let $DATA = empty($XDG_DATA_HOME) ? expand('$HOME/.local/share') : $XDG_DATA_HOME
+"let $CACHE = empty($XDG_CACHE_HOME) ? expand('$HOME/.cache') : $XDG_CACHE_HOME
+"let $CONFIG = empty($XDG_CONFIG_HOME) ? expand('$HOME/.config') : $XDG_CONFIG_HOME
+"let $DATA = empty($XDG_DATA_HOME) ? expand('$HOME/.local/share') : $XDG_DATA_HOME
 
 if !has('nvim')
   let &t_TI = ""
@@ -138,16 +138,22 @@ highlight LineNr ctermbg=NONE guibg=NONE
 highlight Folded ctermbg=NONE guibg=NONE
 highlight EndOfBuffer ctermbg=NONE guibg=NONE
 
-
+set runtimepath+=$HOME/.config/nvim
 
 " Base
 runtime! ./basis.rc.vim
+"runtime! $HOME/.config/nvim/basis.rc.vim
+"source $HOME/.config/nvim/basis.rc.vim
 
 " Functions
 runtime! ./functions.rc.vim
+"runtime! $HOME/.config/nvim/functions.rc.vim
+"source $HOME/.config/nvim/functions.rc.vim
 
 " Keymapping
 runtime! ./keymaps.rc.vim
+"runtime! $HOME/.config/nvim/keymaps.rc.vim
+"source $HOME/.config/nvim/keymaps.rc.vim
 
 
 " Load local settings.
