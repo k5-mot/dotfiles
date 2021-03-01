@@ -49,7 +49,7 @@
 
 set signcolumn=yes
 
-let g:lsp_diagnostics_signs_error       = {'text': "\uf057 "}
+let g:lsp_diagnostics_signs_error       = {'text': "\uf00d "}
 let g:lsp_diagnostics_signs_warning     = {'text': "\uf071 "}
 let g:lsp_diagnostics_signs_information = {'text': "\uf05a "}
-let g:lsp_diagnostics_signs_hint        = {'text': "\uf00c "}
+let g:lsp_diagnostics_signs_hint        = {'text': "\uf129 "}

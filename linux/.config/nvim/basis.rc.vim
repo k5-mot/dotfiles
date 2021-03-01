@@ -1,6 +1,3 @@
-
-echo 'Basis settings'
-
 " 編集中でもファイルを開けるように
 set hidden
 
@@ -29,6 +26,8 @@ autocmd Filetype * setlocal formatoptions-=ro
 
 " ビープ無効
 set visualbell t_vb=
+set vb t_vb=
+set belloff=all
 
 " エラーメッセージ表示時にビープを鳴らさない
 set noerrorbells

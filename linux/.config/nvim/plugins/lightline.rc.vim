@@ -109,8 +109,7 @@ function! LightlineLSPErrors() abort
   return l:counts.error == 0 ? '' : printf('%s %d', l:sign, l:counts.error)
 endfunction
 
-"let g:lightline_lsp_signs_ok = "\uf00c "
-let g:lightline_lsp_signs_ok = "\uf058 "
+let g:lightline_lsp_signs_ok = "\uf00c "
 function! LightlineLSPOk() abort
   let l:counts =  lsp#get_buffer_diagnostics_counts()
   let l:total = l:counts.error + l:counts.warning
