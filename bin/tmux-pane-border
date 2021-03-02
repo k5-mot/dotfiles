@@ -40,7 +40,7 @@ else
   git_info="#[bg=default]${SEPARATOR_LEFT}"
 fi
 
-username="#(whoami)"
+username="$(whoami)"
 hostname="#h"
 
 if [ "$2" -eq "1" ]; then

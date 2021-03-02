@@ -335,7 +335,7 @@ if [ -f $ZDOTDIR/zplug.zsh ]; then
   source $ZDOTDIR/zplug.zsh
 fi
 
-if [ -f $HOME/.cache/tmux/plugins/tpm ]; then
+if [ ! -d $HOME/.cache/tmux/plugins/tpm ]; then
   git clone https://github.com/tmux-plugins/tpm $HOME/.cache/tmux/plugins/tpm
 fi
 
