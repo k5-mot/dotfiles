@@ -44,9 +44,20 @@ if [ -f "$userXresources" ]; then
   xrdb -merge "$userXresources"
 fi
 
-## Start Desktop environment.
+### Desktop Environment {{{
+## GNOME Session
 exec gnome-session
+## GNOME Classic Session
+#export XDG_CURRENT_DESKTOP=GNOME-Classic:GNOME
+#export GNOME_SHELL_SESSION_MODE=classic
+#exec gnome-session --session=gnome-classic
+## Xfce4
 #exec startxfce4
+## KDE
 #exec startkde
+### }}}
+
+### Window Manager {{{
 #exec twm
+### }}}
 
