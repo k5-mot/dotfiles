@@ -77,10 +77,10 @@ endif
 
 " runtimepathの設定
 let s:settings_config_dir = expand('~/.config/nvim')
-"let s:settings_plugin_dir = expand(s:settings_config_dir . '/plugins')
+let s:settings_plugin_dir = expand(s:settings_config_dir . '/plugins')
 "let s:settings_data_dir = expand(s:settings_config_dir . '/data')
 set runtimepath+=s:settings_config_dir
-"set runtimepath+=s:settings_plugin_dir
+set runtimepath+=s:settings_plugin_dir
 "set runtimepath+=s:settings_data_dir
 
 if dein#load_state(s:dein_cache_path)
@@ -135,7 +135,6 @@ highlight LineNr ctermbg=NONE guibg=NONE
 highlight Folded ctermbg=NONE guibg=NONE
 highlight EndOfBuffer ctermbg=NONE guibg=NONE
 
-set runtimepath+=$HOME/.config/nvim
 
 " Base
 runtime! ./basis.rc.vim

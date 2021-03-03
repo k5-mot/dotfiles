@@ -19,6 +19,7 @@ sudo apt install -y libbz2-dev
 sudo apt install -y libreadline-dev
 sudo apt install -y libsqlite3-dev
 sudo apt install -y git
+sudo apt install -y cmake
 #sudo apt install -y make
 #sudo apt install -y gcc
 #sudo apt install -y git

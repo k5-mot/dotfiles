@@ -60,7 +60,8 @@ set notitle
 " バグがあるのでコメントアウト
 " https://github.com/neovim/neovim/issues/1822
 "set clipboard=unnamed,unnamedplus,autoselect
-set clipboard=unnamed,unnamedplus
+"set clipboard=unnamed,unnamedplus
+set clipboard=unnamedplus
 
 " コマンドモードで補完を使用
 set wildmode=longest:full,full
