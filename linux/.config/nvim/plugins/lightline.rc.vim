@@ -26,7 +26,9 @@ let g:lightline.component = {
   \ 'close': '%999X X '
   \ }
 
+"============================================================
 
+"============================================================
 
 
 
@@ -70,8 +72,8 @@ let g:lightline = {
   \     'left': [
   \       ['mode', 'paste'],
   \       ['readonly', 'filename', 'modified'],
-  \       [  'coc_info', 'coc_hints', 'coc_errors', 'coc_warnings', 'coc_ok' ],
-  \       [ 'coc_status' ],
+  \       ['coc_info', 'coc_hints', 'coc_errors', 'coc_warnings', 'coc_ok'],
+  \       ['coc_status'],
   \     ],
   \     'right': [
   \       ['lineinfo'],
@@ -93,8 +95,7 @@ let g:lightline = {
 " \       ['linter_errors', 'linter_warnings', 'linter_info', 'linter_hints', 'linter_ok' ]
 
 " register compoments:
-"call lightline#coc#register()
-
+call lightline#coc#register()
 
 "Diagnosticsの、左横のアイコンの色設定
 highlight CocErrorSign ctermfg=15 ctermbg=196

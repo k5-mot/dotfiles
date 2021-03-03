@@ -10,13 +10,13 @@ repo = 'Shougo/dein.vim'
 #source ~/.config/nvim/plugins/deol.rc.vim
 #'''
 
-[[plugins]]
-repo = 'Shougo/vimproc.vim'
-build = 'make'
-
-[[plugins]]
-repo = 'Shougo/vimshell'
-build = 'make'
+#[[plugins]]
+#repo = 'Shougo/vimproc.vim'
+#build = 'make'
+#
+#[[plugins]]
+#repo = 'Shougo/vimshell'
+#build = 'make'
 ### }}}
 
 ### colorscheme {{{
@@ -102,10 +102,11 @@ source ~/.config/nvim/plugins/vim-lightline-coc.rc.vim
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
-depends = ['coc.nvim','vim-lightline-coc']
-hook_add = '''
+hook_post_source = '''
 source ~/.config/nvim/plugins/lightline.rc.vim
 '''
+
+
 
 
 
@@ -180,8 +181,8 @@ repo = 'honza/vim-snippets'
 repo = 'ryanoasis/vim-devicons'
 ### }}}
 
-[[plugins]]
-repo = 'tmhedberg/matchit'
+#[[plugins]]
+#repo = 'tmhedberg/matchit'
 
 [[plugins]]
 repo = 'Shougo/neco-vim'
