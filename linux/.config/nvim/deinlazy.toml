@@ -21,7 +21,14 @@ repo = 'Shougo/neomru.vim'
 repo = 'Shougo/neoyank.vim'
 ### }}}
 
-
+[[plugins]]
+repo = 'neoclide/coc.nvim'
+rev = 'release'
+on_event = 'InsertEnter'
+merged = '0'
+hook_source = '''
+source ~/.config/nvim/plugins/coc.rc.vim
+'''
 
 
 ### Defx {{{
@@ -71,11 +78,11 @@ repo = 'Shougo/neoyank.vim'
 ###}}}
 
 ## Latex
-[[plugins]]
-repo = 'lervag/vimtex'
-hook_add = '''
-source ~/.config/nvim/plugins/vimtex.rc.vim
-'''
+#[[plugins]]
+#repo = 'lervag/vimtex'
+#hook_add = '''
+#source ~/.config/nvim/plugins/vimtex.rc.vim
+#'''
 
 ## syntax {{{
 [[plugins]]
