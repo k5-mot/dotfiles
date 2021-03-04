@@ -16,7 +16,8 @@
   "editor.fontFamily": "'CaskaydiaCove Nerd Font Mono', 'Cascadia Code', 'Ricty Diminished Discord', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
 
   // Controls the font size in pixels.
-  "editor.fontSize": 14,
+  //"editor.fontSize": 14,
+  "editor.fontSize": 17,
 
   // Controls whether the editor should automatically format the pasted content. A formatter must be available and the formatter should be able to format a range in a document.
   //"editor.formatOnPaste": false,
@@ -95,7 +96,7 @@
   //  - wordWrapColumn: Lines will wrap at `editor.wordWrapColumn`.
   //  - bounded: Lines will wrap at the minimum of viewport and `editor.wordWrapColumn`.
   //"editor.wordWrap": "off",
-  "editor.wordWrap": "off",
+  "editor.wordWrap": "on",
 
   // Controls the visibility of the activity bar in the workbench.
   //"workbench.activityBar.visible": true,
@@ -136,14 +137,6 @@
   //  - shrink: Allow tabs to get smaller when the available space is not enough to show all tabs at once.
   "workbench.editor.tabSizing": "fit",
   //"workbench.editor.tabSizing": "shrink",
-
-  // Controls which editor is shown at startup, if none are restored from the previous session.
-	//  - none: Start without an editor.
-	//  - welcomePage: Open the Welcome page (default).
-	//  - readme: Open the README when opening a folder that contains one, fallback to 'welcomePage' otherwise.
-	//  - newUntitledFile: Open a new untitled file (only applies when opening an empty window).
-	//  - welcomePageInEmptyWorkbench: Open the Welcome page when opening an empty workbench.
-	"workbench.startupEditor": "none",
 
   // Control the visibility of the menu bar. A setting of 'toggle' means that the menu bar is hidden and a single press of the Alt key will show it. By default, the menu bar will be visible, unless the window is full screen.
   //  - default: Menu is only hidden in full screen mode.
@@ -263,9 +256,6 @@
     "editor.tabSize": 2
   },
 
-  // When enabled, Emmet abbreviations are expanded when pressing TAB.
-	"emmet.triggerExpansionOnTab": false,
-
   // Ignores the legacy Git warning.
   // "git.ignoreLegacyWarning": false,
   "git.ignoreLegacyWarning": false,
@@ -384,8 +374,9 @@
   "latex-workshop.latex.tools": [
     {
       "name": "latexmk",
-      "command": "latexmk",
+      "command": "wsl.exe",
       "args": [
+        "latexmk",
         "-synctex=1",
         "-interaction=nonstopmode",
         "-file-line-error",
@@ -400,8 +391,9 @@
     },
     {
       "name": "lualatexmk",
-      "command": "latexmk",
+      "command": "wsl.exe",
       "args": [
+        "latexmk",
         "-synctex=1",
         "-interaction=nonstopmode",
         "-file-line-error",
@@ -413,16 +405,18 @@
     },
     {
       "name": "latexmk_rconly",
-      "command": "latexmk",
+      "command": "wsl.exe",
       "args": [
+        "latexmk",
         "%DOC%"
       ],
       "env": {}
     },
     {
       "name": "pdflatex",
-      "command": "pdflatex",
+      "command": "wsl.exe",
       "args": [
+        "pdflatex",
         "-synctex=1",
         "-interaction=nonstopmode",
         "-file-line-error",
@@ -432,16 +426,18 @@
     },
     {
       "name": "bibtex",
-      "command": "bibtex",
+      "command": "wsl.exe",
       "args": [
+        "bibtex",
         "%DOCFILE%"
       ],
       "env": {}
     },
     {
       "name": "rnw2tex",
-      "command": "Rscript",
+      "command": "wsl.exe",
       "args": [
+        "Rscript",
         "-e",
         "knitr::opts_knit$set(concordance = TRUE); knitr::knit('%DOCFILE_EXT%')"
       ],
@@ -449,8 +445,9 @@
     },
     {
       "name": "jnw2tex",
-      "command": "julia",
+      "command": "wsl.exe",
       "args": [
+        "julia",
         "-e",
         "using Weave; weave(\"%DOC_EXT%\", doctype=\"tex\")"
       ],
@@ -458,8 +455,9 @@
     },
     {
       "name": "jnw2texmintex",
-      "command": "julia",
+      "command": "wsl.exe",
       "args": [
+        "julia",
         "-e",
         "using Weave; weave(\"%DOC_EXT%\", doctype=\"texminted\")"
       ],
@@ -493,6 +491,6 @@
   //  - automaticallyOverrodeDefaultValue: (DO NOT SET THIS MANUALLY) IntelliCode will set this to record that configuration has been automatically modified to override a default value.
   //  - choseToUpdateConfiguration: (DO NOT SET THIS MANUALLY) IntelliCode will set this to record that you've chosen to let IntelliCode change the configuration from a value that was explicitly set.
   // "vsintellicode.modify.editor.suggestSelection": "enabled",
-  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue"
 
 }
