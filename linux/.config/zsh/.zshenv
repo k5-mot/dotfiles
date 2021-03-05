@@ -72,6 +72,9 @@ export QT_IM_MODULE="ibus"
 #export GTK_IM_MODULE="xim"
 #export QT_IM_MODULE="xim"
 export JSERVER="localhost"
+export TMUX_ACS="utf8"
+export TMUX_ACS="acs"
+export TMUX_ACS="ascii"
 
 ## Initialize $PATH
 #echo $PATH | sed -e 's/:/\n/g'

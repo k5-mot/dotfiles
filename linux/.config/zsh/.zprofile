@@ -37,6 +37,8 @@ alias porg-check='porg --logdir=$HOME/.local/var/log/porg'
 # Install by porg
 # porg -lp (app name) --logdir=$HOME/.local/var/log/porg make install
 alias porg-install='porg --logdir=$HOME/.local/var/log/porg -lp'
+## Display OS info
+alias os_info='cat /etc/*-release'
 
 # Shell functions
 function setenv() {
