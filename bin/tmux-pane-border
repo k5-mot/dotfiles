@@ -49,6 +49,3 @@ else
   echo "#[fg=colour235,bg=colour241,bold] ${username}@${hostname} #[fg=colour241,bg=colour235]${SEPARATOR_LEFT}#[fg=colour240,bg=colour235,bold] $1 #[fg=colour235]#[bg=default]${SEPARATOR_LEFT}"
 fi
 
-
-
-#echo "#[fg=colour117,bg=colour024,bold] ${username}@${hostname} #[fg=colour024,bg=colour031]${SEPARATOR_LEFT}#[fg=colour117,bg=colour031,bold] #{pane_current_path} #[fg=colour031]${git_info})#[default]"
