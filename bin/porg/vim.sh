@@ -1,20 +1,24 @@
 #!/usr/bin/env bash
 
-# vim
+## vim
+
+cd $HOME
 cd $HOME/.local/src
-if [ -d $HOME/.local/src/vim ]
-  rm -rf $HOME/.local/src/vim
+if (type "porg" > /dev/null 2>&1); then
+  porg -r vim
 fi
+rm -rf $HOME/.local/src/vim
 git clone --verbose --progress https://github.com/vim/vim.git
-cd vim/
-#--enable-gui=gtk2 \
-#--with-luajit \
-#export PYENV_PYTHON3_VERSION=$(pyenv versions | grep -v '[a-zA-Z]' | grep -e '3\.[0-9]*\.[0-9]*' | tail -1 | sed 's/^[ \t]*//')
-#export PYENV_PYTHON2_VERSION=$(pyenv versions | grep -v '[a-zA-Z]' | grep -e '2\.[0-9]*\.[0-9]*' | tail -1 | sed 's/^[ \t]*//')
+cd $HOME/.local/src/vim
+
 export PYENV_PYTHON3_VERSION=$(pyenv versions | grep -e '3\.[0-9]*\.[0-9]*' | tail -1 | sed 's/([^)]*)//g' | sed 's/[ \t*]//g')
 export PYENV_PYTHON2_VERSION=$(pyenv versions | grep -e '2\.[0-9]*\.[0-9]*' | tail -1 | sed 's/([^)]*)//g' | sed 's/[ \t*]//g')
 export RBENV_RUBY_VERSION=$(rbenv versions | grep -e '[0-9]*\.[0-9]*\.[0-9]*' | tail -1 | sed 's/([^)]*)//g' | sed 's/[ \t*]//g')
 export LUAENV_LUA_VERSION=$(luaenv versions | grep -e '[0-9]*\.[0-9]*\.[0-9]*' | tail -1 | sed 's/([^)]*)//g' | sed 's/[ \t*]//g')
+
+#--enable-gui=gtk2 \
+#--with-luajit \
+#--enable-tclinterp \
 
 LDFLAGS="-Wl,-rpath=$HOME/.anyenv/envs/pyenv/versions/$PYENV_PYTHON2_VERSION/lib:$HOME/.anyenv/envs/pyenv/versions/$PYENV_PYTHON3_VERSION/lib" ./configure \
 --enable-cscope \
@@ -23,7 +27,6 @@ LDFLAGS="-Wl,-rpath=$HOME/.anyenv/envs/pyenv/versions/$PYENV_PYTHON2_VERSION/lib
 --enable-multibyte \
 --enable-nls \
 --enable-fail-if-missing \
---enable-tclinterp \
 --enable-python3interp \
 --enable-pythoninterp \
 --enable-rubyinterp \
@@ -31,9 +34,10 @@ LDFLAGS="-Wl,-rpath=$HOME/.anyenv/envs/pyenv/versions/$PYENV_PYTHON2_VERSION/lib
 --with-features=huge \
 --with-python3-command=$HOME/.anyenv/envs/pyenv/versions/$PYENV_PYTHON3_VERSION/bin/python3 \
 --with-python-command=$HOME/.anyenv/envs/pyenv/versions/$PYENV_PYTHON2_VERSION/bin/python2 \
---with-ruby-command=$HOME/.anyenv/envs/rbenv/versions/3.0.0/bin/ruby \
---with-lua-prefix=$HOME/.anyenv/envs/luaenv/versions/5.4.2 \
+--with-ruby-command=$HOME/.anyenv/envs/rbenv/versions/$RBENV_RUBY_VERSION/bin/ruby \
+--with-lua-prefix=$HOME/.anyenv/envs/luaenv/versions/$LUAENV_LUA_VERSION \
 --prefix=$HOME/.local/usr
 make
-porg -lp vim-8.2 --logdir=$HOME/.local/var/log/porg make install
-porg --logdir=$HOME/.local/var/log/porg vim
+porg -lD make install
+porg vim
+cd $HOME

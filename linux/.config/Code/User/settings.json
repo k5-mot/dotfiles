@@ -201,7 +201,7 @@
     "**/.hg": true,
     "**/CVS": true,
     "**/.DS_Store": true,
-    "**/bin": true,
+    //"**/bin": true,
     //"**/*.exe": true,
     "**/*.o": true,
     "**/*.obj": true,
