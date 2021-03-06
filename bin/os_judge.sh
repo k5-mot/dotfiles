@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 get_distro_name() {
   distro_name=$(cat /etc/*-release | grep '^NAME="[^"]*"' | sed 's/NAME=//g' | sed 's/"//g')
@@ -6,7 +6,7 @@ get_distro_name() {
 }
 
 get_distro_id() {
-  distro_id=$(cat /etc/*-release | grep '^ID="[^"]*"' | sed 's/ID=//g' | sed 's/"//g')
+  distro_id=$(cat /etc/*-release | grep '^ID=[^ ]*' | sed 's/ID=//g')
   echo "$distro_id"
 }
 
@@ -72,4 +72,9 @@ get_distro_icon() {
   fi
   echo "$distro_icon"
 }
+
+get_distro_id
+get_distro_name
+get_distro_icon
+
 
