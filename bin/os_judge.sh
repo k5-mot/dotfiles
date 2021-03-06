@@ -73,8 +73,8 @@ get_distro_icon() {
   echo "$distro_icon"
 }
 
-get_distro_id
-get_distro_name
-get_distro_icon
+echo "ID  : $(get_distro_id)"
+echo "NAME: $(get_distro_name)"
+echo "ICON: $(get_distro_icon)"
 
 
