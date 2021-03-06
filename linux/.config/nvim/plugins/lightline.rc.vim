@@ -26,9 +26,25 @@ let g:lightline.component = {
   \ 'close': '%999X X '
   \ }
 
+"============================================================
+
+"============================================================
 
 
-" Register the components:
+
+
+"let g:lightline.component_expand = {
+"  \   'lsp_warnings': 'lightline_lsp#warnings',
+"  \   'lsp_errors':   'lightline_lsp#errors',
+"  \   'lsp_ok':       'lightline_lsp#ok',
+"  \ }
+"
+"let g:lightline.component_type = {
+"  \   'lsp_warnings': 'warning',
+"  \   'lsp_errors':   'error',
+"  \   'lsp_ok':       'middle',
+"  \ }
+
 "let g:lightline.component_expand = {
 "  \   'linter_warnings': 'lightline#coc#warnings',
 "  \   'linter_errors': 'lightline#coc#errors',
@@ -47,80 +63,89 @@ let g:lightline.component = {
 "  \   'linter_ok': 'left',
 "  \ }
 
-"let g:lightline.component_expand = {
-"  \   'lsp_warnings': 'lightline_lsp#warnings',
-"  \   'lsp_errors':   'lightline_lsp#errors',
-"  \   'lsp_ok':       'lightline_lsp#ok',
-"  \ }
-"
-"let g:lightline.component_type = {
-"  \   'lsp_warnings': 'warning',
-"  \   'lsp_errors':   'error',
-"  \   'lsp_ok':       'middle',
-"  \ }
+let g:lightline.component_function = {
+  \   'coc_status': 'coc#status',
+  \ }
+
 
 let g:lightline = {
-  \ 'enable': { 'tabline': 1 },
-  \ 'colorscheme': g:lightline_color,
-  \ 'separator': { 'left': "\ue0b0 ", 'right': " \ue0b2" },
-  \ 'subseparator' :{ 'left': "\ue0b1 ", 'right': " \ue0b3" },
-  \ 'active': {
-  \   'left': [
-  \     ['mode', 'paste'],
-  \     ['readonly', 'filename', 'modified'],
-  \     ['lsp_errors', 'lsp_warnings', 'lsp_ok'],
-  \   ],
-  \   'right': [
-  \     ['lineinfo'],
-  \     ['percent'],
-  \     ['fileformat', 'fileencoding', 'filetype']
-  \   ],
-  \ },
-  \ 'inactive': {
-  \   'left': [
-  \     ['filename']
-  \   ],
-  \   'right': [
-  \     ['lineinfo'],
-  \     ['percent']
-  \   ]
-  \ },
-  \ 'component_expand': {
-  \   'lsp_warnings': 'LightlineLSPWarnings',
-  \   'lsp_errors':   'LightlineLSPErrors',
-  \   'lsp_ok':       'LightlineLSPOk',
-  \ },
-  \ 'component_type': {
-  \   'lsp_warnings': 'warning',
-  \   'lsp_errors':   'error',
-  \   'lsp_ok':       'normal',
-  \ },
-\ }
+  \   'enable': { 'tabline': 1 },
+  \   'colorscheme': g:lightline_color,
+  \   'separator': { 'left': "\ue0b0 ", 'right': " \ue0b2" },
+  \   'subseparator' :{ 'left': "\ue0b1 ", 'right': " \ue0b3" },
+  \   'active': {
+  \     'left': [
+  \       ['mode', 'paste'],
+  \       ['readonly', 'filename', 'modified'],
+  \       ['linter_errors', 'linter_warnings', 'linter_info', 'linter_hints', 'linter_ok' ],
+  \       ['coc_status']
+  \     ],
+  \     'right': [
+  \       ['lineinfo'],
+  \       ['percent'],
+  \       ['fileformat', 'fileencoding', 'filetype']
+  \     ],
+  \   },
+  \   'inactive': {
+  \     'left': [
+  \       ['filename']
+  \     ],
+  \     'right': [
+  \       ['lineinfo'],
+  \       ['percent']
+  \     ]
+  \   },
+  \ }
 
-function! LightlineLSPWarnings() abort
-  let l:counts = lsp#get_buffer_diagnostics_counts()
-  let l:sign = get(g:lsp_diagnostics_signs_warning, 'text', 'W')
-  return l:counts.warning == 0 ? '' : printf('%s %d', l:sign, l:counts.warning)
-endfunction
+" \       ['linter_errors', 'linter_warnings', 'linter_info', 'linter_hints', 'linter_ok' ]
 
-function! LightlineLSPErrors() abort
-  let l:counts = lsp#get_buffer_diagnostics_counts()
-  let l:sign = get(g:lsp_diagnostics_signs_error, 'text', 'E')
-  return l:counts.error == 0 ? '' : printf('%s %d', l:sign, l:counts.error)
-endfunction
 
-let g:lightline_lsp_signs_ok = "\uf00c "
-function! LightlineLSPOk() abort
-  let l:counts =  lsp#get_buffer_diagnostics_counts()
-  let l:total = l:counts.error + l:counts.warning
-  let l:sign = get(g:, 'lightline_lsp_signs_ok', 'O')
-  return l:total == 0 ? l:sign : ''
-endfunction
+"  \       ['coc_info', 'coc_hints', 'coc_errors', 'coc_warnings', 'coc_ok'],
+"  \       ['coc_status'],
+" register compoments:
+"call lightline#coc#register()
 
-augroup LightLineOnLSP
-  autocmd!
-  autocmd User lsp_diagnostics_updated call lightline#update()
-augroup END
+"Diagnosticsの、左横のアイコンの色設定
+highlight CocErrorSign ctermfg=15 ctermbg=196
+highlight CocWarningSign ctermfg=0 ctermbg=172
+
+"   \     ['lsp_errors', 'lsp_warnings', 'lsp_ok'],
+
+"  \ 'component_expand': {
+"  \   'lsp_warnings': 'LightlineLSPWarnings',
+"  \   'lsp_errors':   'LightlineLSPErrors',
+"  \   'lsp_ok':       'LightlineLSPOk',
+"  \ },
+"  \ 'component_type': {
+"  \   'lsp_warnings': 'warning',
+"  \   'lsp_errors':   'error',
+"  \   'lsp_ok':       'normal',
+"  \ },
+
+"function! LightlineLSPWarnings() abort
+"  let l:counts = lsp#get_buffer_diagnostics_counts()
+"  let l:sign = get(g:lsp_diagnostics_signs_warning, 'text', 'W')
+"  return l:counts.warning == 0 ? '' : printf('%s %d', l:sign, l:counts.warning)
+"endfunction
+"
+"function! LightlineLSPErrors() abort
+"  let l:counts = lsp#get_buffer_diagnostics_counts()
+"  let l:sign = get(g:lsp_diagnostics_signs_error, 'text', 'E')
+"  return l:counts.error == 0 ? '' : printf('%s %d', l:sign, l:counts.error)
+"endfunction
+"
+"let g:lightline_lsp_signs_ok = "\uf00c "
+"function! LightlineLSPOk() abort
+"  let l:counts =  lsp#get_buffer_diagnostics_counts()
+"  let l:total = l:counts.error + l:counts.warning
+"  let l:sign = get(g:, 'lightline_lsp_signs_ok', 'O')
+"  return l:total == 0 ? l:sign : ''
+"endfunction
+"
+"augroup LightLineOnLSP
+"  autocmd!
+"  autocmd User lsp_diagnostics_updated call lightline#update()
+"augroup END
 
 
 " \     [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ]
