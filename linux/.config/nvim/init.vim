@@ -83,6 +83,8 @@ set runtimepath+=s:settings_config_dir
 set runtimepath+=s:settings_plugin_dir
 "set runtimepath+=s:settings_data_dir
 
+let g:coc_config_home="$HOME/.config/nvim"
+
 if dein#load_state(s:dein_cache_path)
   call dein#begin(s:dein_cache_path)
 
