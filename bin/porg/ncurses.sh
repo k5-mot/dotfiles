@@ -17,7 +17,8 @@ cd ncurses-*
   --enable-pc-files \
   --prefix=$HOME/.local/usr \
   --with-pkg-config-libdir=$HOME/.local/usr/lib/pkgconfig \
-  --with-termlib
+  --with-termlib \
+  --with-shared
 make
 porg -lD make install
 porg ncurses

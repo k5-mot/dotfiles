@@ -14,7 +14,8 @@ export LIBEVENT_URL=$(curl -s https://api.github.com/repos/libevent/libevent/rel
 wget $LIBEVENT_URL
 tar -zxvf libevent-*-stable.tar.gz
 cd libevent-*-stable
-./configure --prefix=$HOME/.local/usr
+./configure --prefix=$HOME/.local/usr \
+  --with-shared
 make
 porg -lD make install
 porg libevent

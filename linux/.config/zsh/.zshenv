@@ -172,8 +172,7 @@ fi
 
 # Set up scripts of dotfiles.
 export FPATH
-#export FPATH=$FPATH:$HOME/dotfiles/bin
-export PATH=$PATH:$HOME/dotfiles/bin
+export PATH=$PATH:$(find $HOME/dotfiles/bin -type d | xargs echo | sed -e 's/ /:/g')
 
 ## Set
 export LIBRARY_PATH
