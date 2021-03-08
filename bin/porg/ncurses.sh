@@ -14,11 +14,11 @@ wget ftp://ftp.invisible-island.net/ncurses/ncurses.tar.gz
 tar -zxvf ncurses.tar.gz
 cd ncurses-*
 ./configure \
-  --enable-pc-files \
   --prefix=$HOME/.local/usr \
-  --with-pkg-config-libdir=$HOME/.local/usr/lib/pkgconfig \
+  --with-shared \
   --with-termlib \
-  --with-shared
+  --enable-pc-files \
+  --with-pkg-config-libdir=$HOME/.local/usr/lib/pkgconfig 
 make
 porg -lD make install
 porg ncurses
