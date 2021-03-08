@@ -24,10 +24,10 @@ cd tmux-*
 #sh autogen.sh
 
 PKG_CONFIG_PATH=$HOME/.local/usr/lib/pkgconfig ./configure \
-  --prefix=$HOME/.local/usr \
-  --enable-static \
-  LDFLAGS="-L$HOME/.local/usr/lib" \
-  CFLAGS="-I$HOME/.local/usr/include"
+  --prefix=$HOME/.local/usr 
+#  --enable-static \
+#  LDFLAGS="-L$HOME/.local/usr/lib" \
+#  CFLAGS="-I$HOME/.local/usr/include"
 make -j4
 porg -lD make install
 porg tmux
