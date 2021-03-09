@@ -35,6 +35,9 @@ sudo apt install -y gettext
 sudo apt install -y libtool
 sudo apt install -y libtool-bin
 sudo apt install -y unzip
+sudo apt install -y build-dep
+sudo apt install -y xorg-dev
+sudo apt install -y libgtk2.0-dev
 #sudo apt install -y libssl-dev
 #sudo apt install -y libreadline-dev
 #sudo apt install -y zlib1g-dev
@@ -53,7 +56,9 @@ sudo apt install -y curl
 #sudo apt install -y llvm
 #sudo apt install -y sqlite3
 sudo apt install -y python
+sudo apt install -y python-dev
 sudo apt install -y python3
+sudo apt install -y python3-dev
 #sudo apt install -y python-tk
 #sudo apt install -y python3-tk
 #sudo apt install -y tk-dev

@@ -34,6 +34,8 @@ LDFLAGS="-Wl,-rpath=$HOME/.anyenv/envs/pyenv/versions/$PYENV_PYTHON2_VERSION/lib
 --enable-luainterp \
 --with-features=huge \
 --enable-xim \
+--enable-gpm \
+--with-x \
 --enable-gui=auto \
 --with-python3-command=$HOME/.anyenv/envs/pyenv/versions/$PYENV_PYTHON3_VERSION/bin/python3 \
 --with-python-command=$HOME/.anyenv/envs/pyenv/versions/$PYENV_PYTHON2_VERSION/bin/python2 \
