@@ -166,6 +166,9 @@ bindkey '^W' backward-kill-word
 #bindkey '^Z' accept-and-hold
 #bindkey -s '\M-/' \\\\
 #bindkey -s '\M-=' \|
+
+# suggestion
+bindkey '^ ' autosuggest-accept
 ## }}}
 
 ## Prompt {{{
