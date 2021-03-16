@@ -32,7 +32,7 @@ if has('nvim')
     set termguicolors
   endif
 elseif has('patch-7.4.1778')
-  "set guicolors
+  set guicolors
 elseif !has('gui_running')
   set t_Co=256
 endif
@@ -49,9 +49,9 @@ endif
 if !isdirectory('$HOME/.anyenv/envs/nodenv')
   let g:node_host_prog    = $HOME . '/.anyenv/envs/nodenv/versions/15.10.0/bin/neovim-node-host'
 endif
-"if !isdirectory('$HOME/.anyenv/envs/plenv')
-"  let g:perl_host_prog    = $HOME . '/.anyenv/envs/nodenv/versions/5.32.1/bin'
-"endif
+if !isdirectory('$HOME/.anyenv/envs/plenv')
+  let g:perl_host_prog    = $HOME . '/.anyenv/envs/nodenv/versions/5.32.1/bin'
+endif
 "let g:perl_host_prog    = $HOME . '/.anyenv/envs/nodenv/versions/15.6.0/bin/neovim-node-host'
 "let g:python3_host_prog = $HOME . '/.pyenv/versions/3.8.5/bin/python'
 "let g:python_host_prog  = $HOME . '/.pyenv/versions/2.7.18/bin/python'
@@ -107,7 +107,7 @@ endif
 
 let s:removed_plugins = dein#check_clean()
 if len(s:removed_plugins) > 0
-  call map(s:removed_plugins, "delete(v:val, 'rf')")
+  "call map(s:removed_plugins, "delete(v:val, 'rf')")
   call dein#recache_runtimepath()
 endif
 

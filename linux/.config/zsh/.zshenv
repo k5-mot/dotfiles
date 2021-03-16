@@ -44,6 +44,7 @@ umask 022
 
 ## Term
 export TERM="xterm-256color"
+#export TERM="screen-256color"
 ## Default editor
 if command -v nvim 1>/dev/null 2>&1; then
   export EDITOR="nvim"
@@ -72,9 +73,9 @@ export QT_IM_MODULE="ibus"
 #export GTK_IM_MODULE="xim"
 #export QT_IM_MODULE="xim"
 export JSERVER="localhost"
-export TMUX_ACS="utf8"
-export TMUX_ACS="acs"
-export TMUX_ACS="ascii"
+#export TMUX_ACS="utf8"
+#export TMUX_ACS="acs"
+#export TMUX_ACS="ascii"
 
 ## Initialize $PATH
 #echo $PATH | sed -e 's/:/\n/g'
@@ -171,17 +172,17 @@ if [ -e $HOME/.zshenv_local ]; then
 fi
 
 # Set up scripts of dotfiles.
-export FPATH
 export PATH=$PATH:$(find $HOME/dotfiles/bin -type d | xargs echo | sed -e 's/ /:/g')
 
 ## Set
+export FPATH
 export LIBRARY_PATH
 export LIBRARY_PATH=$LIBRARY_PATH:$LD_LIBRARY_PATH
 export C_INCLUDE_PATH
 export C_INCLUDE_PATH=$C_INCLUDE_PATH:$CPATH
 export CPLUS_INCLUDE_PATH
 export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:$CPATH
-export CPLUS_INCLUDE_PATH="/usr/include/c++/$(ls -1 /usr/include/c++ | tail -1 | sed 's/[\/]//')":$CPLUS_INCLUDE_PATH
+export CPLUS_INCLUDE_PATH="/usr/include/c++/$(ls -1 /usr/include/c++ | tail -1 | sed 's/[@\/]//')":$CPLUS_INCLUDE_PATH
 #export CPLUS_INCLUDE_PATH=/usr/include/c++/9:$CPLUS_INCLUDE_PATH
 
 ## automatically remove duplicates from these arrays
