@@ -104,13 +104,13 @@ source ~/.config/nvim/plugins/lightline.rc.vim
 '''
 
 
-#[[plugins]]
-#repo = 'neoclide/coc.nvim'
-#rev = 'release'
-#merged = '0'
-#hook_add = '''
-#source ~/.config/nvim/plugins/coc.rc.vim
-#'''
+[[plugins]]
+repo = 'neoclide/coc.nvim'
+rev = 'release'
+merged = '0'
+hook_post_update = '''
+source ~/.config/nvim/plugins/coc.rc.vim
+'''
 
 
 

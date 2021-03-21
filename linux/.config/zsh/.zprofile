@@ -16,7 +16,7 @@ alias la='ls -a'
 alias lla='ls -la'
 alias x=exit
 alias grep='grep --color=auto'
-alias wget="wget --hsts-file $HOME/.config/wget/wget-hsts"
+alias wget="wget --hsts-file $HOME/.cache/wget/wget-hsts"
 
 # List only directories and symbolic
 # links that point to directories

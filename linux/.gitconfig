@@ -1,11 +1,11 @@
 [include]
-  path        = ~/.gitconfig_user
+  path        = ~/.config/git/gitconfig_user
 [color]
   ui          = auto
 [core]
   editor      = vim
   filemode    = false
-  excludefile = ~/.gitignore_global
+  excludefile = ~/.config/git/gitignore_global
 [merge]
   tool        = vimdiff
 [alias]

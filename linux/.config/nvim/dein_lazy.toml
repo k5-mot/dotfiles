@@ -21,14 +21,14 @@ repo = 'Shougo/neomru.vim'
 repo = 'Shougo/neoyank.vim'
 ### }}}
 
-[[plugins]]
-repo = 'neoclide/coc.nvim'
-rev = 'release'
-on_event = 'InsertEnter'
-merged = '0'
-hook_source = '''
-source ~/.config/nvim/plugins/coc.rc.vim
-'''
+#[[plugins]]
+#repo = 'neoclide/coc.nvim'
+#rev = 'release'
+#on_event = 'InsertEnter'
+#merged = '0'
+#hook_source = '''
+#source ~/.config/nvim/plugins/coc.rc.vim
+#'''
 
 
 ### Defx {{{

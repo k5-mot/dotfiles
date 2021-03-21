@@ -42,4 +42,3 @@ if ($^O eq 'linux') {
 
 ## Clean up
 $clean_full_ext = "%R.synctex.gz"
-

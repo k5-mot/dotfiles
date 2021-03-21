@@ -1,127 +1,86 @@
-if &compatible
-  set nocompatible
+"
+" NeoVim Configurations
+"   init.vim
+"
+
+" Set environment variables.
+let $XDG_CACHE_HOME = empty($XDG_CACHE_HOME) ? expand('$HOME/.cache') : $XDG_CACHE_HOME
+let $XDG_CONFIG_HOME = empty($XDG_CONFIG_HOME) ? expand('$HOME/.config') : $XDG_CONFIG_HOME
+let $XDG_DATA_HOME = empty($XDG_DATA_HOME) ? expand('$HOME/.local/share') : $XDG_DATA_HOME
+if has('nvim')
+  let $VIM_CACHE_HOME = $XDG_CACHE_HOME . '/nvim'
+  let $VIM_CONFIG_HOME = $XDG_CONFIG_HOME . '/nvim'
+else
+  let $VIM_CACHE_HOME = $XDG_CACHE_HOME . '/vim'
+  let $VIM_CONFIG_HOME = $XDG_CONFIG_HOME . '/nvim'
 endif
+let $VIM_PLUGIN_HOME = $VIM_CONFIG_HOME . '/plugins'
+let $VIM_DATA_HOME = $VIM_CONFIG_HOME . '/datas'
 
-augroup MyAutoCmd
-  autocmd!
-augroup END
+" Set up runtimepath.
+set runtimepath+=$VIM_CONFIG_HOME
+set runtimepath+=$VIM_PLUGIN_HOME
+set runtimepath+=$VIM_DATA_HOME
 
-augroup vimrc
-  autocmd!
-augroup END
-
-"let $CACHE = empty($XDG_CACHE_HOME) ? expand('$HOME/.cache') : $XDG_CACHE_HOME
-"let $CONFIG = empty($XDG_CONFIG_HOME) ? expand('$HOME/.config') : $XDG_CONFIG_HOME
-"let $DATA = empty($XDG_DATA_HOME) ? expand('$HOME/.local/share') : $XDG_DATA_HOME
-
-if !has('nvim')
-  let &t_TI = ""
-  let &t_TE = ""
-endif
-
-" キーマップリーダーを最初に定義
+" Define Keymap Leader <Leader>
 let mapleader = ','
 
-" True Color対応
+" True Color
 if has('nvim')
   " For Neovim 0.1.3 and 0.1.4
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-
   " Or if you have Neovim >= 0.1.5
   if (has("termguicolors"))
     set termguicolors
   endif
-elseif has('patch-7.4.1778')
-  set guicolors
 elseif !has('gui_running')
   set t_Co=256
 endif
 
 " Set up external provider
-"if has('nvim')
 if !isdirectory('$HOME/.anyenv/envs/pyenv')
-  let g:python3_host_prog = $HOME . '/.anyenv/envs/pyenv/versions/3.9.2/bin/python'
-  let g:python_host_prog  = $HOME . '/.anyenv/envs/pyenv/versions/2.7.18/bin/python'
+  let s:pyenv_python3_version = system('pyenv versions | grep -e "3\.[0-9]*\.[0-9]*" | tail -1 | sed "s/([^)]*)//g" | sed "s/[ \t*]//g" | sed -z "s/\n//g"')
+  let s:pyenv_python_version = system('pyenv versions | grep -e "2\.[0-9]*\.[0-9]*" | tail -1 | sed "s/([^)]*)//g" | sed "s/[ \t*]//g" | sed -z "s/\n//g"')
+  let g:python3_host_prog = $HOME . '/.anyenv/envs/pyenv/versions/' . s:pyenv_python3_version . '/bin/python'
+  let g:python_host_prog  = $HOME . '/.anyenv/envs/pyenv/versions/' . s:pyenv_python_version . '/bin/python'
 endif
 if !isdirectory('$HOME/.anyenv/envs/rbenv')
-  let g:ruby_host_prog    = $HOME . '/.anyenv/envs/rbenv/versions/3.0.0/bin/neovim-ruby-host'
+  let s:rbenv_ruby_version = system('rbenv versions | grep -e "[0-9]*\.[0-9]*\.[0-9]*" | tail -1 | sed "s/([^)]*)//g" | sed "s/[ \t*]//g" | sed -z "s/\n//g"')
+  let g:ruby_host_prog    = $HOME . '/.anyenv/envs/rbenv/versions/' . s:rbenv_ruby_version . '/bin/neovim-ruby-host'
 endif
 if !isdirectory('$HOME/.anyenv/envs/nodenv')
-  let g:node_host_prog    = $HOME . '/.anyenv/envs/nodenv/versions/15.10.0/bin/neovim-node-host'
+  let s:nodenv_nodejs_version = system('nodenv versions | grep -e "[0-9]*\.[0-9]*\.[0-9]*" | tail -1 | sed "s/([^)]*)//g" | sed "s/[ \t*]//g" | sed -z "s/\n//g"')
+  let g:node_host_prog    = $HOME . '/.anyenv/envs/nodenv/versions/' . s:nodenv_nodejs_version . '/bin/neovim-node-host'
 endif
 if !isdirectory('$HOME/.anyenv/envs/plenv')
-  let g:perl_host_prog    = $HOME . '/.anyenv/envs/nodenv/versions/5.32.1/bin'
-endif
-"let g:perl_host_prog    = $HOME . '/.anyenv/envs/nodenv/versions/15.6.0/bin/neovim-node-host'
-"let g:python3_host_prog = $HOME . '/.pyenv/versions/3.8.5/bin/python'
-"let g:python_host_prog  = $HOME . '/.pyenv/versions/2.7.18/bin/python'
-"let g:ruby_host_prog    = $HOME . '/.rbenv/versions/3.0.0/bin/neovim-ruby-host'
-"let g:node_host_prog    = $HOME . '/.nodenv/versions/15.5.0/bin/neovim-node-host'
-"endif
-
-if has('nvim')
-  let s:dein_cache_path = expand('$HOME/.cache/nvim/dein')
-else
-  let s:dein_cache_path = expand('$HOME/.cache/vim/dein')
+  let s:plenv_perl_version = system('plenv versions | grep -e "[0-9]*\.[0-9]*\.[0-9]*" | tail -1 | sed "s/([^)]*)//g" | sed "s/[ \t*]//g" | sed -z "s/\n//g"')
+  let g:perl_host_prog    = $HOME . '/.anyenv/envs/nodenv/versions/' . s:plenv_perl_version . '/bin'
 endif
 
-let s:dein_dir = s:dein_cache_path .'/repos/github.com/Shougo/dein.vim'
-set runtimepath+=s:dein_dir
+" Plugin Manager
+runtime! ./dein.vim
 
-if &runtimepath !~ '/dein.vim'
-  if !isdirectory(s:dein_dir)
-    execute '!git clone https://github.com/Shougo/dein.vim' s:dein_dir
-  endif
-  execute 'set runtimepath+=' . fnamemodify(s:dein_dir, ':p')
+" Base
+runtime! ./basis.rc.vim
+
+" Functions
+runtime! ./functions.rc.vim
+
+" Keymapping
+runtime! ./keymaps.rc.vim
+
+" Load local settings.
+if filereadable(expand('$HOME/.vimrc_local'))
+  source $HOME/.vimrc_local
 endif
-
-" runtimepathの設定
-let s:settings_config_dir = expand('~/.config/nvim')
-let s:settings_plugin_dir = expand(s:settings_config_dir . '/plugins')
-"let s:settings_data_dir = expand(s:settings_config_dir . '/data')
-set runtimepath+=s:settings_config_dir
-set runtimepath+=s:settings_plugin_dir
-"set runtimepath+=s:settings_data_dir
-
-let g:coc_config_home="$HOME/.config/nvim"
-
-if dein#load_state(s:dein_cache_path)
-  call dein#begin(s:dein_cache_path)
-
-  if !has('nvim')
-    call dein#add('roxma/nvim-yarp')
-    call dein#add('roxma/vim-hug-neovim-rpc')
-  endif
-
-  call dein#load_toml('$HOME/.config/nvim/dein.toml', {'lazy' : 0})
-  call dein#load_toml('$HOME/.config/nvim/deinlazy.toml', {'lazy' : 1})
-  call dein#load_toml('$HOME/.config/nvim/deinft.toml')
-
-  call dein#end()
-  call dein#save_state()
-endif
-
-if dein#check_install()
-  call dein#install()
-endif
-
-let s:removed_plugins = dein#check_clean()
-if len(s:removed_plugins) > 0
-  "call map(s:removed_plugins, "delete(v:val, 'rf')")
-  call dein#recache_runtimepath()
-endif
-
-filetype plugin indent on
-syntax enable
-
 
 augroup TransparentBG
   autocmd!
-  autocmd Colorscheme * highlight Normal ctermbg=none
-	autocmd Colorscheme * highlight NonText ctermbg=none
-	autocmd Colorscheme * highlight LineNr ctermbg=none
-	autocmd Colorscheme * highlight Folded ctermbg=none
-	autocmd Colorscheme * highlight EndOfBuffer ctermbg=none
+  autocmd Colorscheme * highlight Normal ctermbg=NONE guibg=NONE
+  autocmd Colorscheme * highlight NonText ctermbg=NONE guibg=NONE
+  autocmd Colorscheme * highlight LineNr ctermbg=NONE guibg=NONE
+  autocmd Colorscheme * highlight Folded ctermbg=NONE guibg=NONE
+  autocmd Colorscheme * highlight EndOfBuffer ctermbg=NONE guibg=NONE
 augroup END
 set background=dark
 colorscheme gruvbox
@@ -129,45 +88,3 @@ colorscheme gruvbox
 "colorscheme molokai
 "colorscheme tender
 
-
-"colorscheme gruvbox  "example
-highlight Normal ctermbg=NONE guibg=NONE
-highlight NonText ctermbg=NONE guibg=NONE
-highlight LineNr ctermbg=NONE guibg=NONE
-highlight Folded ctermbg=NONE guibg=NONE
-highlight EndOfBuffer ctermbg=NONE guibg=NONE
-
-
-" Base
-runtime! ./basis.rc.vim
-"runtime! $HOME/.config/nvim/basis.rc.vim
-"source $HOME/.config/nvim/basis.rc.vim
-
-" Functions
-runtime! ./functions.rc.vim
-"runtime! $HOME/.config/nvim/functions.rc.vim
-"source $HOME/.config/nvim/functions.rc.vim
-
-" Keymapping
-runtime! ./keymaps.rc.vim
-"runtime! $HOME/.config/nvim/keymaps.rc.vim
-"source $HOME/.config/nvim/keymaps.rc.vim
-
-
-" Load local settings.
-if filereadable(expand('$HOME/.vimrc_local'))
-  source $HOME/.vimrc_local
-endif
-
-" プロジェクト設定
-augroup vimrc-local
-  autocmd!
-  autocmd BufNewFile,BufReadPost * call s:vimrc_local(expand('<afile>:p:h'))
-augroup END
-
-function! s:vimrc_local(loc)
-  let files = findfile('.vimrc_local', escape(a:loc, ' ') . ';', -1)
-  for i in reverse(filter(files, 'filereadable(v:val)'))
-    source `=i`
-  endfor
-endfunction

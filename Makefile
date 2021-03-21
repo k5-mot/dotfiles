@@ -11,9 +11,9 @@ LINKDIRS    := $(addprefix $(HOME)/,$(DOTDIRS))
 
 .DEFAULT_GOAL := help
 
-all:
+all: ## All operations
 
-list: ## Show dot files in this repo
+list: ## Show dot files in this repos
 	@$(foreach val, $(SELECTFILES), ls -dF $(val);)
 
 install: ## Create symlink to home directory
@@ -25,12 +25,15 @@ clean: ## Remove the dot files and this repo
 	@echo 'Remove dot files in your home directory...'
 	@$(foreach val, $(DOTFILES), rm -vrf $(HOME)/$(val);)
 
-reinstall:
+reinstall: ## Remove the dot files and Install
 	@make clean
 	@make install
 
-vscode-extension:
+vscode-extension: ## Install extensions for VSCode
 	@bash $(MAKEPATH)/linux/.config/Code/install_extension.sh $(MAKEPATH)/linux/.config/Code/extension-list
+
+git-userconfig: ## Generate user config for Git
+	@cp -rf $(HOME)/.config/git/gitconfig_user_sample $(HOME)/.config/git/gitconfig_user
 
 help: ## Self-documented Makefile
 	@echo 'Copyright (c) 2020 k5-mot All Rights Reserved.'

@@ -4,6 +4,7 @@ set hidden
 " 他で編集したファイルを自動で再読み込み
 set autoread
 
+" 補完時の挙動を指定
 set completeopt=menuone,noselect
 
 " スクロール時の余白行数
@@ -49,6 +50,7 @@ set noshowmode
 
 " viminfoの設定
 set viminfo='50,<1000,s100,\"50
+"set viminfo+=n$HOME/.cache/nvim/viminfo
 
 " モードラインを無効
 set modelines=0
@@ -57,10 +59,6 @@ set modelines=0
 set notitle
 
 " ヤンクでクリップボードを使用
-" バグがあるのでコメントアウト
-" https://github.com/neovim/neovim/issues/1822
-"set clipboard=unnamed,unnamedplus,autoselect
-"set clipboard=unnamed,unnamedplus
 set clipboard=unnamedplus
 
 " コマンドモードで補完を使用
@@ -73,9 +71,13 @@ set noswapfile
 
 " 折り返さない
 set nowrap
+" 折り返しを設定したとき、単語内で折り返さない
+"set linebreak
 
-set linebreak
+" 列幅
 "set columns
+
+" 行幅
 "set lines
 
 " ルーラーを表示
@@ -85,10 +87,10 @@ set ruler
 set display=lastline
 
 " 不可視文字を表示
-"set list
+set list
 
 " 不可視文字の設定
-"set listchars=tab:▹\ ,trail:-,extends:»,precedes:«,eol:\ ,nbsp:%
+set listchars=tab:▹\ ,trail:-,extends:»,precedes:«,eol:\ ,nbsp:%
 
 " 開始時の挨拶を表示しない
 set shortmess+=I
@@ -197,7 +199,9 @@ set equalalways
 "set noequalalways
 
 " concealをOFF
-set conceallevel=0
+"set conceallevel=0
+
+" vimでjsonを開いた時のconcealをOFF
 let g:vim_json_syntax_conceal = 0
 
 " grep
@@ -227,19 +231,10 @@ set fileformats=unix,dos,mac
 
 " undofile
 set undofile
-set undodir=$HOME/.cache/vim/undodir
+set undodir=$HOME/.cache/nvim/undodir
 
 " vimの矩形選択で文字が無くても右へ進める
 set virtualedit=block
 
-" コメントの色を水色にする
-"hi Comment ctermfg=3
-
-" 背景色
-"set background=dark
-
-" 256色環境
-"set t_Co=256
-
 " シンタックスハイライト
-"syntax enable
+syntax enable
