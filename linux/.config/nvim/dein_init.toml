@@ -1,10 +1,10 @@
 ### Package manager {{{
 [[plugins]]
 repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'wsdjeg/dein-ui.vim'
 ### }}}
-
-
-
 
 ### Shell {{{
 #[[plugins]]
@@ -23,26 +23,26 @@ repo = 'Shougo/dein.vim'
 ### }}}
 
 ### colorscheme {{{
-#[[plugins]]
-#repo = 'croaker/mustang-vim'
-#
-#[[plugins]]
-#repo = 'nanotech/jellybeans.vim'
-#
-#[[plugins]]
-#repo = 'tomasr/molokai'
-#
-#[[plugins]]
-#repo = 'dracula/vim'
-#
-#[[plugins]]
-#repo = 'cocopon/iceberg.vim'
-#
-#[[plugins]]
-#repo = 'joshdick/onedark.vim'
-#
-#[[plugins]]
-#repo = 'jacoborus/tender.vim'
+[[plugins]]
+repo = 'croaker/mustang-vim'
+
+[[plugins]]
+repo = 'nanotech/jellybeans.vim'
+
+[[plugins]]
+repo = 'tomasr/molokai'
+
+[[plugins]]
+repo = 'dracula/vim'
+
+[[plugins]]
+repo = 'cocopon/iceberg.vim'
+
+[[plugins]]
+repo = 'joshdick/onedark.vim'
+
+[[plugins]]
+repo = 'jacoborus/tender.vim'
 
 [[plugins]]
 repo = 'morhetz/gruvbox'
@@ -89,8 +89,6 @@ repo = 'morhetz/gruvbox'
 #repo = 'mattn/vim-lsp-icons'
 
 
-
-
 [[plugins]]
 repo = 'josa42/vim-lightline-coc'
 hook_add = '''
@@ -103,12 +101,11 @@ hook_add = '''
 source ~/.config/nvim/plugins/lightline.rc.vim
 '''
 
-
 [[plugins]]
 repo = 'neoclide/coc.nvim'
 rev = 'release'
 merged = '0'
-hook_post_update = '''
+hook_add = '''
 source ~/.config/nvim/plugins/coc.rc.vim
 '''
 
@@ -184,8 +181,8 @@ repo = 'honza/vim-snippets'
 repo = 'ryanoasis/vim-devicons'
 ### }}}
 
-#[[plugins]]
-#repo = 'tmhedberg/matchit'
+[[plugins]]
+repo = 'tmhedberg/matchit'
 
 #[[plugins]]
 #repo = 'Shougo/neco-vim'

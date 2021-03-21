@@ -67,15 +67,16 @@ runtime! ./basis.rc.vim
 runtime! ./functions.rc.vim
 
 " Keymapping
-runtime! ./keymaps.rc.vim
+runtime! ./keybindings.rc.vim
 
 " Load local settings.
 if filereadable(expand('$HOME/.vimrc_local'))
   source $HOME/.vimrc_local
 endif
 
-augroup TransparentBG
+augroup AutoColorscheme
   autocmd!
+  " Transparent Background
   autocmd Colorscheme * highlight Normal ctermbg=NONE guibg=NONE
   autocmd Colorscheme * highlight NonText ctermbg=NONE guibg=NONE
   autocmd Colorscheme * highlight LineNr ctermbg=NONE guibg=NONE
