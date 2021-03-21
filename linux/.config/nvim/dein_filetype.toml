@@ -1,3 +1,8 @@
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
+
+
 # vim 環境から適当に移植
 #[ftplugin]
 #_ = '''

@@ -8,46 +8,69 @@ hook_add = '''
 source ~/.config/nvim/plugins/denite.nvim.rc.vim
 '''
 hook_post_source = '''
-source ~/.config/nvim/plugins/denite_post.nvim.rc.vim
+source ~/.config/nvim/plugins/denite.nvim_post.rc.vim
 '''
 
 [[plugins]]
 repo = 'Shougo/unite-outline'
+on_cmd = 'Denite'
 
 [[plugins]]
 repo = 'Shougo/neomru.vim'
+on_cmd = 'Denite'
 
 [[plugins]]
 repo = 'Shougo/neoyank.vim'
+on_cmd = 'Denite'
 ### }}}
 
-#[[plugins]]
-#repo = 'neoclide/coc.nvim'
-#rev = 'release'
-#on_event = 'InsertEnter'
-#merged = '0'
-#hook_source = '''
-#source ~/.config/nvim/plugins/coc.rc.vim
-#'''
-
+[[plugins]]
+repo = 'neoclide/coc.nvim'
+rev = 'release'
+on_event = 'InsertEnter'
+merged = '0'
+hook_add = '''
+source ~/.config/nvim/plugins/coc_a.rc.vim
+'''
+hook_source = '''
+source ~/.config/nvim/plugins/coc.rc.vim
+'''
 
 ### Defx {{{
 ## File explorer
 [[plugins]]
 repo = 'Shougo/defx.nvim'
-on_cmd = 'Defx'
 depends = ['defx-icons', 'defx-git']
-hook_add = '''
+on_cmd = 'Defx'
+hook_post_source = '''
 source ~/.config/nvim/plugins/defx.nvim.rc.vim
 '''
 
 [[plugins]]
 repo ='kristijanhusak/defx-icons'
+on_cmd = 'Defx'
 
 [[plugins]]
 repo ='kristijanhusak/defx-git'
+on_cmd = 'Defx'
 ### }}}
 
+## Deol {{{
+[[plugins]]
+repo = 'Shougo/deol.nvim'
+on_cmd = 'Deol'
+hook_add = '''
+source ~/.config/nvim/plugins/deol.rc.vim
+'''
+
+#[[plugins]]
+#repo = 'Shougo/vimproc.vim'
+#build = 'make'
+#
+#[[plugins]]
+#repo = 'Shougo/vimshell'
+#build = 'make'
+### }}}
 
 ### Deoplete {{{
 #[[plugins]]
@@ -77,14 +100,3 @@ repo ='kristijanhusak/defx-git'
 #repo = 'Shougo/context_filetype.vim'
 ###}}}
 
-## Latex
-#[[plugins]]
-#repo = 'lervag/vimtex'
-#hook_add = '''
-#source ~/.config/nvim/plugins/vimtex.rc.vim
-#'''
-
-## syntax {{{
-[[plugins]]
-repo = 'cespare/vim-toml'
-on_ft = 'toml'

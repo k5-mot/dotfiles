@@ -1,90 +1,135 @@
-" options
-let s:denite_win_width_percent = 0.85
-let s:denite_win_height_percent = 0.7
-call denite#custom#option('default', {
-      \ 'split': 'floating',
-      \ 'winwidth': float2nr(&columns * s:denite_win_width_percent),
-      \ 'wincol': float2nr((&columns - (&columns * s:denite_win_width_percent)) / 2),
-      \ 'winheight': float2nr(&lines * s:denite_win_height_percent),
-      \ 'winrow': float2nr((&lines - (&lines * s:denite_win_height_percent)) / 2),
-      \ 'highlight_filter_background': 'DeniteFilter',
-      \ 'highlight_matched_char': 'Underlined',
-      \ 'prompt': '$ ',
-      \ })
+" Change file/rec command.
+call denite#custom#var('file/rec', 'command',
+\ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+" For ripgrep
+" Note: rg is faster than ag
+call denite#custom#var('file/rec', 'command',
+\ ['rg', '--files', '--glob', '!.git', '--color', 'never'])
+" For Pt(the platinum searcher)
+" NOTE: It also supports windows.
+call denite#custom#var('file/rec', 'command',
+\ ['pt', '--follow', '--nocolor', '--nogroup',
+\  (has('win32') ? '-g:' : '-g='), ''])
+" For python script scantree.py
+" Read bellow on this file to learn more about scantree.py
+call denite#custom#var('file/rec', 'command',
+\ ['scantree.py', '--path', ':directory'])
 
+" Change matchers.
+call denite#custom#source(
+\ 'file_mru', 'matchers', ['matcher/fuzzy', 'matcher/project_files'])
+call denite#custom#source(
+\ 'file/rec', 'matchers', ['matcher/cpsm'])
 
-" key mappings
-autocmd FileType denite call s:denite_my_settings()
-function! s:denite_my_settings() abort
-  nnoremap <silent><buffer>       <C-n>   j
-  nnoremap <silent><buffer>       <C-p>   k
-  nnoremap <silent><buffer><expr> <CR>    denite#do_map('do_action')
-  nnoremap <silent><buffer><expr> d       denite#do_map('do_action', 'delete')
-  nnoremap <silent><buffer><expr> p       denite#do_map('do_action', 'preview')
-  nnoremap <silent><buffer><expr> q       denite#do_map('quit')
-  nnoremap <silent><buffer><expr> <C-g>   denite#do_map('quit')
-  nnoremap <silent><buffer><expr> i       denite#do_map('open_filter_buffer')
-  nnoremap <silent><buffer><expr> <Space> denite#do_map('toggle_select').'j'
-  nnoremap <silent><buffer><expr> <Tab>   denite#do_map('choose_action')
-  nnoremap <silent><buffer><expr> <C-l>   denite#do_map('redraw')
-  nnoremap <silent><buffer><expr> <BS>    denite#do_map('move_up_path')
+" Change sorters.
+call denite#custom#source(
+\ 'file/rec', 'sorters', ['sorter/sublime'])
 
-  " disable window moving
-  nnoremap <silent><buffer><expr> <C-h> denite#do_map('nop')
-  nnoremap <silent><buffer><expr> <C-j> denite#do_map('nop')
-  nnoremap <silent><buffer><expr> <C-k> denite#do_map('nop')
-  "nnoremap <silent><buffer><expr> <C-l> denite#do_map('nop')
-endfunction
+" Change default action.
+call denite#custom#kind('file', 'default_action', 'split')
 
-autocmd FileType denite-filter call s:denite_filter_my_setting()
-function! s:denite_filter_my_setting() abort
-  imap <silent><buffer>           <C-g> <Plug>(denite_filter_quit)
-  nmap <silent><buffer>           <C-g> <Plug>(denite_filter_quit)
-  inoremap <silent><buffer>       <C-n> <Esc><C-w>p:call cursor(line('.')+1,0)<CR><C-w>pA
-  inoremap <silent><buffer>       <C-p> <Esc><C-w>p:call cursor(line('.')-1,0)<CR><C-w>pA
-endfunction
+" Add custom menus
+let s:menus = {}
+let s:menus.zsh = {
+	\ 'description': 'Edit your import zsh configuration'
+	\ }
+let s:menus.zsh.file_candidates = [
+	\ ['zshrc', '~/.config/zsh/.zshrc'],
+	\ ['zshenv', '~/.zshenv'],
+	\ ]
+
+let s:menus.my_commands = {
+	\ 'description': 'Example commands'
+	\ }
+let s:menus.my_commands.command_candidates = [
+	\ ['Split the window', 'vnew'],
+	\ ['Open zsh menu', 'Denite menu:zsh'],
+	\ ['Format code', 'FormatCode', 'go,python'],
+	\ ]
+
+call denite#custom#var('menu', 'menus', s:menus)
+
+" Ag command on grep source
+call denite#custom#var('grep', {
+	\ 'command': ['ag'],
+	\ 'default_opts': ['-i', '--vimgrep'],
+	\ 'recursive_opts': [],
+	\ 'pattern_opt': [],
+	\ 'separator': ['--'],
+	\ 'final_opts': [],
+	\ })
+
+" Ack command on grep source
+call denite#custom#var('grep', {
+	\ 'command': ['ack'],
+	\ 'default_opts': [
+	\   '--ackrc', $HOME.'/.ackrc', '-H', '-i',
+	\   '--nopager', '--nocolor', '--nogroup', '--column'
+	\ ],
+	\ 'recursive_opts': [],
+	\ 'pattern_opt': ['--match'],
+	\ 'separator': ['--'],
+	\ 'final_opts': [],
+	\ })
 
 " Ripgrep command on grep source
-call denite#custom#var('grep', 'command', ['rg'])
-call denite#custom#var('grep', 'default_opts',
-      \ ['-i', '--vimgrep', '--no-heading'])
-call denite#custom#var('grep', 'recursive_opts', [])
-call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
-call denite#custom#var('grep', 'separator', ['--'])
-call denite#custom#var('grep', 'final_opts', [])
+call denite#custom#var('grep', {
+	\ 'command': ['rg'],
+	\ 'default_opts': ['-i', '--vimgrep', '--no-heading'],
+	\ 'recursive_opts': [],
+	\ 'pattern_opt': ['--regexp'],
+	\ 'separator': ['--'],
+	\ 'final_opts': [],
+	\ })
 
-" Use fd for finding files
-if executable('fd')
-  call denite#custom#var('file/rec', 'command',
-        \ ['fd', '--follow', '--hidden', '--exclude', '.git', '.*'])
-else
-  call denite#custom#var('file/rec', 'command',
-        \ ['rg', '--files', '--glob', '!.git'])
-endif
+" Pt command on grep source
+call denite#custom#var('grep', {
+	\ 'command': ['pt'],
+	\ 'default_opts': [
+	\   '-i', '--nogroup', '--nocolor', '--smart-case'],
+	\ 'recursive_opts': [],
+	\ 'pattern_opt': [],
+	\ 'separator': ['--'],
+	\ 'final_opts': [],
+	\ })
 
-" neomru
-" プロジェクトごとに出し分ける
-call denite#custom#source(
-      \ 'file_mru', 'matchers', ['matcher/fuzzy', 'matcher/project_files'])
+" jvgrep command on grep source
+call denite#custom#var('grep', {
+	\ 'command': ['jvgrep'],
+	\ 'default_opts': ['-i'],
+	\ 'recursive_opts': ['-R'],
+	\ 'pattern_opt': [],
+	\ 'separator': [],
+	\ 'final_opts': [],
+	\ })
 
-"
-"" 表示変更
-""call unite#custom#source(
-""      \ 'file_mru', 'matchers',
-""      \ ['matcher_file_name', 'sorter_default', 'converter_file_directory'])
-"
+" Specify multiple paths in grep source
+"call denite#start([{'name': 'grep',
+"      \ 'args': [['a.vim', 'b.vim'], '', 'pattern']}])
 
-"function! s:UniteMapping()
-"  " C-gで閉じる
-"  imap <buffer><C-g> <Plug>(unite_exit)
-"  imap <buffer><C-g> <Plug>(unite_exit)
-"  " マークを変更
-"  "nmap <silent> <buffer> J <Plug>(unite_toggle_mark_current_candidate)
-"  "nmap <silent> <buffer> K <Plug>(unite_toggle_mark_current_candidate_up)
-"endfunction
-"
-"augroup mapping
-"  autocmd!
-"  autocmd FileType unite call s:UniteMapping()
-"  autocmd FileType vimfiler call s:VimFilerMapping()
-"augroup END
+" Define alias
+call denite#custom#alias('source', 'file/rec/git', 'file/rec')
+call denite#custom#var('file/rec/git', 'command',
+      \ ['git', 'ls-files', '-co', '--exclude-standard'])
+
+call denite#custom#alias('source', 'file/rec/py', 'file/rec')
+call denite#custom#var('file/rec/py', 'command',
+\ ['scantree.py', '--path', ':directory'])
+
+" Change ignore_globs
+call denite#custom#filter('matcher/ignore_globs', 'ignore_globs',
+      \ [ '.git/', '.ropeproject/', '__pycache__/',
+      \   'venv/', 'images/', '*.min.*', 'img/', 'fonts/'])
+
+" Custom action
+" Note: denite#custom#action() with lambda parameter is only vailable
+"       in NeoVim; not supported in Vim8.
+call denite#custom#action('file', 'test',
+      \ {context -> execute('let g:foo = 1')})
+call denite#custom#action('file', 'test2',
+      \ {context -> denite#do_action(
+      \  context, 'open', context['targets'])})
+" Source specific action
+call denite#custom#action('source/file', 'test',
+      \ {context -> execute('let g:bar = 1')})
+

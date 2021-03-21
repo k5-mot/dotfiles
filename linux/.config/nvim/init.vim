@@ -37,7 +37,7 @@ elseif !has('gui_running')
   set t_Co=256
 endif
 
-" Set up external provider
+" Neovim Features
 if !isdirectory('$HOME/.anyenv/envs/pyenv')
   let s:pyenv_python3_version = system('pyenv versions | grep -e "3\.[0-9]*\.[0-9]*" | tail -1 | sed "s/([^)]*)//g" | sed "s/[ \t*]//g" | sed -z "s/\n//g"')
   let s:pyenv_python_version = system('pyenv versions | grep -e "2\.[0-9]*\.[0-9]*" | tail -1 | sed "s/([^)]*)//g" | sed "s/[ \t*]//g" | sed -z "s/\n//g"')
@@ -74,15 +74,6 @@ if filereadable(expand('$HOME/.vimrc_local'))
   source $HOME/.vimrc_local
 endif
 
-augroup AutoColorscheme
-  autocmd!
-  " Transparent Background
-  autocmd Colorscheme * highlight Normal ctermbg=NONE guibg=NONE
-  autocmd Colorscheme * highlight NonText ctermbg=NONE guibg=NONE
-  autocmd Colorscheme * highlight LineNr ctermbg=NONE guibg=NONE
-  autocmd Colorscheme * highlight Folded ctermbg=NONE guibg=NONE
-  autocmd Colorscheme * highlight EndOfBuffer ctermbg=NONE guibg=NONE
-augroup END
 set background=dark
 colorscheme gruvbox
 "colorscheme iceberg

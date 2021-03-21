@@ -28,45 +28,30 @@ let g:lightline.component = {
 
 "============================================================
 
-"============================================================
-
-
-
-
-"let g:lightline.component_expand = {
-"  \   'lsp_warnings': 'lightline_lsp#warnings',
-"  \   'lsp_errors':   'lightline_lsp#errors',
-"  \   'lsp_ok':       'lightline_lsp#ok',
-"  \ }
-"
-"let g:lightline.component_type = {
-"  \   'lsp_warnings': 'warning',
-"  \   'lsp_errors':   'error',
-"  \   'lsp_ok':       'middle',
-"  \ }
-
-"let g:lightline.component_expand = {
-"  \   'linter_warnings': 'lightline#coc#warnings',
-"  \   'linter_errors': 'lightline#coc#errors',
-"  \   'linter_info': 'lightline#coc#info',
-"  \   'linter_hints': 'lightline#coc#hints',
-"  \   'linter_ok': 'lightline#coc#ok',
-"  \   'status': 'lightline#coc#status',
-"  \ }
-"
-"" Set color to the components:
-"let g:lightline.component_type = {
-"  \   'linter_warnings': 'warning',
-"  \   'linter_errors': 'error',
-"  \   'linter_info': 'info',
-"  \   'linter_hints': 'hints',
-"  \   'linter_ok': 'left',
-"  \ }
-
-let g:lightline.component_function = {
-  \   'coc_status': 'coc#status',
+" Register the components:
+"let g:lightline = {}
+let g:lightline.component_expand = {
+  \   'coc_warnings': 'lightline#coc#warnings',
+  \   'coc_errors': 'lightline#coc#errors',
+  \   'coc_info': 'lightline#coc#info',
+  \   'coc_hints': 'lightline#coc#hints',
+  \   'coc_ok': 'lightline#coc#ok',
+  \   'status': 'lightline#coc#status',
   \ }
 
+" Set color to the components:
+let g:lightline.component_type = {
+  \   'coc_warnings': 'warning',
+  \   'coc_errors': 'error',
+  \   'coc_info': 'info',
+  \   'coc_hints': 'hints',
+  \   'coc_ok': 'left',
+  \ }
+
+" Add the components to the lightline:
+"let g:lightline.active = {
+"  \   left': [[ 'coc_info', 'coc_hints', 'coc_errors', 'coc_warnings', 'coc_ok' ], [ 'coc_status'  ]]
+"  \ }
 
 let g:lightline = {
   \   'enable': { 'tabline': 1 },
@@ -77,7 +62,7 @@ let g:lightline = {
   \     'left': [
   \       ['mode', 'paste'],
   \       ['readonly', 'filename', 'modified'],
-  \       ['linter_errors', 'linter_warnings', 'linter_info', 'linter_hints', 'linter_ok' ],
+  \       ['coc_errors', 'coc_warnings', 'coc_info', 'coc_hints', 'coc_ok' ],
   \       ['coc_status']
   \     ],
   \     'right': [
@@ -97,13 +82,8 @@ let g:lightline = {
   \   },
   \ }
 
-" \       ['linter_errors', 'linter_warnings', 'linter_info', 'linter_hints', 'linter_ok' ]
-
-
-"  \       ['coc_info', 'coc_hints', 'coc_errors', 'coc_warnings', 'coc_ok'],
-"  \       ['coc_status'],
 " register compoments:
-"call lightline#coc#register()
+call lightline#coc#register()
 
 "Diagnosticsの、左横のアイコンの色設定
 highlight CocErrorSign ctermfg=15 ctermbg=196
