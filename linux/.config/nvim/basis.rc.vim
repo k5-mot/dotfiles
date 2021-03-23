@@ -87,7 +87,7 @@ set ruler
 set display=lastline
 
 " 不可視文字を表示
-set list
+"set list
 
 " 不可視文字の設定
 set listchars=tab:▹\ ,trail:-,extends:»,precedes:«,eol:\ ,nbsp:%

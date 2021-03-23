@@ -24,10 +24,10 @@
     fuzzy
     popup
     pos-tip
-    atom-one-dark-theme
     zenburn-theme
     spaceline)
   "Packages to be already installed")
+;; atom-one-dark-theme
 
 ;; Install package if not be installed
 (dolist (pkg install-package-list)

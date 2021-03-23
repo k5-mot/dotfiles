@@ -317,7 +317,6 @@ fi
 #  fi
 #fi
 ### }}}
-GOPATH=$HOME/.golang
 function _update_ps1() {
   PS1="$($GOPATH/bin/powerline-go -error $?)"
 }

@@ -202,3 +202,4 @@ typeset -T C_INCLUDE_PATH c_include_path
 typeset -U c_include_path
 typeset -T CPLUS_INCLUDE_PATH cplus_include_path
 typeset -U cplus_include_path
+source "$HOME/.cargo/env"
