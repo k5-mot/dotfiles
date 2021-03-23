@@ -62,8 +62,6 @@ let g:lightline = {
   \     'left': [
   \       ['mode', 'paste'],
   \       ['readonly', 'filename', 'modified'],
-  \       ['coc_errors', 'coc_warnings', 'coc_info', 'coc_hints', 'coc_ok' ],
-  \       ['coc_status']
   \     ],
   \     'right': [
   \       ['lineinfo'],
@@ -83,7 +81,7 @@ let g:lightline = {
   \ }
 
 " register compoments:
-call lightline#coc#register()
+"call lightline#coc#register()
 
 "Diagnosticsの、左横のアイコンの色設定
 highlight CocErrorSign ctermfg=15 ctermbg=196
