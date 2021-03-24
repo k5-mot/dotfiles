@@ -11,7 +11,7 @@
 ;; You may delete these explanatory comments.
 (package-initialize)
 
-(add-to-list 'load-path "~/.emacs.d/conf") 
+(add-to-list 'load-path "~/.emacs.d/conf")
 
 ;; Package Manager
 (load "package-manager")
@@ -19,7 +19,12 @@
 ;; General Settings
 (load "general")
 
-
+(defun window-split-vertical-to-horizontal ()
+  (interactive)
+  (let ((nw (window-buffer (next-window))))
+    (delete-other-windows)
+    (split-window-horizontally)
+    (set-window-buffer (next-window) nw)))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

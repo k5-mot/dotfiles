@@ -40,8 +40,8 @@
 ;; リージョンのハイライト
 (transient-mark-mode 1)
 ;; current directory 表示
-(let ((ls (member 'mode-line-buffer-identification mode-line-format)))
-  (setcdr ls (cons '(:eval (concat " (" (abbreviate-file-name default-directory) ")")) (cdr ls))))
+;(let ((ls (member 'mode-line-buffer-identification mode-line-format)))
+;  (setcdr ls (cons '(:eval (concat " (" (abbreviate-file-name default-directory) ")")) (cdr ls))))
 ;; エラー音をならなくする
 (setq ring-bell-function 'ignore)
 ;; タブインデントのサイズ
@@ -51,7 +51,7 @@
 ;; scratch の初期メッセージ消去
 (setq initial-scratch-message "")
 ;; スクロールは 1 行ごと
-(setq mouse-wheel-scroll-amount '(5                ; 通常時 
+(setq mouse-wheel-scroll-amount '(5                ; 通常時
   ((shift) . 1)    ; SHIFT
   ((control) . 20) ; CTRL
 ))
@@ -61,14 +61,15 @@
 (setq scroll-conservatively 1)
 ;; スクロールのマージン
 (setq scroll-margin 10)
+
 ;;
 (setq next-screen-context-lines 10)
 (setq scroll-preserve-screen-position t)
 ;; 大文字・小文字を区別しない
 (setq case-fold-search t)
 ;; dark-mode
-;(set-face-background 'default "#303030")
-;(set-face-foreground 'default "#ffffff")
+(set-face-background 'default "#303030")
+(set-face-foreground 'default "#ffffff")
 ;; Color
 (if window-system (progn
     (set-background-color "Black")
@@ -76,6 +77,7 @@
     (set-cursor-color "Gray")
     (set-frame-parameter nil 'alpha 70) ;透明度
 ))
+
 ;; set normal window
 (setq-default truncate-lines t)
 (setq-default truncate-partial-width-windows t)

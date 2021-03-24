@@ -236,3 +236,4 @@ let g:lightline = {
 
 " register compoments:
 call lightline#coc#register()
+call lightline#update()
