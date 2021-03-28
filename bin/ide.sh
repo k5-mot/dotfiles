@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
+
 tmux split-window -v
 tmux split-window -h
 tmux resize-pane -D 7
 tmux select-pane -t 1
+

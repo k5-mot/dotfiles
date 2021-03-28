@@ -149,6 +149,13 @@ zstyle ':completion:*:*:(^rm):*:*files' ignored-patterns '*?.o' '*?.c~' \
 zstyle ':completion:*:functions' ignored-patterns '_*'
 ## }}}
 
+
+export MUTT_EMAIL_ADDRESS="kmoto.slab@gmail.com"
+export MUTT_REALNAME="k5_mot"
+alias mutt=neomutt
+
+
+
 ## Keybinding {{{
 ## Set up Vim key bindings.
 bindkey -v
@@ -249,25 +256,24 @@ autoload -Uz tetriscurses
 #alias tetris=tetriscurses
 ## }}}
 
-
 if [ $OSTYPE = linux-gnu -o $OSTYPE = linux ]; then
 
   ## Set up homebrew
   export HOMEBREW_ROOT=$HOME/.linuxbrew
   if [ -e $HOMEBREW_ROOT ]; then
-    #export PATH=$HOMEBREW_ROOT/bin:$PATH
-    #export PATH=$HOMEBREW_ROOT/sbin:$PATH
-    #export MANPATH=$HOMEBREW_ROOT/share/man:$MANPATH
-    #export INFOPATH=$HOMEBREW_ROOT/share/info:$INFOPATH
-    #export LD_LIBRARY_PATH=$HOMEBREW_ROOT/lib:$LD_LIBRARY_PATH
-    #export XDG_DATA_DIRS=$HOME/.linuxbrew/share:$XDG_DATA_DIRS
-    ## Optional
-    #export HOMEBREW_NO_ENV_FILTERING=1
-    #export HOMEBREW_DEVELOPER=1
-    #export HOMEBREW_CURL_PATH=$HOME/.local/bin/curl
-    #export HOMEBREW_GIT_PATH=$HOME/.local/bin/git
+    export PATH=$HOMEBREW_ROOT/bin:$PATH
+    export PATH=$HOMEBREW_ROOT/sbin:$PATH
+    export MANPATH=$HOMEBREW_ROOT/share/man:$MANPATH
+    export INFOPATH=$HOMEBREW_ROOT/share/info:$INFOPATH
+    export LD_LIBRARY_PATH=$HOMEBREW_ROOT/lib:$LD_LIBRARY_PATH
+    export XDG_DATA_DIRS=$HOME/.linuxbrew/share:$XDG_DATA_DIRS
+    # Optional
+    export HOMEBREW_NO_ENV_FILTERING=1
+    export HOMEBREW_DEVELOPER=1
+    export HOMEBREW_CURL_PATH=$HOME/.local/usr/bin/curl
+    export HOMEBREW_GIT_PATH=$HOME/.local/usr/bin/git
 
-    #eval "$($HOMEBREW_ROOT/bin/brew shellenv)"
+    eval "$($HOMEBREW_ROOT/bin/brew shellenv)"
   fi
 
 fi
@@ -281,47 +287,17 @@ if [ -e $ANYENV_ROOT ]; then
     eval "$(anyenv init -)"
   fi
 fi
+
 ## Set up rust.
 export CARGO_ROOT=$HOME/.cargo
 if [ -e $CARGO_ROOT ]; then
   export PATH=$CARGO_ROOT/bin:$PATH
 fi
+
 ## Set up golang.
 export GOPATH=$HOME/.golang
 if [ -e $GOPATH ]; then
   export PATH=$GOPATH/bin:$PATH
-fi
-## Set up pyenv
-#  export PYENV_ROOT=$HOME/.pyenv
-#if [ -e "$HOME/.pyenv" ]; then
-#  export PATH=$PYENV_ROOT/bin:$PATH
-#  if command -v pyenv 1>/dev/null 2>&1; then
-#    eval "$(pyenv init -)"
-#    eval "$(pyenv virtualenv-init -)"
-#  fi
-#fi
-## Set up rbenv
-#  export RBENV_ROOT=$HOME/.rbenv
-#if [ -e "$HOME/.rbenv" ]; then
-#  export PATH=$RBENV_ROOT/bin:$PATH
-#  if command -v rbenv 1>/dev/null 2>&1; then
-#    eval "$(rbenv init -)"
-#  fi
-#fi
-## Set up nodenv
-#  export NODENV_ROOT=$HOME/.nodenv
-#if [ -e "$HOME/.nodenv" ]; then
-#  export PATH=$NODENV_ROOT/bin:$PATH
-#  if command -v nodenv 1>/dev/null 2>&1; then
-#    eval "$(nodenv init -)"
-#  fi
-#fi
-### }}}
-function _update_ps1() {
-  PS1="$($GOPATH/bin/powerline-go -error $?)"
-}
-if [ "$TERM" != "linux" ] && [ -f "$GOPATH/bin/powerline-go" ]; then
-  PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 fi
 
 # Read local file
@@ -329,14 +305,12 @@ if [ -f ~/.zshrc_local ]; then
   source ~/.zshrc_local
 fi
 
-# Read config file for Antigen.
-#if [ -f $ZDOTDIR/.zshrc_antigen ]; then
-#  source $ZDOTDIR/.zshrc_antigen
-#fi
+## Install plugin for zsh.
 if [ -f $ZDOTDIR/zplug.zsh ]; then
   source $ZDOTDIR/zplug.zsh
 fi
 
+## Install tmux plugin manager.
 if [ ! -d $HOME/.cache/tmux/plugins/tpm ]; then
   git clone https://github.com/tmux-plugins/tpm $HOME/.cache/tmux/plugins/tpm
 fi
@@ -346,6 +320,3 @@ if [ $ZDOTDIR/.zshrc -nt $ZDOTDIR/.zshrc.zwc ]; then
   zcompile $ZDOTDIR/.zshrc
 fi
 
-# if (which zprof > /dev/null 2>&1) ;then
-#   zprof
-# fi
