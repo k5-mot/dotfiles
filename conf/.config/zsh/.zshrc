@@ -12,6 +12,8 @@ if [ "$(uname 2> /dev/null)" = Linux ]; then
     export LOCAL_IP=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}')
     export DISPLAY=$LOCAL_IP:0
     export LIBGL_ALWAYS_INDIRECT=1
+    export WINUSER=$(powershell.exe '$env:USERNAME' | sed -e 's///g')
+    export WINHOME=/mnt/c/Users/$WINUSER/Desktop
   fi
 fi
 
