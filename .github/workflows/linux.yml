@@ -16,6 +16,6 @@ jobs:
       - name: Installation
         run: make install
       - name: Install anyenv
-        run: ./bin/install_anyenv1.sh
+        run: bash ./bin/install_anyenv1.sh
 
 
