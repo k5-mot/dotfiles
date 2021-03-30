@@ -76,6 +76,8 @@ export JSERVER="localhost"
 #export TMUX_ACS="utf8"
 #export TMUX_ACS="acs"
 #export TMUX_ACS="ascii"
+export WINUSER=$(powershell.exe '$env:USERNAME' | sed -e 's///g')
+export WINHOME=/mnt/c/Users/$WINUSER/Desktop
 
 ## Initialize $PATH
 #echo $PATH | sed -e 's/:/\n/g'
@@ -163,7 +165,7 @@ export LD_LIBRARY_PATH=$LOCAL_ROOT/usr/lib64:$LD_LIBRARY_PATH
 ## Set up GNU environment variables for local build applications.
 export CPATH=$LOCAL_ROOT/usr/include:$CPATH
 ### }}}
-export NVIM_PYTHON_LOG_FILE=$HOME/.cache/nvim/log
+export NVIM_PYTHON_LOG_FILE=$HOME/.cache/nvim/nvim_python.log
 export NVIM_PYTHON_LOG_LEVEL=DEBUG
 
 ## Set up local PATH.

@@ -405,7 +405,8 @@ fi
 ## Set up rust.
 export CARGO_ROOT=$HOME/.cargo
 if [ -e $CARGO_ROOT ]; then
-  source $CARGO_ROOT/env
+  #source $CARGO_ROOT/env
+  export PATH=$CARGO_ROOT/bin:$PATH
 fi
 
 ## Set up golang.
