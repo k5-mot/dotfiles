@@ -10,12 +10,16 @@ jobs:
   ubuntu-test:
     runs-on: ubuntu-latest
 
+    strategy:
+      fail-fast: false
+      matrix:
+        script: ["./bin/install_anyenv1.sh"]
+
     steps:
       - uses: actions/checkout@v2
-
       - name: Installation
         run: make install
       - name: Install anyenv
-        run: bash ./bin/install_anyenv1.sh
+        run: ${{matrix.script}}
 
 
