@@ -17,6 +17,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - name: Dis
+        run: make list
       - name: Installation
         run: make install
       - name: Install anyenv
