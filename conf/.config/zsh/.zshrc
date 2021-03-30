@@ -316,10 +316,10 @@ setopt prompt_subst
 #esac
 case $(whoami) in
   'root')
-    export PROMPT="%F{red}#%f "
+    export PROMPT="%F{cyan}%~%f %F{red}#%f "
     ;;
   *)
-    export PROMPT="%F{green}$%f "
+    export PROMPT="%F{cyan}%~%f %F{green}$%f "
     ;;
 esac
 export PROMPT2=
