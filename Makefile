@@ -27,6 +27,7 @@ list: ## Show dot files in this repos
 
 install: ## Create symlink to home directory
 	@echo 'Install dotfiles to home directory.'
+	@$(foreach val, $(LINKDIRS), echo $(val);)
 	@echo $(MAKEPATH)
 	@$(foreach val, $(LINKDIRS), mkdir -pv $(val);)
 	@$(foreach val, $(DOTFILES), ln -sfnv $(CONFPATH)/$(val) $(HOME)/$(val);)
