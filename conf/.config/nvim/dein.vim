@@ -45,7 +45,7 @@ if dein#load_state(s:dein_cache_home)
   let s:file_plugin_list = '$HOME/.config/nvim/dein_filetype.toml'
   call dein#load_toml(s:init_plugin_list, {'lazy' : 0})
   call dein#load_toml(s:lazy_plugin_list, {'lazy' : 1})
-  call dein#load_toml(s:file_plugin_list)
+  call dein#load_toml(s:file_plugin_list, {'lazy' : 1})
 
   " Required:
   call dein#end()

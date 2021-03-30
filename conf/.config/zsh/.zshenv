@@ -76,8 +76,6 @@ export JSERVER="localhost"
 #export TMUX_ACS="utf8"
 #export TMUX_ACS="acs"
 #export TMUX_ACS="ascii"
-export WINUSER=$(powershell.exe '$env:USERNAME' | sed -e 's///g')
-export WINHOME=/mnt/c/Users/$WINUSER/Desktop
 
 ## Initialize $PATH
 #echo $PATH | sed -e 's/:/\n/g'

@@ -12,6 +12,8 @@ if [ "$(uname 2> /dev/null)" = Linux ]; then
     export LOCAL_IP=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}')
     export DISPLAY=$LOCAL_IP:0
     export LIBGL_ALWAYS_INDIRECT=1
+    export WINUSER=$(powershell.exe '$env:USERNAME' | sed -e 's///g')
+    export WINHOME=/mnt/c/Users/$WINUSER/Desktop
   fi
 fi
 
@@ -314,10 +316,10 @@ setopt prompt_subst
 #esac
 case $(whoami) in
   'root')
-    export PROMPT="%F{red}#%f "
+    export PROMPT="%F{cyan}%~%f %F{red}#%f "
     ;;
   *)
-    export PROMPT="%F{green}$%f "
+    export PROMPT="%F{cyan}%~%f %F{green}$%f "
     ;;
 esac
 export PROMPT2=
