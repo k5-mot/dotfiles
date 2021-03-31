@@ -22,7 +22,6 @@ jobs:
       - name: Install packages via apt
         working-directory: $GITHUB_WORKSPACE/bin
         run: pwd
-        run: ./install_apt_package.sh
       - name: Clone repository
         run: git clone --verbose --progress https://github.com/k5-mot/dotfiles.git $HOME
       - name: Install configurations
