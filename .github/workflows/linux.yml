@@ -18,9 +18,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Show GitHub Workspace
-        run: echo ${GITHUB_WORKSPACE}
-      - name: Dis
-        run: make list
+        run: echo $GITHUB_WORKSPACE
+      - name: Clone repository
+        run: git clone --verbose --progress https://github.com/k5-mot/dotfiles.git
       - name: Installation
         run: make install
       - name: Install anyenv
