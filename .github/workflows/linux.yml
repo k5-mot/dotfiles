@@ -20,7 +20,7 @@ jobs:
       - name: Show GitHub Workspace
         run: echo $GITHUB_WORKSPACE
       - name: Install packages via apt
-        run: ./install_apt_package.sh
+        run: pwd && ./install_apt_package.sh
         working-directory: $GITHUB_WORKSPACE/bin
       - name: Clone repository
         run: git clone --verbose --progress https://github.com/k5-mot/dotfiles.git $HOME
