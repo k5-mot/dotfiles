@@ -17,6 +17,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - name: Show GitHub Workspace
+        run: echo ${GITHUB_WORKSPACE}
       - name: Dis
         run: make list
       - name: Installation
