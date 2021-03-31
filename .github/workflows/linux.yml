@@ -18,10 +18,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Show GitHub Workspace
-        run: echo $GITHUB_WORKSPACE
+        run: echo ${GITHUB_WORKSPACE}
       - name: Install packages via apt
-        working-directory: $GITHUB_WORKSPACE/bin
-        run: cd $GITHUB_WORKSPACE
+        working-directory: ${GITHUB_WORKSPACE}/bin
+        run: cd ${GITHUB_WORKSPACE}
       - name: Clone repository
         run: git clone --verbose --progress https://github.com/k5-mot/dotfiles.git $HOME
       - name: Install configurations
