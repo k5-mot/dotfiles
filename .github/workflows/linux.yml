@@ -19,6 +19,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: Show GitHub Workspace
         run: echo $GITHUB_WORKSPACE
+      - name: Install packages via apt
+        run: ./$GITHUB_WORKSPACE/bin/install_apt_package.sh
       - name: Clone repository
         run: git clone --verbose --progress https://github.com/k5-mot/dotfiles.git $HOME
       - name: Install configurations
