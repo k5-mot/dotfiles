@@ -20,8 +20,8 @@ jobs:
       - name: Show GitHub Workspace
         run: echo $GITHUB_WORKSPACE
       - name: Clone repository
-        run: git clone --verbose --progress https://github.com/k5-mot/dotfiles.git
-      - name: Installation
+        run: git clone --verbose --progress https://github.com/k5-mot/dotfiles.git $HOME
+      - name: Install configurations
         run: make install
       - name: Install anyenv
         run: ${{matrix.script}}
