@@ -21,8 +21,8 @@ jobs:
         run: echo $GITHUB_WORKSPACE
       - name: Install packages via apt
         run: |
-          cd $GITHUB_WORKSPACE
-          sudo ./bin/install_apt_package.sh
+          cd $GITHUB_WORKSPACE/bin
+          sudo bash install_apt_package.sh
       - name: Install configurations
         run: make install
       - name: Install packages via apt
