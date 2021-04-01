@@ -18,7 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Show GitHub Workspace
-        working-directory: .
+        working-directory: ${GITHUB_WORKSPACE}
         run: echo ${GITHUB_WORKSPACE}
       - name: Clone repository
         run: git clone --verbose --progress https://github.com/k5-mot/dotfiles.git $HOME
@@ -26,7 +26,7 @@ jobs:
         run: make install
       - name: Install packages via apt
         working-directory: ${GITHUB_WORKSPACE}/bin
-        run: cd ${GITHUB_WORKSPACE}
+        run: sudo bash ./install_apt_packages.sh
       - name: Install anyenv
         run: ${{matrix.script}}
 
