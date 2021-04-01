@@ -27,6 +27,7 @@ jobs:
         run: |
           cd $GITHUB_WORKSPACE/bin/anyenv
           sudo bash install_anyenv1.sh
+          sudo bash install_anyenv2.sh
       - name: Install configurations
         run: make install
       - name: Install packages via apt
