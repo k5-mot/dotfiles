@@ -19,7 +19,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Show GitHub Workspace
         working-directory: ./$GITHUB_WORKSPACE
-        run: echo $GITHUB_WORKSPACE
+        run: echo '$GITHUB_WORKSPACE'
       - name: Clone repository
         run: git clone --verbose --progress https://github.com/k5-mot/dotfiles.git $HOME
       - name: Install configurations
