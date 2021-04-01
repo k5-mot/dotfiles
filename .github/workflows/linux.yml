@@ -26,8 +26,9 @@ jobs:
       - name: Install anyenv(pyenv, rbenv, nodenv, plenv)
         run: |
           cd $GITHUB_WORKSPACE/bin/anyenv
-          sudo bash install_anyenv1.sh
-          sudo bash install_anyenv2.sh
+          ./install_anyenv1.sh
+          exec $SHELL -l
+          ./install_anyenv2.sh
       - name: Install configurations
         run: make install
 
