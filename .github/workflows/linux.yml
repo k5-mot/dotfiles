@@ -25,8 +25,8 @@ jobs:
         #          sudo bash install_apt_package.sh
       - name: Install anyenv(pyenv, rbenv, nodenv, plenv)
         run: |
-          cd $GITHUB_WORKSPACE/bin
-          sudo bash install_apt_package.sh
+          cd $GITHUB_WORKSPACE/bin/anyenv
+          sudo bash install_anyenv1.sh
       - name: Install configurations
         run: make install
       - name: Install packages via apt
