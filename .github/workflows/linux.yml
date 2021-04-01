@@ -19,7 +19,11 @@ jobs:
       - uses: actions/checkout@v2
       - name: Show GitHub Workspace
         run: echo $GITHUB_WORKSPACE
-      - name: Install packages via apt
+        #      - name: Install packages via apt
+        #        run: |
+        #          cd $GITHUB_WORKSPACE/bin
+        #          sudo bash install_apt_package.sh
+      - name: Install anyenv(pyenv, rbenv, nodenv, plenv)
         run: |
           cd $GITHUB_WORKSPACE/bin
           sudo bash install_apt_package.sh
