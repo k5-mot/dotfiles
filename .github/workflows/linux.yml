@@ -40,4 +40,11 @@ jobs:
           ./install_anyenv2.sh
       - name: Install configurations
         run: make install
+      - name: Install rust & cargo packages.
+        run: |
+          cd $GITHUB_WORKSPACE/bin/rust
+          ./install.sh
+          ./cargo.sh
+          ./alacritty.sh
+
 
