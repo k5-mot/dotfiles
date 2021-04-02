@@ -166,6 +166,51 @@ export CPATH=$LOCAL_ROOT/usr/include:$CPATH
 export NVIM_PYTHON_LOG_FILE=$HOME/.cache/nvim/nvim_python.log
 export NVIM_PYTHON_LOG_LEVEL=DEBUG
 
+if [ $OSTYPE = linux-gnu -o $OSTYPE = linux ]; then
+
+  ## Set up homebrew
+  export HOMEBREW_ROOT=$HOME/.linuxbrew
+  if [ -e $HOMEBREW_ROOT ]; then
+    export PATH=$HOMEBREW_ROOT/bin:$PATH
+    export PATH=$HOMEBREW_ROOT/sbin:$PATH
+    export MANPATH=$HOMEBREW_ROOT/share/man:$MANPATH
+    export INFOPATH=$HOMEBREW_ROOT/share/info:$INFOPATH
+    export LD_LIBRARY_PATH=$HOMEBREW_ROOT/lib:$LD_LIBRARY_PATH
+    export XDG_DATA_DIRS=$HOME/.linuxbrew/share:$XDG_DATA_DIRS
+    # Optional
+    export HOMEBREW_NO_ENV_FILTERING=1
+    export HOMEBREW_DEVELOPER=1
+    export HOMEBREW_CURL_PATH=$HOME/.local/usr/bin/curl
+    export HOMEBREW_GIT_PATH=$HOME/.local/usr/bin/git
+
+    eval "$($HOMEBREW_ROOT/bin/brew shellenv)"
+  fi
+
+fi
+
+### Programming environament {{{
+## Set up anyenv.
+export ANYENV_ROOT=$HOME/.anyenv
+if [ -e $ANYENV_ROOT ]; then
+  export PATH=$ANYENV_ROOT/bin:$PATH
+  if command -v anyenv 1>/dev/null 2>&1; then
+    eval "$(anyenv init -)"
+  fi
+fi
+
+## Set up rust.
+export CARGO_ROOT=$HOME/.cargo
+if [ -e $CARGO_ROOT ]; then
+  #source $CARGO_ROOT/env
+  export PATH=$CARGO_ROOT/bin:$PATH
+fi
+
+## Set up golang.
+export GOPATH=$HOME/.golang
+if [ -e $GOPATH ]; then
+  export PATH=$GOPATH/bin:$PATH
+fi
+
 ## Set up local PATH.
 if [ -e $HOME/.zshenv_local ]; then
   source $HOME/.zshenv_local
@@ -202,4 +247,4 @@ typeset -T C_INCLUDE_PATH c_include_path
 typeset -U c_include_path
 typeset -T CPLUS_INCLUDE_PATH cplus_include_path
 typeset -U cplus_include_path
-source "$HOME/.cargo/env"
+
