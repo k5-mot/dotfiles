@@ -20,7 +20,9 @@ jobs:
       - name: Show GitHub Workspace
         run: echo $GITHUB_WORKSPACE
       - name: Change shell from bash to zsh.
-        run: chsh -s $(which zsh)
+        run: |
+          which zsh
+          chsh -s $(which zsh)
         #- name: Update packages via apt
         #  run: |
         #    cd $GITHUB_WORKSPACE/bin
