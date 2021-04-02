@@ -19,12 +19,15 @@ jobs:
       - uses: actions/checkout@v2
       - name: Show GitHub Workspace
         run: echo $GITHUB_WORKSPACE
-      - name: Change shell from bash to zsh.
+      - name: Install zsh.
         run: |
           sudo apt install zsh -y
+          exec $SHELL -l
+      - name: Change shell from bash to zsh.
+        run: |
           sudo chsh -s $(which zsh)
           exec $SHELL -l
-      - name: Check $SHELL & $PATH.
+      - name: Check $PATH.
         run: |
           echo $SHELL
           echo $PATH | sed -e "s/:/\n/g"
