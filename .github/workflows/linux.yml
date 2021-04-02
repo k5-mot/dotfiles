@@ -22,7 +22,7 @@ jobs:
       - name: Change shell from bash to zsh.
         run: |
           sudo apt install zsh -y
-          chsh -s $(which zsh)
+          sudo chsh -s $(which zsh)
           exec $SHELL -l
         #- name: Update packages via apt
         #  run: |
