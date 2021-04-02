@@ -21,8 +21,9 @@ jobs:
         run: echo $GITHUB_WORKSPACE
       - name: Change shell from bash to zsh.
         run: |
-          which zsh
+          sudo apt install zsh -y
           chsh -s $(which zsh)
+          exec $SHELL -l
         #- name: Update packages via apt
         #  run: |
         #    cd $GITHUB_WORKSPACE/bin
