@@ -1,16 +1,9 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
 ## Install pyenv
 ## Setup pyenv
 ## Install basic packages by pip
 
-## Configure pyenv variable
-export PYENV_PYTHON3_VERSION=$(pyenv install --list | grep -v '[a-zA-Z]' | grep -e '3\.[0-9]\.[0-9]' | tail -1)
-export PYENV_PYTHON2_VERSION=$(pyenv install --list | grep -v '[a-zA-Z]' | grep -e '2\.[0-9]\.[0-9]' | tail -1)
-#export PYENV_PYTHON3_VERSION=3.8.6
-#export PYENV_PYTHON2_VERSION=2.7.18
-export PYENV_ROOT=$HOME/.pyenv
-export PYENV_PLUGINS=$PYENV_ROOT/plugins
 
 ## Install pyenv
 if [ ! -e $PYENV_ROOT ]; then
@@ -47,6 +40,12 @@ export PATH=$PYENV_ROOT/bin:$PATH
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
+## Configure pyenv variable
+export PYENV_PYTHON3_VERSION=$(pyenv install --list | grep -v '[a-zA-Z]' | grep -e '3\.[0-9]*\.[0-9]*' | tail -1 | sed 's/^[ \t]*//')
+export PYENV_PYTHON2_VERSION=$(pyenv install --list | grep -v '[a-zA-Z]' | grep -e '2\.[0-9]*\.[0-9]*' | tail -1 | sed 's/^[ \t]*//')
+export PYENV_ROOT=$HOME/.pyenv
+export PYENV_PLUGINS=$PYENV_ROOT/plugins
+
 ## Install Python2
 pyenv install --skip-existing $PYENV_PYTHON2_VERSION
 pyenv rehash
@@ -70,5 +69,6 @@ pip install pip-review
 pip install numpy
 pip install scipy
 pip install neovim
+pip install openpyxl
 pip-review --auto
 pip list

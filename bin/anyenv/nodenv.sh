@@ -1,14 +1,8 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
 ## Install nodenv
 ## Setup nodenv
 ## Install basic packages by npm
-
-## Configure nodenv variable
-export NODENV_NODEJS_VERSION=$(nodenv install --list | grep -v '[a-zA-Z]' | grep -e '[0-9]\.[0-9]\.[0-9]' | tail -1)
-#export NODENV_NODEJS_VERSION=15.1.0
-export NODENV_ROOT=$HOME/.nodenv
-export NODENV_PLUGINS=$NODENV_ROOT/plugins
 
 ## Install nodenv
 if [ ! -e $NODENV_ROOT ]; then
@@ -43,7 +37,11 @@ cd $HOME
 export NODENV_ROOT=$HOME/.nodenv
 export PATH=$NODENV_ROOT/bin:$PATH
 eval "$(nodenv init -)"
-#$NODENV_ROOT/bin/nodenv init
+
+## Configure nodenv variable
+export NODENV_NODEJS_VERSION=$(nodenv install --list | grep -v '[a-zA-Z]' | grep -e '[0-9]*\.[0-9]*\.[0-9]*' | tail -1)
+export NODENV_ROOT=$HOME/.nodenv
+export NODENV_PLUGINS=$NODENV_ROOT/plugins
 
 ## Install node.js
 nodenv install $NODENV_NODEJS_VERSION
