@@ -23,6 +23,7 @@ jobs:
         run: |
           sudo apt install zsh -y
           exec $SHELL -l
+          which zsh
       - name: Change shell from bash to zsh.
         run: |
           sudo chsh -s $(which zsh)
