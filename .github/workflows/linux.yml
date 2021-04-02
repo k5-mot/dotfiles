@@ -53,6 +53,7 @@ jobs:
         run: |
           cd $GITHUB_WORKSPACE/bin/porg
           ./porg.sh
+          exec $SHELL -l
           ./git.sh
           ./xsel.sh
           ./libevent.sh
