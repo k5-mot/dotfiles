@@ -41,4 +41,4 @@ anyenv install --skip-existing luaenv
 anyenv install --skip-existing plenv
 
 ## Rerun.
-exec $SHELL -l
+#exec $SHELL -l
