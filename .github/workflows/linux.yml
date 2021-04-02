@@ -24,6 +24,8 @@ jobs:
           sudo apt install zsh -y
           sudo chsh -s $(which zsh)
           exec $SHELL -l
+      - name: Check PATH.
+        run: echo $PATH | sed -e "s/:/\n/g"
         #- name: Update packages via apt
         #  run: |
         #    cd $GITHUB_WORKSPACE/bin
