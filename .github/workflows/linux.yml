@@ -27,11 +27,11 @@ jobs:
         run: |
           which zsh
           sudo chsh -s $(which zsh)
-          exec $SHELL -l
+          exec $(which zsh) -l
+      - name: Check $SHELL.
+        run: echo $SHELL
       - name: Check $PATH.
-        run: |
-          echo $SHELL
-          echo $PATH | sed -e "s/:/\n/g"
+        run: echo $PATH | sed -e "s/:/\n/g"
         #- name: Update packages via apt
         #  run: |
         #    cd $GITHUB_WORKSPACE/bin
