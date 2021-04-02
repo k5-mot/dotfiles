@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 ## tmux
+## Dependencies: libevent, libcurses
 
 cd $HOME
 cd $HOME/.local/src

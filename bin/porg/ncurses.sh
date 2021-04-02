@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 ## ncurses
+## Dependencies: libevent
 
 cd $HOME
 cd $HOME/.local/src
@@ -18,7 +19,7 @@ cd ncurses-*
   --with-shared \
   --with-termlib \
   --enable-pc-files \
-  --with-pkg-config-libdir=$HOME/.local/usr/lib/pkgconfig 
+  --with-pkg-config-libdir=$HOME/.local/usr/lib/pkgconfig
 make
 porg -lD make install
 porg ncurses

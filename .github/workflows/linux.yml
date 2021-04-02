@@ -32,14 +32,14 @@ jobs:
         #        run: |
         #          cd $GITHUB_WORKSPACE/bin
         #          sudo bash install_apt_package.sh
+      - name: Install configurations
+        run: make install
       - name: Install anyenv(pyenv, rbenv, nodenv, plenv)
         run: |
           cd $GITHUB_WORKSPACE/bin/anyenv
-          ./install_anyenv1.sh
+          ./anyenv1.sh
           exec $SHELL -l
-          ./install_anyenv2.sh
-      - name: Install configurations
-        run: make install
+          ./anyenv2.sh
       - name: Install rust & cargo packages.
         run: |
           cd $GITHUB_WORKSPACE/bin/rust
@@ -47,5 +47,17 @@ jobs:
           exec $SHELL -l
           ./cargo.sh
           ./alacritty.sh
+      - name: Install porg & porg packages.
+        run: |
+          cd $GITHUB_WORKSPACE/bin/porg
+          ./porg.sh
+          ./git.sh
+          ./xsel.sh
+          ./libevent.sh
+          ./ncurses.sh
+          ./tmux.sh
+          ./vim.sh
+          ./neovim.sh
+
 
 
