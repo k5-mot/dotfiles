@@ -78,7 +78,6 @@ export JSERVER="localhost"
 #export TMUX_ACS="ascii"
 
 ## Initialize $PATH
-#echo $PATH | sed -e 's/:/\n/g'
 export PATH
 export PATH=$PATH:/snap/bin
 export PATH=$PATH:/usr/local/sbin
@@ -90,20 +89,20 @@ export PATH=$PATH:/bin
 export PATH=$PATH:/usr/games
 export PATH=$PATH:/usr/local/games
 export PATH=$PATH:/opt/bin
+
 export LD_LIBRARY_PATH
-#export LD_LIBRARY_PATH=/lib
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/lib
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/lib64
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib64
+export LD_LIBRARY_PATH=/usr/local/lib64
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib64
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/lib
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib64
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/lib64
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/lib
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/lib64
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/lib
+
 export CPATH
-#export CPATH=/usr/include
-export CPATH=$CPATH:/usr/include
 export CPATH=$CPATH:/usr/local/include
+export CPATH=$CPATH:/usr/include
 export CPATH=$CPATH:/opt/include
 
 ## Search path for the cd command
@@ -112,13 +111,13 @@ export CDPATH
 #export CDPATH=$CDPATH:~
 ## Search path for the man command
 export MANPATH
-export MANPATH=$MANPATH:/usr/share/man
 export MANPATH=$MANPATH:/usr/local/share/man
+export MANPATH=$MANPATH:/usr/share/man
 export MANPATH=$MANPATH:/opt/share/man
 ## Search path for the info command
 export INFOPATH
-export INFOPATH=$INFOPATH:/usr/share/info
 export INFOPATH=$INFOPATH:/usr/local/share/info
+export INFOPATH=$INFOPATH:/usr/share/info
 export INFOPATH=$INFOPATH:/opt/share/info
 ## Directory for run-help function to find docs
 export HELPDIR=$HELPDIR:/usr/local/lib/zsh/help
@@ -156,10 +155,10 @@ export LESS_TERMCAP_us=$(printf "\e[1;32m")
 ## Set up environment variables for local build applications.
 export LOCAL_ROOT=$HOME/.local
 export PATH=$LOCAL_ROOT/usr/bin:$PATH
+export LD_LIBRARY_PATH=$LOCAL_ROOT/usr/lib64:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$LOCAL_ROOT/usr/lib:$LD_LIBRARY_PATH
 export MANPATH=$LOCAL_ROOT/usr/share/man:$MANPATH
 export INFOPATH=$LOCAL_ROOT/usr/share/info:$INFOPATH
-export LD_LIBRARY_PATH=$LOCAL_ROOT/usr/lib:$LD_LIBRARY_PATH
-export LD_LIBRARY_PATH=$LOCAL_ROOT/usr/lib64:$LD_LIBRARY_PATH
 ## Set up GNU environment variables for local build applications.
 export CPATH=$LOCAL_ROOT/usr/include:$CPATH
 ### }}}
@@ -171,10 +170,11 @@ if [ $OSTYPE = linux-gnu -o $OSTYPE = linux ]; then
   ## Set up homebrew
   export HOMEBREW_ROOT=$HOME/.linuxbrew
   if [ -e $HOMEBREW_ROOT ]; then
-    export PATH=$HOMEBREW_ROOT/bin:$PATH
     export PATH=$HOMEBREW_ROOT/sbin:$PATH
+    export PATH=$HOMEBREW_ROOT/bin:$PATH
     export MANPATH=$HOMEBREW_ROOT/share/man:$MANPATH
     export INFOPATH=$HOMEBREW_ROOT/share/info:$INFOPATH
+    export LD_LIBRARY_PATH=$HOMEBREW_ROOT/lib64:$LD_LIBRARY_PATH
     export LD_LIBRARY_PATH=$HOMEBREW_ROOT/lib:$LD_LIBRARY_PATH
     export XDG_DATA_DIRS=$HOME/.linuxbrew/share:$XDG_DATA_DIRS
     # Optional
@@ -217,7 +217,7 @@ if [ -e $HOME/.zshenv_local ]; then
 fi
 
 # Set up scripts of dotfiles.
-export PATH=$PATH:$(find $HOME/dotfiles/bin -type d | xargs echo | sed -e 's/ /:/g')
+export PATH=$PATH:$(find $HOME/.config/scripts -type d | xargs echo | sed -e 's/ /:/g')
 
 ## Set
 export FPATH
@@ -228,7 +228,6 @@ export C_INCLUDE_PATH=$C_INCLUDE_PATH:$CPATH
 export CPLUS_INCLUDE_PATH
 export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:$CPATH
 export CPLUS_INCLUDE_PATH="/usr/include/c++/$(ls -1 /usr/include/c++ | tail -1 | sed 's/[@\/]//')":$CPLUS_INCLUDE_PATH
-#export CPLUS_INCLUDE_PATH=/usr/include/c++/9:$CPLUS_INCLUDE_PATH
 
 ## automatically remove duplicates from these arrays
 typeset -U path PATH
