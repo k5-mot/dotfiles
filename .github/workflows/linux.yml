@@ -23,15 +23,14 @@ jobs:
         run: |
           sudo apt install zsh -y
           exec $SHELL -l
-      - name: Check $SHELL.
-        shell: zsh {0}
-        run: echo $SHELL
       - name: Check $PATH.
         shell: zsh {0}
         run: |
           export PATH=$HOME/.local/usr/bin:$PATH
-          echo "SHELL: $SHELL"
-          echo PATH
+          echo "SHELL: "
+          echo $SHELL
+          echo ""
+          echo "PATH : "
           echo $PATH | sed -e "s/:/\n/g"
           echo ""
         #- name: Update packages via apt
