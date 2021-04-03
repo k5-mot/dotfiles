@@ -14,10 +14,16 @@ jobs:
       - uses: actions/checkout@v2
       - name: Show GitHub Workspace
         run: echo $GITHUB_WORKSPACE
+      - name: Update & Install packages via apt
+        shell: zsh {0}
+        run: |
+          cd $GITHUB_WORKSPACE/conf/.config/scripts/apt
+          ./update.sh
+          #          ./install.sh
       - name: Install zsh.
+        shell: zsh {0}
         run: |
           sudo apt install zsh -y
-          exec $SHELL -l
       - name: Check $PATH.
         shell: zsh {0}
         run: |
@@ -28,20 +34,16 @@ jobs:
           echo "PATH : "
           echo $PATH | sed -e "s/:/\n/g"
           echo ""
-      - name: Install Linuxbrew.
-        shell: zsh {0}
-        run: |
-          cd $GITHUB_WORKSPACE/conf/.config/scripts/brew
-          ./install.sh
-      - name: Update & Install packages via apt
-        shell: zsh {0}
-        run: |
-          cd $GITHUB_WORKSPACE/conf/.config/scripts/apt
-          ./update.sh
-          ./install.sh
+          #      - name: Install Linuxbrew.
+          #        shell: zsh {0}
+          #        run: |
+          #          cd $GITHUB_WORKSPACE/conf/.config/scripts/brew
+          #          ./install.sh
       - name: Install configurations
+        shell: zsh {0}
         run: make install
       - name: Install anyenv(pyenv, rbenv, nodenv, plenv)
+        shell: zsh {0}
         run: |
           cd $GITHUB_WORKSPACE/bin/anyenv
           ./anyenv1.sh
