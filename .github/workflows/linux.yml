@@ -29,6 +29,7 @@ jobs:
           sudo chsh -s $(which zsh)
           exec $(which zsh) -l
       - name: Check $SHELL.
+        shell: zsh
         run: echo $SHELL
       - name: Check $PATH.
         run: echo $PATH | sed -e "s/:/\n/g"
@@ -40,48 +41,48 @@ jobs:
         #        run: |
         #          cd $GITHUB_WORKSPACE/bin
         #          sudo bash install_apt_package.sh
-      - name: Install configurations
-        run: make install
-      - name: Install anyenv(pyenv, rbenv, nodenv, plenv)
-        run: |
-          cd $GITHUB_WORKSPACE/bin/anyenv
-          ./anyenv1.sh
-          exec $SHELL -l
-          ./anyenv2.sh
-      - name: Install rust & cargo packages.
-        run: |
-          cd $GITHUB_WORKSPACE/bin/rust
-          ./install.sh
-          exec $SHELL -l
-          ./cargo.sh
-          ./alacritty.sh
-      - name: Install porg.
-        run: |
-          cd $GITHUB_WORKSPACE/bin/porg
-          ./porg.sh
-          exec $SHELL -l
-      - name: Install Git via porg.
-        run: |
-          cd $GITHUB_WORKSPACE/bin/porg
-          ./git.sh
-      - name: Install xsel via porg.
-        run: |
-          cd $GITHUB_WORKSPACE/bin/porg
-          ./xsel.sh
-      - name: Install tmux via porg.
-        run: |
-          cd $GITHUB_WORKSPACE/bin/porg
-          ./libevent.sh
-          ./ncurses.sh
-          ./tmux.sh
-      - name: Install Vim via porg.
-        run: |
-          cd $GITHUB_WORKSPACE/bin/porg
-          ./vim.sh
-      - name: Install Neovim via porg.
-        run: |
-          cd $GITHUB_WORKSPACE/bin/porg
-          ./neovim.sh
+        #      - name: Install configurations
+        #        run: make install
+        #      - name: Install anyenv(pyenv, rbenv, nodenv, plenv)
+        #        run: |
+        #          cd $GITHUB_WORKSPACE/bin/anyenv
+        #          ./anyenv1.sh
+        #          exec $SHELL -l
+        #          ./anyenv2.sh
+        #      - name: Install rust & cargo packages.
+        #        run: |
+        #          cd $GITHUB_WORKSPACE/bin/rust
+        #          ./install.sh
+        #          exec $SHELL -l
+        #          ./cargo.sh
+        #          ./alacritty.sh
+        #      - name: Install porg.
+        #        run: |
+        #          cd $GITHUB_WORKSPACE/bin/porg
+        #          ./porg.sh
+        #          exec $SHELL -l
+        #      - name: Install Git via porg.
+        #        run: |
+        #          cd $GITHUB_WORKSPACE/bin/porg
+        #          ./git.sh
+        #      - name: Install xsel via porg.
+        #        run: |
+        #          cd $GITHUB_WORKSPACE/bin/porg
+        #          ./xsel.sh
+        #      - name: Install tmux via porg.
+        #        run: |
+        #          cd $GITHUB_WORKSPACE/bin/porg
+        #          ./libevent.sh
+        #          ./ncurses.sh
+        #          ./tmux.sh
+        #      - name: Install Vim via porg.
+        #        run: |
+        #          cd $GITHUB_WORKSPACE/bin/porg
+        #          ./vim.sh
+        #      - name: Install Neovim via porg.
+        #        run: |
+        #          cd $GITHUB_WORKSPACE/bin/porg
+        #          ./neovim.sh
 
 
 
