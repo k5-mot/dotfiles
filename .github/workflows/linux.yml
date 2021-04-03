@@ -49,6 +49,10 @@ jobs:
         #          ./anyenv1.sh
         #          exec $SHELL -l
         #          ./anyenv2.sh
+          - name: Install Linuxbrew.
+            run: |
+              cd $GITHUB_WORKSPACE/conf/.config/scripts/brew
+              ./install.sh
         #      - name: Install rust & cargo packages.
         #        run: |
         #          cd $GITHUB_WORKSPACE/bin/rust
