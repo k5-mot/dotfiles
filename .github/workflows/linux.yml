@@ -33,22 +33,20 @@ jobs:
         run: |
           cd $GITHUB_WORKSPACE/conf/.config/scripts/brew
           ./install.sh
-        #- name: Update packages via apt
-        #  run: |
-        #    cd $GITHUB_WORKSPACE/bin
-        #    ./update_apt.sh
-        #      - name: Install packages via apt
-        #        run: |
-        #          cd $GITHUB_WORKSPACE/bin
-        #          sudo bash install_apt_package.sh
-        #      - name: Install configurations
-        #        run: make install
-        #      - name: Install anyenv(pyenv, rbenv, nodenv, plenv)
-        #        run: |
-        #          cd $GITHUB_WORKSPACE/bin/anyenv
-        #          ./anyenv1.sh
-        #          exec $SHELL -l
-        #          ./anyenv2.sh
+      - name: Update & Install packages via apt
+        shell: zsh {0}
+        run: |
+          cd $GITHUB_WORKSPACE/conf/.config/scripts/apt
+          ./update.sh
+          ./install.sh
+      - name: Install configurations
+        run: make install
+      - name: Install anyenv(pyenv, rbenv, nodenv, plenv)
+        run: |
+          cd $GITHUB_WORKSPACE/bin/anyenv
+          ./anyenv1.sh
+          exec $SHELL -l
+          ./anyenv2.sh
         #      - name: Install rust & cargo packages.
         #        run: |
         #          cd $GITHUB_WORKSPACE/bin/rust
