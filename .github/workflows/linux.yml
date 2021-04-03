@@ -33,6 +33,10 @@ jobs:
           echo "PATH : "
           echo $PATH | sed -e "s/:/\n/g"
           echo ""
+      - name: Install Linuxbrew.
+        run: |
+          cd $GITHUB_WORKSPACE/conf/.config/scripts/brew
+          ./install.sh
         #- name: Update packages via apt
         #  run: |
         #    cd $GITHUB_WORKSPACE/bin
@@ -49,10 +53,6 @@ jobs:
         #          ./anyenv1.sh
         #          exec $SHELL -l
         #          ./anyenv2.sh
-          - name: Install Linuxbrew.
-            run: |
-              cd $GITHUB_WORKSPACE/conf/.config/scripts/brew
-              ./install.sh
         #      - name: Install rust & cargo packages.
         #        run: |
         #          cd $GITHUB_WORKSPACE/bin/rust
