@@ -28,7 +28,9 @@ jobs:
         run: echo $SHELL
       - name: Check $PATH.
         shell: zsh {0}
-        run: echo $PATH | sed -e "s/:/\n/g"
+        run: |
+          export PATH=$HOME/.local/usr/bin:$PATH
+          echo $PATH | sed -e "s/:/\n/g"
         #- name: Update packages via apt
         #  run: |
         #    cd $GITHUB_WORKSPACE/bin
