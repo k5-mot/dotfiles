@@ -24,6 +24,7 @@ jobs:
           cd $GITHUB_WORKSPACE/conf/.config/scripts/apt
           ./update.sh
           #          ./install.sh
+
       - name: Check $PATH.
         shell: zsh {0}
         run: |
@@ -40,6 +41,7 @@ jobs:
          run: |
            cd $GITHUB_WORKSPACE/conf/.config/scripts/brew
            #           ./install.sh
+
       - name: Install anyenv(pyenv, rbenv, nodenv, plenv)
         shell: zsh {0}
         run: |
@@ -54,6 +56,7 @@ jobs:
           exec $SHELL -l
           ./cargo.sh
           #          ./alacritty.sh
+
       - name: Install porg.
         run: |
           cd $GITHUB_WORKSPACE/conf/.config/scripts/porg
