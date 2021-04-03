@@ -30,7 +30,12 @@ jobs:
         shell: zsh {0}
         run: |
           export PATH=$HOME/.local/usr/bin:$PATH
+          echo PATH
           echo $PATH | sed -e "s/:/\n/g"
+          echo ""
+          echo LD_LIBRARY_PATH
+          echo $LD_LIBRARY_PATH | sed -e "s/:/\n/g"
+          echo ""
         #- name: Update packages via apt
         #  run: |
         #    cd $GITHUB_WORKSPACE/bin

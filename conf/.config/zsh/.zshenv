@@ -80,16 +80,16 @@ export JSERVER="localhost"
 ## Initialize $PATH
 #echo $PATH | sed -e 's/:/\n/g'
 export PATH
-#export PATH=/sbin
-export PATH=$PATH:/sbin
-export PATH=$PATH:/usr/sbin
-export PATH=$PATH:/opt/bin
-export PATH=$PATH:/bin
-export PATH=$PATH:/usr/bin
-export PATH=$PATH:/usr/libexec
-export PATH=$PATH:/usr/local/bin
+export PATH=$PATH:/snap/bin
 export PATH=$PATH:/usr/local/sbin
-export PATH=$PATH:/usr/local/libexec
+export PATH=$PATH:/usr/local/bin
+export PATH=$PATH:/usr/sbin
+export PATH=$PATH:/usr/bin
+export PATH=$PATH:/sbin
+export PATH=$PATH:/bin
+export PATH=$PATH:/usr/games
+export PATH=$PATH:/usr/local/games
+export PATH=$PATH:/opt/bin
 export LD_LIBRARY_PATH
 #export LD_LIBRARY_PATH=/lib
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/lib
