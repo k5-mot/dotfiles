@@ -18,4 +18,5 @@ ln -s ~/.linuxbrew/Homebrew/bin/brew ~/.linuxbrew/bin
 eval $(~/.linuxbrew/bin/brew shellenv)
 
 ## Check
-#$HOME/.linuxbrew/bin/brew doctor
+$HOME/.linuxbrew/bin/brew doctor
+

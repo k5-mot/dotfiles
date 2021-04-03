@@ -37,6 +37,8 @@ jobs:
         run: |
           cd $GITHUB_WORKSPACE/conf/.config/scripts/brew
           ./install.sh
+          brew install git
+          brew install curl
         #- name: Update packages via apt
         #  run: |
         #    cd $GITHUB_WORKSPACE/bin
