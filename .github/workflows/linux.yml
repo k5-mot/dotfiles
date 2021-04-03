@@ -10,11 +10,6 @@ jobs:
   ubuntu-test:
     runs-on: ubuntu-latest
 
-    strategy:
-      fail-fast: false
-      matrix:
-        script: ["./bin/install_anyenv1.sh"]
-
     steps:
       - uses: actions/checkout@v2
       - name: Show GitHub Workspace
@@ -34,6 +29,7 @@ jobs:
           echo $PATH | sed -e "s/:/\n/g"
           echo ""
       - name: Install Linuxbrew.
+        shell: zsh {0}
         run: |
           cd $GITHUB_WORKSPACE/conf/.config/scripts/brew
           ./install.sh

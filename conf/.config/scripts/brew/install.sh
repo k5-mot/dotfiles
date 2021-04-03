@@ -9,14 +9,20 @@
 ## Uninstall
 rm -rf $HOME/.linuxbrew
 
-## Download
-git clone https://github.com/Homebrew/brew ~/.linuxbrew/Homebrew
-
 ## Install
-mkdir ~/.linuxbrew/bin
-ln -s ~/.linuxbrew/Homebrew/bin/brew ~/.linuxbrew/bin
-eval $(~/.linuxbrew/bin/brew shellenv)
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+### Download
+#git clone https://github.com/Homebrew/brew ~/.linuxbrew/Homebrew
+#
+### Install
+#mkdir ~/.linuxbrew/bin
+#ln -s ~/.linuxbrew/Homebrew/bin/brew ~/.linuxbrew/bin
+#eval $(~/.linuxbrew/bin/brew shellenv)
 
 ## Check
 $HOME/.linuxbrew/bin/brew doctor
+
+## Try install
+brew install hello
 
