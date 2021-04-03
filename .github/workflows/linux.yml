@@ -23,15 +23,11 @@ jobs:
         run: |
           sudo apt install zsh -y
           exec $SHELL -l
-      - name: Change shell from bash to zsh.
-        run: |
-          which zsh
-          sudo chsh -s $(which zsh)
-          exec $(which zsh) -l
       - name: Check $SHELL.
         shell: zsh {0}
         run: echo $SHELL
       - name: Check $PATH.
+        shell: zsh {0}
         run: echo $PATH | sed -e "s/:/\n/g"
         #- name: Update packages via apt
         #  run: |
