@@ -15,9 +15,9 @@ jobs:
       - name: Install zsh.
         run: |
           sudo apt install zsh -y
-      - name: Show GitHub Workspace
+      - name: Install configurations
         shell: zsh {0}
-        run: echo $GITHUB_WORKSPACE
+        run: make install
       - name: Update & Install packages via apt
         shell: zsh {0}
         run: |
@@ -28,39 +28,37 @@ jobs:
         shell: zsh {0}
         run: |
           export PATH=$HOME/.local/usr/bin:$PATH
+          echo $GITHUB_WORKSPACE
           echo "SHELL: "
           echo $SHELL
           echo ""
           echo "PATH : "
           echo $PATH | sed -e "s/:/\n/g"
           echo ""
-          #      - name: Install Linuxbrew.
-          #        shell: zsh {0}
-          #        run: |
-          #          cd $GITHUB_WORKSPACE/conf/.config/scripts/brew
-          #          ./install.sh
-      - name: Install configurations
-        shell: zsh {0}
-        run: make install
+       - name: Install Linuxbrew.
+         shell: zsh {0}
+         run: |
+           cd $GITHUB_WORKSPACE/conf/.config/scripts/brew
+           #           ./install.sh
       - name: Install anyenv(pyenv, rbenv, nodenv, plenv)
         shell: zsh {0}
         run: |
-          cd $GITHUB_WORKSPACE/bin/anyenv
+          cd $GITHUB_WORKSPACE/conf/.config/scripts/anyenv
           ./anyenv1.sh
           exec $SHELL -l
           ./anyenv2.sh
-        #      - name: Install rust & cargo packages.
-        #        run: |
-        #          cd $GITHUB_WORKSPACE/bin/rust
-        #          ./install.sh
-        #          exec $SHELL -l
-        #          ./cargo.sh
-        #          ./alacritty.sh
-        #      - name: Install porg.
-        #        run: |
-        #          cd $GITHUB_WORKSPACE/bin/porg
-        #          ./porg.sh
-        #          exec $SHELL -l
+      - name: Install rust & cargo packages.
+        run: |
+          cd $GITHUB_WORKSPACE/conf/.config/scripts/rust
+          ./install.sh
+          exec $SHELL -l
+          ./cargo.sh
+          #          ./alacritty.sh
+      - name: Install porg.
+        run: |
+          cd $GITHUB_WORKSPACE/conf/.config/scripts/porg
+          ./porg.sh
+          exec $SHELL -l
         #      - name: Install Git via porg.
         #        run: |
         #          cd $GITHUB_WORKSPACE/bin/porg
