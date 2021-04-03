@@ -12,12 +12,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Show GitHub Workspace
-        run: echo $GITHUB_WORKSPACE
       - name: Install zsh.
-        shell: zsh {0}
         run: |
           sudo apt install zsh -y
+      - name: Show GitHub Workspace
+        shell: zsh {0}
+        run: echo $GITHUB_WORKSPACE
       - name: Update & Install packages via apt
         shell: zsh {0}
         run: |
