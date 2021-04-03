@@ -29,7 +29,7 @@ jobs:
           sudo chsh -s $(which zsh)
           exec $(which zsh) -l
       - name: Check $SHELL.
-        shell: zsh
+        shell: zsh {0}
         run: echo $SHELL
       - name: Check $PATH.
         run: echo $PATH | sed -e "s/:/\n/g"
