@@ -1,14 +1,8 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
 ## Install rbenv
 ## Setup rbenv
 ## Install basic packages by gem
-
-## Configure rbenv variable
-export RBENV_RUBY_VERSION=$(rbenv install --list-all | grep -v '[a-zA-Z]' | grep -e '[0-9]\.[0-9]\.[0-9]' | tail -1)
-#export RBENV_RUBY_VERSION=2.7.2
-export RBENV_ROOT=$HOME/.rbenv
-export RBENV_PLUGINS=$RBENV_ROOT/plugins
 
 ## Install rbenv
 if [ ! -e $RBENV_ROOT ]; then
@@ -36,7 +30,11 @@ cd $HOME
 export RBENV_ROOT=$HOME/.rbenv
 export PATH=$RBENV_ROOT/bin:$PATH
 eval "$(rbenv init -)"
-#$RBENV_ROOT/bin/rbenv init
+
+## Configure rbenv variable
+export RBENV_RUBY_VERSION=$(rbenv install --list-all | grep -v '[a-zA-Z]' | grep -e '[0-9]*\.[0-9]*\.[0-9]*' | tail -1)
+export RBENV_ROOT=$HOME/.rbenv
+export RBENV_PLUGINS=$RBENV_ROOT/plugins
 
 ## Install Ruby
 rbenv install $RBENV_RUBY_VERSION

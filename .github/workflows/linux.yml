@@ -1,0 +1,81 @@
+name: linux
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  ubuntu-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install zsh.
+        run: |
+          sudo apt install zsh -y
+      - name: Install configurations
+        shell: zsh {0}
+        run: make install
+      - name: Update & Install packages via apt
+        shell: zsh {0}
+        run: |
+          cd $GITHUB_WORKSPACE/conf/.config/scripts/apt
+          ./update.sh # ./install.sh
+      - name: Check $PATH.
+        shell: zsh {0}
+        run: |
+          export PATH=$HOME/.local/usr/bin:$PATH
+          echo $GITHUB_WORKSPACE
+          echo "SHELL: "
+          echo $SHELL
+          echo "PATH : "
+          echo $PATH | sed -e "s/:/\n/g"
+      - name: Install Linuxbrew.
+        shell: zsh {0}
+        run: |
+          cd $GITHUB_WORKSPACE/conf/.config/scripts/brew # ./install.sh
+      - name: Install anyenv(pyenv, rbenv, nodenv, plenv)
+        shell: zsh {0}
+        run: |
+          cd $GITHUB_WORKSPACE/conf/.config/scripts/anyenv
+          ./anyenv1.sh
+          exec $SHELL -l
+          ./anyenv2.sh
+      - name: Install rust & cargo packages.
+        run: |
+          cd $GITHUB_WORKSPACE/conf/.config/scripts/rust
+          ./install.sh
+          exec $SHELL -l
+          ./cargo.sh # ./alacritty.sh
+      - name: Install porg.
+        run: |
+          cd $GITHUB_WORKSPACE/conf/.config/scripts/porg
+          ./porg.sh
+          exec $SHELL -l
+      - name: Install Git via porg.
+        run: |
+          cd $GITHUB_WORKSPACE/bin/porg
+          ./git.sh
+      - name: Install xsel via porg.
+        run: |
+          cd $GITHUB_WORKSPACE/bin/porg
+          ./xsel.sh
+      - name: Install tmux via porg.
+        run: |
+          cd $GITHUB_WORKSPACE/bin/porg
+          ./libevent.sh
+          ./ncurses.sh
+          ./tmux.sh
+      - name: Install Vim via porg.
+        run: |
+          cd $GITHUB_WORKSPACE/bin/porg
+          ./vim.sh
+      - name: Install Neovim via porg.
+        run: |
+          cd $GITHUB_WORKSPACE/bin/porg
+          ./neovim.sh
+
+
+

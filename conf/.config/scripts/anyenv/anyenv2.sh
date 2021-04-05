@@ -115,6 +115,7 @@ pip install numpy
 pip install scipy
 pip install compiledb
 pip install neovim
+openpyxl
 pip-review --auto
 pip list
 
