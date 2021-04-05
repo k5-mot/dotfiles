@@ -66,7 +66,7 @@ runtime! ./basis.rc.vim
 " Functions
 runtime! ./functions.rc.vim
 
-" Keymapping
+" Keybindings
 runtime! ./keybindings.rc.vim
 
 " Load local settings.
