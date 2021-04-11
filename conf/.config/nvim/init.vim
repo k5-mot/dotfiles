@@ -36,6 +36,9 @@ if has('nvim')
 elseif !has('gui_running')
   set t_Co=256
 endif
+" GVim
+"let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum" " 文字色
+"let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum" " 背景色
 
 " Neovim Features
 if !isdirectory('$HOME/.anyenv/envs/pyenv')
@@ -66,7 +69,7 @@ runtime! ./basis.rc.vim
 " Functions
 runtime! ./functions.rc.vim
 
-" Keymapping
+" Keybindings
 runtime! ./keybindings.rc.vim
 
 " Load local settings.

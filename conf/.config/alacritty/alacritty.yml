@@ -89,6 +89,6 @@ font:
 # Window
 window:
   decorations: full         # Display border & title bar.
-  background_opacity: 0.65    # Be background transparent.
+  background_opacity: 0.1    # Be background transparent.
   #startup_mode: Fullscreen  # Run as full screen.
 

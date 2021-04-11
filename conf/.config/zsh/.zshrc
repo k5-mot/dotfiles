@@ -57,6 +57,7 @@ alias -g T='|tail'
 
 ## Display OS info
 alias os_info='cat /etc/*-release'
+alias xsel='xsel --logfile=$HOME/.cache/xsel/xsel.log'
 ### }}}
 
 ### FUnction {{{
