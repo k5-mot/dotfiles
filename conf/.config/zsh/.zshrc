@@ -380,9 +380,9 @@ if [ -f ~/.zshrc_local ]; then
 fi
 
 ## Install plugin for zsh.
-eval "git --version"
+export GIT_VERSION=$(git --version)
 ret=$?
-if [[ $ret != '0' ]]; then
+if [[ $ret == '0' ]]; then
   if [ -f $ZDOTDIR/zplug.zsh ]; then
     source $ZDOTDIR/zplug.zsh
   fi
