@@ -153,14 +153,13 @@ export LESS_TERMCAP_us=$(printf "\e[1;32m")
 
 ### Local Build Program {{{
 ## Set up environment variables for local build applications.
-export LOCAL_ROOT=$HOME/.local
-export PATH=$LOCAL_ROOT/usr/bin:$PATH
-export LD_LIBRARY_PATH=$LOCAL_ROOT/usr/lib64:$LD_LIBRARY_PATH
-export LD_LIBRARY_PATH=$LOCAL_ROOT/usr/lib:$LD_LIBRARY_PATH
-export MANPATH=$LOCAL_ROOT/usr/share/man:$MANPATH
-export INFOPATH=$LOCAL_ROOT/usr/share/info:$INFOPATH
-## Set up GNU environment variables for local build applications.
-export CPATH=$LOCAL_ROOT/usr/include:$CPATH
+#export LOCAL_ROOT=$HOME/.local
+#export PATH=$LOCAL_ROOT/usr/bin:$PATH
+#export LD_LIBRARY_PATH=$LOCAL_ROOT/usr/lib64:$LD_LIBRARY_PATH
+#export LD_LIBRARY_PATH=$LOCAL_ROOT/usr/lib:$LD_LIBRARY_PATH
+#export MANPATH=$LOCAL_ROOT/usr/share/man:$MANPATH
+#export INFOPATH=$LOCAL_ROOT/usr/share/info:$INFOPATH
+#export CPATH=$LOCAL_ROOT/usr/include:$CPATH
 ### }}}
 export NVIM_PYTHON_LOG_FILE=$HOME/.cache/nvim/nvim_python.log
 export NVIM_PYTHON_LOG_LEVEL=DEBUG
