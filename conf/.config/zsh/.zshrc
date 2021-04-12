@@ -60,7 +60,21 @@ alias os_info='cat /etc/*-release'
 alias xsel='xsel --logfile=$HOME/.cache/xsel/xsel.log'
 ### }}}
 
-### FUnction {{{
+### Function {{{
+function path_append() {
+  path_remove $1;
+  export PATH="$PATH:$1";
+}
+
+function path_prepend() {
+  path_remove $1;
+  export PATH="$1:$PATH";
+}
+
+function path_remove() {
+  export PATH=`echo -n $PATH | awk -v RS=: -v ORS=: '$0 != "'$1'"' | sed 's/:$//'`;
+}
+
 # Shell functions
 function setenv() {
   typeset -x "${1}${1:+=}${(@)argv[2,$#]}"
@@ -374,6 +388,11 @@ autoload -Uz tetriscurses
 #alias tetris=tetriscurses
 ## }}}
 
+## Install tmux plugin manager.
+if [ ! -d $HOME/.cache/tmux/plugins/tpm ]; then
+  git clone https://github.com/tmux-plugins/tpm $HOME/.cache/tmux/plugins/tpm
+fi
+
 # Read local file
 if [ -f ~/.zshrc_local ]; then
   source ~/.zshrc_local
@@ -382,11 +401,6 @@ fi
 # Install plugins.
 if [ -f $ZDOTDIR/zplug.zsh ]; then
   source $ZDOTDIR/zplug.zsh
-fi
-
-## Install tmux plugin manager.
-if [ ! -d $HOME/.cache/tmux/plugins/tpm ]; then
-  git clone https://github.com/tmux-plugins/tpm $HOME/.cache/tmux/plugins/tpm
 fi
 
 # Compile .zshrc only once at first.
