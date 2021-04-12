@@ -379,13 +379,9 @@ if [ -f ~/.zshrc_local ]; then
   source ~/.zshrc_local
 fi
 
-## Install plugin for zsh.
-eval $(git --version)
-ret=$?
-if [[ $ret == '0' ]]; then
-  if [ -f $ZDOTDIR/zplug.zsh ]; then
-    source $ZDOTDIR/zplug.zsh
-  fi
+# Install plugins.
+if [ -f $ZDOTDIR/zplug.zsh ]; then
+  source $ZDOTDIR/zplug.zsh
 fi
 
 ## Install tmux plugin manager.

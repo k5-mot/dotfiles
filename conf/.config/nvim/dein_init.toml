@@ -7,29 +7,29 @@ repo = 'wsdjeg/dein-ui.vim'
 ### }}}
 
 ### colorscheme {{{
-[[plugins]]
-repo = 'croaker/mustang-vim'
-
-[[plugins]]
-repo = 'nanotech/jellybeans.vim'
-
-[[plugins]]
-repo = 'tomasr/molokai'
-
-[[plugins]]
-repo = 'dracula/vim'
-
-[[plugins]]
-repo = 'cocopon/iceberg.vim'
-
-[[plugins]]
-repo = 'joshdick/onedark.vim'
-
-[[plugins]]
-repo = 'jacoborus/tender.vim'
-
-[[plugins]]
-repo = 'junegunn/seoul256.vim'
+#[[plugins]]
+#repo = 'croaker/mustang-vim'
+#
+#[[plugins]]
+#repo = 'nanotech/jellybeans.vim'
+#
+#[[plugins]]
+#repo = 'tomasr/molokai'
+#
+#[[plugins]]
+#repo = 'dracula/vim'
+#
+#[[plugins]]
+#repo = 'cocopon/iceberg.vim'
+#
+#[[plugins]]
+#repo = 'joshdick/onedark.vim'
+#
+#[[plugins]]
+#repo = 'jacoborus/tender.vim'
+#
+#[[plugins]]
+#repo = 'junegunn/seoul256.vim'
 
 [[plugins]]
 repo = 'morhetz/gruvbox'

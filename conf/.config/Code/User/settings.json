@@ -33,19 +33,7 @@
   // Controls the line height. Use 0 to compute the line height from the font size.
   //"editor.lineHeight": 0,
   //"editor.lineHeight": 24,
-
-  // Limit the width of the minimap to render at most a certain number of columns.
-  //"editor.minimap.maxColumn": 120,
-  //"editor.minimap.maxColumn": 40,
-
-  // Render the actual characters on a line as opposed to color blocks.
-  //"editor.minimap.renderCharacters": true,
-  "editor.minimap.renderCharacters": false,
-
-  // Controls when the minimap slider is shown.
-  //"editor.minimap.showSlider": "mouseover",
-  "editor.minimap.showSlider": "always",
-
+  >
   // A multiplier to be used on the `deltaX` and `deltaY` of mouse wheel scroll events.
   //"editor.mouseWheelScrollSensitivity": 1,
   "editor.mouseWheelScrollSensitivity": 0.7,
@@ -389,7 +377,6 @@
         "-synctex=1",
         "-interaction=nonstopmode",
         "-file-line-error",
-        "-xelatex",
         "-shell-escape",
         "-f",
         "-silent",
