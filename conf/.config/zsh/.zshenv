@@ -79,7 +79,7 @@ export JSERVER="localhost"
 
 ## Initialize $PATH
 export PATH
-export PATH=/snap/bin
+export PATH=$PATH:/snap/bin
 export PATH=$PATH:/usr/local/sbin
 export PATH=$PATH:/usr/local/bin
 export PATH=$PATH:/usr/sbin
@@ -91,7 +91,7 @@ export PATH=$PATH:/usr/local/games
 export PATH=$PATH:/opt/bin
 
 export LD_LIBRARY_PATH
-export LD_LIBRARY_PATH=/usr/local/lib64
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib64
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib64
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib
@@ -101,7 +101,7 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/lib64
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/lib
 
 export CPATH
-export CPATH=/usr/local/include
+export CPATH=$CPATH:/usr/local/include
 export CPATH=$CPATH:/usr/include
 export CPATH=$CPATH:/opt/include
 
