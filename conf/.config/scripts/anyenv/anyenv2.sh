@@ -76,6 +76,7 @@ export PLENV_PERL_VERSION=$(plenv install --list | grep -v '[a-zA-Z]' | grep -e 
 ## Display latest version of each environment.
 echo ''
 echo "Python3 : $PYENV_PYTHON3_VERSION"
+ME
 echo "Python2 : $PYENV_PYTHON2_VERSION"
 echo "Ruby    : $RBENV_RUBY_VERSION"
 echo "Node.js : $NODENV_NODEJS_VERSION"
@@ -89,7 +90,7 @@ CONFIGURE_OPTS="--enable-shared" pyenv install --skip-existing $PYENV_PYTHON2_VE
 CONFIGURE_OPTS="--enable-shared" rbenv install --skip-existing $RBENV_RUBY_VERSION
 CONFIGURE_OPTS="--enable-shared" nodenv install --skip-existing $NODENV_NODEJS_VERSION
 CONFIGURE_OPTS="--enable-shared" luaenv install --skip-existing $LUAENV_LUA_VERSION
-CONFIGURE_OPTS="--enable-shared" plenv install $PLENV_PERL_VERSION
+#CONFIGURE_OPTS="--enable-shared" plenv install $PLENV_PERL_VERSION
 
 ## Check versions.
 pyenv versions
@@ -143,3 +144,6 @@ plenv global $PLENV_PERL_VERSION
 plenv install-cpanm
 cpanm Unicode::Japanese
 cpanm -n Neovim::Ext
+
+
+

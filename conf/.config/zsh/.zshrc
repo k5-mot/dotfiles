@@ -92,6 +92,13 @@ function refresh_zsh() {
   exec $SHELL -l
 }
 
+function refresh_gnome() {
+  rm -rf ~/.gnome
+  rm -rf ~/.gnome-desktop
+  rm -rf ~/.gconf
+  rm -rf ~/.gconfd
+}
+
 # Benchmark zsh.
 function benchmark_zsh() {
   for i in $(seq 1 10); do
