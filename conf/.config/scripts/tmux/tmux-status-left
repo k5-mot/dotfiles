@@ -11,6 +11,7 @@ elif [ $distro_id = "arch" ]; then
 elif [ $distro_id = "centos" ]; then
   ## CentOS Linux
   distro_icon="\uf304"
+  distro_name="CentOS"
 elif [ $distro_id = "debian" ]; then
   ## Debian
   distro_icon="\uf306"

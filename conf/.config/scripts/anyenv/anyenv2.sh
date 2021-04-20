@@ -142,8 +142,6 @@ lua -v
 ## Install packages of Perl
 plenv global $PLENV_PERL_VERSION
 plenv install-cpanm
-cpanm Unicode::Japanese
-cpanm -n Neovim::Ext
-
-
+#cpanm Unicode::Japanese
+#cpanm -n Neovim::Ext
 
