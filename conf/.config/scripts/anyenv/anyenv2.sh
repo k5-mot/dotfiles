@@ -39,25 +39,25 @@ if [ ! -e $ANYENV_ROOT/envs/luaenv/plugins/lua-build ]; then
 fi
 
 ## Install plugins for plenv.
-#if [ ! -e $ANYENV_ROOT/envs/plenv/plugins/perl-build ]; then
-#  git clone https://github.com/tokuhirom/Perl-Build.git $ANYENV_ROOT/envs/plenv/plugins/perl-build
+if [ ! -e $ANYENV_ROOT/envs/plenv/plugins/perl-build ]; then
+  git clone https://github.com/tokuhirom/Perl-Build.git $ANYENV_ROOT/envs/plenv/plugins/perl-build
+fi
+#if [ -e $ANYENV_ROOT/envs/plenv/plugins/perl-build ]; then
+#  cd $ANYENV_ROOT/envs/plenv/plugins/perl-build
+#  git pull
+#  cd $HOME
 #fi
-if [ -e $ANYENV_ROOT/envs/plenv/plugins/perl-build ]; then
-  cd $ANYENV_ROOT/envs/plenv/plugins/perl-build
-  git pull
-  cd $HOME
-fi
-if [ ! -e $ANYENV_ROOT/envs/plenv/plugins/perl-install ]; then
-  rm -rf ~/.anyenv/envs/plenv/plugins/perl-build
-  git clone https://github.com/skaji/perl-install.git $ANYENV_ROOT/envs/plenv/plugins/perl-install
-fi
-if [ ! -e $ANYENV_ROOT/envs/plenv/plugins/plenv-download ]; then
-  git clone https://github.com/skaji/plenv-download.git $ANYENV_ROOT/envs/plenv/plugins/plenv-download
-fi
+#if [ ! -e $ANYENV_ROOT/envs/plenv/plugins/perl-install ]; then
+#  rm -rf ~/.anyenv/envs/plenv/plugins/perl-build
+#  git clone https://github.com/skaji/perl-install.git $ANYENV_ROOT/envs/plenv/plugins/perl-install
+#fi
+#if [ ! -e $ANYENV_ROOT/envs/plenv/plugins/plenv-download ]; then
+#  git clone https://github.com/skaji/plenv-download.git $ANYENV_ROOT/envs/plenv/plugins/plenv-download
+#fi
 
 anyenv update
 pyenv update
-#rbenv update
+rbenv update
 nodenv update
 #luaenv update
 #plenv update
@@ -76,7 +76,6 @@ export PLENV_PERL_VERSION=$(plenv install --list | grep -v '[a-zA-Z]' | grep -e 
 ## Display latest version of each environment.
 echo ''
 echo "Python3 : $PYENV_PYTHON3_VERSION"
-ME
 echo "Python2 : $PYENV_PYTHON2_VERSION"
 echo "Ruby    : $RBENV_RUBY_VERSION"
 echo "Node.js : $NODENV_NODEJS_VERSION"
@@ -116,7 +115,8 @@ pip install numpy
 pip install scipy
 pip install compiledb
 pip install neovim
-openpyxl
+pip isntall openpyxl
+pip isntall turtle
 pip-review --auto
 pip list
 
