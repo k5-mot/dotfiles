@@ -22,7 +22,7 @@ jobs:
         shell: zsh {0}
         run: |
           cd $GITHUB_WORKSPACE/conf/.config/scripts/apt
-          ./update.sh # ./install.sh
+          #./update.sh # ./install.sh
       - name: Check $PATH.
         shell: zsh {0}
         run: |
