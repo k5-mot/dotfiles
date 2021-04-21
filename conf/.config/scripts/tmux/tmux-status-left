@@ -68,4 +68,5 @@ SEPARATOR_RIGHT="\ue0b2 "
 SUBSEPARATOR_LEFT="\ue0b1 "
 SUBSEPARATOR_RIGHT="\ue0b3 "
 
-echo "#[fg=colour22,bg=colour148,bold] ${distro_name} ${distro_icon} #[fg=colour148,bg=colour240]${SEPARATOR_LEFT}#[fg=colour231,bg=colour240,bold] Session: #S #[fg=colour240,bg=colour148]${SEPARATOR_LEFT} Pane: #P #[fg=colour148,bg=default]${SEPARATOR_LEFT}#[default]"
+echo "#[fg=colour22,bg=colour148,bold] ${distro_name} ${distro_icon} #[fg=colour148,bg=colour240]${SEPARATOR_LEFT}#[fg=colour231,bg=colour240,bold] Sesh: #S #[fg=colour240,bg=colour148]${SEPARATOR_LEFT} Pane: #P #[fg=colour148,bg=default]${SEPARATOR_LEFT}#[default]"
+
