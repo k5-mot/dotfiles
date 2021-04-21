@@ -115,8 +115,8 @@ pip install numpy
 pip install scipy
 pip install compiledb
 pip install neovim
-pip isntall openpyxl
-pip isntall turtle
+pip install openpyxl
+pip install turtle
 pip-review --auto
 pip list
 
