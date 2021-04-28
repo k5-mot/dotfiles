@@ -11,7 +11,7 @@ GIT_SYMBOL="\uf7a1"
 UNSTAGE="\uf067"
 STAGE="\uf12a"
 COMMIT="\uf417"
-ALLOK="\uf62b"
+ALLOK="\uf00c"
 
 if git_status=$(cd $1 && git status 2>/dev/null ); then
   git_branch="$(echo $git_status | awk 'NR==1 {print $3}')"
