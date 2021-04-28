@@ -22,7 +22,7 @@ if git_status=$(cd $1 && git status 2>/dev/null ); then
       stage_symbol=${STAGE} ;;
     "*\(uses*" )
       stage_symbol=${COMMIT} ;;
-    "*"" )
+    "*" )
       stage_symbol=${ALLOK} ;;
   esac
   case $git_branch in
