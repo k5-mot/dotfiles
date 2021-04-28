@@ -16,14 +16,14 @@ ALLOK="\uf00c"
 if git_status=$(cd $1 && git status 2>/dev/null ); then
   git_branch="$(echo $git_status | awk 'NR==1 {print $3}')"
   case "$git_status" in
-    "*Changes\ not\ staged*" )
+    *"Changes not staged"* )
       stage_symbol=${UNSTAGE} ;;
-    "*Changes\ to\ be\ committed*" )
+    *"Changes to be committed"* )
       stage_symbol=${STAGE} ;;
-    "*\(uses*" )
+    *"(uses"* )
       stage_symbol=${COMMIT} ;;
-    "*" )
-      stage_symbol=${ALLOK} ;;
+    * )
+      stage_symbol=${ALLOK}  ;;
   esac
   case $git_branch in
     master | main )
