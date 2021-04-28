@@ -58,12 +58,10 @@ fi
 
 if [ "$color_prompt" = yes ]; then
     PS1='
-${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]
-\$ '
+${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\] \$ '
 else
     PS1='
-${debian_chroot:+($debian_chroot)}\u@\h:\w
-\$ '
+${debian_chroot:+($debian_chroot)}\u@\h:\w \$ '
 fi
 unset color_prompt force_color_prompt
 
@@ -100,40 +98,31 @@ alias l='ls -CF'
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-### Set up anyenv.
-#if [ $OSTYPE = linux-gnu -o $OSTYPE = linux ]; then
-#
-#  ## pyenv
-#  if [ -e "$HOME/.pyenv" ]; then
-#    export PYENV_ROOT=$HOME/.pyenv
-#    export PATH=$PYENV_ROOT/bin:$PATH
-#    if command -v pyenv 1>/dev/null 2>&1
-#    then
-#      eval "$(pyenv init -)"
-#      eval "$(pyenv virtualenv-init -)"
-#    fi
-#  fi
-#
-#  ## rbenv
-#  if [ -e "$HOME/.rbenv" ]; then
-#    export RBENV_ROOT=$HOME/.rbenv
-#    export PATH=$RBENV_ROOT/bin:$PATH
-#    if command -v rbenv 1>/dev/null 2>&1
-#    then
-#      eval "$(rbenv init -)"
-#    fi
-#  fi
-#
-#  ## nodenv
-#  if [ -e "$HOME/.nodenv" ]; then
-#    export NODENV_ROOT=$HOME/.nodenv
-#    export PATH=$NODENV_ROOT/bin:$PATH
-#    if command -v nodenv 1>/dev/null 2>&1
-#    then
-#      eval "$(nodenv init -)"
-#    fi
-#  fi
-#fi
+## Set up anyenv.
+export ANYENV_ROOT=$HOME/.anyenv
+if [ -e $ANYENV_ROOT ]; then
+  export PATH="$ANYENV_ROOT/bin:$PATH"
+  if command -v anyenv 1>/dev/null 2>&1; then
+    eval "$(anyenv init -)"
+    for D in `ls $HOME/.anyenv/envs`
+    do
+      export PATH="$HOME/.anyenv/envs/$D/shims:$PATH"
+    done
+  fi
+fi
+
+## Set up rust.
+export CARGO_ROOT=$HOME/.cargo
+if [ -e $CARGO_ROOT ]; then
+  #source $CARGO_ROOT/env
+  export PATH=$CARGO_ROOT/bin:$PATH
+fi
+
+## Set up golang.
+export GOPATH=$HOME/.golang
+if [ -e $GOPATH ]; then
+  export PATH=$GOPATH/bin:$PATH
+fi
 
 # Setup VcXsrv
 if [ "$(uname)" == 'Linux' ]; then
@@ -142,6 +131,9 @@ if [ "$(uname)" == 'Linux' ]; then
   fi
 fi
 
+# Set up scripts of dotfiles.
+export PATH=$PATH:$(find $HOME/.config/scripts -type d | xargs echo | sed -e 's/ /:/g')
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -149,11 +141,11 @@ fi
 #if [ -f ~/.bash_aliases ]; then
 #  . ~/.bash_aliases
 #fi
-#
-## read local file
-#if [ -f ~/.bashrc_local ]; then
-#  . ~/.bashrc_local
-#fi
+
+# read local file
+if [ -f ~/.bashrc_local ]; then
+  . ~/.bashrc_local
+fi
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -165,4 +157,4 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-source "$HOME/.cargo/env"
+

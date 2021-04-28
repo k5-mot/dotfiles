@@ -24,15 +24,14 @@ jobs:
         shell: zsh {0}
         run: |
           cd $GITHUB_WORKSPACE/conf/.config/scripts/apt
-          #./update.sh # ./install.sh
+          # ./update.sh
+          # ./install.sh
 
       - name: Check $PATH.
         shell: zsh {0}
         run: |
           export PATH=$HOME/.local/usr/bin:$PATH
           echo $GITHUB_WORKSPACE
-          echo "SHELL: "
-          echo $SHELL
           echo "PATH : "
           echo $PATH | sed -e "s/:/\n/g"
 
