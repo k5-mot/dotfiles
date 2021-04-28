@@ -59,6 +59,7 @@ jobs:
           plenv versions
 
       - name: Install rust & cargo packages.
+        shell: zsh {0}
         run: |
           cd $GITHUB_WORKSPACE/conf/.config/scripts/rust
           ./install.sh
@@ -66,35 +67,41 @@ jobs:
           ./cargo.sh # ./alacritty.sh
 
       - name: Install porg.
+        shell: zsh {0}
         run: |
           cd $GITHUB_WORKSPACE/conf/.config/scripts/porg
           ./porg.sh
           exec $SHELL -l
 
       - name: Install Git via porg.
+        shell: zsh {0}
         run: |
-          cd $GITHUB_WORKSPACE/bin/porg
+          cd $GITHUB_WORKSPACE/conf/.config/scripts/porg
           ./git.sh
 
       - name: Install Xsel via porg.
+        shell: zsh {0}
         run: |
-          cd $GITHUB_WORKSPACE/bin/porg
+          cd $GITHUB_WORKSPACE/conf/.config/scripts/porg
           ./xsel.sh
 
       - name: Install Tmux via porg.
+        shell: zsh {0}
         run: |
-          cd $GITHUB_WORKSPACE/bin/porg
+          cd $GITHUB_WORKSPACE/conf/.config/scripts/porg
           ./libevent.sh
           ./ncurses.sh
           ./tmux.sh
 
       - name: Install Vim via porg.
+        shell: zsh {0}
         run: |
-          cd $GITHUB_WORKSPACE/bin/porg
+          cd $GITHUB_WORKSPACE/conf/.config/scripts/porg
           ./vim.sh
 
       - name: Install Neovim via porg.
+        shell: zsh {0}
         run: |
-          cd $GITHUB_WORKSPACE/bin/porg
+          cd $GITHUB_WORKSPACE/conf/.config/scripts/porg
           ./neovim.sh
 
