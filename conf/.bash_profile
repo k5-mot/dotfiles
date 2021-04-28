@@ -187,4 +187,6 @@ PATH=$_path
 unset _p
 unset _path
 
-
+if [ -f ~/.bashrc ]; then
+    source ~/.bashrc
+fi
