@@ -6,17 +6,6 @@
 #  exit
 #fi
 
-## Setup VcXsrv for WSL
-if [ "$(uname 2> /dev/null)" = Linux ]; then
-  if [[ "$(uname -r 2> /dev/null)" = *microsoft* ]]; then
-    export LOCAL_IP=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}')
-    export DISPLAY=$LOCAL_IP:0
-    export LIBGL_ALWAYS_INDIRECT=1
-    export WIN_USERNAME=$(powershell.exe '$env:USERNAME' | sed -e 's///g')
-    export WIN_USERHOME=/mnt/c/Users/$WIN_USERNAME
-    export WIN_USERDESK=$WIN_USERHOME/Desktop
-  fi
-fi
 
 ## Create zsh cache directory.
 if [ ! -e $ZDOTCACHE ]; then
@@ -41,6 +30,8 @@ alias lla='ls -la'
 alias x=exit
 alias grep='grep --color=auto'
 alias wget="wget --hsts-file $HOME/.cache/wget/wget-hsts"
+alias osinfo='cat /etc/*-release'
+alias xsel='xsel --logfile=$HOME/.cache/xsel/xsel.log'
 
 # List only directories and symbolic
 # links that point to directories
@@ -54,10 +45,6 @@ alias lsa='ls -ld .*'
 alias -g M='|more'
 alias -g H='|head'
 alias -g T='|tail'
-
-## Display OS info
-alias os_info='cat /etc/*-release'
-alias xsel='xsel --logfile=$HOME/.cache/xsel/xsel.log'
 ### }}}
 
 ### Function {{{

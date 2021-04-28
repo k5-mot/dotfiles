@@ -1,46 +1,3 @@
-#!/usr/bin/env zsh
-
-### Locale {{{
-## Basic locale
-#export LANG="en_US.UTF-8"
-## Translation priorities
-#export LANGUAGE="en_US"
-### Character types, their comparisons and classifications
-#export LC_CTYPE="en_US.UTF-8"
-### Number format
-#export LC_NUMERIC="en_US.UTF-8"
-### Date, time
-#export LC_TIME="en_US.UTF-8"
-### Collation and alignment of characters
-#export LC_COLLATE="en_US.UTF-8"
-### Currency
-#export LC_MONETARY="en_US.UTF-8"
-### Display message
-#export LC_MESSAGES="en_US.UTF-8"
-### Paper standard
-#export LC_PAPER="en_US.UTF-8"
-### Name
-#export LC_NAME="en_US.UTF-8"
-### Address
-#export LC_ADDRESS="en_US.UTF-8"
-### Telephone service
-#export LC_TELEPHONE="en_US.UTF-8"
-### Mesurement
-#export LC_MEASUREMENT="en_US.UTF-8"
-### Metadata
-#export LC_IDENTIFICATION="en_US.UTF-8"
-## All locale
-export LC_ALL="en_US.UTF-8"
-#export LC_ALL="ja_JP.UTF-8"
-### }}}
-
-### Environment variable {{{
-## Use hard limits, except for a smaller stack and no core dumps
-unlimit
-limit stack 8192
-limit core 0
-limit -s
-umask 022
 
 ## Term
 #export TERM="xterm-256color"
@@ -61,16 +18,6 @@ else
   export PAGER="less -iMR"
   export MANPAGER="less -iMR"
 fi
-
-## Stop alert of mail check by zsh.
-export MAILCHECK=0
-## Stack of history by changing directory.
-export DIRSTACKSIZE=20
-## enviroment variables
-export JSERVER="localhost"
-#export TMUX_ACS="utf8"
-#export TMUX_ACS="acs"
-#export TMUX_ACS="ascii"
 
 ## Initialize $PATH
 export PATH
@@ -159,7 +106,7 @@ export CPATH=$LOCAL_ROOT/usr/include:$CPATH
 export NVIM_PYTHON_LOG_FILE=$HOME/.cache/nvim/nvim_python.log
 export NVIM_PYTHON_LOG_LEVEL=DEBUG
 
-## Set up Homebrew
+## Set up homebrew
 if [ $OSTYPE = linux-gnu -o $OSTYPE = linux ]; then
   export HOMEBREW_ROOT=$HOME/.linuxbrew
   if [ -e $HOMEBREW_ROOT ]; then
@@ -218,12 +165,6 @@ if [ "$(uname 2> /dev/null)" = Linux ]; then
     export WIN_USERDESK=$WIN_USERHOME/Desktop
   fi
 fi
-
-## Set up local PATH.
-if [ -e $HOME/.zshenv_local ]; then
-  source $HOME/.zshenv_local
-fi
-
 # Set up scripts of dotfiles.
 export PATH=$PATH:$(find $HOME/.config/scripts -type d | xargs echo | sed -e 's/ /:/g')
 
@@ -236,22 +177,3 @@ export C_INCLUDE_PATH=$C_INCLUDE_PATH:$CPATH
 export CPLUS_INCLUDE_PATH
 export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:$CPATH
 export CPLUS_INCLUDE_PATH="/usr/include/c++/$(ls -1 /usr/include/c++ | tail -1 | sed 's/[@\/]//')":$CPLUS_INCLUDE_PATH
-
-## automatically remove duplicates from these arrays
-typeset -U path PATH
-typeset -U cdpath CDPATH
-typeset -U fpath FPATH
-typeset -U manpath MANPATH
-typeset -U infopath INFOPATH
-
-typeset -T LD_LIBRARY_PATH ld_library_path
-typeset -U ld_library_path
-typeset -T LIBRARY_PATH library_path
-typeset -U library_path
-typeset -T CPATH cpath
-typeset -U cpath
-typeset -T C_INCLUDE_PATH c_include_path
-typeset -U c_include_path
-typeset -T CPLUS_INCLUDE_PATH cplus_include_path
-typeset -U cplus_include_path
-
