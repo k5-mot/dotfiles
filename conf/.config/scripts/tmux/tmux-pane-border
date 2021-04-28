@@ -42,7 +42,11 @@ fi
 
 if [[ $3 = "ssh" ]]; then
   pane_pid=$4
-  info=$({ pgrep -flaP $pane_pid ; ps -o command -p $pane_pid; } | xargs -I{} echo {} | awk '/ssh/' | sed -E 's/^[0-9]*[[:blank:]]*ssh //')
+  info=$({ pgrep -flaP $pane_pid ; ps -o command -p $pane_pid; } \
+    | xargs -I{} echo {} \
+    | awk '/ssh/' \
+    | sed -E 's/^[0-9]*[[:blank:]]*ssh //' \
+  )
   port=$(echo $info | grep -Eo '\-p ([0-9]+)'|sed 's/-p //')
   if [ -z $port ]; then
     local port=22
@@ -54,7 +58,7 @@ if [[ $3 = "ssh" ]]; then
   if [ $user = $host ]; then
     user=$(whoami)
     list=$(awk '
-      $1 == "Host" {
+      $1 == "HostName" {
         gsub("\\\\.", "\\\\.", $2);
         gsub("\\\\*", ".*", $2);
         host = $2;
@@ -77,13 +81,14 @@ if [[ $3 = "ssh" ]]; then
   #ssh_hostname=" ssh:$user@$host "
 else
   user=$(whoami)
-  host=$(hostname)
+  host=$(hostname -s)
 fi
 username="$user"
 hostname="$host"
 
 if [ "$2" -eq "1" ]; then
   echo "#[fg=colour22,bg=colour148,bold] ${username}@${hostname} #[fg=colour148,bg=colour240]${SEPARATOR_LEFT}#[fg=colour231,bg=colour240,bold] $1 #[fg=colour240]${git_info})#[default]"
+  #echo "#[fg=colour22,bg=colour148,bold] ${info}@${hostname} #[fg=colour148,bg=colour240]${SEPARATOR_LEFT}#[fg=colour231,bg=colour240,bold] $1 #[fg=colour240]${git_info})#[default]"
 else
   echo "#[fg=colour235,bg=colour241,bold] ${username}@${hostname} #[fg=colour241,bg=colour235]${SEPARATOR_LEFT}#[fg=colour240,bg=colour235,bold] $1 #[fg=colour235]#[bg=default]${SEPARATOR_LEFT}"
 fi
