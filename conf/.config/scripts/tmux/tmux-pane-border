@@ -10,7 +10,7 @@ SUBSEPARATOR_RIGHT="\ue0b3 "
 GIT_SYMBOL="\uf7a1"
 UNSTAGE="\uf067"
 STAGE="\uf12a"
-COMMIT="\ue73b"
+COMMIT="\uf417"
 ALLOK="\uf00c"
 
 if git_status=$(cd $1 && git status 2>/dev/null ); then
@@ -23,7 +23,7 @@ if git_status=$(cd $1 && git status 2>/dev/null ); then
     *"(use \"git push\" to publish your local commits"* )
       stage_symbol=${COMMIT} ;;
     * )
-      stage_symbol=${ALLOK}  ;;
+      stage_symbol=${ALLOK} ;;
   esac
   case $git_branch in
     master | main )
