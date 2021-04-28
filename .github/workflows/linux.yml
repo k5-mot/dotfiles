@@ -39,7 +39,8 @@ jobs:
       - name: Install Linuxbrew.
         shell: zsh {0}
         run: |
-          cd $GITHUB_WORKSPACE/conf/.config/scripts/brew # ./install.sh
+          cd $GITHUB_WORKSPACE/conf/.config/scripts/brew
+          # ./install.sh
 
       - name: Install anyenv(pyenv, rbenv, nodenv, plenv)
         shell: zsh {0}
@@ -58,20 +59,29 @@ jobs:
           luaenv versions
           plenv versions
 
-      - name: Install rust & cargo packages.
+      - name: Install rust.
         shell: zsh {0}
         run: |
           cd $GITHUB_WORKSPACE/conf/.config/scripts/rust
           ./install.sh
-          exec $SHELL -l
-          ./cargo.sh # ./alacritty.sh
+
+      - name: Install rust packages via cargo.
+        shell: zsh {0}
+        run: |
+          cd $GITHUB_WORKSPACE/conf/.config/scripts/rust
+          ./cargo.sh
+
+      - name: Install alacritty.
+        shell: zsh {0}
+        run: |
+          cd $GITHUB_WORKSPACE/conf/.config/scripts/rust
+          #./alacritty.sh
 
       - name: Install porg.
         shell: zsh {0}
         run: |
           cd $GITHUB_WORKSPACE/conf/.config/scripts/porg
           ./porg.sh
-          exec $SHELL -l
 
       - name: Install Git via porg.
         shell: zsh {0}
