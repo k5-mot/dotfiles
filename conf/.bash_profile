@@ -128,11 +128,10 @@ if [ -e $ANYENV_ROOT ]; then
   export PATH="$ANYENV_ROOT/bin:$PATH"
   if command -v anyenv 1>/dev/null 2>&1; then
     eval "$(anyenv init -)"
-    for D in `ls $HOME/.anyenv/envs`
-    do
-      D2=`sed - e "s/\///g"`
-      export PATH="$HOME/.anyenv/envs/$D/shims:$PATH"
-    done
+    #for D in `ls $HOME/.anyenv/envs`
+    #do
+    #  export PATH="$HOME/.anyenv/envs/$D/shims:$PATH"
+    #done
   fi
 fi
 
@@ -167,3 +166,25 @@ export LIBRARY_PATH=$LIBRARY_PATH:$LD_LIBRARY_PATH
 export C_INCLUDE_PATH=$C_INCLUDE_PATH:$CPATH
 export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:$CPATH
 export CPLUS_INCLUDE_PATH="/usr/include/c++/$(ls -1 /usr/include/c++ | tail -1 | sed 's/[@\/]//')":$CPLUS_INCLUDE_PATH
+
+## Remove duplicate PATH
+_path=""
+for _p in $(echo $PATH | tr ':' ' '); do
+  case ":${_path}:" in
+    *:"${_p}":* )
+      ;;
+    * )
+      if [ "$_path" ]; then
+        _path="$_path:$_p"
+      else
+        _path=$_p
+      fi
+      ;;
+  esac
+done
+PATH=$_path
+
+unset _p
+unset _path
+
+
