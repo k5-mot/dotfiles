@@ -130,6 +130,7 @@ if [ -e $ANYENV_ROOT ]; then
     eval "$(anyenv init -)"
     for D in `ls $HOME/.anyenv/envs`
     do
+      D2=`sed - e "s/\///g"`
       export PATH="$HOME/.anyenv/envs/$D/shims:$PATH"
     done
   fi
@@ -138,7 +139,6 @@ fi
 ## Set up rust.
 export CARGO_ROOT=$HOME/.cargo
 if [ -e $CARGO_ROOT ]; then
-  #source $CARGO_ROOT/env
   export PATH=$CARGO_ROOT/bin:$PATH
 fi
 
