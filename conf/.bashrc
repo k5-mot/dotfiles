@@ -76,28 +76,28 @@ esac
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.config/.dircolors && eval "$(dircolors -b ~/.config/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-    echo "A"
+  test -r ~/.config/.dircolors && eval "$(dircolors -b ~/.config/.dircolors)" || eval "$(dircolors -b)"
+  alias ls='ls -CF --color=auto'
+  alias ll='ls -alF --color=auto'
+  alias la='ls -A --color=auto'
+  alias lla='ls -la --color=auto'
+  #alias dir='dir --color=auto'
+  #alias vdir='vdir --color=auto'
 
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-  else
-    echo "B"
+  alias grep='grep --color=auto'
+  alias fgrep='fgrep --color=auto'
+  alias egrep='egrep --color=auto'
+else
+  alias ls='ls -CF'
+  alias ll='ls -alF'
+  alias la='ls -A'
+  alias lla='ls -la'
 fi
 
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-alias ls='ls -F'
-alias lla='ls -la'
 alias x=exit
 alias wget='wget --hsts-file $HOME/.cache/wget/wget-hsts'
 alias xsel='xsel --logfile=$HOME/.cache/xsel/xsel.log'
