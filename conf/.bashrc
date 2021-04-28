@@ -96,7 +96,7 @@ alias l='ls -CF'
 alias ls='ls -F'
 alias lla='ls -la'
 alias x=exit
-alias wget="wget --hsts-file $HOME/.cache/wget/wget-hsts"
+alias wget='wget --hsts-file $HOME/.cache/wget/wget-hsts'
 alias xsel='xsel --logfile=$HOME/.cache/xsel/xsel.log'
 alias osinfo='cat /etc/*-release'
 
@@ -104,78 +104,78 @@ alias osinfo='cat /etc/*-release'
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-function path_append() {
-  path_remove $1;
-  export PATH="$PATH:$1";
-}
-
-function path_prepend() {
-  path_remove $1;
-  export PATH="$1:$PATH";
-}
-
-function path_remove() {
-  export PATH=`echo -n $PATH | awk -v RS=: -v ORS=: '$0 != "'$1'"' | sed 's/:$//'`;
-}
-
-# check powerline
-function check_powerline() {
-  echo "\ue0b0 \u00b1 \ue0a0 \u27a6 \u2718 \u26a1 \u2699"
-}
-
-# check 256 colors v1
-function check_colors() {
-  for c in {000..255}; do
-    #echo -n "\e[[30;48;5${c}m\e[[38;5;${((255 - %c))}m $c\e[[0m"
-    echo -n "\e[31;48;5;${c}m\e[38;5;${$((255 - $c))}m $c \e[0m"
-    if [ $(($c % 16)) -eq 15 ]; then
-      echo
-    fi
-    #[ $(($c%16)) -eq 15 ] && echo
-  done
-  echo
-}
-
-# Check path.
-function check_path() {
-  echo "PATH"
-  echo $PATH | sed -e "s/:/\n/g"
-}
-
-# Check library path.
-function check_libpath() {
-  echo "LD_LIBRARY_PATH"
-  echo $LD_LIBRARY_PATH | sed -e 's/:/\n/g'
-  echo "LIBRARY_PATH"
-  echo $LIBRARY_PATH | sed -e 's/:/\n/g'
-}
-
-# Check include path
-function check_includepath() {
-  echo "CPATH"
-  echo $CPATH | sed -e 's/:/\n/g'
-  echo "C_INCLUDE_PATH"
-  echo $C_INCLUDE_PATH | sed -e 's/:/\n/g'
-  echo "CPLUS_INCLUDE_PATH"
-  echo $CPLUS_INCLUDE_PATH | sed -e 's/:/\n/g'
-}
-
-# check 256 colors v2
-function check_colors1() {
-  awk 'BEGIN{
-    s="/\\/\\/\\/\\/\\"; s=s s s s s s s s;
-    for (colnum = 0; colnum<77; colnum++) {
-      r = 255-(colnum*255/76);
-      g = (colnum*510/76);
-      b = (colnum*255/76);
-      if (g>255) g = 510-g;
-        printf "\033[48;2;%d;%d;%dm", r,g,b;
-        printf "\033[38;2;%d;%d;%dm", 255-r,255-g,255-b;
-        printf "%s\033[0m", substr(s,colnum+1,1);
-      }
-    printf "\n";
-  }'
-}
+#function path_append() {
+#  path_remove $1;
+#  export PATH="$PATH:$1";
+#}
+#
+#function path_prepend() {
+#  path_remove $1;
+#  export PATH="$1:$PATH";
+#}
+#
+#function path_remove() {
+#  export PATH=`echo -n $PATH | awk -v RS=: -v ORS=: '$0 != "'$1'"' | sed 's/:$//'`;
+#}
+#
+## check powerline
+#function check_powerline() {
+#  echo "\ue0b0 \u00b1 \ue0a0 \u27a6 \u2718 \u26a1 \u2699"
+#}
+#
+## check 256 colors v1
+#function check_colors() {
+#  for c in {000..255}; do
+#    #echo -n "\e[[30;48;5${c}m\e[[38;5;${((255 - %c))}m $c\e[[0m"
+#    echo -n "\e[31;48;5;${c}m\e[38;5;${$((255 - $c))}m $c \e[0m"
+#    if [ $(($c % 16)) -eq 15 ]; then
+#      echo
+#    fi
+#    #[ $(($c%16)) -eq 15 ] && echo
+#  done
+#  echo
+#}
+#
+## Check path.
+#function check_path() {
+#  echo "PATH"
+#  echo $PATH | sed -e "s/:/\n/g"
+#}
+#
+## Check library path.
+#function check_libpath() {
+#  echo "LD_LIBRARY_PATH"
+#  echo $LD_LIBRARY_PATH | sed -e 's/:/\n/g'
+#  echo "LIBRARY_PATH"
+#  echo $LIBRARY_PATH | sed -e 's/:/\n/g'
+#}
+#
+## Check include path
+#function check_includepath() {
+#  echo "CPATH"
+#  echo $CPATH | sed -e 's/:/\n/g'
+#  echo "C_INCLUDE_PATH"
+#  echo $C_INCLUDE_PATH | sed -e 's/:/\n/g'
+#  echo "CPLUS_INCLUDE_PATH"
+#  echo $CPLUS_INCLUDE_PATH | sed -e 's/:/\n/g'
+#}
+#
+## check 256 colors v2
+#function check_colors1() {
+#  awk 'BEGIN{
+#    s="/\\/\\/\\/\\/\\"; s=s s s s s s s s;
+#    for (colnum = 0; colnum<77; colnum++) {
+#      r = 255-(colnum*255/76);
+#      g = (colnum*510/76);
+#      b = (colnum*255/76);
+#      if (g>255) g = 510-g;
+#        printf "\033[48;2;%d;%d;%dm", r,g,b;
+#        printf "\033[38;2;%d;%d;%dm", 255-r,255-g,255-b;
+#        printf "%s\033[0m", substr(s,colnum+1,1);
+#      }
+#    printf "\n";
+#  }'
+#}
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like

@@ -20,7 +20,6 @@ else
 fi
 
 ## Initialize $PATH
-export PATH
 export PATH=$PATH:/snap/bin
 export PATH=$PATH:/usr/local/sbin
 export PATH=$PATH:/usr/local/bin
@@ -32,7 +31,6 @@ export PATH=$PATH:/usr/games
 export PATH=$PATH:/usr/local/games
 export PATH=$PATH:/opt/bin
 
-export LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib64
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib64
@@ -42,22 +40,18 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/lib
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/lib64
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/lib
 
-export CPATH
 export CPATH=$CPATH:/usr/local/include
 export CPATH=$CPATH:/usr/include
 export CPATH=$CPATH:/opt/include
 
 ## Search path for the cd command
-export CDPATH
 #export CDPATH=$CDPATH:..
 #export CDPATH=$CDPATH:~
 ## Search path for the man command
-export MANPATH
 export MANPATH=$MANPATH:/usr/local/share/man
 export MANPATH=$MANPATH:/usr/share/man
 export MANPATH=$MANPATH:/opt/share/man
 ## Search path for the info command
-export INFOPATH
 export INFOPATH=$INFOPATH:/usr/local/share/info
 export INFOPATH=$INFOPATH:/usr/share/info
 export INFOPATH=$INFOPATH:/opt/share/info
@@ -169,11 +163,7 @@ fi
 export PATH=$PATH:$(find $HOME/.config/scripts -type d | xargs echo | sed -e 's/ /:/g')
 
 ## Set
-export FPATH
-export LIBRARY_PATH
 export LIBRARY_PATH=$LIBRARY_PATH:$LD_LIBRARY_PATH
-export C_INCLUDE_PATH
 export C_INCLUDE_PATH=$C_INCLUDE_PATH:$CPATH
-export CPLUS_INCLUDE_PATH
 export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:$CPATH
 export CPLUS_INCLUDE_PATH="/usr/include/c++/$(ls -1 /usr/include/c++ | tail -1 | sed 's/[@\/]//')":$CPLUS_INCLUDE_PATH
