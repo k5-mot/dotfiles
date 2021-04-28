@@ -20,7 +20,7 @@ if git_status=$(cd $1 && git status 2>/dev/null ); then
       stage_symbol=${UNSTAGE} ;;
     *"Changes to be committed"* )
       stage_symbol=${STAGE} ;;
-    *"(uses"* )
+    *"(use"* )
       stage_symbol=${COMMIT} ;;
     * )
       stage_symbol=${ALLOK}  ;;
