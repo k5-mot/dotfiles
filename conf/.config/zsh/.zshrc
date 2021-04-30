@@ -234,8 +234,12 @@ zstyle ':completion:*' group-name ''
 zstyle ':completion:*' list-separator '-->'
 zstyle ':completion:*:manuals' separate-sections true
 ## LS_COLORS
-if [[ -f $ZDOTDIR/.dircolors && -x `which dircolors` ]]; then
-  eval `dircolors -b $ZDOTDIR/.dircolors`
+#if [[ -f $ZDOTDIR/.dircolors && -x `which dircolors` ]]; then
+#  eval `dircolors -b $ZDOTDIR/.dircolors`
+#  zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+#fi
+if [[ -f $HOME/.config/.dircolors && -x `which dircolors` ]]; then
+  eval `dircolors -b $HOME/.config/.dircolors`
   zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 fi
 ## Define demiter of words.
