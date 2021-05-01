@@ -1,61 +1,61 @@
 # dotfiles
 
 ## Features
- 
-Start up for various environment for Linux.
+
+### Toolsets
 
 * bash
 * emacs
 * git
 * latexmk
-* tcsh
 * tmux
 * vim
 * neovim
 * zsh
 
-Start up for various environment for Windows.
+### Scripts
 
-* PowerShell
-* Windows Terminal
-
-Set up for any applications.
-
-* pyenv
-* rbenv
-* nodenv
-
-Others' utility
-
+* anyenv
+  * pyenv
+  * rbenv
+  * nodenv
+  * luaenv
+  * plenv
 * apt
- 
+* porg
+
 ## Requirement
- 
+
 * Vim 8.1
 * Neovim 0.4.3
 * Emacs 26.3
 
 ## Installation
- 
+
 * Case 1<br>
 
-```bash
+```zsh
 git clone https://github.com/k5-mot/dotfiles.git $HOME
 cd dotfiles
 ./install.sh
 ```
 
 * Case 2<br>
-```bash
+```zsh
 curl -L https://raw.githubusercontent.com/k5-mot/dotfiles/master/bin/install.sh | bash
 ```
- 
+
 ## Note
- 
+
+Good luck!!!
+
 ## Author
- 
+
 * k5-mot
- 
+
 ## License
- 
+
+Copyright (c) 2021 k5-mot All Rights Reserved.
+
 k5-mot/dotfiles is under [MIT license](https://en.wikipedia.org/wiki/MIT_License).
+
