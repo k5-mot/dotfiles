@@ -50,7 +50,7 @@ if [[ $3 = "ssh" ]]; then
     | awk '/ssh/' \
     | sed -E 's/^[0-9]*[[:blank:]]*ssh //' \
   )
-  port=$(echo $info | grep -Eo '\-p ([0-9]+)'|sed 's/-p //')
+  port=$(echo $info | grep -Eo '\-p ([0-9]+)' | sed 's/-p //')
   if [ -z $port ]; then
     local port=22
   fi
