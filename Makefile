@@ -41,7 +41,7 @@ setup-vscode: ## Setup for VSCode
 setup-git:    ## Setup for Git
 	@cp -rf $(CONFPATH)/.config/git/gitconfig_user_sample $(HOME)/.config/git/gitconfig_user
 
-help:         ## Self-documented Makefile
+help:         ## Print help for Makefile
 	@echo 'Copyright (c) 2020-2021 k5-mot All Rights Reserved.'
 	@echo ''
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
