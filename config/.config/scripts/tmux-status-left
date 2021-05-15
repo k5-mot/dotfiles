@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 
 distro_name=$(cat /etc/*-release | grep '^NAME=[^ ]*' | sed 's/NAME=//g' | sed 's/"//g')
 distro_id=$(cat /etc/*-release | grep '^ID=[^ ]*' | sed 's/ID=//g' | sed 's/"//g')

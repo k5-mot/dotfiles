@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env bash
 
 ## Separator symbols
 SEPARATOR_LEFT="\ue0b0"
