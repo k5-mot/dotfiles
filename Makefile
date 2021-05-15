@@ -7,7 +7,7 @@
 ## Makefile Path.
 MAKEPATH    := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 ## Configuration Path.
-CONFPATH    := $(addsuffix /conf,$(MAKEPATH))
+CONFPATH    := $(addsuffix /config,$(MAKEPATH))
 ## Copy source (Configurations)
 CONFFILES   := $(shell find $(CONFPATH) -type f)
 CONFDIRS    := $(shell find $(CONFPATH) -type d)
