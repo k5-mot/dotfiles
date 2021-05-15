@@ -23,7 +23,7 @@ jobs:
       - name: Update & Install packages via apt
         shell: zsh {0}
         run: |
-          cd $GITHUB_WORKSPACE/conf/.config/scripts/apt
+          cd $GITHUB_WORKSPACE/config/.config/scripts/apt
           # ./update.sh
           # ./install.sh
 
@@ -38,13 +38,13 @@ jobs:
       - name: Install Linuxbrew.
         shell: zsh {0}
         run: |
-          cd $GITHUB_WORKSPACE/conf/.config/scripts/brew
+          cd $GITHUB_WORKSPACE/config/.config/scripts/brew
           # ./install.sh
 
       - name: Install anyenv(pyenv, rbenv, nodenv, plenv)
         shell: zsh {0}
         run: |
-          cd $GITHUB_WORKSPACE/conf/.config/scripts/anyenv
+          cd $GITHUB_WORKSPACE/config/.config/scripts/anyenv
           ./anyenv1.sh
           ./anyenv2.sh
 
@@ -61,43 +61,43 @@ jobs:
       - name: Install rust.
         shell: zsh {0}
         run: |
-          cd $GITHUB_WORKSPACE/conf/.config/scripts/rust
+          cd $GITHUB_WORKSPACE/config/.config/scripts/rust
           ./install.sh
 
       - name: Install rust packages via cargo.
         shell: zsh {0}
         run: |
-          cd $GITHUB_WORKSPACE/conf/.config/scripts/rust
+          cd $GITHUB_WORKSPACE/config/.config/scripts/rust
           ./cargo.sh
 
       - name: Install alacritty.
         shell: zsh {0}
         run: |
-          cd $GITHUB_WORKSPACE/conf/.config/scripts/rust
+          cd $GITHUB_WORKSPACE/config/.config/scripts/rust
           #./alacritty.sh
 
       - name: Install porg.
         shell: zsh {0}
         run: |
-          cd $GITHUB_WORKSPACE/conf/.config/scripts/porg
+          cd $GITHUB_WORKSPACE/config/.config/scripts/porg
           ./porg.sh
 
       - name: Install Git via porg.
         shell: zsh {0}
         run: |
-          cd $GITHUB_WORKSPACE/conf/.config/scripts/porg
+          cd $GITHUB_WORKSPACE/config/.config/scripts/porg
           ./git.sh
 
       - name: Install Xsel via porg.
         shell: zsh {0}
         run: |
-          cd $GITHUB_WORKSPACE/conf/.config/scripts/porg
+          cd $GITHUB_WORKSPACE/config/.config/scripts/porg
           ./xsel.sh
 
       - name: Install Tmux via porg.
         shell: zsh {0}
         run: |
-          cd $GITHUB_WORKSPACE/conf/.config/scripts/porg
+          cd $GITHUB_WORKSPACE/config/.config/scripts/porg
           ./libevent.sh
           ./ncurses.sh
           ./tmux.sh
@@ -105,12 +105,12 @@ jobs:
       - name: Install Vim via porg.
         shell: zsh {0}
         run: |
-          cd $GITHUB_WORKSPACE/conf/.config/scripts/porg
+          cd $GITHUB_WORKSPACE/config/.config/scripts/porg
           ./vim.sh
 
       - name: Install Neovim via porg.
         shell: zsh {0}
         run: |
-          cd $GITHUB_WORKSPACE/conf/.config/scripts/porg
+          cd $GITHUB_WORKSPACE/config/.config/scripts/porg
           ./neovim.sh
 
