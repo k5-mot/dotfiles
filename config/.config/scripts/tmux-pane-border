@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 ## Separator symbols
 SEPARATOR_LEFT="\ue0b0"
@@ -89,7 +89,7 @@ fi
 username="$user"
 hostname="$host"
 
-if [ "$2" -eq "1" ]; then
+if [[ "$2" -eq "1" ]]; then
   echo "#[fg=colour22,bg=colour148,bold] ${username}@${hostname} #[fg=colour148,bg=colour240]${SEPARATOR_LEFT}#[fg=colour231,bg=colour240,bold] $1 #[fg=colour240]${git_info})#[default]"
   #echo "#[fg=colour22,bg=colour148,bold] ${info}@${hostname} #[fg=colour148,bg=colour240]${SEPARATOR_LEFT}#[fg=colour231,bg=colour240,bold] $1 #[fg=colour240]${git_info})#[default]"
 else
