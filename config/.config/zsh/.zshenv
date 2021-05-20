@@ -159,55 +159,6 @@ export CPATH=$LOCAL_ROOT/usr/include:$CPATH
 export NVIM_PYTHON_LOG_FILE=$HOME/.cache/nvim/nvim_python.log
 export NVIM_PYTHON_LOG_LEVEL=DEBUG
 
-## Set up Homebrew
-if [ $OSTYPE = linux-gnu -o $OSTYPE = linux ]; then
-  export HOMEBREW_ROOT=$HOME/.linuxbrew
-  if [ -e $HOMEBREW_ROOT ]; then
-    export PATH=$HOMEBREW_ROOT/sbin:$PATH
-    export PATH=$HOMEBREW_ROOT/bin:$PATH
-    export MANPATH=$HOMEBREW_ROOT/share/man:$MANPATH
-    export INFOPATH=$HOMEBREW_ROOT/share/info:$INFOPATH
-    export LD_LIBRARY_PATH=$HOMEBREW_ROOT/lib64:$LD_LIBRARY_PATH
-    export LD_LIBRARY_PATH=$HOMEBREW_ROOT/lib:$LD_LIBRARY_PATH
-    export XDG_DATA_DIRS=$HOME/.linuxbrew/share:$XDG_DATA_DIRS
-    # Optional
-    export HOMEBREW_NO_ENV_FILTERING=1
-    export HOMEBREW_DEVELOPER=1
-    export HOMEBREW_CURL_PATH=$HOME/.local/usr/bin/curl
-    export HOMEBREW_GIT_PATH=$HOME/.local/usr/bin/git
-
-    eval "$($HOMEBREW_ROOT/bin/brew shellenv)"
-  fi
-fi
-
-### Programming environament {{{
-## Set up anyenv.
-
-if [ -e "$HOME/.anyenv" ]; then
-  export ANYENV_ROOT="$HOME/.anyenv"
-  export PATH="$ANYENV_ROOT/bin:$PATH"
-  if command -v anyenv 1>/dev/null 2>&1; then
-    eval "$(anyenv init -)"
-    for D in `ls $HOME/.anyenv/envs`
-    do
-      export PATH="$HOME/.anyenv/envs/$D/shims:$PATH"
-    done
-  fi
-fi
-
-## Set up rust.
-export CARGO_ROOT=$HOME/.cargo
-if [ -e $CARGO_ROOT ]; then
-  #source $CARGO_ROOT/env
-  export PATH=$CARGO_ROOT/bin:$PATH
-fi
-
-## Set up golang.
-export GOPATH=$HOME/.golang
-if [ -e $GOPATH ]; then
-  export PATH=$GOPATH/bin:$PATH
-fi
-
 ## Setup VcXsrv for WSL
 if [ "$(uname 2> /dev/null)" = Linux ]; then
   if [[ "$(uname -r 2> /dev/null)" = *microsoft* ]]; then

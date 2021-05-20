@@ -386,6 +386,53 @@ autoload -Uz tetriscurses
 #alias tetris=tetriscurses
 ## }}}
 
+## Set up Homebrew
+if [ $OSTYPE = linux-gnu -o $OSTYPE = linux ]; then
+  export HOMEBREW_ROOT=$HOME/.linuxbrew
+  if [ -e $HOMEBREW_ROOT ]; then
+    export PATH=$HOMEBREW_ROOT/sbin:$PATH
+    export PATH=$HOMEBREW_ROOT/bin:$PATH
+    export MANPATH=$HOMEBREW_ROOT/share/man:$MANPATH
+    export INFOPATH=$HOMEBREW_ROOT/share/info:$INFOPATH
+    export LD_LIBRARY_PATH=$HOMEBREW_ROOT/lib64:$LD_LIBRARY_PATH
+    export LD_LIBRARY_PATH=$HOMEBREW_ROOT/lib:$LD_LIBRARY_PATH
+    export XDG_DATA_DIRS=$HOME/.linuxbrew/share:$XDG_DATA_DIRS
+    # Optional
+    export HOMEBREW_NO_ENV_FILTERING=1
+    export HOMEBREW_DEVELOPER=1
+    export HOMEBREW_CURL_PATH=$HOME/.local/usr/bin/curl
+    export HOMEBREW_GIT_PATH=$HOME/.local/usr/bin/git
+
+    eval "$($HOMEBREW_ROOT/bin/brew shellenv)"
+  fi
+fi
+
+## Set up anyenv.
+if [ -e "$HOME/.anyenv" ]; then
+  export ANYENV_ROOT="$HOME/.anyenv"
+  export PATH="$ANYENV_ROOT/bin:$PATH"
+  if command -v anyenv 1>/dev/null 2>&1; then
+    eval "$(anyenv init -)"
+    for D in `ls $HOME/.anyenv/envs`
+    do
+      export PATH="$HOME/.anyenv/envs/$D/shims:$PATH"
+    done
+  fi
+fi
+
+## Set up rust.
+if [ -e "$HOME/.cargo" ]; then
+  #source $CARGO_ROOT/env
+  export CARGO_ROOT=$HOME/.cargo
+  export PATH=$CARGO_ROOT/bin:$PATH
+fi
+
+## Set up golang.
+if [ -e "$HOME/.golang" ]; then
+  export GOPATH=$HOME/.golang
+  export PATH=$GOPATH/bin:$PATH
+fi
+
 ## Install tmux plugin manager.
 if [ ! -d $HOME/.cache/tmux/plugins/tpm ]; then
   git clone https://github.com/tmux-plugins/tpm $HOME/.cache/tmux/plugins/tpm
