@@ -1,16 +1,10 @@
 #!/usr/bin/env zsh
 
-function precmd() {
-  if [ ! -z $TMUX ]; then
-    tmux refresh-client -S
-  fi
-}
 ## If use tmux, not read .zshrc
-#if [[ -z $TMUX ]]; then
-#  tmux new-session
-#  exit
-#fi
-
+if [[ -z $TMUX ]]; then
+  tmux new-session
+  exit
+fi
 
 ## Create zsh cache directory.
 if [ ! -e $ZDOTCACHE ]; then
@@ -313,6 +307,46 @@ bindkey '^W' backward-kill-word
 bindkey '^ ' autosuggest-accept
 ## }}}
 
+## git設定
+autoload -Uz vcs_info
+autoload -Uz add-zsh-hook
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
+zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
+#zstyle ':vcs_info:*' formats "%F{green}(%s)-%c%u[%b]%f"
+#zstyle ':vcs_info:*' actionformats '[%b|%a]'
+zstyle ':vcs_info:*' formats '%F{green}(%s)-[%b]%f'
+zstyle ':vcs_info:*' actionformats '%F{red}(%s)-[%b|%a]%f'
+#function precmd() {
+#  if [ ! -z $TMUX ]; then
+#    tmux refresh-client -S
+#  fi
+#  vcs_info
+#}
+function precmd() {
+  if [ ! -z $TMUX ]; then
+    tmux refresh-client -S
+  else
+    dir="%F{cyan}%K{black} %~ %k%f"
+    if git_status=$(git status 2>/dev/null ); then
+      git_branch="$(echo $git_status| awk 'NR==1 {print $3}')"
+       case $git_status in
+        *Changes\ not\ staged* ) state=$'%{\e[30;48;5;013m%}%F{black} ± %f%k' ;;
+        *Changes\ to\ be\ committed* ) state="%K{blue}%F{black} + %k%f" ;;
+        * ) state="%K{green}%F{black} ✔ %f%k" ;;
+      esac
+      if [[ $git_branch = "master" ]]; then
+        git_info="%K{black}%F{blue}⭠ ${git_branch}%f%k ${state}"
+      else
+        git_info="%K{black}⭠ ${git_branch}%f ${state}"
+      fi
+    else
+      git_info=""
+    fi
+  fi
+}
+
+
 ## Prompt {{{
 setopt prompt_subst
 ## Set prompts
@@ -333,37 +367,40 @@ setopt prompt_subst
 #%F{green}$%f "
 #    ;;
 #esac
-case $(whoami) in
-  'root')
-    export PROMPT="%F{cyan}%~%f %F{red}#%f "
-    ;;
-  *)
-    export PROMPT="%F{cyan}%~%f %F{green}$%f "
-    ;;
-esac
-export PROMPT2=
+
+if [ ! -z $VIMRUNTIME ]; then
+  #PROMPT=$'%(?,,%F{red}%K{black} ✘%f %f|%k)${root}${dir}%K{black}%F{blue}> %f%k'
+  case $(whoami) in
+    'root')
+      export PROMPT="%F{cyan}%~%f %F{red}#%f " ;;
+    *)
+      export PROMPT="%F{cyan}%~%f %F{green}$%f " ;;
+  esac
+elif [ ! -z $TMUX ]; then
+  #PROMPT=$'%(?,,%F{red}%K{black} ✘%f %f|%k)${root}%K{black}%F{blue} > %f%k'
+  case $(whoami) in
+    'root')
+      export PROMPT="%F{red}#%f " ;;
+    *)
+      export PROMPT="%F{green}$%f " ;;
+  esac
+else
+  case $(whoami) in
+    'root')
+      export PROMPT="%F{cyan}%~%f %F{red}#%f " ;;
+    *)
+      export PROMPT="%F{cyan}%~%f %F{green}$%f " ;;
+  esac
+  export RPROMPT="${git_info}"
+  #PROMPT=$'%(?,,%F{red}%K{black} ✘%f %f|%k)${root}${dir}%K{black}%F{blue}> %f%k'
+  #RPROMPT=$'${git_info}'
+fi
+
+export PROMPT2="%F{blue}> %f"
+export SPROMPT="zsh: correct? %F{red}%R%f -> %F{green}%r%f [y/n]: "
 ## }}}
 
-## git設定
-autoload -Uz vcs_info
-autoload -Uz add-zsh-hook
-zstyle ':vcs_info:git:*' check-for-changes true
-zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
-zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
-#zstyle ':vcs_info:*' formats "%F{green}(%s)-%c%u[%b]%f"
-#zstyle ':vcs_info:*' actionformats '[%b|%a]'
-zstyle ':vcs_info:*' formats '%F{green}(%s)-[%b]%f'
-zstyle ':vcs_info:*' actionformats '%F{red}(%s)-[%b|%a]%f'
-function precmd() {
-  if [ ! -z $TMUX ]; then
-    tmux refresh-client -S
-  fi
-  vcs_info
-}
-#RPROMPT="%{${fg[blue]}%}[%~]%{${reset_color}%}"
-#RPROMPT=$RPROMPT'${vcs_info_msg_0_}'
-#RPROMPT='${vcs_info_msg_0_}'
-RPROMPT=""
+
 
 ## Others {{{
 # ディレクトリ選択時、最後の/を残す
@@ -393,8 +430,8 @@ autoload -Uz tetriscurses
 
 ## Set up Homebrew
 if [ $OSTYPE = linux-gnu -o $OSTYPE = linux ]; then
-  export HOMEBREW_ROOT=$HOME/.linuxbrew
-  if [ -e $HOMEBREW_ROOT ]; then
+  if [ -e "HOMEBREW_ROOT=$HOME/.linuxbrew" ]; then
+    export HOMEBREW_ROOT=$HOME/.linuxbrew
     export PATH=$HOMEBREW_ROOT/sbin:$PATH
     export PATH=$HOMEBREW_ROOT/bin:$PATH
     export MANPATH=$HOMEBREW_ROOT/share/man:$MANPATH
