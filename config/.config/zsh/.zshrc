@@ -372,10 +372,13 @@ if [ ! -z $VIMRUNTIME ]; then
   #PROMPT=$'%(?,,%F{red}%K{black} ✘%f %f|%k)${root}${dir}%K{black}%F{blue}> %f%k'
   case $(whoami) in
     'root')
-      export PROMPT="%F{cyan}%~%f %F{red}#%f " ;;
+      export PROMPT="%F{cyan}%~%f
+%F{red}#%f " ;;
     *)
-      export PROMPT="%F{cyan}%~%f %F{green}$%f " ;;
+      export PROMPT="%F{cyan}%~%f
+%F{green}$%f " ;;
   esac
+  export RPROMPT="${git_info}"
 elif [ ! -z $TMUX ]; then
   #PROMPT=$'%(?,,%F{red}%K{black} ✘%f %f|%k)${root}%K{black}%F{blue} > %f%k'
   case $(whoami) in
@@ -387,9 +390,11 @@ elif [ ! -z $TMUX ]; then
 else
   case $(whoami) in
     'root')
-      export PROMPT="%F{cyan}%~%f %F{red}#%f " ;;
+      export PROMPT="%F{cyan}%~%f
+%F{red}#%f " ;;
     *)
-      export PROMPT="%F{cyan}%~%f %F{green}$%f " ;;
+      export PROMPT="%F{cyan}%~%f
+%F{green}$%f " ;;
   esac
   export RPROMPT="${git_info}"
   #PROMPT=$'%(?,,%F{red}%K{black} ✘%f %f|%k)${root}${dir}%K{black}%F{blue}> %f%k'
