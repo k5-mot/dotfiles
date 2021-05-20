@@ -1,10 +1,10 @@
 #!/usr/bin/env zsh
 
 ## If use tmux, not read .zshrc
-if [[ -z $TMUX ]]; then
-  tmux new-session
-  exit
-fi
+#if [[ -z $TMUX ]]; then
+#  tmux new-session
+#  exit
+#fi
 
 ## Create zsh cache directory.
 if [ ! -e $ZDOTCACHE ]; then
