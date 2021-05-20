@@ -1,5 +1,10 @@
 #!/usr/bin/env zsh
 
+function precmd() {
+  if [ ! -z $TMUX ]; then
+    tmux refresh-client -S
+  fi
+}
 ## If use tmux, not read .zshrc
 #if [[ -z $TMUX ]]; then
 #  tmux new-session
