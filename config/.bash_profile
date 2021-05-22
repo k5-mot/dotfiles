@@ -20,47 +20,47 @@ else
 fi
 
 ## Initialize $PATH
-export PATH=$PATH:/snap/bin
-export PATH=$PATH:/usr/local/sbin
-export PATH=$PATH:/usr/local/bin
-export PATH=$PATH:/usr/sbin
-export PATH=$PATH:/usr/bin
-export PATH=$PATH:/sbin
-export PATH=$PATH:/bin
-export PATH=$PATH:/usr/games
-export PATH=$PATH:/usr/local/games
-export PATH=$PATH:/opt/bin
-
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib64
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib64
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/lib64
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/lib
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/lib64
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/lib
-
-export CPATH=$CPATH:/usr/local/include
-export CPATH=$CPATH:/usr/include
-export CPATH=$CPATH:/opt/include
-
-## Search path for the cd command
-#export CDPATH=$CDPATH:..
-#export CDPATH=$CDPATH:~
-## Search path for the man command
-export MANPATH=$MANPATH:/usr/local/share/man
-export MANPATH=$MANPATH:/usr/share/man
-export MANPATH=$MANPATH:/opt/share/man
-## Search path for the info command
-export INFOPATH=$INFOPATH:/usr/local/share/info
-export INFOPATH=$INFOPATH:/usr/share/info
-export INFOPATH=$INFOPATH:/opt/share/info
-## Directory for run-help function to find docs
-export HELPDIR=$HELPDIR:/usr/local/lib/zsh/help
-## xdgconfig
-export XDG_CONFIG_HOME=$HOME/.config
-## pdgconfig
-export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig
+#export PATH=$PATH:/snap/bin
+#export PATH=$PATH:/usr/local/sbin
+#export PATH=$PATH:/usr/local/bin
+#export PATH=$PATH:/usr/sbin
+#export PATH=$PATH:/usr/bin
+#export PATH=$PATH:/sbin
+#export PATH=$PATH:/bin
+#export PATH=$PATH:/usr/games
+#export PATH=$PATH:/usr/local/games
+#export PATH=$PATH:/opt/bin
+#
+#export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib64
+#export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
+#export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib64
+#export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib
+#export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/lib64
+#export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/lib
+#export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/lib64
+#export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/lib
+#
+#export CPATH=$CPATH:/usr/local/include
+#export CPATH=$CPATH:/usr/include
+#export CPATH=$CPATH:/opt/include
+#
+### Search path for the cd command
+##export CDPATH=$CDPATH:..
+##export CDPATH=$CDPATH:~
+### Search path for the man command
+#export MANPATH=$MANPATH:/usr/local/share/man
+#export MANPATH=$MANPATH:/usr/share/man
+#export MANPATH=$MANPATH:/opt/share/man
+### Search path for the info command
+#export INFOPATH=$INFOPATH:/usr/local/share/info
+#export INFOPATH=$INFOPATH:/usr/share/info
+#export INFOPATH=$INFOPATH:/opt/share/info
+### Directory for run-help function to find docs
+#export HELPDIR=$HELPDIR:/usr/local/lib/zsh/help
+### xdgconfig
+#export XDG_CONFIG_HOME=$HOME/.config
+### pdgconfig
+#export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig
 
 ## Settings of less
 export LESSCHARSET=utf-8
@@ -101,51 +101,51 @@ export NVIM_PYTHON_LOG_FILE=$HOME/.cache/nvim/nvim_python.log
 export NVIM_PYTHON_LOG_LEVEL=DEBUG
 
 ## Set up homebrew
-if [ $OSTYPE = linux-gnu -o $OSTYPE = linux ]; then
-  export HOMEBREW_ROOT=$HOME/.linuxbrew
-  if [ -e $HOMEBREW_ROOT ]; then
-    export PATH=$HOMEBREW_ROOT/sbin:$PATH
-    export PATH=$HOMEBREW_ROOT/bin:$PATH
-    export MANPATH=$HOMEBREW_ROOT/share/man:$MANPATH
-    export INFOPATH=$HOMEBREW_ROOT/share/info:$INFOPATH
-    export LD_LIBRARY_PATH=$HOMEBREW_ROOT/lib64:$LD_LIBRARY_PATH
-    export LD_LIBRARY_PATH=$HOMEBREW_ROOT/lib:$LD_LIBRARY_PATH
-    export XDG_DATA_DIRS=$HOME/.linuxbrew/share:$XDG_DATA_DIRS
-    # Optional
-    export HOMEBREW_NO_ENV_FILTERING=1
-    export HOMEBREW_DEVELOPER=1
-    export HOMEBREW_CURL_PATH=$HOME/.local/usr/bin/curl
-    export HOMEBREW_GIT_PATH=$HOME/.local/usr/bin/git
-
-    eval "$($HOMEBREW_ROOT/bin/brew shellenv)"
-  fi
-fi
-
-### Programming environament {{{
-## Set up anyenv.
-export ANYENV_ROOT=$HOME/.anyenv
-if [ -e $ANYENV_ROOT ]; then
-  export PATH="$ANYENV_ROOT/bin:$PATH"
-  if command -v anyenv 1>/dev/null 2>&1; then
-    eval "$(anyenv init -)"
-    #for D in `ls $HOME/.anyenv/envs`
-    #do
-    #  export PATH="$HOME/.anyenv/envs/$D/shims:$PATH"
-    #done
-  fi
-fi
-
-## Set up rust.
-export CARGO_ROOT=$HOME/.cargo
-if [ -e $CARGO_ROOT ]; then
-  export PATH=$CARGO_ROOT/bin:$PATH
-fi
-
-## Set up golang.
-export GOPATH=$HOME/.golang
-if [ -e $GOPATH ]; then
-  export PATH=$GOPATH/bin:$PATH
-fi
+#if [ $OSTYPE = linux-gnu -o $OSTYPE = linux ]; then
+#  export HOMEBREW_ROOT=$HOME/.linuxbrew
+#  if [ -e $HOMEBREW_ROOT ]; then
+#    export PATH=$HOMEBREW_ROOT/sbin:$PATH
+#    export PATH=$HOMEBREW_ROOT/bin:$PATH
+#    export MANPATH=$HOMEBREW_ROOT/share/man:$MANPATH
+#    export INFOPATH=$HOMEBREW_ROOT/share/info:$INFOPATH
+#    export LD_LIBRARY_PATH=$HOMEBREW_ROOT/lib64:$LD_LIBRARY_PATH
+#    export LD_LIBRARY_PATH=$HOMEBREW_ROOT/lib:$LD_LIBRARY_PATH
+#    export XDG_DATA_DIRS=$HOME/.linuxbrew/share:$XDG_DATA_DIRS
+#    # Optional
+#    export HOMEBREW_NO_ENV_FILTERING=1
+#    export HOMEBREW_DEVELOPER=1
+#    export HOMEBREW_CURL_PATH=$HOME/.local/usr/bin/curl
+#    export HOMEBREW_GIT_PATH=$HOME/.local/usr/bin/git
+#
+#    eval "$($HOMEBREW_ROOT/bin/brew shellenv)"
+#  fi
+#fi
+#
+#### Programming environament {{{
+### Set up anyenv.
+#export ANYENV_ROOT=$HOME/.anyenv
+#if [ -e $ANYENV_ROOT ]; then
+#  export PATH="$ANYENV_ROOT/bin:$PATH"
+#  if command -v anyenv 1>/dev/null 2>&1; then
+#    eval "$(anyenv init -)"
+#    #for D in `ls $HOME/.anyenv/envs`
+#    #do
+#    #  export PATH="$HOME/.anyenv/envs/$D/shims:$PATH"
+#    #done
+#  fi
+#fi
+#
+### Set up rust.
+#export CARGO_ROOT=$HOME/.cargo
+#if [ -e $CARGO_ROOT ]; then
+#  export PATH=$CARGO_ROOT/bin:$PATH
+#fi
+#
+### Set up golang.
+#export GOPATH=$HOME/.golang
+#if [ -e $GOPATH ]; then
+#  export PATH=$GOPATH/bin:$PATH
+#fi
 
 ## Setup VcXsrv for WSL
 if [ "$(uname 2> /dev/null)" = Linux ]; then
