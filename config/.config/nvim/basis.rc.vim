@@ -14,9 +14,18 @@ set sidescrolloff=6
 " バッファスクロール
 set mouse=a
 
+" バックアップを作成する
+set backup
 " バックアップを作成しない
-set nobackup
-set nowritebackup
+"set nobackup
+" backupがOFFの時、バックアップを作成した後削除
+"set writebackup
+" backupがOFFの時、バックアップを作成しない
+"set nowritebackup
+" バックアップディレクトリの指定
+set backupdir=~/.cache/nvim/backup
+" バックアップファイルの拡張子
+set backupext=.backup
 
 " バックスペースでなんでも消せるように
 set backspace=indent,eol,start
@@ -49,8 +58,7 @@ set showcmd
 set noshowmode
 
 " viminfoの設定
-set viminfo='50,<1000,s100,\"50
-"set viminfo+=n$HOME/.cache/nvim/viminfo
+set viminfo='100,/100,<1000,f50,s100,:300,c,h,!,n~/.cache/nvim/viminfo
 
 " モードラインを無効
 set modelines=0
@@ -66,8 +74,16 @@ set wildmode=longest:full,full
 set wildmenu
 set wildignorecase
 
+" スワップファイルを作る
+set swapfile
 " スワップファイルを作らない
-set noswapfile
+"set noswapfile
+" スワップファイルの保存先
+set directory=~/.cache/nvim/swap
+" 30秒ごとにスワップファイルを保存
+set updatetime=30000
+" 500文字ごとにスワップファイルを保存
+set updatecount=500
 
 " 折り返さない
 set nowrap
@@ -229,9 +245,12 @@ set fileformat=unix
 set fileencodings=utf-8,cp932,euc-jp,iso-20220-jp,default,latin,sjis
 set fileformats=unix,dos,mac
 
-" undofile
+" アンドゥファイルを生成する
 set undofile
-set undodir=$HOME/.cache/nvim/undodir
+" アンドゥファイルを生成しない
+"set noundofile
+" アンドゥファイルの保存先
+set undodir=~/.cache/nvim/undodir
 
 " vimの矩形選択で文字が無くても右へ進める
 set virtualedit=block

@@ -120,6 +120,8 @@ export HELPDIR=$HELPDIR:/usr/local/lib/zsh/help
 export XDG_CONFIG_HOME=$HOME/.config
 ## pdgconfig
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig
+#export TEXINPUTS='.//;'
+#export BIBINPUTS='.//;'
 
 ## Settings of less
 export LESSCHARSET=utf-8
