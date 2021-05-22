@@ -376,6 +376,9 @@
     "editor.formatOnType": false,             // 入力後に自動整形を行わない
   },  
   "workbench.panel.defaultLocation": "right",
-  "python.showStartPage": false
+  "python.showStartPage": false,
+  "jupyter.alwaysTrustNotebooks": true,
+  "explorer.confirmDragAndDrop": false,
+  "explorer.confirmDelete": false
 
 }
