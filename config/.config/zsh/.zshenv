@@ -30,7 +30,7 @@
 ### Metadata
 #export LC_IDENTIFICATION="en_US.UTF-8"
 ## All locale
-export LC_ALL="en_US.UTF-8"
+#export LC_ALL="en_US.UTF-8"
 #export LC_ALL="ja_JP.UTF-8"
 ### }}}
 
@@ -73,55 +73,53 @@ export JSERVER="localhost"
 #export TMUX_ACS="ascii"
 
 ## Initialize $PATH
-export PATH
-export PATH=$PATH:/snap/bin
-export PATH=$PATH:/usr/local/sbin
-export PATH=$PATH:/usr/local/bin
-export PATH=$PATH:/usr/sbin
-export PATH=$PATH:/usr/bin
-export PATH=$PATH:/sbin
-export PATH=$PATH:/bin
-export PATH=$PATH:/usr/games
-export PATH=$PATH:/usr/local/games
-export PATH=$PATH:/opt/bin
-
-export LD_LIBRARY_PATH
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib64
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib64
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/lib64
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/lib
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/lib64
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/lib
-
-export CPATH
-export CPATH=$CPATH:/usr/local/include
-export CPATH=$CPATH:/usr/include
-export CPATH=$CPATH:/opt/include
-
-## Search path for the cd command
-export CDPATH
-#export CDPATH=$CDPATH:..
-#export CDPATH=$CDPATH:~
-## Search path for the man command
-export MANPATH
-export MANPATH=$MANPATH:/usr/local/share/man
-export MANPATH=$MANPATH:/usr/share/man
-export MANPATH=$MANPATH:/opt/share/man
-## Search path for the info command
-export INFOPATH
-export INFOPATH=$INFOPATH:/usr/local/share/info
-export INFOPATH=$INFOPATH:/usr/share/info
-export INFOPATH=$INFOPATH:/opt/share/info
-## Directory for run-help function to find docs
-export HELPDIR=$HELPDIR:/usr/local/lib/zsh/help
-## xdgconfig
-export XDG_CONFIG_HOME=$HOME/.config
-## pdgconfig
-export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig
-#export TEXINPUTS='.//;'
-#export BIBINPUTS='.//;'
+#export PATH
+#export PATH=$PATH:/snap/bin
+#export PATH=$PATH:/usr/local/sbin
+#export PATH=$PATH:/usr/local/bin
+#export PATH=$PATH:/usr/sbin
+#export PATH=$PATH:/usr/bin
+#export PATH=$PATH:/sbin
+#export PATH=$PATH:/bin
+#export PATH=$PATH:/usr/games
+#export PATH=$PATH:/usr/local/games
+#export PATH=$PATH:/opt/bin
+#
+#export LD_LIBRARY_PATH
+#export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib64
+#export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
+#export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib64
+#export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib
+#export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/lib64
+#export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/lib
+#export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/lib64
+#export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/lib
+#
+#export CPATH
+#export CPATH=$CPATH:/usr/local/include
+#export CPATH=$CPATH:/usr/include
+#export CPATH=$CPATH:/opt/include
+#
+### Search path for the cd command
+#export CDPATH
+##export CDPATH=$CDPATH:..
+##export CDPATH=$CDPATH:~
+### Search path for the man command
+#export MANPATH
+#export MANPATH=$MANPATH:/usr/local/share/man
+#export MANPATH=$MANPATH:/usr/share/man
+#export MANPATH=$MANPATH:/opt/share/man
+### Search path for the info command
+#export INFOPATH
+#export INFOPATH=$INFOPATH:/usr/local/share/info
+#export INFOPATH=$INFOPATH:/usr/share/info
+#export INFOPATH=$INFOPATH:/opt/share/info
+### Directory for run-help function to find docs
+#export HELPDIR=$HELPDIR:/usr/local/lib/zsh/help
+### xdgconfig
+#export XDG_CONFIG_HOME=$HOME/.config
+### pdgconfig
+#export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig
 
 ## Settings of less
 export LESSCHARSET=utf-8
