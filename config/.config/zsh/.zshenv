@@ -165,10 +165,16 @@ if [ "$(uname 2> /dev/null)" = Linux ]; then
     export LOCAL_IP=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}')
     export DISPLAY=$LOCAL_IP:0
     export LIBGL_ALWAYS_INDIRECT=1
-    export WIN_USERNAME=$(powershell.exe '$env:USERNAME' | sed -e 's///g')
-    export WIN_USERHOME=/mnt/c/Users/$WIN_USERNAME
-    export WIN_USERDESK=$WIN_USERHOME/Desktop
+    #export WIN_USERNAME=$(powershell.exe '$env:USERNAME' | sed -e 's///g')
+    #export WIN_USERHOME=/mnt/c/Users/$WIN_USERNAME
+    #export WIN_USERDESK=$WIN_USERHOME/Desktop
   fi
+fi
+
+## Set up anyenv.
+if [ -e "$HOME/.anyenv" ]; then
+  export ANYENV_ROOT="$HOME/.anyenv"
+  export PATH="$ANYENV_ROOT/bin:$PATH"
 fi
 
 ## Set up local PATH.

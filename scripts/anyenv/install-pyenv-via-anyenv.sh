@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+set -eu
+cd $HOME
+
 ## Install pyenv via anyenv
 anyenv install --skip-existing pyenv
 
@@ -16,19 +19,17 @@ fi
 
 ## Update anyenv
 anyenv update
-
-## Update pyenv
 pyenv update
 
 ## Get latest version
-export PYENV_PYTHON3_VERSION=$(pyenv install --list | grep -v '[a-zA-Z]' | grep -e '3\.[0-9]*\.[0-9]*' | tail -1 | sed 's/^[ \t]*//')
 export PYENV_PYTHON2_VERSION=$(pyenv install --list | grep -v '[a-zA-Z]' | grep -e '2\.[0-9]*\.[0-9]*' | tail -1 | sed 's/^[ \t]*//')
-echo "Python3 : $PYENV_PYTHON3_VERSION"
+export PYENV_PYTHON3_VERSION=$(pyenv install --list | grep -v '[a-zA-Z]' | grep -e '3\.[0-9]*\.[0-9]*' | tail -1 | sed 's/^[ \t]*//')
 echo "Python2 : $PYENV_PYTHON2_VERSION"
+echo "Python3 : $PYENV_PYTHON3_VERSION"
 
 ## Install latest version
-CONFIGURE_OPTS="--enable-shared" pyenv install --skip-existing $PYENV_PYTHON3_VERSION
 CONFIGURE_OPTS="--enable-shared" pyenv install --skip-existing $PYENV_PYTHON2_VERSION
+CONFIGURE_OPTS="--enable-shared" pyenv install --skip-existing $PYENV_PYTHON3_VERSION
 pyenv versions
 
 ## Install packages of Python2
@@ -43,11 +44,13 @@ pip list
 pyenv global $PYENV_PYTHON3_VERSION
 pip install --upgrade pip
 pip install pip-review
+pip install flake8
+pip install autopep8
+pip install neovim
 pip install matplotlib
 pip install numpy
 pip install scipy
 pip install compiledb
-pip install neovim
 pip install openpyxl
 pip install turtle
 pip-review --auto

@@ -456,37 +456,34 @@ fi
 
 ## Set up anyenv.
 if [ -e "$HOME/.anyenv" ]; then
-  export ANYENV_ROOT="$HOME/.anyenv"
-  export PATH="$ANYENV_ROOT/bin:$PATH"
   if command -v anyenv 1>/dev/null 2>&1; then
-    eval "$(anyenv init -)"
-    for D in `ls $HOME/.anyenv/envs`
-    do
-      export PATH="$HOME/.anyenv/envs/$D/shims:$PATH"
-    done
-  fi
-
-  if [ -e "$HOME/.anyenv/envs/pyenv" ]; then 
-    export PYENV_ROOT="$HOME/.anyenv/envs/pyenv"
-    export PATH="$PYENV_ROOT/bin:$PATH"
-    eval "$(pyenv init --path)"
-    if command -v pyenv 1>/dev/null 2>&1; then
-      eval "$(pyenv init -)"
+  
+    if [ -e "$ANYENV_ROOT/envs/pyenv" ]; then
+      export PYENV_ROOT="$ANYENV_ROOT/envs/pyenv"
+      export PATH="$PYENV_ROOT/bin:$PATH"
+      eval "$(pyenv init --path)"
+      if command -v pyenv 1>/dev/null 2>&1; then
+        eval "$(pyenv init -)"
+      fi
     fi
+
+    eval "$(anyenv init -)"
+    for D in `ls $ANYENV_ROOT/envs`; do
+      export PATH="$ANYENV_ROOT/envs/$D/shims:$PATH"
+    done    
   fi
 fi
 
 ## Set up rust.
 if [ -e "$HOME/.cargo" ]; then
-  #source $CARGO_ROOT/env
-  export CARGO_ROOT=$HOME/.cargo
-  export PATH=$CARGO_ROOT/bin:$PATH
+  export CARGO_ROOT="$HOME/.cargo"
+  export PATH="$CARGO_ROOT/bin:$PATH"
 fi
 
 ## Set up golang.
 if [ -e "$HOME/.golang" ]; then
-  export GOPATH=$HOME/.golang
-  export PATH=$GOPATH/bin:$PATH
+  export GOPATH="$HOME/.golang"
+  export PATH="$GOPATH/bin:$PATH"
 fi
 
 ## Install tmux plugin manager.
