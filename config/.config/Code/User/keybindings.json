@@ -25,5 +25,14 @@
     "command": "workbench.action.focusActiveEditorGroup", 
     "when":"terminalFocus" 
   },
+  { 
+    "key": "ctrl+space",          
+    "command": "-toggleSuggestionDetails"
+  },
+  { 
+    "key": "ctrl+space",            
+    "command": "-editor.action.triggerSuggest"
+  }
+
   
 ]
