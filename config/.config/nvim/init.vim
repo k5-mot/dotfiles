@@ -41,24 +41,24 @@ endif
 "let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum" " 背景色
 
 " Neovim Features
-if !isdirectory('$HOME/.anyenv/envs/pyenv')
-  let s:pyenv_python3_version = system('pyenv versions | grep -e "3\.[0-9]*\.[0-9]*" | tail -1 | sed "s/([^)]*)//g" | sed "s/[ \t*]//g" | sed -z "s/\n//g"')
-  let s:pyenv_python_version = system('pyenv versions | grep -e "2\.[0-9]*\.[0-9]*" | tail -1 | sed "s/([^)]*)//g" | sed "s/[ \t*]//g" | sed -z "s/\n//g"')
-  let g:python3_host_prog = $HOME . '/.anyenv/envs/pyenv/versions/' . s:pyenv_python3_version . '/bin/python'
-  let g:python_host_prog  = $HOME . '/.anyenv/envs/pyenv/versions/' . s:pyenv_python_version . '/bin/python'
-endif
-if !isdirectory('$HOME/.anyenv/envs/rbenv')
-  let s:rbenv_ruby_version = system('rbenv versions | grep -e "[0-9]*\.[0-9]*\.[0-9]*" | tail -1 | sed "s/([^)]*)//g" | sed "s/[ \t*]//g" | sed -z "s/\n//g"')
-  let g:ruby_host_prog    = $HOME . '/.anyenv/envs/rbenv/versions/' . s:rbenv_ruby_version . '/bin/neovim-ruby-host'
-endif
-if !isdirectory('$HOME/.anyenv/envs/nodenv')
-  let s:nodenv_nodejs_version = system('nodenv versions | grep -e "[0-9]*\.[0-9]*\.[0-9]*" | tail -1 | sed "s/([^)]*)//g" | sed "s/[ \t*]//g" | sed -z "s/\n//g"')
-  let g:node_host_prog    = $HOME . '/.anyenv/envs/nodenv/versions/' . s:nodenv_nodejs_version . '/bin/neovim-node-host'
-endif
-if !isdirectory('$HOME/.anyenv/envs/plenv')
-  let s:plenv_perl_version = system('plenv versions | grep -e "[0-9]*\.[0-9]*\.[0-9]*" | tail -1 | sed "s/([^)]*)//g" | sed "s/[ \t*]//g" | sed -z "s/\n//g"')
-  let g:perl_host_prog    = $HOME . '/.anyenv/envs/nodenv/versions/' . s:plenv_perl_version . '/bin'
-endif
+"if !isdirectory('$HOME/.anyenv/envs/pyenv')
+"  let s:pyenv_python3_version = system('pyenv versions | grep -e "3\.[0-9]*\.[0-9]*" | tail -1 | sed "s/([^)]*)//g" | sed "s/[ \t*]//g" | sed -z "s/\n//g"')
+"  let s:pyenv_python_version = system('pyenv versions | grep -e "2\.[0-9]*\.[0-9]*" | tail -1 | sed "s/([^)]*)//g" | sed "s/[ \t*]//g" | sed -z "s/\n//g"')
+"  let g:python3_host_prog = $HOME . '/.anyenv/envs/pyenv/versions/' . s:pyenv_python3_version . '/bin/python'
+"  let g:python_host_prog  = $HOME . '/.anyenv/envs/pyenv/versions/' . s:pyenv_python_version . '/bin/python'
+"endif
+"if !isdirectory('$HOME/.anyenv/envs/rbenv')
+"  let s:rbenv_ruby_version = system('rbenv versions | grep -e "[0-9]*\.[0-9]*\.[0-9]*" | tail -1 | sed "s/([^)]*)//g" | sed "s/[ \t*]//g" | sed -z "s/\n//g"')
+"  let g:ruby_host_prog    = $HOME . '/.anyenv/envs/rbenv/versions/' . s:rbenv_ruby_version . '/bin/neovim-ruby-host'
+"endif
+"if !isdirectory('$HOME/.anyenv/envs/nodenv')
+"  let s:nodenv_nodejs_version = system('nodenv versions | grep -e "[0-9]*\.[0-9]*\.[0-9]*" | tail -1 | sed "s/([^)]*)//g" | sed "s/[ \t*]//g" | sed -z "s/\n//g"')
+"  let g:node_host_prog    = $HOME . '/.anyenv/envs/nodenv/versions/' . s:nodenv_nodejs_version . '/bin/neovim-node-host'
+"endif
+"if !isdirectory('$HOME/.anyenv/envs/plenv')
+"  let s:plenv_perl_version = system('plenv versions | grep -e "[0-9]*\.[0-9]*\.[0-9]*" | tail -1 | sed "s/([^)]*)//g" | sed "s/[ \t*]//g" | sed -z "s/\n//g"')
+"  let g:perl_host_prog    = $HOME . '/.anyenv/envs/nodenv/versions/' . s:plenv_perl_version . '/bin'
+"endif
 
 " Plugin Manager
 runtime! ./dein.vim
