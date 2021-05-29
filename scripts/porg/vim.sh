@@ -2,8 +2,6 @@
 
 ## vim
 
-set -eux
-
 cd $HOME
 cd $HOME/.local/src
 if (type "porg" > /dev/null 2>&1); then
