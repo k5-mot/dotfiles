@@ -15,9 +15,9 @@ set sidescrolloff=6
 set mouse=a
 
 " バックアップを作成する
-set backup
+"set backup
 " バックアップを作成しない
-"set nobackup
+set nobackup
 " backupがOFFの時、バックアップを作成した後削除
 "set writebackup
 " backupがOFFの時、バックアップを作成しない
@@ -75,9 +75,9 @@ set wildmenu
 set wildignorecase
 
 " スワップファイルを作る
-set swapfile
+"set swapfile
 " スワップファイルを作らない
-"set noswapfile
+set noswapfile
 " スワップファイルの保存先
 set directory=~/.cache/nvim/swap
 " 30秒ごとにスワップファイルを保存

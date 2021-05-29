@@ -461,24 +461,24 @@ if [ $OSTYPE = linux-gnu -o $OSTYPE = linux ]; then
 fi
 
 ## Set up anyenv.
-if [ -e "$HOME/.anyenv" ]; then
-  if command -v anyenv 1>/dev/null 2>&1; then
-
-    if [ -e "$ANYENV_ROOT/envs/pyenv" ]; then
-      export PYENV_ROOT="$ANYENV_ROOT/envs/pyenv"
-      export PATH="$PYENV_ROOT/bin:$PATH"
-      eval "$(pyenv init --path)"
-      if command -v pyenv 1>/dev/null 2>&1; then
-        eval "$(pyenv init -)"
-      fi
-    fi
-
-    eval "$(anyenv init -)"
-    for D in `ls $ANYENV_ROOT/envs`; do
-      export PATH="$ANYENV_ROOT/envs/$D/shims:$PATH"
-    done
-  fi
-fi
+#if [ -e "$HOME/.anyenv" ]; then
+#  if command -v anyenv 1>/dev/null 2>&1; then
+#
+#    if [ -e "$ANYENV_ROOT/envs/pyenv" ]; then
+#      export PYENV_ROOT="$ANYENV_ROOT/envs/pyenv"
+#      export PATH="$PYENV_ROOT/bin:$PATH"
+#      eval "$(pyenv init --path)"
+#      if command -v pyenv 1>/dev/null 2>&1; then
+#        eval "$(pyenv init -)"
+#      fi
+#    fi
+#
+#    eval "$(anyenv init -)"
+#    for D in `ls $ANYENV_ROOT/envs`; do
+#      export PATH="$ANYENV_ROOT/envs/$D/shims:$PATH"
+#    done
+#  fi
+#fi
 
 ## Set up rust.
 if [ -e "$HOME/.cargo" ]; then

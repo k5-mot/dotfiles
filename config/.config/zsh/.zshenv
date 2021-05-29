@@ -172,10 +172,10 @@ if [ "$(uname 2> /dev/null)" = Linux ]; then
 fi
 
 ## Set up anyenv.
-if [ -e "$HOME/.anyenv" ]; then
-  export ANYENV_ROOT="$HOME/.anyenv"
-  export PATH="$ANYENV_ROOT/bin:$PATH"
-fi
+#if [ -e "$HOME/.anyenv" ]; then
+#  export ANYENV_ROOT="$HOME/.anyenv"
+#  export PATH="$ANYENV_ROOT/bin:$PATH"
+#fi
 
 ## Set up local PATH.
 if [ -e $HOME/.zshenv_local ]; then
