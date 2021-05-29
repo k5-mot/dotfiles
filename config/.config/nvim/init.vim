@@ -3,6 +3,11 @@
 "   init.vim
 "
 
+" Create directory.
+echo system('mkdir -p ~/.cache/nvim/swap')
+echo system('mkdir -p ~/.cache/nvim/backup')
+echo system('mkdir -p ~/.cache/nvim/undodir')
+
 " Set environment variables.
 let $XDG_CACHE_HOME = empty($XDG_CACHE_HOME) ? expand('$HOME/.cache') : $XDG_CACHE_HOME
 let $XDG_CONFIG_HOME = empty($XDG_CONFIG_HOME) ? expand('$HOME/.config') : $XDG_CONFIG_HOME
