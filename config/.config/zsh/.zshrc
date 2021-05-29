@@ -150,6 +150,12 @@ function check_colors1() {
     printf "\n";
   }'
 }
+
+function check_zsh() {
+   for i in $(seq 1 10); do
+     time zsh -i -c exit
+   done
+}
 ### }}}
 
 ## History {{{
@@ -457,7 +463,7 @@ fi
 ## Set up anyenv.
 if [ -e "$HOME/.anyenv" ]; then
   if command -v anyenv 1>/dev/null 2>&1; then
-  
+
     if [ -e "$ANYENV_ROOT/envs/pyenv" ]; then
       export PYENV_ROOT="$ANYENV_ROOT/envs/pyenv"
       export PATH="$PYENV_ROOT/bin:$PATH"
@@ -470,7 +476,7 @@ if [ -e "$HOME/.anyenv" ]; then
     eval "$(anyenv init -)"
     for D in `ls $ANYENV_ROOT/envs`; do
       export PATH="$ANYENV_ROOT/envs/$D/shims:$PATH"
-    done    
+    done
   fi
 fi
 

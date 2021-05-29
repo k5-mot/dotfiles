@@ -379,6 +379,8 @@
   "python.showStartPage": false,
   "jupyter.alwaysTrustNotebooks": true,
   "explorer.confirmDragAndDrop": false,
-  "explorer.confirmDelete": false
+  "explorer.confirmDelete": false,
+  "update.mode": "none",
+  "window.customMenuBarAltFocus": false
 
 }

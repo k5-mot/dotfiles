@@ -26,7 +26,7 @@ export PLENV_PERL_VERSION=$(plenv install --list | grep -v '[a-zA-Z]' | grep -e 
 echo "Perl    : $PLENV_PERL_VERSION"
 
 ## Install latest version
-CONFIGURE_OPTS="--enable-shared" plenv install $PLENV_PERL_VERSION
+CONFIGURE_OPTS="--enable-shared" plenv install $PLENV_PERL_VERSION -Dusedevel
 plenv versions
 
 ## Install packages of Perl
