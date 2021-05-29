@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ## Perl
-
+set -x
 cd $HOME
 cd $HOME/.local/src
 if (type "porg" > /dev/null 2>&1); then
@@ -16,12 +16,13 @@ wget https://www.cpan.org/src/5.0/perl-5.34.0.tar.gz
 tar -zxvf perl-*.tar.gz
 cd perl-*/
 
-./Configure -Dprefix=$HOME/.local/usr \
-  -Dscriptdir=$HOME/.local/usr/bin \
+sh Configure \
+  -Dprefix=$HOME/.local/usr \
   -des \
-  -Dman1dir=$HOME/.local/usr/share/man \
-  -Dman3dir=$HOME/.local/usr/share/man \
-  -DDEBUGGING=-g
-porg -lD make install
-porg perl
+  -Duseshrplib 
+#  -DDEBUGGING=-g
+make
+make test
+#porg -lD make install
+#porg perl
 cd $HOME

@@ -19,5 +19,9 @@ cd Python-*/
 ./configure --prefix=$HOME/.local/usr
 make
 porg -lD make install
-porg Python-3* 
+porg Python-3*
+
+curl -kL https://bootstrap.pypa.io/get-pip.py | python3
+python3 -m pip -V
+
 cd $HOME

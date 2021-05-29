@@ -20,4 +20,8 @@ cd Python-*/
 make
 porg -lD make install
 porg Python-2* 
+
+curl -kL https://bootstrap.pypa.io/pip/2.7/get-pip.py | python2
+python3 -m pip -V
+
 cd $HOME
