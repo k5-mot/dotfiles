@@ -14,10 +14,13 @@ rm -rf $HOME/.local/src/gcc
 mkdir $HOME/.local/src/gcc
 cd $HOME/.local/src/gcc
 
-wget https://ftp.gnu.org/gnu/gcc/gcc-10.3.0/gcc-10.3.0.tar.gz
-wget https://ftp.gnu.org/gnu/gcc/gcc-10.3.0/gcc-10.3.0.tar.gz.sig
+GCC_VERSION=8.5.0
+wget https://ftp.gnu.org/gnu/gcc/gcc-${GCC_VERSION}/gcc-${GCC_VERSION}.tar.gz
+wget https://ftp.gnu.org/gnu/gcc/gcc-${GCC_VERSION}/gcc-${GCC_VERSION}.tar.gz.sig
 tar -xzvf gcc-*.tar.gz
 cd gcc-*/
+
+./contrib/download_prerequisites
 
 mkdir build
 cd build
@@ -39,10 +42,9 @@ CPATH=$HOME/.local/usr/include \
 C_INCLUDE_PATH=$HOME/.local/usr/include \
 CPLUS_INCLUDE_PATH=$HOME/.local/usr/include \
 LD_LIBRARY_PATH=$HOME/.local/usr/lib \
-make -j4
+make 
 
-GCC_VERSION=$(./gcc --version)
-porg -lp gcc-$GCC_VERSION make install
+porg -lp gcc-${GCC_VERSION} make install
 
 porg gcc
 cd $HOME

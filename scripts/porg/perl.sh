@@ -12,14 +12,14 @@ rm -rf $HOME/.local/src/perl
 mkdir -p $HOME/.local/src/perl
 cd $HOME/.local/src/perl
 
-wget https://www.cpan.org/src/5.0/perl-5.34.0.tar.gz
+wget https://www.cpan.org/src/5.0/perl-5.30.0.tar.gz
 tar -zxvf perl-*.tar.gz
 cd perl-*/
 
 sh Configure \
   -Dprefix=$HOME/.local/usr \
   -des \
-  -Duseshrplib 
+  -Duseshrplib
 #  -DDEBUGGING=-g
 make
 make test

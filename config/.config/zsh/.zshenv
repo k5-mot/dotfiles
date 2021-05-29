@@ -146,16 +146,6 @@ export LESS_TERMCAP_ue=$(printf "\e[0m")
 export LESS_TERMCAP_us=$(printf "\e[1;32m")
 ### }}}
 
-### Local Build Program {{{
-## Set up environment variables for local build applications.
-export LOCAL_ROOT=$HOME/.local
-export PATH=$LOCAL_ROOT/usr/bin:$PATH
-export LD_LIBRARY_PATH=$LOCAL_ROOT/usr/lib64:$LD_LIBRARY_PATH
-export LD_LIBRARY_PATH=$LOCAL_ROOT/usr/lib:$LD_LIBRARY_PATH
-export MANPATH=$LOCAL_ROOT/usr/share/man:$MANPATH
-export INFOPATH=$LOCAL_ROOT/usr/share/info:$INFOPATH
-export CPATH=$LOCAL_ROOT/usr/include:$CPATH
-### }}}
 export NVIM_PYTHON_LOG_FILE=$HOME/.cache/nvim/nvim_python.log
 export NVIM_PYTHON_LOG_LEVEL=DEBUG
 
@@ -194,6 +184,18 @@ export C_INCLUDE_PATH=$C_INCLUDE_PATH:$CPATH
 export CPLUS_INCLUDE_PATH
 export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:$CPATH
 export CPLUS_INCLUDE_PATH="/usr/include/c++/$(ls -1 /usr/include/c++ | tail -1 | sed 's/[@\/]//')":$CPLUS_INCLUDE_PATH
+
+### Local Build Program {{{
+## Set up environment variables for local build applications.
+export LOCAL_ROOT=$HOME/.local
+export PATH=$LOCAL_ROOT/usr/bin:$PATH
+export LD_LIBRARY_PATH=$LOCAL_ROOT/usr/lib64:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$LOCAL_ROOT/usr/lib:$LD_LIBRARY_PATH
+export MANPATH=$LOCAL_ROOT/usr/share/man:$MANPATH
+export INFOPATH=$LOCAL_ROOT/usr/share/info:$INFOPATH
+export CPATH=$LOCAL_ROOT/usr/include:$CPATH
+export CPLUS_INCLUDE_PATH="$LOCAL_ROOT/usr/include/c++/$(ls -1 $LOCAL_ROOT/usr/include/c++ | tail -1 | sed 's/[@\/]//')":$CPLUS_INCLUDE_PATH
+### }}}
 
 ## automatically remove duplicates from these arrays
 typeset -U path PATH
