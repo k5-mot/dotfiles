@@ -21,6 +21,6 @@ Plug 'itchyny/lightline.vim'
 " Initialize plugin system
 call plug#end()
 
-source ./plugins/lightline.rc.vim
+runtime! ./plugins/lightline.rc.vim
 
 
