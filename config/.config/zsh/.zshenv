@@ -183,7 +183,7 @@ export C_INCLUDE_PATH
 export C_INCLUDE_PATH=$C_INCLUDE_PATH:$CPATH
 export CPLUS_INCLUDE_PATH
 export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:$CPATH
-if [ -e "/usr/include/c++/$(ls -1 /usr/include/c++ | tail -1 | sed 's/[@\/]//')" ]; then
+if [ -d "/usr/include/c++" ]; then
   export CPLUS_INCLUDE_PATH="/usr/include/c++/$(ls -1 /usr/include/c++ | tail -1 | sed 's/[@\/]//')":$CPLUS_INCLUDE_PATH
 fi
 
@@ -196,7 +196,7 @@ export LD_LIBRARY_PATH=$LOCAL_ROOT/usr/lib:$LD_LIBRARY_PATH
 export MANPATH=$LOCAL_ROOT/usr/share/man:$MANPATH
 export INFOPATH=$LOCAL_ROOT/usr/share/info:$INFOPATH
 export CPATH=$LOCAL_ROOT/usr/include:$CPATH
-if [ -e "$LOCAL_ROOT/usr/include/c++/$(ls -1 $LOCAL_ROOT/usr/include/c++ | tail -1 | sed 's/[@\/]//')" ]; then
+if [ -e "$LOCAL_ROOT/usr/include/c++" ]; then
   export CPLUS_INCLUDE_PATH="$LOCAL_ROOT/usr/include/c++/$(ls -1 $LOCAL_ROOT/usr/include/c++ | tail -1 | sed 's/[@\/]//')":$CPLUS_INCLUDE_PATH
 fi
 ### }}}
