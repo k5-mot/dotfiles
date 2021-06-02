@@ -37,7 +37,7 @@ autocmd Filetype * setlocal formatoptions-=ro
 " ビープ無効
 set visualbell t_vb=
 set vb t_vb=
-if (704 <= v:version)
+if (705 <= v:version)
   set belloff=all
 endif
 
