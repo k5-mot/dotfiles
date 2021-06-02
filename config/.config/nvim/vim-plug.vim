@@ -1,3 +1,4 @@
+
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 "let data_dir = has('nvim') ? '~/.cache/nvim' : '~/.cache/vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
@@ -18,3 +19,6 @@ Plug 'morhetz/gruvbox'
 
 " Initialize plugin system
 call plug#end()
+
+
+echo "A"
