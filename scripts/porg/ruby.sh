@@ -19,5 +19,10 @@ cd ruby-*/
 ./configure --prefix=$HOME/.local/usr
 make
 porg -lD make install
-porg ruby 
+porg ruby
+
+gem update
+gem install neovim
+gem list
+
 cd $HOME
