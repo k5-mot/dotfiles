@@ -60,8 +60,11 @@ set showcmd
 set noshowmode
 
 " viminfoの設定
-set viminfo='1000,f1,<500,:300,@300,/100,!,h,c,n~/.cache/nvim/viminfo
-
+if has('nvim')
+  set viminfo='1000,f1,<500,:300,@300,/100,!,h,c,n~/.cache/nvim/viminfo
+else
+  set viminfo='1000,f1,<500,:300,@300,/100,!,h,c,n~/.cache/vim/viminfo
+endif
 " モードラインを無効
 set modelines=0
 

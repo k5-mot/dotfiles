@@ -1,4 +1,17 @@
 
+# .bash_profile
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+  . ~/.bashrc
+fi
+
+# User specific environment and startup programs
+
+PATH=$PATH:$HOME/bin
+
+export PATH
+
 ## Term
 #export TERM="xterm-256color"
 export TERM="screen-256color"
@@ -91,12 +104,17 @@ export LESS_TERMCAP_us=$(printf "\e[1;32m")
 ## Set up environment variables for local build applications.
 export LOCAL_ROOT=$HOME/.local
 export PATH=$LOCAL_ROOT/usr/bin:$PATH
+#export LD_LIBRARY_PATH=$NEW_PATH${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
 export LD_LIBRARY_PATH=$LOCAL_ROOT/usr/lib64:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=$LOCAL_ROOT/usr/lib:$LD_LIBRARY_PATH
 export MANPATH=$LOCAL_ROOT/usr/share/man:$MANPATH
 export INFOPATH=$LOCAL_ROOT/usr/share/info:$INFOPATH
 export CPATH=$LOCAL_ROOT/usr/include:$CPATH
+if [ -e "$LOCAL_ROOT/usr/include/c++" ]; then
+  export CPLUS_INCLUDE_PATH="$LOCAL_ROOT/usr/include/c++/$(ls -1 $LOCAL_ROOT/usr/include/c++ | tail -1 | sed 's/[@\/]//')":$CPLUS_INCLUDE_PATH
+fi
 ### }}}
+
 export NVIM_PYTHON_LOG_FILE=$HOME/.cache/nvim/nvim_python.log
 export NVIM_PYTHON_LOG_LEVEL=DEBUG
 
@@ -166,6 +184,7 @@ export LIBRARY_PATH=$LIBRARY_PATH:$LD_LIBRARY_PATH
 export C_INCLUDE_PATH=$C_INCLUDE_PATH:$CPATH
 export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:$CPATH
 export CPLUS_INCLUDE_PATH="/usr/include/c++/$(ls -1 /usr/include/c++ | tail -1 | sed 's/[@\/]//')":$CPLUS_INCLUDE_PATH
+
 
 ## Remove duplicate PATH
 _path=""

@@ -2,6 +2,13 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+  . /etc/bashrc
+fi
+
+# User specific aliases and functions
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -102,7 +109,7 @@ fi
 
 # some more ls aliases
 alias x=exit
-alias wget='wget --hsts-file $HOME/.cache/wget/wget-hsts'
+#alias wget='wget --hsts-file $HOME/.cache/wget/wget-hsts'
 alias xsel='xsel --logfile=$HOME/.cache/xsel/xsel.log'
 alias osinfo='cat /etc/*-release'
 
