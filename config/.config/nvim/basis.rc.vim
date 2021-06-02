@@ -5,7 +5,7 @@ set hidden
 set autoread
 
 " 補完時の挙動を指定
-set completeopt=menuone,noselect
+"set completeopt=menuone,noselect
 
 " スクロール時の余白行数
 set scrolloff=5
@@ -37,7 +37,9 @@ autocmd Filetype * setlocal formatoptions-=ro
 " ビープ無効
 set visualbell t_vb=
 set vb t_vb=
-set belloff=all
+if (704 <= v:version)
+  set belloff=all
+endif
 
 " エラーメッセージ表示時にビープを鳴らさない
 set noerrorbells
