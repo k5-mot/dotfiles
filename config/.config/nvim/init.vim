@@ -66,7 +66,12 @@ endif
 "endif
 
 " Plugin Manager
-runtime! ./dein.vim
+if (704 <= v:version && has("patch786"))
+  runtime! ./dein.vim
+else
+  runtime! ./vim-plug.vim
+endif
+
 
 " Base
 runtime! ./basis.rc.vim
