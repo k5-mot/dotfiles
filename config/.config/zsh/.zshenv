@@ -176,16 +176,16 @@ fi
 export PATH=$PATH:$(find $HOME/.config/scripts -type d | xargs echo | sed -e 's/ /:/g')
 
 ## Set
-export FPATH
-export LIBRARY_PATH
-export LIBRARY_PATH=$LIBRARY_PATH:$LD_LIBRARY_PATH
-export C_INCLUDE_PATH
-export C_INCLUDE_PATH=$C_INCLUDE_PATH:$CPATH
-export CPLUS_INCLUDE_PATH
-export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:$CPATH
-if [ -d "/usr/include/c++" ]; then
-  export CPLUS_INCLUDE_PATH="/usr/include/c++/$(ls -1 /usr/include/c++ | tail -1 | sed 's/[@\/]//')":$CPLUS_INCLUDE_PATH
-fi
+#export FPATH
+#export LIBRARY_PATH
+#export LIBRARY_PATH=$LIBRARY_PATH:$LD_LIBRARY_PATH
+#export C_INCLUDE_PATH
+#export C_INCLUDE_PATH=$C_INCLUDE_PATH:$CPATH
+#export CPLUS_INCLUDE_PATH
+#export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:$CPATH
+#if [ -d "/usr/include/c++" ]; then
+#  export CPLUS_INCLUDE_PATH="/usr/include/c++/$(ls -1 /usr/include/c++ | tail -1 | sed 's/[@\/]//')":$CPLUS_INCLUDE_PATH
+#fi
 
 ### Local Build Program {{{
 ## Set up environment variables for local build applications.
