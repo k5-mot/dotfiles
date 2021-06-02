@@ -66,7 +66,7 @@ endif
 "endif
 
 " Plugin Manager
-if (704 <= v:version && has("patch786"))
+if (800 <= v:version)
   runtime! ./dein.vim
 else
   runtime! ./vim-plug.vim
