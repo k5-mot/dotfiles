@@ -15,10 +15,12 @@ endif
 call plug#begin(data_dir . 'plugged')
 
 Plug 'morhetz/gruvbox'
+Plug 'itchyny/lightline.vim'
 
 
 " Initialize plugin system
 call plug#end()
 
+source ./plugins/lightline.rc.vim
 
-echo "A"
+

@@ -69,9 +69,8 @@ endif
 if (800 <= v:version)
   runtime! ./dein.vim
 else
-  runtime! ./vim-plug.vim
+  source ./vim-plug.vim
 endif
-
 
 " Base
 runtime! ./basis.rc.vim
