@@ -183,7 +183,9 @@ export C_INCLUDE_PATH
 export C_INCLUDE_PATH=$C_INCLUDE_PATH:$CPATH
 export CPLUS_INCLUDE_PATH
 export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:$CPATH
-export CPLUS_INCLUDE_PATH="/usr/include/c++/$(ls -1 /usr/include/c++ | tail -1 | sed 's/[@\/]//')":$CPLUS_INCLUDE_PATH
+if [ -e "/usr/include/c++/$(ls -1 /usr/include/c++ | tail -1 | sed 's/[@\/]//')" ]; then
+  export CPLUS_INCLUDE_PATH="/usr/include/c++/$(ls -1 /usr/include/c++ | tail -1 | sed 's/[@\/]//')":$CPLUS_INCLUDE_PATH
+fi
 
 ### Local Build Program {{{
 ## Set up environment variables for local build applications.
@@ -194,7 +196,9 @@ export LD_LIBRARY_PATH=$LOCAL_ROOT/usr/lib:$LD_LIBRARY_PATH
 export MANPATH=$LOCAL_ROOT/usr/share/man:$MANPATH
 export INFOPATH=$LOCAL_ROOT/usr/share/info:$INFOPATH
 export CPATH=$LOCAL_ROOT/usr/include:$CPATH
-export CPLUS_INCLUDE_PATH="$LOCAL_ROOT/usr/include/c++/$(ls -1 $LOCAL_ROOT/usr/include/c++ | tail -1 | sed 's/[@\/]//')":$CPLUS_INCLUDE_PATH
+if [ -e "$LOCAL_ROOT/usr/include/c++/$(ls -1 $LOCAL_ROOT/usr/include/c++ | tail -1 | sed 's/[@\/]//')" ]; then
+  export CPLUS_INCLUDE_PATH="$LOCAL_ROOT/usr/include/c++/$(ls -1 $LOCAL_ROOT/usr/include/c++ | tail -1 | sed 's/[@\/]//')":$CPLUS_INCLUDE_PATH
+fi
 ### }}}
 
 ## automatically remove duplicates from these arrays
