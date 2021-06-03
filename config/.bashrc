@@ -69,6 +69,9 @@ if [ "$color_prompt" = yes ]; then
     #PS1='${debian_chroot:+($debian_chroot)}\[\033[00;36m\]\w \[\033[01;32m\]
 #\$\[\033[00m\] '
     export PS1="\r\[\e[00;34m\]\u@\h:\[\e[00;36m\]\w\n\[\e[01;32m\]\$\[\e[00m\] "
+    export PS2="\[\e[00;34m\]>[\e[00m\] "
+    export PS3=" "
+    export PS4=" "
 else
     #PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w \$ '
     #PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w
