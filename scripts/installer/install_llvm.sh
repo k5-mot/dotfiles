@@ -1,24 +1,71 @@
+#!/usr/bin/env bash
 
-mkdir -p $HOME/.local
-mkdir -p $HOME/.local/src
-#mkdir -p $HOME/.local/src/llvm
-#cd $HOME/.local/src/llvm
-cd $HOME/.local/src
+## Install LLVM
 
-if [ -d $HOME/.local/src/llvm-project ]; then
-  rm -rf $HOME/.local/src/llvm-project
+## Debug
+set -x
+cd $HOME/
+
+## Remove installed apps
+cd $HOME/.local/src/
+if (type "porg" > /dev/null 2>&1); then
+  porg -r llvm
 fi
-git clone https://github.com/llvm/llvm-project.git
 
-#https://github.com/llvm/llvm-project/releases/download/llvmorg-11.0.1/clang+llvm-11.0.1-x86_64-linux-sles12.4.tar.xz
+## Remove sources of installed apps
+rm -rf $HOME/.local/src/llvm
+cd $HOME/.local/src/
 
-
-#wget https://github.com/llvm/llvm-project/archive/llvm-10.0.0.tar.gz
-#tar -zxvf llvmorg-10.0.0.tar.gz
-#cd llvm-project-llvmorg-10.0.0
-cd llvm-project/
+## Download
+git clone https://github.com/llvm/llvm-project.git 
+cd $HOME/.local/src/llvm-project/
 mkdir build
-cd build/
-cmake ../llvm -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra" -DLLVM_TARGETS_TO_BUILD="X86" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$HOME/.local/usr
-make -j 3
-make install
+#cd build/
+
+## Install
+export LLVM_VERSION=$(git tag | grep -v '[a-zA-Z]' | grep -e '[0-9]*\.[0-9]*' | tail -1)
+cmake -S llvm -B build -G "make" \
+  -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;compiler-rt;libc;libclc;libcxx;libcxxabi;libunwind;lld;lldb;openmp;parallel-libs;polly;pstl" \
+  -DLLVM_PARALLEL_LINK_JOBS="1" \
+  -DCMAKE_C_COMPILER="gcc" \
+  -DCMAKE_CXX_COMPILER="g++" \
+  -DCMAKE_INSTALL_PREFIX="$HOME/.local/usr" \
+  -DCMAKE_BUILD_TYPE="Release" \
+  
+  -DLLVM_ENABLE_ASSERTIONS=On \
+  ./build
+
+make
+porg -lp llvm-${LLVM_VERSION} "make install"
+
+## Check
+porg llvm
+cd $HOME
+
+
+
+
+
+# mkdir -p $HOME/.local
+# mkdir -p $HOME/.local/src
+# #mkdir -p $HOME/.local/src/llvm
+# #cd $HOME/.local/src/llvm
+# cd $HOME/.local/src
+
+# if [ -d $HOME/.local/src/llvm-project ]; then
+#   rm -rf $HOME/.local/src/llvm-project
+# fi
+# git clone https://github.com/llvm/llvm-project.git
+
+# #https://github.com/llvm/llvm-project/releases/download/llvmorg-11.0.1/clang+llvm-11.0.1-x86_64-linux-sles12.4.tar.xz
+
+
+# #wget https://github.com/llvm/llvm-project/archive/llvm-10.0.0.tar.gz
+# #tar -zxvf llvmorg-10.0.0.tar.gz
+# #cd llvm-project-llvmorg-10.0.0
+# cd llvm-project/
+# mkdir build
+# cd build/
+# cmake ../llvm -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra" -DLLVM_TARGETS_TO_BUILD="X86" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$HOME/.local/usr
+# make -j 3
+# make install

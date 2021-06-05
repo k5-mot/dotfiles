@@ -1,17 +1,34 @@
-mkdir -p $HOME/.local
-mkdir -p $HOME/.local/src
-cd $HOME/.local/src
+#!/usr/bin/env bash
 
-if [ -d $HOME/.local/src/ccls ]; then
-  rm -rf $HOME/.local/src/ccls
+## Install CCLS
+
+## Debug
+set -x
+cd $HOME/
+
+## Remove installed apps
+cd $HOME/.local/src/
+if (type "porg" > /dev/null 2>&1); then
+  porg -r ccls
 fi
-git clone --depth=1 --recursive https://github.com/MaskRay/ccls
-cd ccls
 
-# Download "Pre-Built Binaries" from https://releases.llvm.org/download.html
-# and unpack to /path/to/clang+llvm-xxx.
-# Do not unpack to a temporary directory, as the clang resource directory is hard-coded
-# into ccls at compile time!
-# See https://github.com/MaskRay/ccls/wiki/FAQ#verify-the-clang-resource-directory-is-correct
-cmake -H. -BRelease -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=$HOME/.local/usr
-cmake --build Release
+## Remove sources of installed apps
+rm -rf $HOME/.local/src/ccls
+cd $HOME/.local/src/
+
+## Download
+git clone --depth=1 https://github.com/MaskRay/ccls.git
+cd $HOME/.local/src/ccls/
+
+## Install
+export CCLS_VERSION=$(git tag | grep -v '[a-zA-Z]' | grep -e '[0-9]*\.[0-9]*' | tail -1)
+cmake -H. \
+  -BRelease \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DCMAKE_PREFIX_PATH=/path/to/clang+llvm-xxx \
+  -DCMAKE_INSTALL_PREFIX=$HOME/.local/usr
+porg -lp ccls-${CCLS_VERSION} "cmake --build Release"
+
+## Check
+porg ccls
+cd $HOME
