@@ -28,7 +28,7 @@ alias la='ls -a'
 alias lla='ls -la'
 alias x=exit
 alias grep='grep --color=auto'
-alias wget="wget --hsts-file $HOME/.cache/wget/wget-hsts"
+#alias wget="wget --hsts-file $HOME/.cache/wget/wget-hsts"
 alias osinfo='cat /etc/*-release'
 alias xsel='xsel --logfile=$HOME/.cache/xsel/xsel.log'
 
