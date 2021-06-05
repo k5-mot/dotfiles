@@ -21,8 +21,9 @@ git clone https://github.com/g-truc/glm.git
 cd $HOME/.local/src/glm
 
 ## Install
-porg -lD  "cp -rf $HOME/.local/src/glm/glm $HOME/.local/usr/include"
-porg -lD+ "cp -rf $HOME/.local/src/glm/doc $HOME/.local/usr/share/doc/glm"
+export GLM_VERSION=$(git tag | grep -v '[a-zA-Z]' | grep -e '[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*' | tail -1)
+porg -lp  glm-${GLM_VERSION} "cp -rf $HOME/.local/src/glm/glm $HOME/.local/usr/include"
+porg -lp+ glm-${GLM_VERSION} "cp -rf $HOME/.local/src/glm/doc $HOME/.local/usr/share/doc/glm"
 
 ## Check
 porg glm
