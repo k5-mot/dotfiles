@@ -2,9 +2,9 @@
 
 ### Locale {{{
 ## Basic locale
-#export LANG="en_US.UTF-8"
+export LANG="en_US.UTF-8"
 ## Translation priorities
-#export LANGUAGE="en_US"
+export LANGUAGE="en_US"
 ### Character types, their comparisons and classifications
 #export LC_CTYPE="en_US.UTF-8"
 ### Number format
@@ -30,7 +30,7 @@
 ### Metadata
 #export LC_IDENTIFICATION="en_US.UTF-8"
 ## All locale
-#export LC_ALL="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
 #export LC_ALL="ja_JP.UTF-8"
 ### }}}
 

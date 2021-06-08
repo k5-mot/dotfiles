@@ -16,6 +16,7 @@ rm -rf ~/.cache/texmf
 
 rm -rf   $HOME/.local/src/texlive
 mkdir -p $HOME/.local/src/texlive
+mkdir -p $HOME/.local/src/texlive/2021
 cd $HOME/.local/src/texlive
 
 ## Download Installer
@@ -29,11 +30,7 @@ rm -rf $HOME/.local/opt/texlive
 mkdir -p $HOME/.local/opt
 cp -rf ~/dotfiles/scripts/installer/texlive.profile .
 porg -lp texlive "./install-tl --profile=texlive.profile"
+#porg -lp texlive "./install-tl"
 porg texlive
 cd $HOME
-
-#sudo mkdir -p /usr/local/texlive
-#sudo chown -R $(whoami):$(whoami) /usr/local/
-#sudo bash ./install-tl
-
 
