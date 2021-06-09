@@ -122,7 +122,7 @@ else
   pane+="#[fg=colour235,bg=colour241,bold] ${ssh_hostname} "
   pane+="#[fg=colour241,bg=colour235]${SEPARATOR_LEFT}"
   pane+="#[fg=colour240,bg=colour235,bold] $directory "
-  pane+="#[fg=colour235]${git_info}#[default]"
+  pane+="#[fg=colour235,bg=default]${SEPARATOR_LEFT}#[default]"
 fi
 echo $pane
 #echo "$pane :$1:$2:$3:$4:$5"
