@@ -26,6 +26,7 @@ python3 -m pip install --upgrade pip
 python3 -m pip install pip-review
 python3 -m pip install flake8
 python3 -m pip install autopep8
+python3 -m pip install jupyter
 python3 -m pip install neovim
 python3 -m pip install matplotlib
 python3 -m pip install numpy
@@ -34,6 +35,9 @@ python3 -m pip install compiledb
 python3 -m pip install openpyxl
 python3 -m pip install turtle
 python3 -m pip install pandas
+python3 -m pip install torch
+python3 -m pip install torchvision
+python3 -m pip install tensorflow
 python3 -m pip-review --auto
 python3 -m pip -V
 python3 -m pip list
