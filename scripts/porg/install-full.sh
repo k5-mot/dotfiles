@@ -32,4 +32,5 @@
 #./neomutt.sh
 ./firefox.sh
 ./thunderbird.sh
+./vscode.sh
 
