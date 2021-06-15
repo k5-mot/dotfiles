@@ -38,17 +38,17 @@ jobs:
           cd ${GITHUB_WORKSPACE}/scripts/rust
           ./install.sh
 
-      - name: Install rust packages via cargo.
-        shell: bash
-        run: |
-          cd ${GITHUB_WORKSPACE}/scripts/rust
-          ./cargo.sh
+          #- name: Install rust packages via cargo.
+          #  shell: bash
+          #  run: |
+          #    cd ${GITHUB_WORKSPACE}/scripts/rust
+          #    ./cargo.sh
 
-      - name: Install alacritty.
-        shell: bash
-        run: |
-          cd ${GITHUB_WORKSPACE}/scripts/rust
-          ./alacritty.sh
+          #- name: Install alacritty.
+          #  shell: bash
+          #  run: |
+          #    cd ${GITHUB_WORKSPACE}/scripts/rust
+          #    ./alacritty.sh
 
       - name: Install porg.
         shell: bash
