@@ -23,7 +23,9 @@ jobs:
       - name: Update & Install packages via apt
         shell: bash
         run: |
-          cd $GITHUB_WORKSPACE/config/.config/scripts/apt
+          cd ${GITHUB_WORKSPACE}/scripts/apt
+          # ./update.sh
+          # ./install.sh
 
       - name: Check $PATH.
         shell: bash
