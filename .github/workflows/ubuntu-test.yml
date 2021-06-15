@@ -50,7 +50,7 @@ jobs:
           #    cd ${GITHUB_WORKSPACE}/scripts/rust
           #    ./alacritty.sh
 
-      - name: Install porg.
+      - name: Install packages via porg.
         shell: bash
         run: |
           cd ${GITHUB_WORKSPACE}/scripts/porg
