@@ -2,9 +2,9 @@ name: linux
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   ubuntu-test:
@@ -17,46 +17,21 @@ jobs:
           sudo apt install zsh -y
 
       - name: Install configurations
-        shell: zsh {0}
+        shell: bash
         run: make install
 
       - name: Update & Install packages via apt
-        shell: zsh {0}
+        shell: bash
         run: |
           cd $GITHUB_WORKSPACE/config/.config/scripts/apt
-          # ./update.sh
-          # ./install.sh
 
       - name: Check $PATH.
-        shell: zsh {0}
+        shell: bash
         run: |
           export PATH=$HOME/.local/usr/bin:$PATH
-          echo $GITHUB_WORKSPACE
+          echo ${GITHUB_WORKSPACE}
           echo "PATH : "
           echo $PATH | sed -e "s/:/\n/g"
-
-      - name: Install Linuxbrew.
-        shell: zsh {0}
-        run: |
-          cd $GITHUB_WORKSPACE/config/.config/scripts/brew
-          # ./install.sh
-
-      - name: Install anyenv(pyenv, rbenv, nodenv, plenv)
-        shell: zsh {0}
-        run: |
-          cd $GITHUB_WORKSPACE/config/.config/scripts/anyenv
-          ./anyenv1.sh
-          ./anyenv2.sh
-
-      - name: Check anyenv(pyenv, rbenv, nodenv, plenv)
-        shell: zsh {0}
-        run: |
-          cd $HOME
-          pyenv versions
-          rbenv versions
-          nodenv versions
-          luaenv versions
-          plenv versions
 
       - name: Install rust.
         shell: zsh {0}
