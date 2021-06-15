@@ -54,37 +54,5 @@ jobs:
         shell: bash
         run: |
           cd ${GITHUB_WORKSPACE}/scripts/porg
-          ./porg.sh
-
-      - name: Install Git via porg.
-        shell: bash
-        run: |
-          cd ${GITHUB_WORKSPACE}/scripts/porg
-          ./git.sh
-
-      - name: Install Xsel via porg.
-        shell: bash
-        run: |
-          cd ${GITHUB_WORKSPACE}/scripts/porg
-          ./xsel.sh
-
-      - name: Install Tmux via porg.
-        shell: bash
-        run: |
-          cd ${GITHUB_WORKSPACE}/scripts/porg
-          ./libevent.sh
-          ./ncurses.sh
-          ./tmux.sh
-
-      - name: Install Vim via porg.
-        shell: bash
-        run: |
-          cd ${GITHUB_WORKSPACE}/scripts/porg
-          ./vim.sh
-
-      - name: Install Neovim via porg.
-        shell: bash
-        run: |
-          cd ${GITHUB_WORKSPACE}/scripts/porg
-          ./neovim.sh
+          ./install-full.sh
 
