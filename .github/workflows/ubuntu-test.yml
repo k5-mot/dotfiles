@@ -12,9 +12,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Install zsh.
-        run: |
-          sudo apt install zsh -y
 
       - name: Install configurations
         shell: bash
@@ -36,58 +33,58 @@ jobs:
           echo $PATH | sed -e "s/:/\n/g"
 
       - name: Install rust.
-        shell: zsh {0}
+        shell: bash
         run: |
-          cd $GITHUB_WORKSPACE/config/.config/scripts/rust
+          cd ${GITHUB_WORKSPACE}/scripts/rust
           ./install.sh
 
       - name: Install rust packages via cargo.
-        shell: zsh {0}
+        shell: bash
         run: |
-          cd $GITHUB_WORKSPACE/config/.config/scripts/rust
+          cd ${GITHUB_WORKSPACE}/scripts/rust
           ./cargo.sh
 
       - name: Install alacritty.
-        shell: zsh {0}
+        shell: bash
         run: |
-          cd $GITHUB_WORKSPACE/config/.config/scripts/rust
-          #./alacritty.sh
+          cd ${GITHUB_WORKSPACE}/scripts/rust
+          ./alacritty.sh
 
       - name: Install porg.
-        shell: zsh {0}
+        shell: bash
         run: |
-          cd $GITHUB_WORKSPACE/config/.config/scripts/porg
+          cd ${GITHUB_WORKSPACE}/scripts/porg
           ./porg.sh
 
       - name: Install Git via porg.
-        shell: zsh {0}
+        shell: bash
         run: |
-          cd $GITHUB_WORKSPACE/config/.config/scripts/porg
+          cd ${GITHUB_WORKSPACE}/scripts/porg
           ./git.sh
 
       - name: Install Xsel via porg.
-        shell: zsh {0}
+        shell: bash
         run: |
-          cd $GITHUB_WORKSPACE/config/.config/scripts/porg
+          cd ${GITHUB_WORKSPACE}/scripts/porg
           ./xsel.sh
 
       - name: Install Tmux via porg.
-        shell: zsh {0}
+        shell: bash
         run: |
-          cd $GITHUB_WORKSPACE/config/.config/scripts/porg
+          cd ${GITHUB_WORKSPACE}/scripts/porg
           ./libevent.sh
           ./ncurses.sh
           ./tmux.sh
 
       - name: Install Vim via porg.
-        shell: zsh {0}
+        shell: bash
         run: |
-          cd $GITHUB_WORKSPACE/config/.config/scripts/porg
+          cd ${GITHUB_WORKSPACE}/scripts/porg
           ./vim.sh
 
       - name: Install Neovim via porg.
-        shell: zsh {0}
+        shell: bash
         run: |
-          cd $GITHUB_WORKSPACE/config/.config/scripts/porg
+          cd ${GITHUB_WORKSPACE}/scripts/porg
           ./neovim.sh
 
