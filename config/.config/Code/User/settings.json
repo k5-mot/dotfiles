@@ -381,6 +381,7 @@
   "explorer.confirmDragAndDrop": false,
   "explorer.confirmDelete": false,
   "update.mode": "none",
-  "window.customMenuBarAltFocus": false
+  "window.customMenuBarAltFocus": false,
+  "latex-workshop.message.update.show": false
 
 }

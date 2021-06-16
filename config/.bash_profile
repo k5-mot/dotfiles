@@ -181,24 +181,8 @@ export PATH=$PATH:$(find $HOME/.config/scripts -type d | xargs echo | sed -e 's/
 
 
 ## Remove duplicate PATH
-_path=""
-for _p in $(echo $PATH | tr ':' ' '); do
-  case ":${_path}:" in
-    *:"${_p}":* )
-      ;;
-    * )
-      if [ "$_path" ]; then
-        _path="$_path:$_p"
-      else
-        _path=$_p
-      fi
-      ;;
-  esac
-done
-PATH=$_path
-
-unset _p
-unset _path
+export PATH="$(printf %s "$PATH" | awk -v RS=: -v ORS=: '!arr[$0]++')"
+export LD_LIBRARY_PATH="$(printf %s "$LD_LIBRARY_PATH" | awk -v RS=: -v ORS=: '!arr[$0]++')"
 
 if [ -f ~/.bashrc ]; then
     source ~/.bashrc
