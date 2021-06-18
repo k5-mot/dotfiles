@@ -3,8 +3,8 @@
 ## Install via porg.
 
 ./porg.sh
-./cmake.sh
-./git.sh
+#./cmake.sh
+#./git.sh
 ./python3.sh
 ./python2.sh
 ./ruby.sh
@@ -22,11 +22,11 @@
 ./glfw.sh
 ./glm.sh
 ./qhull.sh
-./gmp.sh
-./mpfr.sh
-./mpc.sh
-./isl.sh
-./gcc.sh
+#./gmp.sh
+#./mpfr.sh
+#./mpc.sh
+#./isl.sh
+#./gcc.sh
 #./libidn2.sh
 #./libidn.sh
 #./neomutt.sh

@@ -15,10 +15,15 @@ rm -rf $HOME/.local/src/neovim
 # Download package
 git clone https://github.com/neovim/neovim.git
 cd $HOME/.local/src/neovim
+#mkdir -pv neovim
+#https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz
+#tar -zxvf nvim-linux64.tar.gz
+#mv nvim-linux64/bin/nvim /usr/local/bin
 
 # Install package
 git checkout stable
-make CMAKE_BUILD_TYPE=Release CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/.local/usr"
+rm -rf build/
+CC=$HOME/.local/usr/bin/gcc CMAKE=$HOME/.local/usr/bin/cmake make CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/.local/usr"
 export NEOVIM_VERSION=$(./build/bin/nvim --version | head -1 | awk '{print $2}' | sed "s/v//g")
 porg -lp neovim-$NEOVIM_VERSION "make CMAKE_INSTALL_PREFIX=$HOME/.local/usr install"
 
