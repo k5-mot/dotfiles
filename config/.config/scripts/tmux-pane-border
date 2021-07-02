@@ -82,7 +82,7 @@ else
         git_info+="#[bg=colour148]${SEPARATOR_LEFT}"
         git_info+="#[bg=colour148,fg=colour022] ${GIT_SYMBOL} ${git_branch} ${state} "
         git_info+="#[bg=default,fg=colour148]${SEPARATOR_LEFT}" ;;
-      develop )
+      develop | dev* )
         git_info+="#[bg=colour024]${SEPARATOR_LEFT}"
         git_info+="#[bg=colour024,fg=colour117] ${GIT_SYMBOL} ${git_branch} ${state} "
         git_info+="#[bg=default,fg=colour024]${SEPARATOR_LEFT}" ;;
