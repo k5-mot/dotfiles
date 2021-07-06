@@ -167,6 +167,19 @@ fi
 #  export PATH="$ANYENV_ROOT/bin:$PATH"
 #fi
 
+### Local Build Program {{{
+## Set up environment variables for local build applications.
+export LOCAL_ROOT=$HOME/.local
+export PATH=$LOCAL_ROOT/usr/bin:$PATH
+export LD_LIBRARY_PATH=$LOCAL_ROOT/usr/lib64
+export LD_LIBRARY_PATH=$LOCAL_ROOT/usr/lib:$LD_LIBRARY_PATH
+export MANPATH=$LOCAL_ROOT/usr/share/man:$MANPATH
+export INFOPATH=$LOCAL_ROOT/usr/share/info:$INFOPATH
+export CPATH=$LOCAL_ROOT/usr/include:$CPATH
+if [ -e "$LOCAL_ROOT/usr/include/c++" ]; then
+  export CPLUS_INCLUDE_PATH="$LOCAL_ROOT/usr/include/c++/$(ls -1 $LOCAL_ROOT/usr/include/c++ | tail -1 | sed 's/[@\/]//')":$CPLUS_INCLUDE_PATH
+fi
+
 ## Set up local PATH.
 if [ -e $HOME/.zshenv_local ]; then
   source $HOME/.zshenv_local
@@ -187,18 +200,6 @@ export PATH=$PATH:$(find $HOME/.config/scripts -type d | xargs echo | sed -e 's/
 #  export CPLUS_INCLUDE_PATH="/usr/include/c++/$(ls -1 /usr/include/c++ | tail -1 | sed 's/[@\/]//')":$CPLUS_INCLUDE_PATH
 #fi
 
-### Local Build Program {{{
-## Set up environment variables for local build applications.
-export LOCAL_ROOT=$HOME/.local
-export PATH=$LOCAL_ROOT/usr/bin:$PATH
-export LD_LIBRARY_PATH=$LOCAL_ROOT/usr/lib64:$LD_LIBRARY_PATH
-export LD_LIBRARY_PATH=$LOCAL_ROOT/usr/lib:$LD_LIBRARY_PATH
-export MANPATH=$LOCAL_ROOT/usr/share/man:$MANPATH
-export INFOPATH=$LOCAL_ROOT/usr/share/info:$INFOPATH
-export CPATH=$LOCAL_ROOT/usr/include:$CPATH
-if [ -e "$LOCAL_ROOT/usr/include/c++" ]; then
-  export CPLUS_INCLUDE_PATH="$LOCAL_ROOT/usr/include/c++/$(ls -1 $LOCAL_ROOT/usr/include/c++ | tail -1 | sed 's/[@\/]//')":$CPLUS_INCLUDE_PATH
-fi
 ### }}}
 
 ## automatically remove duplicates from these arrays
