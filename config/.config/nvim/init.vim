@@ -72,6 +72,11 @@ else
   runtime! ./vim-plug.vim
 endif
 
+" Powerline
+if !isdirectory('$HOME/.local/usr/lib/python3.9/site-packages/powerline')
+  runtime! ./powerline.vim
+endif
+
 " Base
 runtime! ./basis.rc.vim
 

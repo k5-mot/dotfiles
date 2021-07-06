@@ -15,9 +15,9 @@ set sidescrolloff=6
 set mouse=a
 
 " バックアップを作成する
-set backup
+"set backup
 " バックアップを作成しない
-"set nobackup
+set nobackup
 " backupがOFFの時、バックアップを作成した後削除
 "set writebackup
 " backupがOFFの時、バックアップを作成しない
