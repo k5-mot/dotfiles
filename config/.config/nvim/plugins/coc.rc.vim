@@ -200,40 +200,40 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 "let g:coc_snippet_next = '<tab>'
 
-let g:coc_global_extensions = [
-      \  'coc-json'
-      \ ]
-
-
-let g:lightline = {
-  \   'enable': { 'tabline': 1 },
-  \   'colorscheme': g:lightline_color,
-  \   'separator': { 'left': "\ue0b0 ", 'right': " \ue0b2" },
-  \   'subseparator' :{ 'left': "\ue0b1 ", 'right': " \ue0b3" },
-  \   'active': {
-  \     'left': [
-  \       ['mode', 'paste'],
-  \       ['readonly', 'filename', 'modified'],
-  \       ['coc_errors', 'coc_warnings', 'coc_info', 'coc_hints', 'coc_ok' ],
-  \       ['coc_status']
-  \     ],
-  \     'right': [
-  \       ['lineinfo'],
-  \       ['percent'],
-  \       ['fileformat', 'fileencoding', 'filetype']
-  \     ],
-  \   },
-  \   'inactive': {
-  \     'left': [
-  \       ['filename']
-  \     ],
-  \     'right': [
-  \       ['lineinfo'],
-  \       ['percent']
-  \     ]
-  \   },
-  \ }
-
-" register compoments:
-call lightline#coc#register()
-call lightline#update()
+"let g:coc_global_extensions = [
+"      \  'coc-json'
+"      \ ]
+"
+"
+"let g:lightline = {
+"  \   'enable': { 'tabline': 1 },
+"  \   'colorscheme': g:lightline_color,
+"  \   'separator': { 'left': "\ue0b0 ", 'right': " \ue0b2" },
+"  \   'subseparator' :{ 'left': "\ue0b1 ", 'right': " \ue0b3" },
+"  \   'active': {
+"  \     'left': [
+"  \       ['mode', 'paste'],
+"  \       ['readonly', 'filename', 'modified'],
+"  \       ['coc_errors', 'coc_warnings', 'coc_info', 'coc_hints', 'coc_ok' ],
+"  \       ['coc_status']
+"  \     ],
+"  \     'right': [
+"  \       ['lineinfo'],
+"  \       ['percent'],
+"  \       ['fileformat', 'fileencoding', 'filetype']
+"  \     ],
+"  \   },
+"  \   'inactive': {
+"  \     'left': [
+"  \       ['filename']
+"  \     ],
+"  \     'right': [
+"  \       ['lineinfo'],
+"  \       ['percent']
+"  \     ]
+"  \   },
+"  \ }
+"
+"" register compoments:
+"call lightline#coc#register()
+"call lightline#update()
