@@ -104,3 +104,8 @@ if filereadable(expand('$HOME/.vimrc_local'))
 endif
 
 
+set background=dark
+colorscheme gruvbox
+"colorscheme iceberg
+"colorscheme molokai
+"colorscheme tender

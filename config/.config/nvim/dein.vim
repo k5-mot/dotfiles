@@ -72,9 +72,4 @@ endif
 
 
 
-set background=dark
-colorscheme gruvbox
-"colorscheme iceberg
-"colorscheme molokai
-"colorscheme tender
 

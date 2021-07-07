@@ -24,10 +24,4 @@ call plug#end()
 runtime! ./plugins/lightline.rc.vim
 
 
-set background=dark
-colorscheme gruvbox
-"colorscheme iceberg
-"colorscheme molokai
-"colorscheme tender
-
 
