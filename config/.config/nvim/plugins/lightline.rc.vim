@@ -30,24 +30,24 @@ let g:lightline.component = {
 
 " Register the components:
 "let g:lightline = {}
-let g:lightline.component_expand = {
-  \   'coc_warnings': 'lightline#coc#warnings',
-  \   'coc_errors': 'lightline#coc#errors',
-  \   'coc_info': 'lightline#coc#info',
-  \   'coc_hints': 'lightline#coc#hints',
-  \   'coc_ok': 'lightline#coc#ok',
-  \   'status': 'lightline#coc#status',
-  \ }
-
-" Set color to the components:
-let g:lightline.component_type = {
-  \   'coc_warnings': 'warning',
-  \   'coc_errors': 'error',
-  \   'coc_info': 'info',
-  \   'coc_hints': 'hints',
-  \   'coc_ok': 'left',
-  \ }
-
+"let g:lightline.component_expand = {
+"  \   'coc_warnings': 'lightline#coc#warnings',
+"  \   'coc_errors': 'lightline#coc#errors',
+"  \   'coc_info': 'lightline#coc#info',
+"  \   'coc_hints': 'lightline#coc#hints',
+"  \   'coc_ok': 'lightline#coc#ok',
+"  \   'status': 'lightline#coc#status',
+"  \ }
+"
+"" Set color to the components:
+"let g:lightline.component_type = {
+"  \   'coc_warnings': 'warning',
+"  \   'coc_errors': 'error',
+"  \   'coc_info': 'info',
+"  \   'coc_hints': 'hints',
+"  \   'coc_ok': 'left',
+"  \ }
+"
 " Add the components to the lightline:
 "let g:lightline.active = {
 "  \   left': [[ 'coc_info', 'coc_hints', 'coc_errors', 'coc_warnings', 'coc_ok' ], [ 'coc_status'  ]]
@@ -84,8 +84,8 @@ let g:lightline = {
 "call lightline#coc#register()
 
 "Diagnosticsの、左横のアイコンの色設定
-highlight CocErrorSign ctermfg=15 ctermbg=196
-highlight CocWarningSign ctermfg=0 ctermbg=172
+"highlight CocErrorSign ctermfg=15 ctermbg=196
+"highlight CocWarningSign ctermfg=0 ctermbg=172
 
 "   \     ['lsp_errors', 'lsp_warnings', 'lsp_ok'],
 

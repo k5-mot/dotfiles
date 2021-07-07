@@ -30,7 +30,7 @@ rev = 'release'
 merged = '0'
 on_event = 'InsertEnter'
 hook_add = '''
-"source ~/.config/nvim/plugins/coc.rc.vim
+source ~/.config/nvim/plugins/coc.rc.vim
 '''
 
 ### Defx {{{
