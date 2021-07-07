@@ -77,17 +77,17 @@ endif
 
 " Powerline
 "set pythonthreedll=$HOME/.local/usr/lib/libpython3.9.a
-if !isdirectory('$HOME/.local/usr/lib/python3.9/site-packages/powerline')
-  let g:powerline_pyccmd="py3"
-  set runtimepath+=$HOME/.local/usr/lib/python3.9/site-packages/powerline/bindings/vim
-  python3 from powerline.vim import setup as powerline_setup
-  python3 powerline_setup()
-  python3 del powerline_setup
-  set laststatus=2
-  set showtabline=2
-  set noshowmode
-  "runtime! ./powerline.vim
-endif
+"if !isdirectory('$HOME/.local/usr/lib/python3.9/site-packages/powerline')
+"  let g:powerline_pycmd="python3"
+"  set runtimepath+=$HOME/.local/usr/lib/python3.9/site-packages/powerline/bindings/vim
+"  python3 from powerline.vim import setup as powerline_setup
+"  python3 powerline_setup()
+"  python3 del powerline_setup
+"  set laststatus=2
+"  set showtabline=2
+"  set noshowmode
+"  "runtime! ./powerline.vim
+"endif
 
 " Base
 runtime! ./basis.rc.vim

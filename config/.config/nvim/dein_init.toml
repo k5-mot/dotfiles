@@ -75,17 +75,17 @@ repo = 'morhetz/gruvbox'
 #[[plugins]]
 #repo = 'mattn/vim-lsp-icons'
 
-#[[plugins]]
-#repo = 'josa42/vim-lightline-coc'
-#hook_add = '''
-#source ~/.config/nvim/plugins/vim-lightline-coc.rc.vim
-#'''
-#
-#[[plugins]]
-#repo = 'itchyny/lightline.vim'
-#hook_add = '''
-#source ~/.config/nvim/plugins/lightline.rc.vim
-#'''
+[[plugins]]
+repo = 'josa42/vim-lightline-coc'
+hook_add = '''
+source ~/.config/nvim/plugins/vim-lightline-coc.rc.vim
+'''
+
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+hook_add = '''
+source ~/.config/nvim/plugins/lightline.rc.vim
+'''
 
 #[[plugins]]
 #repo = 'SirVer/ultisnips'
