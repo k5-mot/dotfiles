@@ -23,7 +23,11 @@ set nobackup
 " backupがOFFの時、バックアップを作成しない
 set nowritebackup
 " バックアップディレクトリの指定
-set backupdir=~/.cache/nvim/backup
+if has('nvim')
+  set backupdir=~/.cache/nvim/backup
+else
+  set backupdir=~/.cache/vim/backup
+endif
 " バックアップファイルの拡張子
 set backupext=.backup
 
@@ -84,7 +88,11 @@ set swapfile
 " スワップファイルを作らない
 "set noswapfile
 " スワップファイルの保存先
-set directory=~/.cache/nvim/swap
+if has('nvim')
+  set directory=~/.cache/nvim/swap
+else
+  set directory=~/.cache/vim/swap
+endif
 " 30秒ごとにスワップファイルを保存
 set updatetime=30000
 " 500文字ごとにスワップファイルを保存
@@ -255,7 +263,11 @@ set undofile
 " アンドゥファイルを生成しない
 "set noundofile
 " アンドゥファイルの保存先
-set undodir=~/.cache/nvim/undodir
+if has('nvim')
+  set undodir=~/.cache/nvim/undodir
+else
+  set undodir=~/.cache/vim/undodir
+endif
 
 " vimの矩形選択で文字が無くても右へ進める
 set virtualedit=block

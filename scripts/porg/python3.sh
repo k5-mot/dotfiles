@@ -12,11 +12,17 @@ rm -rf $HOME/.local/src/python3
 mkdir -p $HOME/.local/src/python3
 cd $HOME/.local/src/python3
 
-wget https://www.python.org/ftp/python/3.9.5/Python-3.9.5.tgz
+wget https://www.python.org/ftp/python/3.9.6/Python-3.9.6.tgz
 tar -zxvf Python-*.tgz
 cd Python-*/
 
-./configure --prefix=$HOME/.local/usr
+./configure \
+  --prefix=$HOME/.local/usr \
+  --enable-optimizations \
+  --with-openssl=$HOME/.local/usr \
+  --with-ensurepip \
+  --enable-shared \
+  --with-lto
 make
 porg -lD make install
 porg Python-3*
@@ -38,6 +44,7 @@ python3 -m pip install pandas
 python3 -m pip install torch
 python3 -m pip install torchvision
 python3 -m pip install tensorflow
+python3 -m pip install powerline-status
 python3 -m pip-review --auto
 python3 -m pip -V
 python3 -m pip list

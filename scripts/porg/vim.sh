@@ -18,6 +18,7 @@ cd $HOME/.local/src/vim
 #export LUAENV_LUA_VERSION=$(luaenv versions | grep -e '[0-9]*\.[0-9]*\.[0-9]*' | tail -1 | sed 's/([^)]*)//g' | sed 's/[ \t*]//g')
 
 LDFLAGS="-Wl,-rpath=$HOME/.local/usr/lib" ./configure \
+  --enable-shared \
   --enable-cscope \
   --enable-terminal \
   --enable-fontset \
@@ -33,11 +34,14 @@ LDFLAGS="-Wl,-rpath=$HOME/.local/usr/lib" ./configure \
   --enable-gpm \
   --with-x \
   --enable-gui=auto \
+  --enable-gtk2-check \
+  --enable-gnome-check \
   --prefix=$HOME/.local/usr \
   --with-python3-command=$HOME/.local/usr/bin/python3 \
-  --with-python-command=$HOME/.local/usr/bin/python2 \
+  --with-python3-config-dir=$(python3-config --configdir) \
   --with-ruby-command=$HOME/.local/usr/bin/ruby \
   --with-lua-prefix=$HOME/.local/usr
+  #--with-python-command=$HOME/.local/usr/bin/python2 \
   # --with-python3-command=$HOME/.anyenv/envs/pyenv/versions/$PYENV_PYTHON3_VERSION/bin/python3 \
   # --with-python-command=$HOME/.anyenv/envs/pyenv/versions/$PYENV_PYTHON2_VERSION/bin/python2 \
   # --with-ruby-command=$HOME/.anyenv/envs/rbenv/versions/$RBENV_RUBY_VERSION/bin/ruby \
@@ -45,6 +49,8 @@ LDFLAGS="-Wl,-rpath=$HOME/.local/usr/lib" ./configure \
 
 make
 export VIM_VERSION=$(./src/vim --version | head -1 | awk '{print $5}')
+
+make VIMRUNTIMEDIR=/home/dahara1/local/share/vim/vim_${VIM_VERSION}
 
 porg -lp vim-$VIM_VERSION make install
 porg vim
