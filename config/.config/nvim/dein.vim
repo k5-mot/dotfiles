@@ -70,3 +70,11 @@ endif
 "  call dein#recache_runtimepath()
 "endif
 
+
+
+set background=dark
+colorscheme gruvbox
+"colorscheme iceberg
+"colorscheme molokai
+"colorscheme tender
+

@@ -27,13 +27,10 @@ on_cmd = 'Denite'
 [[plugins]]
 repo = 'neoclide/coc.nvim'
 rev = 'release'
-on_event = 'InsertEnter'
 merged = '0'
+on_event = 'InsertEnter'
 hook_add = '''
-source ~/.config/nvim/plugins/coc_a.rc.vim
-'''
-hook_source = '''
-source ~/.config/nvim/plugins/coc.rc.vim
+"source ~/.config/nvim/plugins/coc.rc.vim
 '''
 
 ### Defx {{{

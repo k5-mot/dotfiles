@@ -1,3 +1,7 @@
+
+let g:coc_status_warning_sign="\uf071 "
+let g:coc_status_error_sign="\uf00d "
+
 " Set internal encoding of vim, not needed on neovim, since coc.nvim using some
 " unicode characters in the file autoload/float.vim
 set encoding=utf-8
@@ -199,12 +203,12 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 "endfunction
 
 "let g:coc_snippet_next = '<tab>'
-
+"
 "let g:coc_global_extensions = [
 "      \  'coc-json'
 "      \ ]
 "
-"
+"let g:lightline_color = "default"
 "let g:lightline = {
 "  \   'enable': { 'tabline': 1 },
 "  \   'colorscheme': g:lightline_color,
@@ -236,4 +240,5 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 "
 "" register compoments:
 "call lightline#coc#register()
-"call lightline#update()
+""call lightline#update()
+"
