@@ -37,13 +37,13 @@ python3 -m pip install neovim
 python3 -m pip install matplotlib
 python3 -m pip install numpy
 python3 -m pip install scipy
-python3 -m pip install compiledb
-python3 -m pip install openpyxl
-python3 -m pip install turtle
-python3 -m pip install pandas
-python3 -m pip install torch
-python3 -m pip install torchvision
-python3 -m pip install tensorflow
+#python3 -m pip install compiledb
+#python3 -m pip install openpyxl
+#python3 -m pip install turtle
+#python3 -m pip install pandas
+#python3 -m pip install torch
+#python3 -m pip install torchvision
+#python3 -m pip install tensorflow
 python3 -m pip install powerline-status
 python3 -m pip-review --auto
 python3 -m pip -V
