@@ -13,9 +13,15 @@ else
   let g:backup_dir   = expand('$HOME/.cache/vim/backup')
   let g:undo_dir     = expand('$HOME/.cache/vim/undodir')
 endif
-call mkdir(g:swapfile_dir)
-call mkdir(g:backup_dir)
-call mkdir(g:undo_dir)
+if !isdirectory(g:swapfile_dir)
+  call mkdir(g:swapfile_dir)
+endif
+if !isdirectory(g:backup_dir)
+  call mkdir(g:backup_dir)
+endif
+if !isdirectory(g:undo_dir)
+  call mkdir(g:undo_dir)
+endif
 
 " Set environment variables.
 let $XDG_CACHE_HOME = empty($XDG_CACHE_HOME) ? expand('$HOME/.cache') : $XDG_CACHE_HOME
@@ -23,7 +29,7 @@ let $XDG_CONFIG_HOME = empty($XDG_CONFIG_HOME) ? expand('$HOME/.config') : $XDG_
 let $XDG_DATA_HOME = empty($XDG_DATA_HOME) ? expand('$HOME/.local/share') : $XDG_DATA_HOME
 if has('nvim')
   let $VIM_CACHE_HOME = $XDG_CACHE_HOME . '/nvim'
-  let $VIM_CONFIG_HOME = $dein uiXDG_CONFIG_HOME . '/nvim'
+  let $VIM_CONFIG_HOME = $XDG_CONFIG_HOME . '/nvim'
 else
   let $VIM_CACHE_HOME = $XDG_CACHE_HOME . '/vim'
   let $VIM_CONFIG_HOME = $XDG_CONFIG_HOME . '/nvim'
@@ -74,12 +80,6 @@ endif
 "  let g:perl_host_prog    = $HOME . '/.anyenv/envs/nodenv/versions/' . s:plenv_perl_version . '/bin'
 "endif
 
-" Plugin Manager
-if (800 <= v:version)
-  runtime! ./dein.vim
-else
-  runtime! ./vim-plug.vim
-endif
 
 " Powerline
 "set pythonthreedll=$HOME/.local/usr/lib/libpython3.9.a
@@ -104,6 +104,13 @@ runtime! ./functions.rc.vim
 " Keybindings
 runtime! ./keybindings.rc.vim
 
+" Plugin Manager
+if (800 <= v:version)
+  runtime! ./dein.vim
+else
+  runtime! ./vim-plug.vim
+endif
+
 " Load local settings.
 if filereadable(expand('$HOME/.vimrc_local'))
   set runtimepath+=$HOME
@@ -113,7 +120,7 @@ endif
 
 set background=dark
 colorscheme gruvbox
-"au MyAutoCmd VimEnter * nested colorscheme gruvbox
 "colorscheme iceberg
 "colorscheme molokai
 "colorscheme tender
+

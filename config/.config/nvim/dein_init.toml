@@ -88,6 +88,17 @@ hook_add = '''
 source ~/.config/nvim/plugins/lightline.rc.vim
 '''
 
+[[plugins]]
+repo = 'neoclide/coc.nvim'
+rev = 'release'
+merged = '0'
+hook_add = '''
+source ~/.config/nvim/plugins/coc.rc.vim
+'''
+hook_done_update = '''
+source ~/.config/nvim/plugins/coc.done.rc.vim
+'''
+
 #[[plugins]]
 #repo = 'SirVer/ultisnips'
 #hook_add = '''
