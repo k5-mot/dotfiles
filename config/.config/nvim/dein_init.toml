@@ -19,8 +19,8 @@ repo = 'wsdjeg/dein-ui.vim'
 #[[plugins]]
 #repo = 'dracula/vim'
 #
-#[[plugins]]
-#repo = 'cocopon/iceberg.vim'
+[[plugins]]
+repo = 'cocopon/iceberg.vim'
 #
 #[[plugins]]
 #repo = 'joshdick/onedark.vim'
@@ -33,6 +33,7 @@ repo = 'wsdjeg/dein-ui.vim'
 
 [[plugins]]
 repo = 'morhetz/gruvbox'
+
 ### }}}
 
 ### Syntax {{{
@@ -95,6 +96,8 @@ source ~/.config/nvim/plugins/lightline.rc.vim
 
 [[plugins]]
 repo = 'honza/vim-snippets'
+hook_add = '''
+'''
 
 #[[plugins]]
 #repo = 'prabirshrestha/asyncomplete-ultisnips.vim'
@@ -151,14 +154,25 @@ repo = 'honza/vim-snippets'
 
 ### appearances {{{
 
+#[[plugins]]
+#repo = 'neoclide/coc.nvim'
+#rev = 'release'
+#merged = '0'
+#hook_add = '''
+#source ~/.config/nvim/plugins/coc.rc.vim
+#'''
 
 
 [[plugins]]
 repo = 'ryanoasis/vim-devicons'
+hook_add = '''
+'''
 ### }}}
 
 [[plugins]]
 repo = 'tmhedberg/matchit'
+hook_add = '''
+'''
 
 #[[plugins]]
 #repo = 'Shougo/neco-vim'

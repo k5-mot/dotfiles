@@ -4,12 +4,12 @@
 "
 
 " Create directory.
-echo system('mkdir -pv ~/.cache/nvim/swap')
-echo system('mkdir -pv ~/.cache/nvim/backup')
-echo system('mkdir -pv ~/.cache/nvim/undodir')
-echo system('mkdir -pv ~/.cache/vim/swap')
-echo system('mkdir -pv ~/.cache/vim/backup')
-echo system('mkdir -pv ~/.cache/vim/undodir')
+echo system('mkdir -p ~/.cache/nvim/swap')
+echo system('mkdir -p ~/.cache/nvim/backup')
+echo system('mkdir -p ~/.cache/nvim/undodir')
+echo system('mkdir -p ~/.cache/vim/swap')
+echo system('mkdir -p ~/.cache/vim/backup')
+echo system('mkdir -p ~/.cache/vim/undodir')
 
 " Set environment variables.
 let $XDG_CACHE_HOME = empty($XDG_CACHE_HOME) ? expand('$HOME/.cache') : $XDG_CACHE_HOME
@@ -100,12 +100,14 @@ runtime! ./keybindings.rc.vim
 
 " Load local settings.
 if filereadable(expand('$HOME/.vimrc_local'))
-  source $HOME/.vimrc_local
+  set runtimepath+=$HOME
+  runtime! $HOME/.vimrc_local
 endif
 
 
 set background=dark
 colorscheme gruvbox
+"au MyAutoCmd VimEnter * nested colorscheme gruvbox
 "colorscheme iceberg
 "colorscheme molokai
 "colorscheme tender
