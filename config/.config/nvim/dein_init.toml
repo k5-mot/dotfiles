@@ -79,7 +79,7 @@ repo = 'morhetz/gruvbox'
 #[[plugins]]
 #repo = 'josa42/vim-lightline-coc'
 #hook_add = '''
-#source ~/.config/nvim/plugins/vim-lightline-coc.rc.vim
+#"source ~/.config/nvim/plugins/vim-lightline-coc.rc.vim
 #'''
 
 [[plugins]]
@@ -95,9 +95,6 @@ merged = '0'
 hook_add = '''
 source ~/.config/nvim/plugins/coc.rc.vim
 '''
-hook_done_update = '''
-source ~/.config/nvim/plugins/coc.done.rc.vim
-'''
 
 #[[plugins]]
 #repo = 'SirVer/ultisnips'
@@ -107,8 +104,6 @@ source ~/.config/nvim/plugins/coc.done.rc.vim
 
 [[plugins]]
 repo = 'honza/vim-snippets'
-hook_add = '''
-'''
 
 #[[plugins]]
 #repo = 'prabirshrestha/asyncomplete-ultisnips.vim'
