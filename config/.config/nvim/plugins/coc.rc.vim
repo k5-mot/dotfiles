@@ -27,7 +27,8 @@ set shortmess+=c
 " diagnostics appear/become resolved.
 if has("nvim-0.5.0") || has("patch-8.1.1564")
   " Recently vim can merge signcolumn and number column into one
-  set signcolumn=number
+  "set signcolumn=number
+  set signcolumn=yes
 else
   set signcolumn=yes
 endif
@@ -148,7 +149,7 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 " Add (Neo)Vim's native statusline support.
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
 " provide custom statusline: lightline.vim, vim-airline.
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+"set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Mappings for CoCList
 " Show all diagnostics.
@@ -170,6 +171,19 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 
 
+"let g:lightline = {
+"\ 'colorscheme': 'wombat',
+"\ 'active': {
+"\   'left': [ [ 'mode', 'paste' ],
+"\             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
+"\ },
+"\ 'component_function': {
+"\   'cocstatus': 'coc#status'
+"\ },
+"\ }
+
+" Use autocmd to force lightline update.
+"autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
 
 
@@ -247,10 +261,10 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 "
 
 
-"
-"
-"
-"
+
+
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Configs
 "
@@ -339,7 +353,7 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Register
-""let g:lightline_color = "default"
+"let g:lightline_color = "default"
 "let g:lightline = {
 "  \   'enable': { 'tabline': 1 },
 "  \   'colorscheme': g:lightline_color,
@@ -387,22 +401,35 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 "  \   },
 "  \ }
 "
-""let g:lightline = {
-""\ 'colorscheme': g:lightline_color,
-""\ 'active': {
-""\   'left': [ [ 'mode', 'paste' ],
-""\             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
-""\ },
-""\ 'component_function': {
-""\   'cocstatus': 'coc#status'
-""\ },
-""\ }
+"autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
+"let g:lightline = {
+"\ 'colorscheme': g:lightline_color,
+"\ 'active': {
+"\   'left': [ [ 'mode', 'paste' ],
+"\             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
+"\ },
+"\ 'component_function': {
+"\   'cocstatus': 'coc#status'
+"\ },
+"\ }
+
+" Use autocmd to force lightline update.
+
+
+
+"let g:lightline = {
+"\ 'colorscheme': 'wombat',
+"\ 'active': {
+"\   'left': [ [ 'mode', 'paste' ],
+"\             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
+"\ },
+"\ 'component_function': {
+"\   'cocstatus': 'coc#status'
+"\ },
+"\ }
 "
 "" Use autocmd to force lightline update.
 "autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
-"
-
-
 
 
 
