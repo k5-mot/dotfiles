@@ -2,7 +2,6 @@
   "diagnostic.errorSign": "\uf00d ",
   "diagnostic.warningSign": "\uf071",
   "diagnostic.infoSign": "\uf05a",
-  "diagnostic.hintSign": "\uf058",
-  "clangd.path": "/home/users/kmoto/.config/coc/extensions/coc-clangd-data/install/12.0.0/clangd_12.0.0/bin/clangd"
+  "diagnostic.hintSign": "\uf058"
 
 }
