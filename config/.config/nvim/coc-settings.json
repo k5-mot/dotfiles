@@ -1,7 +1,13 @@
 {
-  "diagnostic.errorSign": "\uf00d ",
-  "diagnostic.warningSign": "\uf071",
-  "diagnostic.infoSign": "\uf05a",
-  "diagnostic.hintSign": "\uf058"
+  "languageserver": {
+    "svls" : {
+      "command"   : "svls",
+      "filetypes" : ["systemverilog"]
+    }
+  },
+  "diagnostic.errorSign"   : "\uf00d ",
+  "diagnostic.warningSign" : "\uf071",
+  "diagnostic.infoSign"    : "\uf05a",
+  "diagnostic.hintSign"    : "\uf058"
 
 }

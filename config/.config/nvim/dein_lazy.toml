@@ -100,3 +100,7 @@ source ~/.config/nvim/plugins/deol.rc.vim
 #repo = 'Shougo/context_filetype.vim'
 ###}}}
 
+
+[[plugins]]
+repo = 'jianmiao/auto-pairs'
+on_event = 'InsertEnter'
