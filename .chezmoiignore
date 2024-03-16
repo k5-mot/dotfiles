@@ -1,0 +1,18 @@
+
+README.md
+
+{{ if ne .chezmoi.os "darwin" -}}
+{{ end -}}
+{{ if ne .chezmoi.os "linux" -}}
+.config/
+.emacs.d/
+.bash_profile
+.bashrc
+.vimrc
+.zshenv
+.zshrc
+{{ end -}}
+{{ if ne .chezmoi.os "windows" -}}
+AppData
+Documents
+{{ end -}}

@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+### Appendix {{{
+for i in $XDG_CONFIG_HOME/sh/profile.d/*.sh $XDG_CONFIG_HOME/sh/profile.d/*.bash ; do
+  if [ -r "$i" ]; then
+    if [ "${-#*i}" != "$-" ]; then
+      . "$i"
+    else
+      . "$i" >/dev/null
+    fi
+  fi
+done
+### }}}
+
+### Local Setting {{{
+if [ -e $HOME/.env ]; then
+  source $HOME/.env
+fi
+### }}}
