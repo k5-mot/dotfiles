@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+if [ -e $HOME/.config/env ]; then
+  source $HOME/.config/env
+fi
+
+if [ -e $HOME/.env ]; then
+  source $HOME/.env
+fi

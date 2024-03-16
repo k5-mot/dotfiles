@@ -1,0 +1,7 @@
+{{ if eq .chezmoi.os "windows" -}}
+
+# pwsh.exe "$env:USERPROFILE\.local\script\1_winget.ps1"
+pwsh.exe "$env:USERPROFILE\.local\script\6_dev_packages.ps1"
+pwsh.exe "$env:USERPROFILE\.local\script\7_vim.ps1"
+
+{{ end -}}

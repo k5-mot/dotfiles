@@ -1,0 +1,117 @@
+#!/bin/sh
+
+### USER-defined variables {{{
+export LOCAL_ROOT="${HOME}/.local"
+if [ -d "${LOCAL_ROOT}/bin" ]; then
+  export PATH="${LOCAL_ROOT}/bin:${PATH}"
+fi
+export HOSTNAME=$(hostname -s)
+### }}}
+
+### Env {{{
+## TERM
+# export TERM="screen-256color"
+## Stop alert of mail check by zsh.
+export MAILCHECK=0
+## Stack of history by changing directory.
+export DIRSTACKSIZE=20
+## Japanese conversion dictionary
+export JSERVER="localhost"
+### }}}
+
+### XDG Base Directory {{{
+export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-${HOME}/.config}"
+export XDG_CACHE_HOME="${XDG_CACHE_HOME:-${HOME}/.cache}"
+export XDG_STATE_HOME="${XDG_STATE_HOME:-${HOME}/.local/state}"
+export XDG_DATA_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}"
+export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-${XDG_CACHE_HOME}/xdg}"
+export DG_DATA_HOME="${XDG_DATA_HOME}"
+### }}}
+
+### Dev Env {{{
+## Python
+export IPYTHONDIR="${XDG_CONFIG_HOME}/ipython"
+
+## Rust
+export RUSTUP_HOME="${XDG_DATA_HOME}/rustup"
+export CARGO_HOME="${XDG_DATA_HOME}/cargo"
+export CARGO_ROOT="${XDG_CONFIG_HOME}/cargo"
+if [ -e "${CARGO_ROOT}" ]; then
+  export PATH="${CARGO_ROOT}/bin:${PATH}"
+fi
+export BAT_THEME="OneHalfDark"
+
+## Go
+export GOPATH="${XDG_CONFIG_HOME}/go"
+if [ -e "${GOPATH}" ]; then
+  export PATH="${GOPATH}/bin:${PATH}"
+fi
+
+## Deno
+export DENO_INSTALL="${XDG_CONFIG_HOME}/deno"
+if [ -e "${DENO_INSTALL}" ]; then
+  export PATH="${DENO_INSTALL}/bin:${PATH}"
+fi
+
+### mise
+export PATH="${HOME}/.local/share/mise/shims:${PATH}"
+
+### VcXsrv for WSL
+if [ "$(uname 2> /dev/null)" = Linux ]; then
+  if [[ "$(uname -r 2> /dev/null)" = *microsoft* ]]; then
+    export LOCAL_IP="$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}')"
+    export DISPLAY="${LOCAL_IP}:0"
+    export LIBGL_ALWAYS_INDIRECT=1
+  fi
+fi
+### }}}
+
+### Tools {{{
+## Editor
+if command -v nvim &>/dev/null; then
+  export EDITOR="nvim"
+elif command -v vim  &>/dev/null; then
+  export EDITOR="vim"
+elif command -v vi   &>/dev/null; then
+  export EDITOR="vi"
+fi
+
+## Pager
+if command -v vimpager 1>/dev/null 2>&1; then
+  export PAGER="vimpager"
+  export MANPAGER="vimpager"
+else
+  export PAGER="less -iMR"
+  export MANPAGER="less -iMR"
+fi
+
+## Less
+export LESSCHARSET=utf-8
+export LESS="-iMR"
+export LESSHISTFILE="${XDG_CACHE_HOME}/less/history"
+export LESS_TERMCAP_mb=$(printf "\e[1;33m")
+export LESS_TERMCAP_md=$(printf "\e[1;36m")
+export LESS_TERMCAP_me=$(printf "\e[0m")
+export LESS_TERMCAP_se=$(printf "\e[0m")
+export LESS_TERMCAP_so=$(printf "\e[1;44;33m")
+export LESS_TERMCAP_ue=$(printf "\e[0m")
+export LESS_TERMCAP_us=$(printf "\e[1;32m")
+
+## Neovim
+export NVIM_PYTHON_LOG_FILE="${XDG_CACHE_HOME}/nvim/python.log"
+export NVIM_PYTHON_LOG_LEVEL=DEBUG
+
+## Tmux Plugin Manager
+export TMUX_HOME="${XDG_DATA_HOME}/tmux"
+export TMUX_PLUGIN_MANAGER_PATH="${TMUX_HOME}/plugins"
+export TPM_HOME="${TMUX_PLUGIN_MANAGER_PATH}/tpm"
+if [ ! -d "${TPM_HOME}" ]; then
+    git clone --verbose https://github.com/tmux-plugins/tpm ${TPM_HOME}
+
+    # Install plugins
+    tmux start-server
+    tmux new-session -d
+    ${TPM_HOME}/scripts/install_plugins.sh
+    tmux kill-server
+fi
+### }}}

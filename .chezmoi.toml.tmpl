@@ -1,0 +1,12 @@
+
+{{ if eq .chezmoi.os "windows" -}}
+[cd]
+command = "pwsh.exe"
+{{ end -}}
+
+[interpreters.ps1]
+command = "pwsh.exe"
+args = ["-NoLogo"]
+
+[interpreters.sh]
+command = "bash"

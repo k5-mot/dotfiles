@@ -1,0 +1,22 @@
+{{ if eq .chezmoi.os "linux" -}}
+#!/usr/bin/env zsh
+
+export SCRIPTDIR=$HOME/.local/script
+echo $SCRIPTDIR
+
+for i in $SCRIPTDIR/*.sh ; do
+    echo $i
+    if [ -r "$i" ]; then
+        sh $i
+    fi
+done
+
+for i in $SCRIPTDIR/*.zsh ; do
+    echo $i
+    if [ -r "$i" ]; then
+        zsh $i
+    fi
+done
+
+
+{{ end -}}
