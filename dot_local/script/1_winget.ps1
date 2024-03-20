@@ -61,6 +61,7 @@ $fonts = @(
     'FiraCode'
     'FiraMono'
     'Meslo'
+    'Noto'
 )
 foreach ($font in $fonts) {
     oh-my-posh font install $font
