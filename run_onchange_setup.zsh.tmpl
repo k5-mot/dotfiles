@@ -9,6 +9,8 @@ for i in $SCRIPTDIR/*.sh ; do
     if [ -r "$i" ]; then
         sh $i
     fi
+    source $HOME/.config/zsh/zshenv
+    source $HOME/.config/zsh/zshrc
 done
 
 for i in $SCRIPTDIR/*.zsh ; do
