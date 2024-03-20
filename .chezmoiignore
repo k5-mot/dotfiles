@@ -8,7 +8,6 @@ README.md
 .bash_profile
 .bashrc
 .zshenv
-.zshrc
 {{ end -}}
 {{ if ne .chezmoi.os "windows" -}}
 AppData

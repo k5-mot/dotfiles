@@ -1,11 +1,19 @@
 #!/usr/bin/env zsh
 
-# zmodload zsh/zprof
+### Env {{{
+export ZDOTCACHE="${XDG_CACHE_HOME}/zsh"
+export ZSH_VERSION="$(zsh --version | awk '{print $2}')"
+### }}}
 
-## Create zsh cache directory.
-if [ ! -e $ZDOTCACHE ]; then
-  mkdir -p $ZDOTCACHE
+### Init {{{
+if [ ! -d "${ZDOTCACHE}" ]; then
+  mkdir -p "${ZDOTCACHE}"
 fi
+### }}}
+
+
+compinit -d "${XDG_CACHE_HOME}/zsh/zcompdump-${ZSH_VERSION}"
+zstyle ':completion:*' cache-path "${XDG_CACHE_HOME}/zsh/zcompcache"
 
 ## History {{{
 ## Delete old duplication of history.
@@ -42,10 +50,6 @@ bindkey "^N" history-beginning-search-forward-end
 ## }}}
 
 ## Color {{{
-## Set SHELL
-if [[ -z "$SHELL" ]]; then
-  export SHELL="$(command -v zsh)"
-fi
 ## Use colors
 autoload -Uz colors
 colors
@@ -57,7 +61,6 @@ unsetopt list_types
 ## Highlight completion.
 autoload -U compinit
 compinit
-compinit -d $XDG_CACHE_HOME/zsh/zcompdump.log
 zstyle ':completion:*:default' menu select=1
 # 補完関数の表示を強化する
 zstyle ':completion:*' verbose yes
@@ -205,38 +208,37 @@ zmodload -ap zsh/mapfile mapfile
 
 
 ### Plugin Manager {{{
-export ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
-export ZPLUG_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zplug"
-
 if command -v zsh &>/dev/null; then
-  export ZSH_VERSION="$(zsh --version | awk '{print $2}' | (IFS=. read -r major minor micro; printf "%2d%02d%02d" ${major:-0} ${minor:-0} ${micro:-0}))"
+    local ZSHVER="$(zsh --version | awk '{print $2}' | (IFS=. read -r major minor micro; printf "%2d%02d%02d" ${major:-0} ${minor:-0} ${micro:-0}))"
 fi
 if command -v git &>/dev/null; then
-  export GIT_VERSION="$(git --version | awk '{print $3}' | (IFS=. read -r major minor micro; printf "%2d%02d%02d" ${major:-0} ${minor:-0} ${micro:-0}))"
+    local GITVER="$(git --version | awk '{print $3}' | (IFS=. read -r major minor micro; printf "%2d%02d%02d" ${major:-0} ${minor:-0} ${micro:-0}))"
 fi
 
-if [ "$ZSH_VERSION" -ge 50400 ]; then
-    if [ -f $HOME/.config/zsh/zinit.zsh ]; then
-        source $HOME/.config/zsh/zinit.zsh
+if [ "${ZSHVER}" -ge 50400 ]; then
+    if [ -f "${HOME}/.config/zsh/zinit.zsh" ]; then
+        source "${HOME}/.config/zsh/zinit.zsh"
     fi
-elif [ "$ZSH_VERSION" -ge 40309 -a "$GIT_VERSION" -ge 10700 ]; then
-    if [ -f $HOME/.config/zsh/zplug.zsh ]; then
-        source $HOME/.config/zsh/zplug.zsh
+elif [ "${ZSHVER}" -ge 40309 -a "${GITVER}" -ge 10700 ]; then
+    if [ -f "${HOME}/.config/zsh/zplug.zsh" ]; then
+        source "${HOME}/.config/zsh/zplug.zsh"
     fi
 fi
-
 ### }}}
 
 
-### mise
-eval "$($HOME/.local/bin/mise activate zsh)"
+### Setup {{{
+## mise: dev tools, env vars, task runner
+eval "$(${HOME}/.local/bin/mise activate zsh)"
 
-### Starship
+## Starship
 if [ -x "$(command -v starship)" ]; then
   eval "$(starship init zsh)"
 fi
+### }}}
 
-## Compile
-if [ $ZDOTDIR/.zshrc -nt $ZDOTDIR/.zshrc.zwc ]; then
-  zcompile $ZDOTDIR/.zshrc
+### Fast-Loading by Compile {{{
+if [ "${ZDOTDIR}/.zshrc" -nt "${ZDOTDIR}/.zshrc.zwc" ]; then
+  zcompile "${ZDOTDIR}/.zshrc"
 fi
+### }}}

@@ -1,6 +1,8 @@
 #!/usr/bin/env zsh
 
-## Install
+export ZPLUG_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zplug"
+
+## Install zplug
 if [[ ! -e $ZPLUG_HOME ]]; then
 git clone https://github.com/zplug/zplug $ZPLUG_HOME
 fi
