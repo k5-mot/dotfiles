@@ -23,6 +23,6 @@ zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light zdharma-continuum/history-search-multi-word
 zinit light supercrabtree/k
 zinit light b4b4r07/emoji-cli
-zinit light mnowotnik/fzshell
+# zinit light mnowotnik/fzshell
 zinit ice as"program" pick"$ZPFX/bin/git-*" make"PREFIX=$ZPFX"
 zinit light tj/git-extras
