@@ -40,7 +40,7 @@ add-zsh-hook chpwd chpwd_recent_dirs
 zstyle ':completion:*' recent-dirs-insert both
 zstyle ':chpwd:*' recent-dirs-default true
 zstyle ':chpwd:*' recent-dirs-max 1000
-zstyle ':chpwd:*' recent-dirs-file $ZDOTCACHE/chpwd-recent-dirs
+zstyle ':chpwd:*' recent-dirs-file ${ZDOTCACHE}/chpwd-recent-dirs
 ## Search function
 autoload history-search-end
 zle -N history-beginning-search-backward-end history-search-end
@@ -75,8 +75,8 @@ zstyle ':completion:*' group-name ''
 # セパレータを設定する
 zstyle ':completion:*' list-separator '-->'
 zstyle ':completion:*:manuals' separate-sections true
-if [[ -f $XDG_CONFIG_HOME/dircolors && -x `which dircolors` ]]; then
-  eval `dircolors -b $XDG_CONFIG_HOME/dircolors`
+if [[ -f "${XDG_CONFIG_HOME}/dircolors" && -x `which dircolors` ]]; then
+  eval `dircolors -b ${XDG_CONFIG_HOME}/dircolors`
   zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 fi
 ## Define demiter of words.
@@ -121,7 +121,7 @@ zstyle ':completion:*:*:(^rm):*:*files' ignored-patterns '*?.o' '*?.c~' \
 #fignore=(.o .c~ .old .pro)
 # ignore completion functions (until the _ignored completer)
 zstyle ':completion:*:functions' ignored-patterns '_*'
-## }}}
+
 function peco-select-history() {
   BUFFER=$(\history -n -r 1 | peco --query "$LBUFFER")
   CURSOR=$#BUFFER
@@ -182,11 +182,6 @@ zstyle ':vcs_info:git:*' unstagedstr "%F{red}±"
 zstyle ':vcs_info:*' formats "%F{green}$(echo "\uf7a1 ")%c%u %b%f"
 zstyle ':vcs_info:*' actionformats "%F{cyan}$(echo "\uf7a1 ") %b|%a%f"
 
-
-export PROMPT="%F{green}%n%f%F{magenta}@%f%F{blue}%m%f%F{magenta}:%f%F{cyan}%~%f
-%F{green}$%f "
-
-
 ## Others {{{
 # ディレクトリ選択時、最後の/を残す
 setopt no_auto_remove_slash
@@ -205,6 +200,12 @@ zmodload -a zsh/zpty zpty
 # zmodload -a zsh/zprof zprof
 zmodload -ap zsh/mapfile mapfile
 ## }}}
+
+
+### Prompt {{{
+export PROMPT="%F{green}%n%f%F{magenta}@%f%F{blue}%m%f%F{magenta}:%f%F{cyan}%~%f
+%F{green}$%f "
+### }}}
 
 
 ### Plugin Manager {{{
@@ -236,6 +237,7 @@ if [ -x "$(command -v starship)" ]; then
   eval "$(starship init zsh)"
 fi
 ### }}}
+
 
 ### Fast-Loading by Compile {{{
 if [ "${ZDOTDIR}/.zshrc" -nt "${ZDOTDIR}/.zshrc.zwc" ]; then
