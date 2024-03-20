@@ -7,3 +7,4 @@ curl https://mise.run | sh
 mise reshim
 mise doctor
 mise install -y
+mise reshim
