@@ -243,75 +243,15 @@ if [ "$ZSH_VERSION" -ge 50400 ]; then
     (( ${+_comps} )) && _comps[zinit]=_zinit
     ### End of Zinit's installer chunk
 
-    # # Load a few important annexes, without Turbo
-    # # (this is currently required for annexes)
-    # zinit light-mode for \
-    #     zinit-zsh/z-a-rust \
-    #     zinit-zsh/z-a-as-monitor \
-    #     zinit-zsh/z-a-patch-dl \
-    #     zinit-zsh/z-a-bin-gem-node
-
-    # zinit ice wait lucid
-    zinit light zsh-users/zsh-completions
-    # zinit ice wait lucid
+    zinit light k5-mot/zsh-completions
     zinit light zsh-users/zsh-autosuggestions
-    # zinit ice wait lucid
-    # zinit light zsh-users/zsh-syntax-highlighting
-    # zinit ice wait lucid
     zinit light chrissicool/zsh-256color
-    # zinit light zsh-users/zsh-syntax-highlighting
     zinit light zdharma-continuum/fast-syntax-highlighting
     zinit light zdharma-continuum/history-search-multi-word
-
-    # zinit ice as"command" from"gh-r" \
-    #       atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
-    #       atpull"%atclone" src"init.zsh"
-    # zinit light starship/starship
-
-    # zinit ice from"gh-r" as"program" mv"docker* -> docker-compose" bpick"*linux*"
-    # zinit light docker/compose
-
-    zinit ice as"completion" mv"chezmoi* -> _chezmoi"
-    zinit snippet https://raw.githubusercontent.com/twpayne/chezmoi/master/completions/chezmoi.zsh
-
-    zinit ice as"completion"
-    zinit snippet https://raw.githubusercontent.com/docker/cli/master/contrib/completion/zsh/_docker
-
-    zinit ice as"completion"
-    zinit snippet https://raw.githubusercontent.com/docker/compose/v1/contrib/completion/zsh/_docker-compose
-
-    zinit ice id-as="kubectl" as"command"
-    zinit light-mode lucid wait has"kubectl" for \
-        id-as"kubectl-completion" \
-        as"completion" \
-        atclone"kubectl completion zsh > _kubectl" \
-        atpull"%atclone" \
-        zdharma-continuum/null
-
-    zinit ice id-as="minikube" as"command"
-    zinit light-mode lucid wait has"minikube" for \
-        id-as"minikube-completion" \
-        as"completion" \
-        atclone"minikube completion zsh > _minikube" \
-        atpull"%atclone" \
-        zdharma-continuum/null
-
-    zinit ice id-as="chezmoi" as"command"
-    zinit light-mode lucid wait has"chezmoi" for \
-        id-as"chezmoi-completion" \
-        as"completion" \
-        atclone"chezmoi completion zsh > _chezmoi" \
-        atpull"%atclone" \
-        zdharma-continuum/null
-
-    zinit light-mode lucid wait has"mise" for \
-        id-as"mise-completion" \
-        as"completion" \
-        atclone"mise completion zsh > _mise" \
-        atpull"%atclone" \
-        zdharma-continuum/null
-
+    zinit light mnowotnik/fzshell
     zinit light supercrabtree/k
+    zinit ice as"program" pick"$ZPFX/bin/git-*" make"PREFIX=$ZPFX"
+    zinit light tj/git-extras
 
 elif [ "$ZSH_VERSION" -ge 40309 -a "$GIT_VERSION" -ge 10700 ]; then
 
