@@ -281,12 +281,12 @@ db.custom_center = {
         action = 'Telescope live_grep',
         shortcut = 'SPC f w'
     },
-    {
-        icon = '  ',
-        desc = 'Open Personal dotfiles                  ',
-        action = 'Telescope dotfiles path=' .. os.getenv('HOME') ..'Documents/GitHub/dotfiles',
-        shortcut = 'SPC f d'
-    },
+    -- {
+    --     icon = '  ',
+    --     desc = 'Open Personal dotfiles                  ',
+    --     action = 'Telescope dotfiles path=' .. os.getenv('HOME') ..'Documents/GitHub/dotfiles',
+    --     shortcut = 'SPC f d'
+    -- },
 }
 
 --   local function footer()

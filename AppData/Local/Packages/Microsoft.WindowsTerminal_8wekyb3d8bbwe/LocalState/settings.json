@@ -42,7 +42,8 @@
                 // "face": "CaskaydiaMono Nerd Font",
                 // "face": "MesloLGM Nerd Font",
                 "size": 10,
-                "weight": "normal"
+                "weight": "normal",
+                "cellHeight": "1.25"
             },
             "padding": "0, 0, 0, 0",
             "hidden": false,

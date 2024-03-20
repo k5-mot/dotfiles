@@ -1,17 +1,17 @@
 
 # Self-elevate the script if required
 if (-Not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] 'Administrator')) {
-  if ([int](Get-CimInstance -Class Win32_OperatingSystem | Select-Object -ExpandProperty BuildNumber) -ge 6000) {
-    $CommandLine = "-NoExit -File `"" + $MyInvocation.MyCommand.Path + "`" " + $MyInvocation.UnboundArguments
-    Start-Process -Wait -FilePath pwsh.exe -Verb Runas -ArgumentList $CommandLine
-    Exit
-  }
+    if ([int](Get-CimInstance -Class Win32_OperatingSystem | Select-Object -ExpandProperty BuildNumber) -ge 6000) {
+        $CommandLine = "-NoExit -File `"" + $MyInvocation.MyCommand.Path + "`" " + $MyInvocation.UnboundArguments
+        Start-Process -Wait -FilePath pwsh.exe -Verb Runas -ArgumentList $CommandLine
+        Exit
+    }
 }
 
 
 ### Policy for running scripts
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
-echo $PSVersionTable
+Write-Output $PSVersionTable
 
 
 ### Winget Packages
@@ -34,6 +34,7 @@ $wingetpkgs = @(
     'Kubernetes.minikube'
     'Kubernetes.kubectl'
     'eksctl.eksctl'
+    'Microsoft.VisualStudio.2022.BuildTools'
 )
 foreach ($wingetpkg in $wingetpkgs) {
     winget install --exact --id $wingetpkg

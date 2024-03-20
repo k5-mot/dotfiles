@@ -1,5 +1,10 @@
 
-local cache_dir = os.getenv('HOME') .. '/.cache/nvim/'
+local cache_dir
+if vim.fn.has('win64') == 1 then
+    cache_dir = os.getenv('USERPROFILE') .. '/.cache/nvim/'
+else
+    cache_dir = os.getenv('HOME') .. '/.cache/nvim/'
+end
 
 -- Character code
 vim.scriptencoding    = 'utf-8'
@@ -151,4 +156,3 @@ autocmd({"BufReadPost"}, {
 --     pattern  = "*",
 --     callback = function () vim.cmd("silent mkview") end,
 -- })
-
