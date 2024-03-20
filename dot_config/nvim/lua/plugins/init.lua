@@ -199,7 +199,7 @@ packer.startup(function(use)
 
     -- Startup
     use {
-        "glepnir/dashboard-nvim",
+        "nvimdev/dashboard-nvim",
     }
 
     -- Colorscheme
