@@ -4,6 +4,9 @@
 export SCRIPTDIR=$HOME/.local/script
 echo $SCRIPTDIR
 
+source $HOME/.config/zsh/zshenv
+source $HOME/.config/zsh/zshrc
+
 for i in $SCRIPTDIR/*.sh ; do
     echo $i
     if [ -r "$i" ]; then
