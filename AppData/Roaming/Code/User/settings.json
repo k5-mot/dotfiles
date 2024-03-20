@@ -3,7 +3,7 @@
         エディタ設定
     *********************/
     // フォント
-    "editor.fontFamily": "'CaskaydiaCove Nerd Font', 'MesloLGM Nerd Font', 'Cascadia Code', Consolas, 'Courier New', monospace",
+    "editor.fontFamily": "'CaskaydiaCove Nerd Font', 'CaskaydiaMono Nerd Font', 'FiraCode Nerd Font', 'FiraMono Nerd Font', 'MesloLGM Nerd Font', 'Cascadia Code', Consolas, 'Courier New', monospace",
     // フォントサイズ
     "editor.fontSize": 14,
     // ファイルのインデントではなく、VSCodeのタブ設定を採用する
@@ -82,7 +82,7 @@
     ウィンドウの設定
     *********************/
     // フォント
-    "terminal.integrated.fontFamily": "'CaskaydiaCove NF', 'MesloLGM Nerd Font', 'Cascadia Code', Consolas, 'Courier New', monospace",
+    "terminal.integrated.fontFamily": "'CaskaydiaCove Nerd Font', 'CaskaydiaMono Nerd Font', 'FiraCode Nerd Font', 'FiraMono Nerd Font', 'MesloLGM Nerd Font', 'Cascadia Code', Consolas, 'Courier New', monospace",
     /*********************
     ファイルの設定
     *********************/

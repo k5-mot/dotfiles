@@ -33,10 +33,12 @@ Set-PSReadLineKeyHandler -Key "Ctrl+r" -Function SwitchPredictionView
 ### Alias
 $profiledir = $(Get-Item $PROFILE.CurrentUserAllHosts).DirectoryName
 $scriptsdir = $(Join-Path $profiledir 'Scripts')
+$vimbindir = $(Get-ChildItem "C:\Program Files\Vim" | Sort-Object -Descending -Property Name | Select-Object -first 1).FullName
+$vimexe = Join-Path -Path $vimbindir -ChildPath "vim.exe"
 Set-Alias unzip Expand-Archive
 Set-Alias touch New-Item
-Set-Alias vi  'C:\Program Files\Vim\vim90\vim.exe'
-Set-Alias vim 'C:\Program Files\Vim\vim90\vim.exe'
+Set-Alias vi  "$vimexe"
+Set-Alias vim "$vimexe"
 Set-Alias Edit-Profile             $(Join-Path $scriptsdir 'Edit-Profile.ps1')
 Set-Alias Get-Timestamp            $(Join-Path $scriptsdir 'Get-Timestamp.ps1')
 Set-Alias Install-Fonts            $(Join-Path $scriptsdir 'Install-Fonts.ps1')
