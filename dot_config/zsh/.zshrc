@@ -2,18 +2,20 @@
 
 ### Env {{{
 export ZDOTCACHE="${XDG_CACHE_HOME}/zsh"
+export ZDOTSTATE="${XDG_STATE_HOME}/zsh"
 export ZSH_VERSION="$(zsh --version | awk '{print $2}')"
 ### }}}
 
+
 ### Init {{{
 if [ ! -d "${ZDOTCACHE}" ]; then
-  mkdir -p "${ZDOTCACHE}"
+    mkdir -p "${ZDOTCACHE}"
+    mkdir -p "${ZDOTSTATE}"
 fi
 ### }}}
 
-
-compinit -d "${XDG_CACHE_HOME}/zsh/zcompdump-${ZSH_VERSION}"
-zstyle ':completion:*' cache-path "${XDG_CACHE_HOME}/zsh/zcompcache"
+compinit -d "${ZDOTCACHE}/zcompdump-${ZSH_VERSION}"
+zstyle ':completion:*' cache-path "${ZDOTCACHE}/zcompcache"
 
 ## History {{{
 ## Delete old duplication of history.
