@@ -1,5 +1,13 @@
 #!/usr/bin/env zsh
 
+if [ -e $HOME/.config/env ]; then
+  source $HOME/.config/env
+fi
+
+if [ -e $HOME/.env ]; then
+  source $HOME/.env
+fi
+
 # prof
 # zmodload zsh/zprof && zprof
 

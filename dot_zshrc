@@ -203,20 +203,8 @@ zmodload -a zsh/zpty zpty
 zmodload -ap zsh/mapfile mapfile
 ## }}}
 
-### Appendix {{{
-# for i in $XDG_CONFIG_HOME/sh/rc.d/*.sh $XDG_CONFIG_HOME/sh/rc.d/*.zsh ; do
-#   if [ -r "$i" ]; then
-#     if [ "${-#*i}" != "$-" ]; then
-#       source "$i"
-#     else
-#       source "$i" >/dev/null
-#     fi
-#   fi
-# done
-### }}}
 
-
-### Plugin {{{
+### Plugin Manager {{{
 export ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 export ZPLUG_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zplug"
 
@@ -228,68 +216,13 @@ if command -v git &>/dev/null; then
 fi
 
 if [ "$ZSH_VERSION" -ge 50400 ]; then
-
-    ### Added by Zinit's installer
-    if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
-        print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
-        command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
-        command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
-            print -P "%F{33} %F{34}Installation successful.%f%b" || \
-            print -P "%F{160} The clone has failed.%f%b"
+    if [ -f $HOME/.config/zsh/zinit.zsh ]; then
+        source $HOME/.config/zsh/zinit.zsh
     fi
-
-    source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
-    autoload -Uz _zinit
-    (( ${+_comps} )) && _comps[zinit]=_zinit
-    ### End of Zinit's installer chunk
-
-    zinit light k5-mot/zsh-completions
-    zinit light zsh-users/zsh-autosuggestions
-    zinit light chrissicool/zsh-256color
-    zinit light zdharma-continuum/fast-syntax-highlighting
-    zinit light zdharma-continuum/history-search-multi-word
-    zinit light supercrabtree/k
-    zinit light b4b4r07/emoji-cli
-    zinit light mnowotnik/fzshell
-    zinit ice as"program" pick"$ZPFX/bin/git-*" make"PREFIX=$ZPFX"
-    zinit light tj/git-extras
-
 elif [ "$ZSH_VERSION" -ge 40309 -a "$GIT_VERSION" -ge 10700 ]; then
-
-  ## Install
-  if [[ ! -e $ZPLUG_HOME ]]; then
-    git clone https://github.com/zplug/zplug $ZPLUG_HOME
-  fi
-
-  ## Initialize
-  source "$ZPLUG_HOME/init.zsh"
-
-  ## Plugin list
-  zplug "zplug/zplug", hook-build: "zplug --self-manage"
-  zplug "zsh-users/zsh-syntax-highlighting"
-  zplug "zsh-users/zsh-history-substring-search"
-  zplug "zsh-users/zsh-completions"
-  zplug "zsh-users/zsh-autosuggestions"
-  zplug "mollifier/anyframe"
-  zplug "mollifier/cd-gitroot"
-  zplug "b4b4r07/emoji-cli"
-  zplug "mrowa44/emojify", as:command
-  zplug "bilelmoussaoui/flatpak-zsh-completion", defer:2
-  zplug "chrissicool/zsh-256color"
-  zplug "supercrabtree/k"
-  zplug "starship/starship", as:command
-
-  # Install plugins
-  if ! zplug check --verbose; then
-    zplug install
-    # printf "Install? [y/N]: "
-    # if read -q; then
-    #   echo; zplug install
-    # fi
-  fi
-  zplug load
-
-  export EMOJI_CLI_KEYBIND="^f"
+    if [ -f $HOME/.config/zsh/zplug.zsh ]; then
+        source $HOME/.config/zsh/zplug.zsh
+    fi
 fi
 
 ### }}}
