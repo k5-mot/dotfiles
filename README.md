@@ -24,6 +24,8 @@ export PROMPT="%F{green}%n%f%F{magenta}@%f%F{blue}%m%f%F{magenta}:%f%F{cyan}%~%f
 $HOME/.local/bin/chezmoi init --apply k5-mot
 ```
 
+rm -rfv ~/.bash_profile ~/.bashrc ~/.cache ~/.config ~/.emacs.d ~/.gitconfig ~/.minikube ~/.npm ~/.sudo_as_admin_successful ~/.vim ~/.vimrc ~/.zcompdump ~/.zshenv ~/.zshrc && cd ~/.local/share/chezmoi && git pull  && ~/.local/bin/chezmoi state delete-bucket --bucket=entryState && ~/.local/bin/chezmoi init && ~/.local/bin/chezmoi apply
+
 ## :bookmark_tabs: Note
 
 Good luck!!!
