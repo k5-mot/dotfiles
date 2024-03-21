@@ -21,6 +21,7 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 " Specify a directory for plugins
 call plug#begin(expand(data_dir . '/plugged'))
   " color scheme
+  Plug 'sainnhe/sonokai'
   Plug 'morhetz/gruvbox'
   Plug 'croaker/mustang-vim'
   Plug 'nanotech/jellybeans.vim'
@@ -141,9 +142,9 @@ if s:is_plugged("lightline.vim") && s:is_plugged("vim-lsp")
   runtime! ./plugins/lightline_vim-lsp.rc.vim
 endif
 
-if s:is_plugged("onehalf")
+if s:is_plugged("sonokai")
     set background=dark
-    colorscheme onehalfdark
+    colorscheme sonokai
 else
     set background=dark
     colorscheme retrobox
