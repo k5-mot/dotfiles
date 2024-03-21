@@ -63,6 +63,20 @@ Set-Alias Test-ExistPSModule       $(Join-Path $scriptsdir 'Test-ExistPSModule.p
 Set-Alias Test-ReparsePoint        $(Join-Path $scriptsdir 'Test-ReparsePoint.ps1')
 Set-Alias which                    $(Join-Path $scriptsdir 'which.ps1')
 
+Register-ArgumentCompleter -Native -CommandName aws -ScriptBlock {
+    param($commandName, $wordToComplete, $cursorPosition)
+    $env:COMP_LINE = $wordToComplete
+    if ($env:COMP_LINE.Length -lt $cursorPosition) {
+        $env:COMP_LINE = $env:COMP_LINE + " "
+    }
+    $env:COMP_POINT = $cursorPosition
+    aws_completer.exe | ForEach-Object {
+        [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_)
+    }
+    Remove-Item Env:\COMP_LINE
+    Remove-Item Env:\COMP_POINT
+}
+
 ### Local Configs
 $loaddir = "$env:USERPROFILE\Documents\PowerShell\Autoload"
 Get-ChildItem $loaddir | Where-Object Extension -eq ".ps1" | ForEach-Object { . $_.FullName }
