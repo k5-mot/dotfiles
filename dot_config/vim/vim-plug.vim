@@ -1,5 +1,10 @@
-let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
-let plug_file = data_dir . '/autoload/plug.vim'
+let data_dir = $VIM_DATA_HOME
+let autoload_dir = expand(data_dir . '/autoload')
+let plug_file    = expand(data_dir . '/autoload/plug.vim')
+
+if has('win32')
+    set noshellslash
+end
 
 " Install vim-plug if not found
 if empty(glob(plug_file))
@@ -7,13 +12,14 @@ if empty(glob(plug_file))
     \ ' --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 endif
 
+
 " Run PlugInstall if there are missing plugins
 autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   \| PlugInstall --sync | source $MYVIMRC
 \| endif
 
 " Specify a directory for plugins
-call plug#begin(data_dir . '/plugged')
+call plug#begin(expand(data_dir . '/plugged'))
   " color scheme
   Plug 'morhetz/gruvbox'
   Plug 'croaker/mustang-vim'
