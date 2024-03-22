@@ -3,13 +3,27 @@ command! CopyPath
       \ let @*=expand('%') | echo 'copied'
 
 " Transparent Background
+" augroup AutoColorscheme
+"   autocmd!
+" "   autocmd Colorscheme * highlight Normal      ctermbg=NONE
+" "   autocmd Colorscheme * highlight NonText     ctermbg=NONE
+" "   autocmd Colorscheme * highlight LineNr      ctermbg=NONE
+" "   autocmd Colorscheme * highlight Folded      ctermbg=NONE
+" "   autocmd Colorscheme * highlight EndOfBuffer ctermbg=NONE
+"     autocmd Colorscheme * highlight Normal      guibg=NONE termbg=NONE ctermbg=NONE
+"     autocmd Colorscheme * highlight NonText     guibg=NONE termbg=NONE ctermbg=NONE
+"     autocmd Colorscheme * highlight SpecialKey  guibg=NONE termbg=NONE ctermbg=NONE
+"     autocmd Colorscheme * highlight EndOfBuffer guibg=NONE termbg=NONE ctermbg=NONE
+"     autocmd Colorscheme * highlight Comment     gui=NONE term=NONE cterm=NONE ctermbg=NONE
+" augroup END
 augroup AutoColorscheme
-  autocmd!
-  autocmd Colorscheme * highlight Normal ctermbg=NONE guibg=NONE
-  autocmd Colorscheme * highlight NonText ctermbg=NONE guibg=NONE
-  autocmd Colorscheme * highlight LineNr ctermbg=NONE guibg=NONE
-  autocmd Colorscheme * highlight Folded ctermbg=NONE guibg=NONE
-  autocmd Colorscheme * highlight EndOfBuffer ctermbg=NONE guibg=NONE
+    autocmd!
+    autocmd Colorscheme * highlight Normal      ctermbg=NONE guibg=NONE
+    autocmd Colorscheme * highlight NonText     ctermbg=NONE guibg=NONE
+    autocmd Colorscheme * highlight LineNr      ctermbg=NONE guibg=NONE
+    autocmd Colorscheme * highlight Folded      ctermbg=NONE guibg=NONE
+    autocmd Colorscheme * highlight EndOfBuffer ctermbg=NONE guibg=NONE
+    autocmd Colorscheme * highlight Comment     gui=NONE term=NONE cterm=NONE
 augroup END
 
 " jsonを整形

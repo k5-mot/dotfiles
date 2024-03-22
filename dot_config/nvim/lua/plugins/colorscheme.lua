@@ -78,7 +78,7 @@ end
 local status, sonokai = pcall(require, "sonokai")
 if (status) then
 end
-    vim.cmd('colorscheme sonokai')
+vim.cmd('colorscheme sonokai')
 
 
 -- }}}

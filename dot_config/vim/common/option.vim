@@ -185,8 +185,8 @@ if has('win32')
 endif
 
 " 全角文字専用の設定
-set ambiwidth=single
-"set ambiwidth=double
+" set ambiwidth=single
+set ambiwidth=double
 
 " タグファイルを指定
 set tags+=tags;
@@ -202,7 +202,7 @@ set wildoptions=tagfile
 " set fileencodings=ucs-bom,utf-8,iso-2022-jp,euc-jp,ucs-2le,ucs-2,cp932
 " set fileencodings=utf-8,euc-jp,sjis,cp932,iso-2022-jp
 " set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
-set fileencoding=utf-8
+" set fileencoding=utf-8
 set fileformat=unix
 set encoding=utf-8
 set fileencodings=utf-8,cp932,euc-jp,iso-2022-jp,default,latin

@@ -41,6 +41,7 @@ call plug#begin(expand(s:data_dir . '/plugged'))
 
   " syntax highlight
   Plug 'sheerun/vim-polyglot'
+  Plug 'vim-scripts/SyntaxRange'
 
   " status line
   Plug 'itchyny/lightline.vim'

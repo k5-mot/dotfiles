@@ -1,20 +1,29 @@
-set ambiwidth=double
-set visualbell t_vb=
-
 gui
 
-" UIを消す
-set guioptions-=m " remove menu bar
-set guioptions-=T " remove tool bar
-set guioptions-=r " remove right-hand scroll bar
-set guioptions-=L " remove left-hand scroll bar
+if has('gui_running')
+    set guioptions-=a
+    set guioptions-=i
+    set guioptions-=r
+    set guioptions-=L
+    set guioptions-=e
+    set guioptions-=m " メニューバーを非表示
+    set guioptions+=M
+    set guioptions-=t
+    set guioptions-=T " ツールバーを非表示
+    set guioptions-=g
+    set guioptions+=c
+    set guioptions+=R " 右スクロールバーを非表示
+    set guioptions+=d " ウィンドウをダークにする(Windows非対応)
+    set guicursor+=c:ver10 " カーソル外観
 
-
-
-" set transparency=200
+    if g:is_windows
+        set renderoptions=type:directx,renmode:5
+        set guifont=CaskaydiaCove_NFM:h10:cANSI,MS_Gothic:h13
+    elseif g:is_mac
+        set guifont=CascaydiaCove\ NFM:h17
+        set macmeta
+        set transparency=10
+    endif
+endif
 
 source $HOME/.config/vim/init.vim
-
-set background=dark
-colorscheme sonokai
-highlight Folded guibg=black guifg=yellow
