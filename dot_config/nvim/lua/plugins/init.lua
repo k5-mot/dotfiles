@@ -52,7 +52,7 @@ packer.startup(function(use)
     --     end,
     -- }
 
-    use 'xiyaowong/transparent.nvim'
+    -- use 'xiyaowong/transparent.nvim'
 
     -- Treesitter
     use {
@@ -228,7 +228,7 @@ packer.startup(function(use)
 end)
 -- }}}
 vim.opt.termguicolors = true
-vim.cmd('colorscheme darkblue')
+-- vim.cmd('colorscheme darkblue')
 -- require("bufferline").setup({})
 
 -- local db = require('dashboard')
@@ -328,17 +328,30 @@ require('plugins.syntax')
 require('plugins.filer')
 require('plugins.telescope')
 
-require("transparent").setup({ -- Optional, you don't have to run setup.
-  groups = { -- table: default groups
-    'Normal', 'NormalNC', 'Comment', 'Constant', 'Special', 'Identifier',
-    'Statement', 'PreProc', 'Type', 'Underlined', 'Todo', 'String', 'Function',
-    'Conditional', 'Repeat', 'Operator', 'Structure', 'LineNr', 'NonText',
-    'SignColumn', 'CursorLine', 'CursorLineNr', 'StatusLine', 'StatusLineNC',
-    'EndOfBuffer',
-  },
-  extra_groups = {}, -- table: additional groups that should be cleared
-  exclude_groups = {}, -- table: groups you don't want to clear
-})
+local status, transparent = pcall(require, "transparent")
+if (status) then
+
+    -- require("transparent").setup({ -- Optional, you don't have to run setup.
+    --     groups = { -- table: default groups
+    --         'Normal', 'NormalNC', 'Comment', 'Constant', 'Special', 'Identifier',
+    --         'Statement', 'PreProc', 'Type', 'Underlined', 'Todo', 'String', 'Function',
+    --         'Conditional', 'Repeat', 'Operator', 'Structure', 'LineNr', 'NonText',
+    --         'SignColumn', 'CursorLine', 'CursorLineNr', 'StatusLine', 'StatusLineNC',
+    --         'EndOfBuffer',
+    --     },
+    --     extra_groups = {}, -- table: additional groups that should be cleared
+    --     exclude_groups = {}, -- table: groups you don't want to clear
+    -- })
+end
+
+-- local status, sonokai = pcall(require, 'sonokai')
+-- if (not status) then return end
+-- vim.cmd('colorscheme sonokai')
+-- if packer_plugins['sonokai'] and packer_plugins['sonokai'].loaded then
+--     -- print('Coc is Loaded!')
+-- end
+vim.cmd('colorscheme sonokai')
+
 
 local keymap = vim.keymap.set
 local status, lspsaga = pcall(require, "lspsaga")
