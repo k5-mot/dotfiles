@@ -74,7 +74,7 @@ nnoremap <silent> <Space>eg  :<C-u>edit $MYGVIMRC<CR>
 " .vimrcや.gvimrcの変更を反映するためのKey-mappingを定義する
 " Load .gvimrc after .vimrc edited at GVim.
 nnoremap <silent> <Space>rv :<C-u>source $MYVIMRC \| if has('gui_running') \| source $MYGVIMRC \| endif <CR>
-  nnoremap <silent> <Space>rg :<C-u>source $MYGVIMRC<CR>
+nnoremap <silent> <Space>rg :<C-u>source $MYGVIMRC<CR>
 
 "" インサートモード
 inoremap <C-b> <Up>

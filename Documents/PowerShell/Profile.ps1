@@ -44,10 +44,12 @@ $profiledir = $(Get-Item $PROFILE.CurrentUserAllHosts).DirectoryName
 $scriptsdir = $(Join-Path $profiledir 'Scripts')
 $vimbindir = $(Get-ChildItem "C:\Program Files\Vim" | Sort-Object -Descending -Property Name | Select-Object -first 1).FullName
 $vimexe = Join-Path -Path $vimbindir -ChildPath "vim.exe"
+$gvimexe = Join-Path -Path $vimbindir -ChildPath "gvim.exe"
 Set-Alias unzip Expand-Archive
 Set-Alias touch New-Item
 Set-Alias vi  "$vimexe"
 Set-Alias vim "$vimexe"
+Set-Alias gvim "$gvimexe"
 Set-Alias Edit-Profile             $(Join-Path $scriptsdir 'Edit-Profile.ps1')
 Set-Alias Get-Timestamp            $(Join-Path $scriptsdir 'Get-Timestamp.ps1')
 Set-Alias Install-Fonts            $(Join-Path $scriptsdir 'Install-Fonts.ps1')

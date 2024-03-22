@@ -1,0 +1,20 @@
+set ambiwidth=double
+set visualbell t_vb=
+
+gui
+
+" UIを消す
+set guioptions-=m " remove menu bar
+set guioptions-=T " remove tool bar
+set guioptions-=r " remove right-hand scroll bar
+set guioptions-=L " remove left-hand scroll bar
+
+
+
+" set transparency=200
+
+source $HOME/.config/vim/init.vim
+
+set background=dark
+colorscheme sonokai
+highlight Folded guibg=black guifg=yellow

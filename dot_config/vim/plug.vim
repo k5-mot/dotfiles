@@ -1,14 +1,15 @@
-let data_dir = $VIM_DATA_HOME
-let autoload_dir = expand(data_dir . '/autoload')
-let plug_file    = expand(data_dir . '/autoload/plug.vim')
+let s:data_dir = g:vim_data_dir
+let s:plug_file = expand(s:data_dir . '/autoload/plug.vim')
 
-if has('win32')
-    set noshellslash
+if g:is_windows
+    let &shell = 'pwsh -NoLogo'
+    " set noshellslash
+    " set shellcmdflag=-c
 end
 
 " Install vim-plug if not found
-if empty(glob(plug_file))
-  silent execute '!curl -fLo ' . plug_file .
+if empty(glob(s:plug_file))
+  silent execute '!curl -fLo ' . s:plug_file .
     \ ' --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 endif
 
@@ -19,24 +20,23 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 \| endif
 
 " Specify a directory for plugins
-call plug#begin(expand(data_dir . '/plugged'))
+call plug#begin(expand(s:data_dir . '/plugged'))
   " color scheme
   Plug 'sainnhe/sonokai'
-  Plug 'morhetz/gruvbox'
-  Plug 'croaker/mustang-vim'
-  Plug 'nanotech/jellybeans.vim'
-  Plug 'tomasr/molokai'
-  Plug 'dracula/vim'
-  Plug 'arcticicestudio/nord-vim'
-  Plug 'cocopon/iceberg.vim'
+"   Plug 'morhetz/gruvbox'
+"   Plug 'croaker/mustang-vim'
+"   Plug 'nanotech/jellybeans.vim'
+"   Plug 'tomasr/molokai'
+"   Plug 'dracula/vim'
+"   Plug 'arcticicestudio/nord-vim'
+"   Plug 'cocopon/iceberg.vim'
   Plug 'joshdick/onedark.vim'
-  Plug 'sonph/onehalf'
-  Plug 'jacoborus/tender.vim'
-  Plug 'junegunn/seoul256.vim'
-  Plug 'morhetz/gruvbox'
-  Plug 'sainnhe/gruvbox-material'
+"   Plug 'jacoborus/tender.vim'
+"   Plug 'junegunn/seoul256.vim'
+"   Plug 'morhetz/gruvbox'
+"   Plug 'sainnhe/gruvbox-material'
   Plug 'sonph/onehalf', { 'rtp': 'vim' }
-  Plug 'folke/tokyonight.nvim'
+"   Plug 'folke/tokyonight.nvim'
   " Plug 'ghifarit53/tokyonight-vim'
 
   " syntax highlight
@@ -120,26 +120,25 @@ endfunction
 
 " Plugin configurtation
 if s:is_plugged("lightline.vim")
-  runtime! ./plugins/lightline.rc.vim
+    execute 'source ' . expand(g:vim_config_dir . '/plugin/lightline.rc.vim')
 endif
 if s:is_plugged("asyncomplete.vim")
-  runtime! ./plugins/asyncomplete.rc.vim
+    execute 'source ' . expand(g:vim_config_dir . '/plugin/asyncomplete.rc.vim')
 endif
 if s:is_plugged("vim-lsp")
-  runtime! ./plugins/vim-lsp.rc.vim
+    execute 'source ' . expand(g:vim_config_dir . '/plugin/vim-lsp.rc.vim')
 endif
 if s:is_plugged("tmuxline.vim")
-  runtime! ./plugins/tmuxline.rc.vim
+    execute 'source ' . expand(g:vim_config_dir . '/plugin/tmuxline.rc.vim')
 endif
 if s:is_plugged("vim-lsp-ultisnips")
-  runtime! ./plugins/vim-lsp-ultisnips.rc.vim
+    execute 'source ' . expand(g:vim_config_dir . '/plugin/vim-lsp-ultisnips.rc.vim')
 endif
 if s:is_plugged("defx.nvim")
-  runtime! ./plugins/defx.nvim.rc.vim
+    execute 'source ' . expand(g:vim_config_dir . '/plugin/defx.nvim.rc.vim')
 endif
-
 if s:is_plugged("lightline.vim") && s:is_plugged("vim-lsp")
-  runtime! ./plugins/lightline_vim-lsp.rc.vim
+    execute 'source ' . expand(g:vim_config_dir . '/plugin/lightline_vim-lsp.rc.vim')
 endif
 
 if s:is_plugged("sonokai")

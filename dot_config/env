@@ -10,7 +10,7 @@ export HOSTNAME=$(hostname -s)
 
 ### Env {{{
 ## TERM
-export TERM="screen-256color"
+# export TERM="screen-256color"
 ## Stop alert of mail check by zsh.
 export MAILCHECK=0
 ## Stack of history by changing directory.
