@@ -24,11 +24,20 @@ export PROMPT="%F{green}%n%f%F{magenta}@%f%F{blue}%m%f%F{magenta}:%f%F{cyan}%~%f
 $HOME/.local/bin/chezmoi init --apply k5-mot
 ```
 
-rm -rfv ~/.bash_profile ~/.bashrc ~/.cache ~/.config ~/.emacs.d ~/.gitconfig ~/.minikube ~/.npm ~/.sudo_as_admin_successful ~/.vim ~/.vimrc ~/.zcompdump ~/.zshenv ~/.zshrc && cd ~/.local/share/chezmoi && git pull  && ~/.local/bin/chezmoi state delete-bucket --bucket=entryState && ~/.local/bin/chezmoi init && ~/.local/bin/chezmoi apply
-
 ## :bookmark_tabs: Note
 
-Good luck!!!
+### proxy
+
+```bash:~/.env
+export PROXY_USER="<ID>"
+export PROXY_PASS="<PASSWORD>"
+export PROXY_HOST="<HOST>"
+export PROXY_PORT="<PORT>"
+export HTTP_PROXY="http://${PROXY_USER}:${PROXY_PASS}@${PROXY_HOST}:${PROXY_PORT}"
+export HTTPS_PROXY="${HTTP_PROXY}"
+export http_proxy="${HTTP_PROXY}"
+export https_proxy="${HTTP_PROXY}"
+```
 
 ## :busts_in_silhouette: Author
 
