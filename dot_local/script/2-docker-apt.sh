@@ -6,7 +6,7 @@ fi
 
 
 ### Docker or Podman
-container_tool="podman"
+container_tool="docker"
 
 if [ "$container_tool" = "docker" ]; then
     ### Install Docker
