@@ -8,66 +8,6 @@ if (-Not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
     }
 }
 
-
-### Policy for running scripts
-Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
-Write-Output $PSVersionTable
-
-
-### Winget Packages
-$wingetpkgs = @(
-    'Microsoft.PowerShell'
-    'Microsoft.WindowsTerminal'
-    'Microsoft.VisualStudioCode'
-    'Git.Git'
-    'JanDeDobbeleer.OhMyPosh'
-    'OBSProject.OBSStudio'
-    'NickeManarin.ScreenToGif'
-    'TortoiseGit.TortoiseGit'
-    'Python.Python.3.12'
-    'OpenJS.NodeJS'
-    'vim.vim'
-    'Neovim.Neovim'
-    'Rustlang.Rustup'
-    'Docker.DockerCLI'
-    'Docker.DockerCompose'
-    'Kubernetes.minikube'
-    'Kubernetes.kubectl'
-    'eksctl.eksctl'
-    'Microsoft.VisualStudio.2022.BuildTools'
-)
-foreach ($wingetpkg in $wingetpkgs) {
-    winget install --exact --id $wingetpkg
-}
-
-
-### PowerShell Modules
-$psmodules = @(
-    'posh-git'
-    'Terminal-Icons'
-    'PSReadLine'
-    'CompletionPredictor'
-)
-Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
-foreach ($psmodule in $psmodules) {
-    Install-Module -Name $psmodule -Scope CurrentUser
-}
-
-
-### Fonts
-$fonts = @(
-    'CascadiaCode'
-    'CascadiaMono'
-    'FiraCode'
-    'FiraMono'
-    'Meslo'
-    'Noto'
-)
-foreach ($font in $fonts) {
-    oh-my-posh font install $font
-}
-
-
 ### VSCode Extensions
 $vsexts = @(
     'formulahendry.auto-rename-tag'

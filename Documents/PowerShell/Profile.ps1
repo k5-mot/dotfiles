@@ -42,14 +42,14 @@ $Env:LIB = "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSV
 ### Alias
 $profiledir = $(Get-Item $PROFILE.CurrentUserAllHosts).DirectoryName
 $scriptsdir = $(Join-Path $profiledir 'Scripts')
-$vimbindir = $(Get-ChildItem "C:\Program Files\Vim" | Sort-Object -Descending -Property Name | Select-Object -first 1).FullName
-$vimexe = Join-Path -Path $vimbindir -ChildPath "vim.exe"
-$gvimexe = Join-Path -Path $vimbindir -ChildPath "gvim.exe"
+# $vimbindir = $(Get-ChildItem "C:\Program Files\Vim" | Sort-Object -Descending -Property Name | Select-Object -first 1).FullName
+# $vimexe = Join-Path -Path $vimbindir -ChildPath "vim.exe"
+# $gvimexe = Join-Path -Path $vimbindir -ChildPath "gvim.exe"
 Set-Alias unzip Expand-Archive
 Set-Alias touch New-Item
-Set-Alias vi  "$vimexe"
-Set-Alias vim "$vimexe"
-Set-Alias gvim "$gvimexe"
+# Set-Alias vi  "$vimexe"
+# Set-Alias vim "$vimexe"
+# Set-Alias gvim "$gvimexe"
 Set-Alias Edit-Profile             $(Join-Path $scriptsdir 'Edit-Profile.ps1')
 Set-Alias Get-Timestamp            $(Join-Path $scriptsdir 'Get-Timestamp.ps1')
 Set-Alias Install-Fonts            $(Join-Path $scriptsdir 'Install-Fonts.ps1')
@@ -85,7 +85,8 @@ Get-ChildItem $loaddir | Where-Object Extension -eq ".ps1" | ForEach-Object { . 
 
 ### Oh-My-Posh
 if (Test-ExistCommand 'oh-my-posh') {
-    oh-my-posh init pwsh --config $env:POSH_THEMES_PATH/spaceship.omp.json | Invoke-Expression
+    # oh-my-posh init pwsh --config $env:POSH_THEMES_PATH/spaceship.omp.json | Invoke-Expression
+    oh-my-posh init pwsh --config $env:POSH_THEMES_PATH/jandedobbeleer.omp.json | Invoke-Expression
 }
 
 # ### PowerShell Module

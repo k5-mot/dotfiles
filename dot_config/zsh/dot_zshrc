@@ -192,8 +192,8 @@ zstyle ':vcs_info:*' actionformats "%F{cyan}$(echo "\uf7a1 ") %b|%a%f"
 # ディレクトリ選択時、最後の/を残す
 setopt no_auto_remove_slash
 # Set/unset  shell options
-setopt notify globdots correct pushdtohome cdablevars autolist
-setopt correctall autocd recexact longlistjobs
+setopt notify globdots pushdtohome cdablevars autolist
+setopt autocd recexact longlistjobs
 setopt autoresume histignoredups pushdsilent noclobber
 setopt autopushd pushdminus extendedglob rcquotes mailwarning
 setopt ignoreeof
