@@ -86,7 +86,8 @@ Get-ChildItem $loaddir | Where-Object Extension -eq ".ps1" | ForEach-Object { . 
 ### Oh-My-Posh
 if (Test-ExistCommand 'oh-my-posh') {
     # oh-my-posh init pwsh --config $env:POSH_THEMES_PATH/spaceship.omp.json | Invoke-Expression
-    oh-my-posh init pwsh --config $env:POSH_THEMES_PATH/atomic.omp.json | Invoke-Expression
+    # oh-my-posh init pwsh --config $env:POSH_THEMES_PATH/atomic.omp.json | Invoke-Expression
+    oh-my-posh init pwsh --config $env:POSH_THEMES_PATH/catppuccin.omp.json | Invoke-Expression
 }
 
 # ### PowerShell Module
