@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 gem update
 gem --version

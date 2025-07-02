@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 npm update  --global
 npm install --global --force npm

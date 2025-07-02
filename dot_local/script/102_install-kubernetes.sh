@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 ### docker-compose
 if ! command -v "docker-compose" &> /dev/null; then

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 echo "Vim Setup"
 vim +PlugUpdate +PlugUpgrade +qall
