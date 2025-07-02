@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+printf "\e[30;42;1m102_install-kubernetes.shE\e[0m\n"
+
 ### docker-compose
 if ! command -v "docker-compose" &> /dev/null; then
     sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose

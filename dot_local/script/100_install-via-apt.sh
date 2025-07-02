@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+printf "\e[30;42;1m100_install-via-apt.shE\e[0m\n"
+
 if ! command -v apt > /dev/null 2>&1; then
     exit 0
 fi
@@ -8,7 +10,8 @@ fi
 sudo apt update
 sudo apt upgrade -y
 sudo apt autoremove -y
-sudo apt install -y ca-certificates curl gnupg curl unzip zsh
+sudo apt install -y ca-certificates curl gnupg
+sudo apt install -y --no-install-recommends unzip vim tmux zsh
 sudo chsh -s /bin/zsh
 
 ### Requirements
