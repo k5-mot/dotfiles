@@ -39,7 +39,8 @@ sudo apt install -y --no-install-recommends \
 # Vim
 # https://github.com/vim/vim/blob/master/src/INSTALL
 sudo apt install -y --no-install-recommends \
-    git make clang libtool-bin libxt-dev libgtk-3-dev libpython3-dev valgrind xclip
+    git make clang libtool-bin libxt-dev libpython3-dev xclip
+#    libgtk-3-dev valgrind
 
 # Neovim
 # https://github.com/neovim/neovim/blob/master/BUILD.md#build-prerequisites
