@@ -25,7 +25,7 @@ ln -s  /mnt/c/Users/<username>/AppData/Roaming/gcloud ~/.config/gcloud
 $HOME/.local/bin/chezmoi init --apply "git@github.com:k5-mot/dotfiles.git"
 $HOME/.local/bin/chezmoi init --apply "https://github.com/k5-mot/dotfiles.git"
 
-sudo chsh -s /bin/zsh
+chsh -s $(which zsh)
 
 chezmoi state delete-bucket --bucket=entryState
 chezmoi update

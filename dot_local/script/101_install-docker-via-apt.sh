@@ -18,6 +18,8 @@ if [ "$container_tool" = "docker" ]; then
     done
 
     # Add Docker's official GPG key
+    sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1
+    sudo sysctl -w net.ipv6.conf.default.disable_ipv6=1
     sudo apt update
     sudo apt install -y ca-certificates curl gnupg
     sudo install -m 0755 -d /etc/apt/keyrings
