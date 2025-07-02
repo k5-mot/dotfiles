@@ -14,6 +14,7 @@ chezmoi update
 ```bash
 sh -c "$(curl -fsLS get.chezmoi.io)" -- -b $HOME/.local/bin
 $HOME/.local/bin/chezmoi init --apply "git@github.com:k5-mot/dotfiles.git"
+$HOME/.local/bin/chezmoi init --apply "https://github.com/k5-mot/dotfiles.git"
 chezmoi state delete-bucket --bucket=entryState
 chezmoi update
 

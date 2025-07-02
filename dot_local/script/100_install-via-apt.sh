@@ -8,8 +8,8 @@ fi
 sudo apt update
 sudo apt upgrade -y
 sudo apt autoremove -y
-sudo apt install -y build-essential git cmake pkg-config curl wget xclip
-
+sudo apt install -y build-essential git cmake pkg-config curl wget xclip zsh
+sudo chsh -s /bin/zsh
 
 ### Requirements
 
