@@ -24,7 +24,7 @@ $wingetpkgs = @(
     'TortoiseGit.TortoiseGit'
     # 'jdx.mise'
     'jqlang.jq'
-    'JesseDuffield.lazygit'
+    # 'JesseDuffield.lazygit'
     'GitHub.cli'
     # 'Python.Python.3.12'
     # 'RubyInstallerTeam.Ruby.3.2'
@@ -32,6 +32,8 @@ $wingetpkgs = @(
     # 'Rustlang.Rustup'
     # 'vim.vim'
     # 'Neovim.Neovim'
+    'astral-sh.uv'
+    # 'Volta.Volta'
     'Docker.DockerCLI'
     # 'Docker.DockerCompose'
     # 'Kubernetes.minikube'
@@ -44,7 +46,7 @@ $wingetpkgs = @(
     'Microsoft.WSL'
     'Canonical.Ubuntu'
     # 'SUSE.openSUSE.Tumbleweed'
-    'Oracle.OracleLinux.9.1'
+    # 'Oracle.OracleLinux.9.1'
 )
 foreach ($wingetpkg in $wingetpkgs) {
     winget install --exact --id $wingetpkg
