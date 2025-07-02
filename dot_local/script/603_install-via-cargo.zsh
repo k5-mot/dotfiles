@@ -4,7 +4,10 @@ rustup update
 rustup default stable
 cargo --version
 cargo install \
-    exa bat fd-find hexyl procs ripgrep sd \
-    zoxide svls texlab stylua git-delta \
-    sheldon alacritty starship zellij
+    exa bat fd-find hexyl procs ripgrep sd zoxide \
+    starship
+    # sheldon alacritty starship zellij \
+    # svls texlab stylua git-delta
+
+
 cargo install --list
