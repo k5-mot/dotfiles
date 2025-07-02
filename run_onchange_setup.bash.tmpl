@@ -5,14 +5,14 @@ export SCRIPTDIR=$HOME/.local/script
 echo $SCRIPTDIR
 
 for i in $SCRIPTDIR/*.sh ; do
-    echo $i
+    printf "\e[30;42;1m[sh] $i\e[0m\n"
     if [ -r "$i" ]; then
         sh $i
     fi
 done
 
 for i in $SCRIPTDIR/*.zsh ; do
-    echo $i
+    printf "\e[30;42;1m[zsh] $i\e[0m\n"
     if [ -r "$i" ]; then
         zsh $i
     fi

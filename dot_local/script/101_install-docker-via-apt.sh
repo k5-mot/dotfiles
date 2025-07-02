@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-printf "\e[30;42;1m101_install-docker-via-apt.shE\e[0m\n"
-
 if ! command -v apt > /dev/null 2>&1; then
     exit 0
 fi
