@@ -8,10 +8,12 @@ fi
 sudo apt update
 sudo apt upgrade -y
 sudo apt autoremove -y
-sudo apt install -y build-essential git cmake pkg-config curl wget xclip zsh cmake unzip curl
+sudo apt install -y ca-certificates curl gnupg curl unzip zsh
 sudo chsh -s /bin/zsh
 
 ### Requirements
+
+#  git cmake pkg-config curl wget xclip zsh cmake unzip curl
 
 # # Python
 # # https://github.com/pyenv/pyenv/wiki#suggested-build-environment
