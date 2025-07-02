@@ -1,6 +1,6 @@
 [tools]
 python     = "3.12"
-ruby       = "3.4"
+# ruby       = "3.4"
 node       = "22"
 rust       = "stable"
 # go         = "latest"

@@ -24,8 +24,8 @@ sudo apt install -y --no-install-recommends \
 
 # Ruby
 # https://github.com/rbenv/ruby-build/wiki#suggested-build-environment
-sudo apt install -y --no-install-recommends \
-    autoconf patch build-essential rustc libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libgmp-dev libncurses5-dev libffi-dev libgdbm6 libgdbm-dev libdb-dev uuid-dev
+# sudo apt install -y --no-install-recommends \
+#     autoconf patch build-essential rustc libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libgmp-dev libncurses5-dev libffi-dev libgdbm6 libgdbm-dev libdb-dev uuid-dev
 
 # Node.js
 # https://github.com/nodejs/node/blob/main/BUILDING.md#building-nodejs-on-supported-platforms
