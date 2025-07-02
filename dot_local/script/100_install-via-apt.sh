@@ -5,6 +5,8 @@ if ! command -v apt > /dev/null 2>&1; then
 fi
 
 ### Update
+sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1
+sudo sysctl -w net.ipv6.conf.default.disable_ipv6=1
 sudo apt update
 sudo apt upgrade -y
 sudo apt autoremove -y
