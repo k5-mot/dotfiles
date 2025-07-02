@@ -13,7 +13,6 @@ sudo apt autoremove -y
 sudo apt install -y ca-certificates curl gnupg
 sudo apt install -y --no-install-recommends unzip git wget
 sudo apt install -y --no-install-recommends vim tmux zsh
-sudo chsh -s /bin/zsh
 
 ### Requirements
 
