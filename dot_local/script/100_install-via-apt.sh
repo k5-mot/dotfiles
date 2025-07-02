@@ -52,4 +52,4 @@ sudo chsh -s /bin/zsh
 #     libutf8proc-dev libutempter0
 
 # Tools
-sudo apt install --install-suggests -y vim neovim zsh tmux
+# sudo apt install --install-suggests -y vim neovim zsh tmux
