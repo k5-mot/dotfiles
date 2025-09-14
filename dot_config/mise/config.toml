@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 [tools]
 python     = "3.12"
 # ruby       = "3.4"
@@ -13,3 +14,20 @@ github-cli = "latest"
 vim        = "latest"
 neovim     = "latest"
 tmux       = "latest"
+=======
+[tools]
+python     = "latest"
+ruby       = "latest"
+node       = "latest"
+rust       = "latest"
+go         = "latest"
+lua        = "latest"
+jq         = "latest"
+peco       = "latest"
+fzf        = "latest"
+ghq        = "latest"
+github-cli = "latest"
+vim        = "latest"
+neovim     = "latest"
+tmux       = "latest"
+>>>>>>> Stashed changes
