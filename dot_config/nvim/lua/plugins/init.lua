@@ -24,8 +24,11 @@ require("lazy").setup({
     "williamboman/mason-lspconfig.nvim",
     "neovim/nvim-lspconfig",
     {
-        "jose-elias-alvarez/null-ls.nvim",
+        "nvimtools/none-ls.nvim",
         dependencies = { "nvim-lua/plenary.nvim" }
+    },
+    {
+        "nvimtools/none-ls-extras.nvim",
     },
     "onsails/lspkind-nvim",
     "MunifTanjim/prettier.nvim",

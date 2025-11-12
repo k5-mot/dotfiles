@@ -53,7 +53,8 @@ require('mason-lspconfig').setup_handlers({
 require("null-ls").setup({
     sources = {
         require("null-ls").builtins.formatting.stylua,
-        require("null-ls").builtins.diagnostics.eslint,
+        -- Note: eslint has been moved to none-ls-extras
+        -- require("none-ls.diagnostics.eslint_d"),
         require("null-ls").builtins.completion.spell,
     },
 })
