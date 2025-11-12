@@ -72,7 +72,6 @@ require("lazy").setup({
     -- Telescope
     {
         "nvim-telescope/telescope.nvim",
-        tag = "0.1.0",
         dependencies = {
             "nvim-lua/plenary.nvim",
             "nvim-tree/nvim-web-devicons",
@@ -186,7 +185,7 @@ require("lazy").setup({
     "lukas-reineke/indent-blankline.nvim",
 
     -- Statusline
-    "kyazdani42/nvim-web-devicons",
+    "nvim-tree/nvim-web-devicons",
     {
         "lewis6991/gitsigns.nvim",
         config = function()
@@ -195,13 +194,13 @@ require("lazy").setup({
     },
     {
         "nvim-lualine/lualine.nvim",
-        dependencies = { "kyazdani42/nvim-web-devicons", optional = true },
+        dependencies = { "nvim-tree/nvim-web-devicons", optional = true },
     },
 
     -- Tabline
     {
         "romgrk/barbar.nvim",
-        dependencies = { "kyazdani42/nvim-web-devicons" },
+        dependencies = { "nvim-tree/nvim-web-devicons" },
     },
     -- {
     --     "akinsho/bufferline.nvim",
