@@ -32,17 +32,14 @@ require("lazy").setup({
     },
     "onsails/lspkind-nvim",
     "MunifTanjim/prettier.nvim",
-    -- {
-    --     "glepnir/lspsaga.nvim",
-    --     branch = "main",
-    --     config = function()
-    --         local saga = require("lspsaga")
-    --
-    --         saga.init_lsp_saga({
-    --             -- your configuration
-    --         })
-    --     end,
-    -- },
+    {
+        "nvimdev/lspsaga.nvim",
+        event = "LspAttach",
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter",
+            "nvim-tree/nvim-web-devicons"
+        }
+    },
 
     -- use 'xiyaowong/transparent.nvim'
 

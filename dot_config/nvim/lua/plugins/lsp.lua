@@ -137,6 +137,71 @@ prettier.setup({
     }
 })
 
+-- Lspsaga Configuration
+local status, lspsaga = pcall(require, "lspsaga")
+if (status) then
+    lspsaga.setup({
+        ui = {
+            border = "rounded",
+        },
+        symbol_in_winbar = {
+            enable = true,
+        },
+        lightbulb = {
+            enable = true,
+            sign = true,
+        },
+    })
+
+    -- Lspsaga keymaps
+    local keymap = vim.keymap.set
+
+    -- Lsp finder find the symbol definition implement reference
+    keymap("n", "gh", "<cmd>Lspsaga finder<CR>")
+
+    -- Code action
+    keymap({"n","v"}, "<leader>ca", "<cmd>Lspsaga code_action<CR>")
+
+    -- Rename
+    keymap("n", "gr", "<cmd>Lspsaga rename<CR>")
+
+    -- Peek Definition
+    keymap("n", "gp", "<cmd>Lspsaga peek_definition<CR>")
+
+    -- Go to Definition
+    keymap("n", "gd", "<cmd>Lspsaga goto_definition<CR>")
+
+    -- Show line diagnostics
+    keymap("n", "<leader>sl", "<cmd>Lspsaga show_line_diagnostics<CR>")
+
+    -- Show cursor diagnostic
+    keymap("n", "<leader>sc", "<cmd>Lspsaga show_cursor_diagnostics<CR>")
+
+    -- Show buffer diagnostics
+    keymap("n", "<leader>sb", "<cmd>Lspsaga show_buf_diagnostics<CR>")
+
+    -- Diagnostic jump
+    keymap("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>")
+    keymap("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>")
+
+    -- Only jump to error
+    keymap("n", "[E", function()
+        require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })
+    end)
+    keymap("n", "]E", function()
+        require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
+    end)
+
+    -- Outline
+    keymap("n","<leader>o", "<cmd>Lspsaga outline<CR>")
+
+    -- Hover Doc
+    keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>")
+
+    -- Float terminal
+    keymap({"n", "t"}, "<A-d>", "<cmd>Lspsaga term_toggle<CR>")
+end
+
 -- Reference highlight
 -- vim.cmd [[
 -- set updatetime=500
