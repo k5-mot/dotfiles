@@ -44,6 +44,10 @@ require('lspconfig').clangd.setup({
 local lspconfig = require('lspconfig')
 require('mason-lspconfig').setup_handlers({
     function(server_name)
+        -- Handle tsserver -> ts_ls rename
+        if server_name == "tsserver" then
+            server_name = "ts_ls"
+        end
         lspconfig[server_name].setup({
             capabilities = capabilities,
         })
@@ -102,7 +106,7 @@ local lsp_flags = {
 --     on_attach = on_attach,
 --     flags = lsp_flags,
 -- }
-require('lspconfig')['tsserver'].setup{
+require('lspconfig')['ts_ls'].setup{
     on_attach = on_attach,
     flags = lsp_flags,
 }
