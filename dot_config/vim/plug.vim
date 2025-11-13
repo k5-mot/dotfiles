@@ -73,17 +73,10 @@ call plug#begin(expand(s:data_dir . '/plugged'))
   endif
 
   " filer
-  if has('python3')
-    if has('nvim') && has('nvim-0.4')
-      Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
-      Plug 'kristijanhusak/defx-icons'
-      Plug 'kristijanhusak/defx-git'
-    elseif !has('nvim') && 800 <= v:version
-      Plug 'Shougo/defx.nvim'
-      Plug 'kristijanhusak/defx-icons'
-      Plug 'kristijanhusak/defx-git'
-    endif
-  endif
+  Plug 'lambdalisue/fern.vim'
+  Plug 'lambdalisue/fern-git-status.vim'
+  Plug 'lambdalisue/fern-renderer-nerdfont.vim'
+  Plug 'lambdalisue/nerdfont.vim'
 
   " icons
   Plug 'ryanoasis/vim-devicons'
@@ -100,12 +93,6 @@ call plug#begin(expand(s:data_dir . '/plugged'))
   Plug 'jiangmiao/auto-pairs'
   Plug 'godlygeek/tabular'
   Plug 'preservim/vim-markdown'
-
-  " for Vim
-  if !has('nvim')
-    Plug 'roxma/nvim-yarp'
-    Plug 'roxma/vim-hug-neovim-rpc'
-  endif
 
   " game
   " Plug 'vim-scripts/TeTrIs.vim'
@@ -139,8 +126,8 @@ endif
 if s:is_plugged("vim-lsp-ultisnips")
     execute 'source ' . expand(g:vim_config_dir . '/plugin/vim-lsp-ultisnips.rc.vim')
 endif
-if s:is_plugged("defx.nvim")
-    execute 'source ' . expand(g:vim_config_dir . '/plugin/defx.nvim.rc.vim')
+if s:is_plugged("fern.vim")
+    execute 'source ' . expand(g:vim_config_dir . '/plugin/fern.vim.rc.vim')
 endif
 if s:is_plugged("lightline.vim") && s:is_plugged("vim-lsp")
     execute 'source ' . expand(g:vim_config_dir . '/plugin/lightline_vim-lsp.rc.vim')

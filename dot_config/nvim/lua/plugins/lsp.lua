@@ -44,6 +44,10 @@ require('lspconfig').clangd.setup({
 local lspconfig = require('lspconfig')
 require('mason-lspconfig').setup_handlers({
     function(server_name)
+        -- Handle tsserver -> ts_ls rename
+        if server_name == "tsserver" then
+            server_name = "ts_ls"
+        end
         lspconfig[server_name].setup({
             capabilities = capabilities,
         })
@@ -53,7 +57,8 @@ require('mason-lspconfig').setup_handlers({
 require("null-ls").setup({
     sources = {
         require("null-ls").builtins.formatting.stylua,
-        require("null-ls").builtins.diagnostics.eslint,
+        -- Note: eslint has been moved to none-ls-extras
+        -- require("none-ls.diagnostics.eslint_d"),
         require("null-ls").builtins.completion.spell,
     },
 })
@@ -101,7 +106,7 @@ local lsp_flags = {
 --     on_attach = on_attach,
 --     flags = lsp_flags,
 -- }
-require('lspconfig')['tsserver'].setup{
+require('lspconfig')['ts_ls'].setup{
     on_attach = on_attach,
     flags = lsp_flags,
 }
@@ -131,6 +136,71 @@ prettier.setup({
         "less"
     }
 })
+
+-- Lspsaga Configuration
+local status, lspsaga = pcall(require, "lspsaga")
+if (status) then
+    lspsaga.setup({
+        ui = {
+            border = "rounded",
+        },
+        symbol_in_winbar = {
+            enable = true,
+        },
+        lightbulb = {
+            enable = true,
+            sign = true,
+        },
+    })
+
+    -- Lspsaga keymaps
+    local keymap = vim.keymap.set
+
+    -- Lsp finder find the symbol definition implement reference
+    keymap("n", "gh", "<cmd>Lspsaga finder<CR>")
+
+    -- Code action
+    keymap({"n","v"}, "<leader>ca", "<cmd>Lspsaga code_action<CR>")
+
+    -- Rename
+    keymap("n", "gr", "<cmd>Lspsaga rename<CR>")
+
+    -- Peek Definition
+    keymap("n", "gp", "<cmd>Lspsaga peek_definition<CR>")
+
+    -- Go to Definition
+    keymap("n", "gd", "<cmd>Lspsaga goto_definition<CR>")
+
+    -- Show line diagnostics
+    keymap("n", "<leader>sl", "<cmd>Lspsaga show_line_diagnostics<CR>")
+
+    -- Show cursor diagnostic
+    keymap("n", "<leader>sc", "<cmd>Lspsaga show_cursor_diagnostics<CR>")
+
+    -- Show buffer diagnostics
+    keymap("n", "<leader>sb", "<cmd>Lspsaga show_buf_diagnostics<CR>")
+
+    -- Diagnostic jump
+    keymap("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>")
+    keymap("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>")
+
+    -- Only jump to error
+    keymap("n", "[E", function()
+        require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })
+    end)
+    keymap("n", "]E", function()
+        require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
+    end)
+
+    -- Outline
+    keymap("n","<leader>o", "<cmd>Lspsaga outline<CR>")
+
+    -- Hover Doc
+    keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>")
+
+    -- Float terminal
+    keymap({"n", "t"}, "<A-d>", "<cmd>Lspsaga term_toggle<CR>")
+end
 
 -- Reference highlight
 -- vim.cmd [[
