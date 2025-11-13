@@ -1,7 +1,29 @@
 {{ if eq .chezmoi.os "windows" -}}
 
-# pwsh.exe "$env:USERPROFILE\.local\script\1_winget.ps1"
-pwsh.exe "$env:USERPROFILE\.local\script\6_dev_packages.ps1"
-pwsh.exe "$env:USERPROFILE\.local\script\7_vim.ps1"
+# Set error action preference
+$ErrorActionPreference = "Stop"
+
+$ScriptDir = Join-Path $env:USERPROFILE ".local\script"
+Write-Host "Script directory: $ScriptDir"
+
+# Check if script directory exists
+if (-not (Test-Path -Path $ScriptDir -PathType Container)) {
+    Write-Warning "Script directory does not exist: $ScriptDir"
+    exit 0
+}
+
+# Execute PowerShell scripts in numerical order
+Get-ChildItem -Path $ScriptDir -Filter "*.ps1" | Sort-Object Name | ForEach-Object {
+    Write-Host "[PowerShell] $_" -ForegroundColor Green
+    if (Test-Path -Path $_.FullName -PathType Leaf) {
+        try {
+            & pwsh.exe -NoLogo -File $_.FullName
+        }
+        catch {
+            Write-Error "Failed to execute script: $_"
+            throw
+        }
+    }
+}
 
 {{ end -}}
