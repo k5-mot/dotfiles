@@ -1,22 +1,47 @@
 {{ if eq .chezmoi.os "linux" -}}
 #!/usr/bin/env bash
 
+set -e  # Exit on error
+set -u  # Exit on undefined variable
+
 export SCRIPTDIR=$HOME/.local/script
-echo $SCRIPTDIR
+echo "Script directory: $SCRIPTDIR"
 
-for i in $SCRIPTDIR/*.sh ; do
+# Check if script directory exists
+if [ ! -d "$SCRIPTDIR" ]; then
+    echo "Warning: Script directory does not exist: $SCRIPTDIR"
+    exit 0
+fi
+
+# Execute shell scripts
+for i in "$SCRIPTDIR"/*.sh ; do
+    # Skip if no matching files
+    [ -e "$i" ] || continue
+
     printf "\e[30;42;1m[sh] $i\e[0m\n"
-    if [ -r "$i" ]; then
-        sh $i
+    if [ -r "$i" ] && [ -x "$i" ]; then
+        "$i"
+    elif [ -r "$i" ]; then
+        bash "$i"
     fi
 done
 
-for i in $SCRIPTDIR/*.zsh ; do
-    printf "\e[30;42;1m[zsh] $i\e[0m\n"
-    if [ -r "$i" ]; then
-        zsh $i
-    fi
-done
+# Execute zsh scripts (only if zsh is available)
+if command -v zsh > /dev/null 2>&1; then
+    for i in "$SCRIPTDIR"/*.zsh ; do
+        # Skip if no matching files
+        [ -e "$i" ] || continue
+
+        printf "\e[30;42;1m[zsh] $i\e[0m\n"
+        if [ -r "$i" ] && [ -x "$i" ]; then
+            "$i"
+        elif [ -r "$i" ]; then
+            zsh "$i"
+        fi
+    done
+else
+    echo "Info: zsh is not installed, skipping *.zsh scripts"
+fi
 
 
 {{ end -}}
