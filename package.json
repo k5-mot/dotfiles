@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "pnpm run test:json && pnpm run test:chezmoi",
+    "test:json": "jq empty package.json skills-lock.json dot_config/nvim/lazy-lock.json AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json AppData/Local/oh-my-posh/config.json",
+    "test:chezmoi": "chezmoi execute-template --file .chezmoi.toml.tmpl .chezmoiignore .chezmoiexternal.toml"
   },
   "keywords": [],
   "author": "",

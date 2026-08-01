@@ -17,7 +17,6 @@ fi
 ### }}}
 
 autoload -U compinit
-compinit
 compinit -d "${ZDOTCACHE}/zcompdump-${ZSH_VERSION}"
 zstyle ':completion:*' cache-path "${ZDOTCACHE}/zcompcache"
 
@@ -65,8 +64,6 @@ unsetopt list_types
 
 ## Completion {{{
 ## Highlight completion.
-autoload -U compinit
-compinit
 zstyle ':completion:*:default' menu select=1
 # 補完関数の表示を強化する
 zstyle ':completion:*' verbose yes
@@ -128,6 +125,8 @@ zstyle ':completion:*:*:(^rm):*:*files' ignored-patterns '*?.o' '*?.c~' \
 # ignore completion functions (until the _ignored completer)
 zstyle ':completion:*:functions' ignored-patterns '_*'
 
+## pecoで履歴を選び、選択したコマンドを編集バッファへ戻す。
+## 引数は受け取らず、選択した履歴文字列を返さずにZLEバッファを更新する。
 function peco-select-history() {
   BUFFER=$(\history -n -r 1 | peco --query "$LBUFFER")
   CURSOR=$#BUFFER
@@ -135,13 +134,17 @@ function peco-select-history() {
 }
 zle -N peco-select-history
 bindkey '^r' peco-select-history
+
+## cdrの履歴からpecoで移動先ディレクトリを選ぶ。
+## 引数は受け取らず、選択されたディレクトリのパスを標準出力へ返す。
 function peco-get-destination-from-cdr() {
   cdr -l | \
   sed -e 's/^[[:digit:]]*[[:blank:]]*//' | \
   peco --query "$LBUFFER"
 }
 
-### search a destination from cdr list and cd the destination
+## cdrの履歴から移動先を選び、cdコマンドとして実行する。
+## 引数は受け取らず、移動先が選ばれた場合だけZLEへ副作用を与える。
 function peco-cdr() {
   local destination="$(peco-get-destination-from-cdr)"
   if [ -n "$destination" ]; then
@@ -215,21 +218,8 @@ export PROMPT="%F{green}%n%f%F{magenta}@%f%F{blue}%m%f%F{magenta}:%f%F{cyan}%~%f
 
 
 ### Plugin Manager {{{
-if command -v zsh &>/dev/null; then
-    local ZSHVER="$(zsh --version | awk '{print $2}' | (IFS=. read -r major minor micro; printf "%2d%02d%02d" ${major:-0} ${minor:-0} ${micro:-0}))"
-fi
-if command -v git &>/dev/null; then
-    local GITVER="$(git --version | awk '{print $3}' | (IFS=. read -r major minor micro; printf "%2d%02d%02d" ${major:-0} ${minor:-0} ${micro:-0}))"
-fi
-
-if [ "${ZSHVER}" -ge 50400 ]; then
-    if [ -f "${HOME}/.config/zsh/zinit.zsh" ]; then
-        source "${HOME}/.config/zsh/zinit.zsh"
-    fi
-elif [ "${ZSHVER}" -ge 40309 -a "${GITVER}" -ge 10700 ]; then
-    if [ -f "${HOME}/.config/zsh/zplug.zsh" ]; then
-        source "${HOME}/.config/zsh/zplug.zsh"
-    fi
+if [ -f "${HOME}/.config/zsh/zinit.zsh" ]; then
+    source "${HOME}/.config/zsh/zinit.zsh"
 fi
 ### }}}
 

@@ -1,41 +1,18 @@
 # :gear: dotfiles
 
-## Installation
+## 管理対象
 
-- Windows
-```powershell
-winget install Microsoft.PowerShell Git.Git twpayne.chezmoi
-$env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
-chezmoi init --apply "git@github.com:k5-mot/dotfiles.git"
-chezmoi state delete-bucket --bucket=entryState
-chezmoi update
-```
-- Linux
-```bash
-wsl --install Ubuntu
-sh -c "$(curl -fsLS get.chezmoi.io)" -- -b $HOME/.local/bin
+- Linux: Vim、Neovim、zsh、bash、tmux、mise、git、VS Code
+- Windows: Windows Terminal、PowerShellプロファイル、VS Code、Oh My Posh
 
-cp -rf /mnt/c/Users/<username>/.ssh/ ~/.ssh/
-chmod 600 ~/.ssh/*
+## セットアップ
 
-ln -s  /mnt/c/Users/<username>/.aws/                  ~/.aws/
-ln -s  /mnt/c/Users/<username>/.azure/                ~/.azure/
-ln -s  /mnt/c/Users/<username>/AppData/Roaming/gcloud ~/.config/gcloud
+- [Linux setup](docs/manual/linux-setup.md)
+- [Windows setup](docs/manual/windows-setup.md)
+- [Repository audit](docs/manual/repository-audit.md)
 
-$HOME/.local/bin/chezmoi init --apply "git@github.com:k5-mot/dotfiles.git"
-$HOME/.local/bin/chezmoi init --apply "https://github.com/k5-mot/dotfiles.git"
-
-chsh -s $(which zsh)
-
-chezmoi state delete-bucket --bucket=entryState
-chezmoi update
-
-### Dist-Clean
-rm -rfv ~/.bash_profile ~/.bashrc ~/.cache ~/.config ~/.emacs.d ~/.gitconfig ~/.minikube ~/.npm ~/.sudo_as_admin_successful ~/.vim ~/.vimrc ~/.zcompdump ~/.zshenv ~/.zshrc ~/.local/{bin,script,state} ~/.local/share/{gem,mise,nvim,tmux,zinit}
-export PROMPT="%F{green}%n%f%F{magenta}@%f%F{blue}%m%f%F{magenta}:%f%F{cyan}%~%f
-%F{green}$%f "
-$HOME/.local/bin/chezmoi init --apply k5-mot
-```
+chezmoi適用時にパッケージ導入スクリプトを自動実行しない方針です。
+OSパッケージ、PowerShellモジュール、VS Code拡張機能、miseツールの導入はmanualの手順で明示的に実行します。
 
 ## :bookmark_tabs: Note
 

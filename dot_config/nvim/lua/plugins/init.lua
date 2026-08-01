@@ -98,16 +98,6 @@ require("lazy").setup({
             "nvim-telescope/telescope.nvim",
         }
     },
-    {
-        "nvim-telescope/telescope-packer.nvim",
-        config = function()
-            require("telescope").load_extension("packer")
-        end,
-        dependencies = {
-            "nvim-telescope/telescope-file-browser.nvim",
-            "nvim-telescope/telescope.nvim",
-        }
-    },
     -- {
     --     "nvim-telescope/telescope-symbols.nvim",
     --     config = function()

@@ -101,17 +101,8 @@ export LESS_TERMCAP_us=$(printf "\e[1;32m")
 export NVIM_PYTHON_LOG_FILE="${XDG_CACHE_HOME}/nvim/python.log"
 export NVIM_PYTHON_LOG_LEVEL=DEBUG
 
-## Tmux Plugin Manager
+## tmuxプラグインマネージャ
 export TMUX_HOME="${XDG_DATA_HOME}/tmux"
 export TMUX_PLUGIN_MANAGER_PATH="${TMUX_HOME}/plugins"
 export TPM_HOME="${TMUX_PLUGIN_MANAGER_PATH}/tpm"
-if [ ! -d "${TPM_HOME}" ]; then
-    git clone --verbose https://github.com/tmux-plugins/tpm ${TPM_HOME}
-
-    # Install plugins
-    tmux start-server
-    tmux new-session -d
-    ${TPM_HOME}/scripts/install_plugins.sh
-    tmux kill-server
-fi
 ### }}}

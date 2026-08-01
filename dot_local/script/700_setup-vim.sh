@@ -4,4 +4,4 @@ echo "Vim Setup"
 vim +PlugUpdate +PlugUpgrade +qall
 
 echo "Neovim Setup"
-nvim +PackerUpdate +qall
+nvim --headless "+Lazy! sync" +qa
