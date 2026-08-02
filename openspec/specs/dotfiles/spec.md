@@ -181,6 +181,15 @@ The repository SHALL manage development tools through mise with fixed versions i
 - **AND** project-local lint, test, format, and build tools SHALL remain outside mise unless accepted as global tools
 - **AND** Vim and tmux SHALL be installed as operating-system packages
 
+#### Scenario: mise-managed tools are prioritized
+
+- **WHEN** zsh or bash starts interactively on Linux
+- **THEN** mise-managed tools SHALL take precedence over operating-system preinstalled tools through `PATH`
+- **AND** operating-system preinstalled tools SHALL NOT be removed to enforce that precedence
+- **AND** missing mise SHALL NOT prevent the shell from starting
+- **AND** an interactive shell SHOULD show a short warning when mise is missing
+- **AND** non-interactive shells SHALL NOT emit a mise-missing warning
+
 #### Scenario: mise versions are maintained
 
 - **WHEN** Renovate runs

@@ -52,6 +52,18 @@ mise reshim
 mise current
 ```
 
+## shell integration
+
+Linuxのzshとbashでは、mise管理版のtoolをOS packageで入っている同名toolより優先します。
+OS側にプリインストール済みのNode.jsなどがあっても削除せず、`PATH`上でmise shimまたはmise activate後のtool pathを先に解決します。
+
+期待する挙動:
+
+- mise管理対象は`dot_config/mise/config.toml`の固定版へ収束する。
+- OS側に入っている同名toolは削除しない。
+- interactive shellでは、miseが未導入でもshell起動を失敗させず、短い警告で導入手順へ誘導する。
+- non-interactive shellでは、mise未導入時の警告を出さない。
+
 ## repo validation CLI
 
 repo検証用CLIは、必要な範囲から手動で実行します。

@@ -45,6 +45,14 @@ commit固定pluginは自動更新PR対象ではないため、更新する場合
 `cdr`履歴と`ghq` repository選択も`fzf`を使います。
 `peco`と`history-search-multi-word`は使いません。
 
+## mise integration
+
+zshではmise管理版のtoolをOS側に入っている同名toolより優先します。
+OS側toolは削除せず、`PATH`の優先順位でmise管理版へ収束させます。
+
+miseが未導入でもinteractive shellの起動は失敗させません。
+interactive shellでは短い警告を出し、non-interactive shellでは警告を出しません。
+
 ## manual maintenance
 
 zinit更新は月次または不具合対応時だけ実行します。

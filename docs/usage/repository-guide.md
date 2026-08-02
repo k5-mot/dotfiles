@@ -39,6 +39,11 @@ mise reshim
 mise current
 ```
 
+Linuxのzshとbashでは、mise管理版のtoolをOS側の同名toolより優先します。
+OS側のプリインストール済みtoolは削除せず、`PATH`の優先順位でmise管理版へ収束させます。
+mise未導入時もinteractive shell起動は壊さず、短い警告だけを出します。
+non-interactive shellではmise未導入警告を出しません。
+
 tmuxは通常設定を使います。
 airgap環境、初回ネットワークなし環境、プラグインなしで切り分けたい環境ではslim設定を使います。
 

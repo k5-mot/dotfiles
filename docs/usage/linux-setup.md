@@ -86,6 +86,9 @@ mise reshim
 `dot_config/mise/config.toml`では`latest`を使わず、現在の基盤ツールを固定版で管理します。
 Python、uv、Node.js、Java、Lua、Neovim、repo検証用CLIに加えて、`cargo:herdr`、`npm:hunkdiff`、`npm:git-cz`もmise管理対象に含めます。
 VimとtmuxはOS packageで導入します。
+OS側に同名toolが入っていても削除せず、zshとbashではmise管理版が`PATH`上で優先される状態にします。
+mise未導入のinteractive shellは短い警告だけを出し、shell起動自体は継続します。
+non-interactive shellではmise未導入警告を出しません。
 
 確認:
 
