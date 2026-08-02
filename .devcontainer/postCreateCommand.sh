@@ -16,6 +16,22 @@ function chown_dir() {
     fi
 }
 
+# プロジェクトごとの初期化ログを安全なファイル名へ対応付けます。
+# 引数:
+#   $1: ログ対象のプロジェクトディレクトリのパス。
+# 戻り値:
+#   成功した場合は0を返し、ログファイルのパスを標準出力へ出力します。
+function project_log_file() {
+    local project_dir=$1
+    local project_name="${project_dir//\//_}"
+
+    if [ "$project_name" = "." ]; then
+        project_name="root"
+    fi
+
+    printf "%s/%s.log" "$LOG_DIR" "$project_name"
+}
+
 # Pythonプロジェクトの依存関係をlockfileや設定ファイルに応じて導入します。
 # 引数:
 #   $1: セットアップするプロジェクトディレクトリのパス。
@@ -23,7 +39,8 @@ function chown_dir() {
 #   セットアップまたはスキップに成功した場合は0、失敗した場合は非0を返します。
 function setup_python_project() {
     local project_dir=$1
-    local log_file="${LOG_DIR}/${project_dir}.log"
+    local log_file
+    log_file="$(project_log_file "$project_dir")"
     chown_dir "${project_dir}/.venv"
     mkdir -p "${LOG_DIR}"
 
@@ -34,7 +51,7 @@ function setup_python_project() {
         printf "\e[36m- Completed to setup the poetry project.: \e[0m\e[36m${project_dir}\e[0m\n"
     elif [ -f "pyproject.toml" ]; then
         # uv プロジェクト
-        uv python install 3.14          >> "${log_file}"
+        uv python install 3.12          >> "${log_file}"
         uv sync --dev                   >> "${log_file}"
         printf "\e[36m- Completed to setup the uv(Python) project.: \e[0m\e[36m${project_dir}\e[0m\n"
     elif [ -f "requirements.txt" ]; then
@@ -54,14 +71,15 @@ function setup_python_project() {
 #   セットアップまたはスキップに成功した場合は0、失敗した場合は非0を返します。
 function setup_nodejs_project() {
     local project_dir=$1
-    local log_file="${LOG_DIR}/${project_dir}.log"
+    local log_file
+    log_file="$(project_log_file "$project_dir")"
     chown_dir "${project_dir}/node_modules"
     mkdir -p "${LOG_DIR}"
 
     pushd "$project_dir" >> "${log_file}"
     if [ -f "pnpm-lock.yaml" ]; then
         # pnpm プロジェクト
-        pnpm install     >> "${log_file}"
+        pnpm install --frozen-lockfile >> "${log_file}"
         printf "\e[36m- Completed to setup the pnpm project.: \e[0m\e[36m${project_dir}\e[0m\n"
     elif [ -f "yarn.lock" ]; then
         # yarn プロジェクト
@@ -107,6 +125,15 @@ function main() {
     chown_dir "/home/vscode/.cache"
     chown_dir "/home/vscode/.cache/uv"
     chown_dir ".serena/cache"
+
+    # repository rootの依存関係を先に初期化
+    if [ -f "package.json" ]; then
+        setup_nodejs_project "." &
+    fi
+
+    if [ -f "pyproject.toml" ]; then
+        setup_python_project "." &
+    fi
 
     # 隠しディレクトリ以外のディレクトリを探索
     for dir in */; do
