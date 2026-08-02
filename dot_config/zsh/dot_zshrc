@@ -242,16 +242,28 @@ fi
 
 ### Setup {{{
 ## mise: dev tools, env vars, task runner
-eval "$(${HOME}/.local/bin/mise activate zsh)"
+mise_available=0
+if [ -x "${HOME}/.local/bin/mise" ]; then
+  eval "$("${HOME}/.local/bin/mise" activate zsh)"
+  mise_available=1
+elif [[ -o interactive ]]; then
+  print -u2 "mise is not installed. Run docs/usage/linux-setup.md step 5."
+fi
 
 ## fzf: Ctrl-R履歴検索、Ctrl-T file選択、Alt-C directory選択
-if [ -x "$(command -v fzf)" ]; then
-  source <(fzf --zsh)
+fzf_command="$(command -v fzf 2>/dev/null)"
+if [ -n "${fzf_command}" ] && [ -x "${fzf_command}" ]; then
+  if [ "${mise_available}" -eq 1 ] || [[ "${fzf_command}" != */.local/share/mise/shims/* ]]; then
+    source <("${fzf_command}" --zsh)
+  fi
 fi
 
 ## Starship
-if [ -x "$(command -v starship)" ]; then
-  eval "$(starship init zsh)"
+starship_command="$(command -v starship 2>/dev/null)"
+if [ -n "${starship_command}" ] && [ -x "${starship_command}" ]; then
+  if [ "${mise_available}" -eq 1 ] || [[ "${starship_command}" != */.local/share/mise/shims/* ]]; then
+    eval "$("${starship_command}" init zsh)"
+  fi
 fi
 ### }}}
 
