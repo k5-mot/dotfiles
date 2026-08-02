@@ -37,6 +37,9 @@ let g:local_vimrc    = expand('$HOME/.vimrc_local')
 
 
 " Setup {{{
+" 目的: Vimが利用するキャッシュ用ディレクトリを必要な場合だけ作成する。
+" 引数: dirname 作成対象のディレクトリパス。
+" 戻り値: なし。対象ディレクトリが存在しない場合はファイルシステムを変更する。
 function! s:makedir(dirname) abort
     if !isdirectory(a:dirname)
         call mkdir(a:dirname, 'p')
@@ -59,7 +62,6 @@ execute 'source ' .  expand(g:vim_config_dir . '/common/option.vim')
 execute 'source ' .  expand(g:vim_config_dir . '/common/cache.vim')
 execute 'source ' .  expand(g:vim_config_dir . '/common/keymap.vim')
 execute 'source ' .  expand(g:vim_config_dir . '/common/func.vim')
-execute 'source ' .  expand(g:vim_config_dir . '/plug.vim')
 " }}}
 
 

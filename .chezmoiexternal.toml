@@ -1,3 +1,4 @@
+# This file is reserved for optional chezmoi external resources and is intentionally empty until a managed external dependency is needed.
 {{ if eq .chezmoi.os "linux" -}}
 
 {{ end -}}

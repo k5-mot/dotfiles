@@ -10,6 +10,9 @@
 - VS Code: `AppData/Roaming/Code/User/settings.json`
 - Oh My Posh: `AppData/Local/oh-my-posh/config.json`
 
+Linux側のVS Code設定は`dot_config/Code`で別管理します。
+VS CodeがOSごとに異なるユーザー設定ディレクトリを参照し、既定ターミナル、フォント、パス、Remote Developmentまわりの値もWindowsとLinuxで分かれるためです。
+
 ## 事前条件
 
 - Windows 11

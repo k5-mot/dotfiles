@@ -7,3 +7,4 @@ zinit self-update
 zinit update --all
 zinit delete --clean
 zinit cclear
+zinit compile --all

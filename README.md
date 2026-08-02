@@ -5,6 +5,8 @@
 - Linux: Vim、Neovim、zsh、bash、tmux、mise、git、VS Code
 - Windows: Windows Terminal、PowerShellプロファイル、VS Code、Oh My Posh
 
+Vimは軽量編集用としてプラグインレスで運用し、IDE相当の補完、LSP、UI拡張はNeovimへ寄せます。
+
 ## セットアップ
 
 - [Linux setup](docs/manual/linux-setup.md)

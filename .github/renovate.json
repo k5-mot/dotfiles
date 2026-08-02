@@ -1,0 +1,70 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended"
+  ],
+  "timezone": "Asia/Tokyo",
+  "onboarding": false,
+  "requireConfig": "optional",
+  "schedule": [
+    "before 6am on monday"
+  ],
+  "labels": [
+    "dependencies"
+  ],
+  "mise": {
+    "managerFilePatterns": [
+      "/^dot_config/mise/config\\.toml$/"
+    ]
+  },
+  "customManagers": [
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/^dot_config/tmux/tmux\\.conf$/"
+      ],
+      "matchStrings": [
+        "set -g @plugin '(?<depName>[^#']+)#(?<currentValue>[^']+)'"
+      ],
+      "datasourceTemplate": "github-tags",
+      "versioningTemplate": "semver"
+    }
+  ],
+  "packageRules": [
+    {
+      "matchManagers": [
+        "mise"
+      ],
+      "matchUpdateTypes": [
+        "major",
+        "minor"
+      ],
+      "enabled": false
+    },
+    {
+      "matchManagers": [
+        "mise"
+      ],
+      "matchUpdateTypes": [
+        "patch"
+      ],
+      "groupName": "mise patch updates"
+    },
+    {
+      "matchManagers": [
+        "custom.regex"
+      ],
+      "groupName": "TPM plugin tag updates",
+      "semanticCommitType": "chore",
+      "semanticCommitScope": "tmux"
+    },
+    {
+      "matchManagers": [
+        "github-actions"
+      ],
+      "groupName": "GitHub Actions updates",
+      "semanticCommitType": "ci",
+      "semanticCommitScope": "github-actions"
+    }
+  ]
+}
