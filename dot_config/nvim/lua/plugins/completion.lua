@@ -6,8 +6,6 @@ local status, lspkind = pcall(require, "lspkind")
 if (not status) then return end
 local status, luasnip = pcall(require, "luasnip")
 if (not status) then return end
--- local status, cmp_tabnine = pcall(require, "cmp_tabnine")
--- if (not status) then return end
 
 vim.opt.completeopt = {'menu','menuone','noselect'}
 
@@ -48,8 +46,6 @@ cmp.setup({
         -- { name = 'buffer' },
         { name = 'nvim_lua' },
         { name = 'path' },
-        -- { name = 'cmp_tabnine' },
-        -- { name = 'copilot' },
         { name = 'emoji' },
         { name = 'nvim_lsp_signature_help' },
         { name = 'treesitter' },
@@ -84,11 +80,9 @@ cmp.setup({
                     buffer      = "[Buffer]",
                     nvim_lsp    = "[LSP]",
                     nvim_lua    = "[Lua]",
-                    -- cmp_tabnine = "[Tabnine]",
                     path        = "[Path]",
                     luasnip     = "[Snippet]",
                     emoji       = "[Emoji]",
-                    -- copilot     = "[Copilot]",
                     treesitter  = "[Treesitter]",
                     nvim_lsp_signature_help = "[Help]",
                 }
@@ -97,19 +91,6 @@ cmp.setup({
                 -- in the following line:
                 vim_item.kind = lspkind.symbolic(vim_item.kind, {mode = "symbol_text"})
                 vim_item.menu = source_mapping[entry.source.name]
-                if entry.source.name == "cmp_tabnine" then
-                    local detail = (entry.completion_item.data or {}).detail
-                    vim_item.kind = ""
-                    if detail and detail:find('.*%%.*') then
-                        vim_item.kind = vim_item.kind .. ' ' .. detail
-                    else
-                        vim_item.kind = vim_item.kind .. ' ?'
-                    end
-
-                    if (entry.completion_item.data or {}).multiline then
-                        vim_item.kind = vim_item.kind .. ' ' .. '[ML]'
-                    end
-                end
                 local maxwidth = 80
                 vim_item.abbr = string.sub(vim_item.abbr, 1, maxwidth)
                 return vim_item
@@ -156,38 +137,12 @@ cmp.setup.cmdline(':', {
 
 -- }}}
 
--- Tabnine {{{
-
--- Pretty Printing Menu Items
--- local tabnine = require('cmp_tabnine.config')
--- tabnine.setup({
---     -- How many lines of buffer context to pass to TabNine
---     max_lines = 1000,
---     -- How many results to return
---     max_num_results = 20,
---     -- Sort results by returned priority
---     sort = true,
---     -- Sort results by returned priority
---     run_on_every_keystroke = true,
---     -- Indicates where the cursor will be placed in case a completion item is a snippet
---     snippet_placeholder = '..',
---     -- Which file types to ignore
---     ignored_file_types = {
---         -- default is not to ignore
---         -- uncomment to ignore in lua:
---         -- lua = true
---     },
---     -- display the prediction strength as a percentage
---     show_prediction_strength = false
--- })
-
 -- Sorting
 local compare = require('cmp.config.compare')
 cmp.setup({
     sorting = {
         priority_weight = 2,
         comparators = {
-            -- require('cmp_tabnine.compare'),
             compare.offset,
             compare.exact,
             compare.score,
@@ -199,15 +154,3 @@ cmp.setup({
         },
     },
 })
-
--- Prefetch
-local prefetch = vim.api.nvim_create_augroup("prefetch", {clear = true})
-vim.api.nvim_create_autocmd('BufRead', {
-    group = prefetch,
-    pattern = '*.py',
-    callback = function()
-        -- require('cmp_tabnine'):prefetch(vim.fn.expand('%:p'))
-    end
-})
-
--- }}}

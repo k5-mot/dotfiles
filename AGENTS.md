@@ -56,6 +56,5 @@ If a validation command is unavailable in the local environment, record that fac
 
 ## Documentation
 
-- Update task documents under `docs/tasks/` when closing an audit finding, if those ignored working notes exist locally.
 - Update `openspec/specs/dotfiles/spec.md` when the accepted behavior or policy changes.
 - Keep proposals that are not yet accepted separate from implementation changes.

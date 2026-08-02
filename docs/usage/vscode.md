@@ -1,7 +1,7 @@
 # VS Code usage
 
-VS Codeでは設定ファイルだけをchezmoiで管理し、拡張機能はmanual setupとして扱います。
-拡張リストはこの文書で管理します。
+VS Codeでは拡張機能に依存しない設定ファイルだけをchezmoiで管理します。
+拡張機能と、拡張機能に紐づくsettingsはmanual setupとして扱います。
 
 ## 管理対象
 
@@ -9,6 +9,18 @@ VS Codeでは設定ファイルだけをchezmoiで管理し、拡張機能はman
 - Linux: `dot_config/Code/User/keybindings.json`
 - Linux: `dot_config/Code/User/snippets/`
 - Windows: `AppData/Roaming/Code/User/settings.json`
+
+## 分割settings
+
+次のファイルはVS Codeから自動で読み込まれません。
+必要な設定だけをユーザーが自分の`settings.json`へ転記します。
+
+| file | 用途 |
+| --- | --- |
+| `docs/usage/vscode-settings/settings.latex.json` | LaTeX Workshop向け設定 |
+| `docs/usage/vscode-settings/settings.python.json` | Python/Jupyter向け設定 |
+| `docs/usage/vscode-settings/settings.cpp.json` | C/C++拡張向け設定 |
+| `docs/usage/vscode-settings/settings.theme.json` | theme/icon拡張向け設定 |
 
 ## Linux extensions
 

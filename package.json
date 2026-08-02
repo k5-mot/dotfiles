@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "test": "pnpm run test:json && pnpm run test:toml && pnpm run test:chezmoi && pnpm run test:openspec",
-    "test:json": "jq empty package.json skills-lock.json dot_config/nvim/lazy-lock.json AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json AppData/Local/oh-my-posh/config.json .github/renovate.json",
+    "test:json": "jq empty package.json skills-lock.json dot_config/nvim/lazy-lock.json AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json AppData/Local/oh-my-posh/config.json AppData/Roaming/Code/User/settings.json dot_config/Code/User/settings.json docs/usage/vscode-settings/settings.cpp.json docs/usage/vscode-settings/settings.latex.json docs/usage/vscode-settings/settings.python.json docs/usage/vscode-settings/settings.theme.json .github/renovate.json",
     "test:toml": "python3 -c \"import pathlib, tomllib; tomllib.loads(pathlib.Path('dot_config/mise/config.toml').read_text())\"",
     "test:chezmoi": "chezmoi execute-template --file .chezmoi.toml.tmpl .chezmoiignore .chezmoiexternal.toml",
     "test:openspec": "openspec validate --specs"

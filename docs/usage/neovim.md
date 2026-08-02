@@ -43,6 +43,17 @@ Python、Node.js/TypeScript、Java、Lua向けのLSPをNeovim側で扱います�
 plugin specの一覧は現在`plugins/init.lua`に残っています。
 今後分割する場合は、上記の責務境界に合わせます。
 
+## colorscheme
+
+colorschemeは`sonokai`を主設定にします。
+代替として`onedark.vim`と`gruvbox-material`だけを残します。
+その他のcolorscheme pluginはlockfile reviewと取得対象を増やすため採用しません。
+
+## formatter integration
+
+`none-ls.nvim`、`none-ls-extras.nvim`、`prettier.nvim`は、formatterをNeovimから呼び出すための候補として維持します。
+formatterやlinter本体のversionはproject-local toolとして管理し、Neovim plugin側へ寄せすぎない方針です。
+
 ## 同期
 
 ```bash

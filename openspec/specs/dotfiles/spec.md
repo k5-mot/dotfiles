@@ -35,7 +35,7 @@ The repository SHALL use chezmoi to manage configuration files while keeping ope
 #### Scenario: Windows PowerShell profile is loaded
 
 - **WHEN** the PowerShell profile is loaded
-- **THEN** missing optional modules SHALL be skipped instead of failing profile load
+- **THEN** configured PowerShell modules SHALL be imported with errors surfaced when they are missing
 - **AND** Oh My Posh SHALL only be initialized when the command and configured theme file are available
 - **AND** XDG environment variables SHALL be set for the Windows user profile
 
@@ -84,7 +84,6 @@ The repository SHALL make zsh and tmux plugin maintenance explicit and reviewabl
 - **THEN** the zinit bootstrap SHALL install zinit from the pinned tag
 - **AND** tagged zinit plugins SHALL be eligible for Renovate tag update pull requests
 - **AND** public zinit plugins without tags SHALL be pinned to commits when their upstream repository is accessible
-- **AND** authenticated personal zinit plugin repositories MAY remain unpinned when unauthenticated upstream access is unavailable
 
 #### Scenario: zinit maintenance is needed
 
@@ -99,6 +98,7 @@ The repository SHALL make zsh and tmux plugin maintenance explicit and reviewabl
 - **AND** TPM plugins SHALL be pinned to tags where tags are available
 - **AND** tag updates SHALL be reviewable through Renovate pull requests
 - **AND** tmux resurrect and continuum SHALL store restore state under the user cache directory
+- **AND** tmux continuum SHALL keep automatic save enabled while automatic restore remains disabled
 
 #### Scenario: tmux runs in an airgap environment
 
@@ -126,8 +126,9 @@ The repository SHALL manage development tools through mise with fixed versions i
 #### Scenario: Core tools are installed
 
 - **WHEN** a user runs `mise install`
-- **THEN** Python, uv, Node.js, Java, Rust, Lua, jq, peco, fzf, GitHub CLI, Vim, Neovim, tmux, herdr, hunkdiff, and git-cz SHALL be installable from `dot_config/mise/config.toml`
+- **THEN** Python, uv, Node.js, Java, Rust, Lua, jq, peco, fzf, GitHub CLI, Neovim, shellcheck, shfmt, stylua, taplo, actionlint, herdr, hunkdiff, and git-cz SHALL be installable from `dot_config/mise/config.toml`
 - **AND** project-local lint, test, format, and build tools SHALL remain outside mise unless accepted as global tools
+- **AND** Vim and tmux SHALL be installed as operating-system packages
 
 #### Scenario: mise versions are maintained
 
@@ -185,18 +186,19 @@ The repository SHALL document setup, maintenance, coding rules, contribution rul
 - **THEN** extension lists SHALL be documented under `docs/usage/`
 - **AND** extension installation SHALL remain a manual setup step
 - **AND** Linux and Windows VS Code settings SHALL remain separate because VS Code uses OS-specific user settings locations
+- **AND** extension-specific settings SHALL be kept as non-loaded examples under `docs/usage/vscode-settings/`
+
+#### Scenario: Editor defaults are needed
+
+- **WHEN** tools that understand EditorConfig open repository files
+- **THEN** `.editorconfig` SHALL define only minimal cross-editor defaults
+- **AND** existing files SHALL NOT be reformatted solely because EditorConfig was introduced
 
 #### Scenario: Repository terminology is needed
 
 - **WHEN** a reader needs canonical terminology for setup, tooling, plugins, or specs
 - **THEN** `CONTEXT.md` SHALL define the shared glossary
 - **AND** `CONTEXT.md` SHALL remain a glossary rather than an implementation spec
-
-#### Scenario: Task notes are written
-
-- **WHEN** audit notes, proposal notes, or implementation tracking notes are needed
-- **THEN** they MAY be kept under `docs/tasks/`
-- **AND** task notes SHALL NOT be treated as Canonical Spec until accepted content is moved into docs, rules, or OpenSpec
 
 #### Scenario: AI agent guidance is needed
 

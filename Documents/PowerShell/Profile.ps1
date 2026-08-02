@@ -38,28 +38,6 @@ function Test-CommandExists {
 
 <#
 .SYNOPSIS
-指定したPowerShellモジュールを読み込めるかを判定します。
-
-.DESCRIPTION
-未インストールのモジュールでプロファイル読み込みが失敗しないように、利用可能なモジュールだけをImport-Moduleへ渡します。
-
-.PARAMETER Name
-存在確認するPowerShellモジュール名を指定します。
-
-.OUTPUTS
-System.Boolean。モジュールが見つかればTrue、見つからなければFalseを返します。
-#>
-function Test-ModuleAvailable {
-    param(
-        [Parameter(Mandatory = $true)]
-        [string]$Name
-    )
-
-    return [bool](Get-Module -ListAvailable -Name $Name)
-}
-
-<#
-.SYNOPSIS
 ユーザー名、ホスト名、現在地、権限を含むプロンプト文字列を描画します。
 
 .DESCRIPTION
@@ -143,6 +121,6 @@ if (Test-CommandExists "oh-my-posh") {
     "Terminal-Icons"
     "PSReadLine"
     "CompletionPredictor"
-) | Where-Object { Test-ModuleAvailable $_ } | ForEach-Object {
-    Import-Module $_
+) | ForEach-Object {
+    Import-Module $_ -ErrorAction Stop
 }

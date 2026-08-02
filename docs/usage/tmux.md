@@ -50,14 +50,28 @@ xclipへのpipeは使いません。
 | `tmux-plugins/tpm` | TPM本体 | 必須 |
 | `catppuccin/tmux` | statusline theme | 視認性のため維持 |
 | `tmux-plugins/tmux-sensible` | tmuxの無難な既定値 | 維持 |
-| `tmux-plugins/tmux-yank` | copy/yank補助 | xclip非依存化後も必要性を再評価 |
-| `tmux-plugins/tmux-pain-control` | pane操作補助 | keybind重複が多ければ削除候補 |
-| `tmux-plugins/tmux-battery` | battery表示 | laptop利用が薄ければ削除候補 |
+| `tmux-plugins/tmux-yank` | copy/yank補助 | 1週間外して困らなければ削除候補 |
+| `tmux-plugins/tmux-pain-control` | pane操作補助 | 自前keybindで足りるか判断保留 |
+| `tmux-plugins/tmux-battery` | battery表示 | laptop利用を前提に維持 |
 | `tmux-plugins/tmux-resurrect` | session復元 | 維持 |
-| `tmux-plugins/tmux-continuum` | resurrect自動保存/復元 | 維持 |
+| `tmux-plugins/tmux-continuum` | resurrect自動保存 | 自動restoreは無効化して維持 |
 
 tagが無いpluginは、必要性と安定性を個別に判断します。
 必要性が薄いpluginは追加しません。
+
+## continuum
+
+continuumはsessionの自動保存だけを使います。
+自動restoreは古い作業contextや壊れたsession stateを戻す可能性があるため無効にします。
+復元が必要な場合はresurrectの操作で明示的に戻します。
+
+## tmux-pain-controlの判断基準
+
+自前keybindを残すか`tmux-pain-control`を残すかは、使う操作面で決めます。
+現在の設定にあるpane移動、resize、splitだけで足りるならpluginを外す方が単純です。
+plugin独自の細かなpane操作や既定keybindを使っているなら、自前keybindを減らしてpluginへ寄せる方が保守しやすくなります。
+
+このリポジトリでは、現時点では判断保留として両方を維持します。
 
 ## 更新
 

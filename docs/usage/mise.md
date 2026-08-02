@@ -21,12 +21,19 @@ miseはglobal toolを固定版で管理します。
 | `peco` | interactive filtering |
 | `fzf` | fuzzy finder |
 | `github-cli` | GitHub CLI |
-| `vim` | 軽量editor |
 | `neovim` | IDE editor |
-| `tmux` | terminal multiplexer |
+| `shellcheck` | shell static analysis |
+| `shfmt` | shell formatter |
+| `stylua` | Lua formatter |
+| `taplo` | TOML formatter/linter |
+| `actionlint` | GitHub Actions linter |
 | `cargo:herdr` | global CLI |
 | `npm:hunkdiff` | global CLI |
 | `npm:git-cz` | commit helper |
+
+VimとtmuxはOS packageで導入します。
+Neovimはplugin互換性の再現性を重視してmiseで固定します。
+`npm:hunkdiff`は`hunk`と`hunkdiff`の両方のcommandを提供します。
 
 ## project-local tool
 
@@ -43,6 +50,19 @@ miseには追加しません。
 mise install
 mise reshim
 mise current
+```
+
+## repo validation CLI
+
+repo検証用CLIは、必要な範囲から手動で実行します。
+formatterは既存ファイルを一括整形する前に差分を確認します。
+
+```bash
+shellcheck dot_local/bin/*.sh dot_local/script/*.sh
+find dot_local/bin dot_local/script -type f -name '*.sh' -print0 | xargs -0 shfmt -d
+stylua --check dot_config/nvim
+taplo format --check dot_config/mise/config.toml
+actionlint .github/workflows/*.yml
 ```
 
 ## update

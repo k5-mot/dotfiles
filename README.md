@@ -16,9 +16,10 @@ Vimは軽量編集用としてプラグインレスで運用し、IDE相当の�
 | Usage | [Windows setup](docs/usage/windows-setup.md) | Windows初期セットアップ |
 | Usage | [Vim](docs/usage/vim.md) | プラグインレスVim運用 |
 | Usage | [Neovim](docs/usage/neovim.md) | lazy.nvimとIDE運用 |
+| Usage | [zsh](docs/usage/zsh.md) | zinit pluginと保守運用 |
 | Usage | [tmux](docs/usage/tmux.md) | 通常設定、slim設定、TPM運用 |
 | Usage | [mise](docs/usage/mise.md) | 固定版ツールと更新方針 |
-| Usage | [VS Code extensions](docs/usage/vscode.md) | VS Code拡張リストと手動導入 |
+| Usage | [VS Code](docs/usage/vscode.md) | 拡張リスト、分割settings、手動導入 |
 | Rules | [Coding rules](docs/rules/coding-rules.md) | 言語別コーディング規約 |
 | Rules | [Contributing](CONTRIBUTING.md) | GitHub Flow、commit、tag規約 |
 | Spec | [OpenSpec canonical spec](openspec/specs/dotfiles/spec.md) | 採用済み仕様 |

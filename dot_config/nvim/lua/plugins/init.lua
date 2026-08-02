@@ -41,8 +41,6 @@ require("lazy").setup({
         }
     },
 
-    -- use 'xiyaowong/transparent.nvim'
-
     {
         "delphinus/cellwidths.nvim",
         config = function()
@@ -88,26 +86,6 @@ require("lazy").setup({
             "nvim-telescope/telescope.nvim",
         }
     },
-    {
-        "nvim-telescope/telescope-frecency.nvim",
-        config = function()
-            require("telescope").load_extension("frecency")
-        end,
-        dependencies = {
-            "kkharji/sqlite.lua",
-            "nvim-telescope/telescope.nvim",
-        }
-    },
-    -- {
-    --     "nvim-telescope/telescope-symbols.nvim",
-    --     config = function()
-    --         require("telescope").load_extension("symbols")
-    --     end,
-    --     dependencies = {
-    --         "nvim-telescope/telescope.nvim",
-    --     }
-    -- },
-
     -- Filer
     {
         "nvim-tree/nvim-tree.lua",
@@ -129,39 +107,6 @@ require("lazy").setup({
     "hrsh7th/cmp-nvim-lsp-document-symbol",
     "hrsh7th/cmp-nvim-lsp-signature-help",
     "ray-x/cmp-treesitter",
-    -- AI
-    -- "codota/tabnine-vim",
-    -- {
-    --     "tzachar/cmp-tabnine",
-    --     build = "./install.sh",
-    --     dependencies = "hrsh7th/nvim-cmp"
-    -- },
-    -- "github/copilot.vim",
-    -- "hrsh7th/cmp-copilot",
-    -- {
-    --     "zbirenbaum/copilot.lua",
-    --     event = "VimEnter",
-    --     config = function()
-    --         vim.defer_fn(function()
-    --             require("copilot").setup()
-    --         end, 100)
-    --     end,
-    -- },
-
-    -- {
-    --     "zbirenbaum/copilot-cmp",
-    --     after = { "copilot.lua" },
-    --     config = function ()
-    --         require("copilot_cmp").setup({
-    --             method = "getCompletionsCycling",
-    --             formatters = {
-    --                 label = require("copilot_cmp.format").format_label_text,
-    --                 insert_text = require("copilot_cmp.format").format_insert_text,
-    --                 preview = require("copilot_cmp.format").deindent,
-    --             },
-    --         })
-    --     end
-    -- },
 
     -- Autopairs
     {
@@ -189,31 +134,11 @@ require("lazy").setup({
         "romgrk/barbar.nvim",
         dependencies = { "nvim-tree/nvim-web-devicons" },
     },
-    -- {
-    --     "akinsho/bufferline.nvim",
-    --     tag = "v3.*",
-    --     dependencies = "kyazdani42/nvim-web-devicons"
-    -- },
-
-    -- Startup
-    -- {
-    --     "nvimdev/dashboard-nvim",
-    --     dependencies = { "nvim-tree/nvim-web-devicons" }
-    -- },
 
     -- Colorscheme
-    "dracula/vim",
-    "folke/tokyonight.nvim",
-    "sainnhe/everforest",
-    "morhetz/gruvbox",
-    "sonph/onehalf",
     "sainnhe/gruvbox-material",
     "sainnhe/sonokai",
     "joshdick/onedark.vim",
-    "arcticicestudio/nord-vim",
-    "tomasr/molokai",
-    "junegunn/seoul256.vim",
-    "cocopon/iceberg.vim",
 
     -- For tmux
     "edkolev/tmuxline.vim",
@@ -227,96 +152,6 @@ require("lazy").setup({
 })
 -- }}}
 vim.opt.termguicolors = true
--- vim.cmd('colorscheme darkblue')
--- require("bufferline").setup({})
-
--- local db = require('dashboard')
--- db.custom_header = {
--- "",
--- "",
--- "",
--- "",
--- "",
--- "██╗░░██╗███████╗░░░░░░███╗░░░███╗░█████╗░████████╗██╗░██████╗     ███╗░░██╗███████╗░█████╗░██╗░░░██╗██╗███╗░░░███╗",
--- "██║░██╔╝██╔════╝░░░░░░████╗░████║██╔══██╗╚══██╔══╝╚█║██╔════╝     ████╗░██║██╔════╝██╔══██╗██║░░░██║██║████╗░████║",
--- "█████═╝░██████╗░█████╗██╔████╔██║██║░░██║░░░██║░░░░╚╝╚█████╗░     ██╔██╗██║█████╗░░██║░░██║╚██╗░██╔╝██║██╔████╔██║",
--- "██╔═██╗░╚════██╗╚════╝██║╚██╔╝██║██║░░██║░░░██║░░░░░░░╚═══██╗     ██║╚████║██╔══╝░░██║░░██║░╚████╔╝░██║██║╚██╔╝██║",
--- "██║░╚██╗██████╔╝░░░░░░██║░╚═╝░██║╚█████╔╝░░░██║░░░░░░██████╔╝     ██║░╚███║███████╗╚█████╔╝░░╚██╔╝░░██║██║░╚═╝░██║",
--- "╚═╝░░╚═╝╚═════╝░░░░░░░╚═╝░░░░░╚═╝░╚════╝░░░░╚═╝░░░░░░╚═════╝░     ╚═╝░░╚══╝╚══════╝░╚════╝░░░░╚═╝░░░╚═╝╚═╝░░░░░╚═╝",
--- "",
--- "",
--- "",
--- "█▀▀ █░█ ▄▀█ █▄░█ █▀▀ █▀▀   █▄▄ █▀▀ █▀▀ █▀█ █▀█ █▀▀   █▄█ █▀█ █░█   █░█ ▄▀█ █░█ █▀▀   ▀█▀ █▀█ ░",
--- "█▄▄ █▀█ █▀█ █░▀█ █▄█ ██▄   █▄█ ██▄ █▀░ █▄█ █▀▄ ██▄   ░█░ █▄█ █▄█   █▀█ █▀█ ▀▄▀ ██▄   ░█░ █▄█ ▄",
--- "",
--- "",
--- }
-
--- db.custom_center = {
---     {
---         icon = '  ',
---         desc = 'Recently latest session                 ',
---         shortcut = 'SPC s l',
---         action ='SessionLoad'
---     },
---     {
---         icon = '  ',
---         desc = 'Recently opened files                   ',
---         action =  'DashboardFindHistory',
---         shortcut = 'SPC f h'
---     },
---     {
---         icon = '  ',
---         desc = 'Find  File                              ',
---         action = 'Telescope find_files find_command=rg,--hidden,--files',
---         shortcut = 'SPC f f'
---     },
---     {
---         icon = '  ',
---         desc ='File Browser                            ',
---         action =  'Telescope file_browser',
---         shortcut = 'SPC f b'
---     },
---     {
---         icon = '  ',
---         desc = 'Find  word                              ',
---         action = 'Telescope live_grep',
---         shortcut = 'SPC f w'
---     },
---     -- {
---     --     icon = '  ',
---     --     desc = 'Open Personal dotfiles                  ',
---     --     action = 'Telescope dotfiles path=' .. os.getenv('HOME') ..'Documents/GitHub/dotfiles',
---     --     shortcut = 'SPC f d'
---     -- },
--- }
-
---   local function footer()
---     -- Number of plugins
---     --local total_plugins = vim.tbl_keys(packer_plugins)
---     local datetime = os.date("%d-%m-%Y %H:%M:%S")
---     local plugins_text = "   "
---     --1  .. total_plugins
---       .. " plugins"
---       .. "   v"
---       .. vim.version().major
---       .. "."
---       .. vim.version().minor
---       .. "."
---       .. vim.version().patch
---       .. "   "
---       .. datetime
---
---     -- Quote
---     --local fortune = require "alpha.fortune"
---     --local quote = table.concat(fortune(), "\n")
---
---     return plugins_text
---     --.. "\n" .. quote
---   end
---
---
--- db.custom_footer = footer
 
 require('plugins.statusline')
 require('plugins.lsp')
@@ -327,26 +162,4 @@ require('plugins.syntax')
 require('plugins.filer')
 require('plugins.telescope')
 
-local status, transparent = pcall(require, "transparent")
-if (status) then
-
-    -- require("transparent").setup({ -- Optional, you don't have to run setup.
-    --     groups = { -- table: default groups
-    --         'Normal', 'NormalNC', 'Comment', 'Constant', 'Special', 'Identifier',
-    --         'Statement', 'PreProc', 'Type', 'Underlined', 'Todo', 'String', 'Function',
-    --         'Conditional', 'Repeat', 'Operator', 'Structure', 'LineNr', 'NonText',
-    --         'SignColumn', 'CursorLine', 'CursorLineNr', 'StatusLine', 'StatusLineNC',
-    --         'EndOfBuffer',
-    --     },
-    --     extra_groups = {}, -- table: additional groups that should be cleared
-    --     exclude_groups = {}, -- table: groups you don't want to clear
-    -- })
-end
-
--- local status, sonokai = pcall(require, 'sonokai')
--- if (not status) then return end
--- vim.cmd('colorscheme sonokai')
--- if packer_plugins['sonokai'] and packer_plugins['sonokai'].loaded then
---     -- print('Coc is Loaded!')
--- end
 vim.cmd('colorscheme sonokai')

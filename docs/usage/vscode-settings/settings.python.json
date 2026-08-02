@@ -1,0 +1,10 @@
+{
+  "[python]": {
+    "editor.tabSize": 4,
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": false,
+    "editor.formatOnType": false
+  },
+  "python.showStartPage": false,
+  "jupyter.alwaysTrustNotebooks": true
+}

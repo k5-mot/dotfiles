@@ -13,6 +13,7 @@
 Linux側のVS Code設定は`dot_config/Code`で別管理します。
 VS CodeがOSごとに異なるユーザー設定ディレクトリを参照し、既定ターミナル、フォント、パス、Remote Developmentまわりの値もWindowsとLinuxで分かれるためです。
 VS Code拡張機能は`docs/usage/vscode.md`のリストから手動導入します。
+拡張機能に紐づくsettingsは`docs/usage/vscode-settings/`にコピー用サンプルとして置き、chezmoiの読み込み対象にはしません。
 
 ## 事前条件
 
@@ -59,8 +60,8 @@ $env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";
 
 ## 3. PowerShellモジュールを入れる
 
-プロファイルは未インストールのモジュールを読み飛ばします。
-必要な補完や表示を有効にしたい場合だけ、次を実行します。
+PowerShellプロファイルは次のモジュールを強制的にimportします。
+未導入の場合はプロファイル読み込み時に失敗するため、chezmoi適用前に導入します。
 
 ```powershell
 Set-PSRepository -Name PSGallery -InstallationPolicy Trusted

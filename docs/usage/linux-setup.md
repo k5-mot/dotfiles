@@ -79,7 +79,8 @@ mise reshim
 ```
 
 `dot_config/mise/config.toml`では`latest`を使わず、現在の基盤ツールを固定版で管理します。
-Python、uv、Node.js、Java、Luaに加えて、`cargo:herdr`、`npm:hunkdiff`、`npm:git-cz`もmise管理対象に含めます。
+Python、uv、Node.js、Java、Lua、Neovim、repo検証用CLIに加えて、`cargo:herdr`、`npm:hunkdiff`、`npm:git-cz`もmise管理対象に含めます。
+VimとtmuxはOS packageで導入します。
 
 確認:
 
@@ -88,7 +89,10 @@ mise current
 uv --version
 herdr --version
 hunk --version
+hunkdiff --version
 git-cz --version
+shellcheck --version
+actionlint -version
 ```
 
 miseのパッチ更新はRenovateが`.github/renovate.json`に基づいてPR化します。
@@ -183,6 +187,7 @@ zinit compile --all
 
 更新タイミングは、月次またはzsh起動時のエラー、補完やプラグインの不具合を直したいときに限定します。
 更新後は新しいzshを開いて、プロンプト、補完、履歴検索、autosuggestionsが動くことを確認します。
+zsh pluginの一覧と固定方式は`docs/usage/zsh.md`を参照します。
 
 ## 9. Gitローカル設定を作る
 
@@ -200,6 +205,7 @@ LinuxのVS Code設定は`dot_config/Code`で、WindowsのVS Code設定は`AppDat
 VS Code本体がOSごとに参照するユーザー設定ディレクトリが異なるためです。
 また、フォント、ターミナルシェル、Remote Development、Windows Terminal連携などはOS依存の値になりやすいため、同一ファイルへ無理に寄せると片方の環境で壊れやすくなります。
 VS Code拡張機能は`docs/usage/vscode.md`のリストから手動導入します。
+拡張機能に紐づくsettingsは`docs/usage/vscode-settings/`にコピー用サンプルとして置き、chezmoiの読み込み対象にはしません。
 
 ## 11. WSLでWindows側の認証情報を使う場合
 

@@ -16,8 +16,6 @@ autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 ### End of Zinit's installer chunk
 
-# 認証が必要な個人用リポジトリは、現在の取得経路を優先する。
-zinit light k5-mot/zsh-completions
 zinit ice ver"v0.7.1"
 zinit light zsh-users/zsh-autosuggestions
 zinit ice atclone"git checkout --detach 559fee48bb74b75cec8b9887f8f3e046f01d5d8f" atpull"%atclone"
