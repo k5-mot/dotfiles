@@ -12,7 +12,14 @@ The repository SHALL use chezmoi to manage configuration files while keeping ope
 
 - **WHEN** chezmoi evaluates ignore rules for a non-Linux host
 - **THEN** Linux shell configuration such as `.bash_profile`, `.bashrc`, `.zshenv`, and `.emacs.d/` SHALL NOT be applied
+- **AND** Linux `.config/` and `.local/` managed configuration SHALL NOT be applied
 - **AND** Windows-specific `AppData` and `Documents` configuration SHALL only be applied on Windows hosts
+
+#### Scenario: Chezmoi ignores repository support files
+
+- **WHEN** chezmoi evaluates managed files
+- **THEN** repository documentation, OpenSpec files, CI configuration, devcontainer configuration, dependency lockfiles, package manifests, and test scripts SHALL NOT be applied to the target home directory
+- **AND** those files SHALL remain repository support files rather than managed configuration
 
 #### Scenario: Chezmoi templates are evaluated
 
@@ -24,6 +31,7 @@ The repository SHALL use chezmoi to manage configuration files while keeping ope
 
 - **WHEN** a Linux user applies the dotfiles with chezmoi
 - **THEN** Vim, Neovim, zsh, bash, tmux, mise, git, and VS Code configuration SHALL be managed
+- **AND** Linux support configuration for dircolors, fzshell, latexmk, Starship, local bin scripts, local maintenance scripts, Emacs init, GVim, and root `.vimrc` compatibility SHALL be managed until a removal proposal is accepted
 - **AND** package installation SHALL remain documented as manual setup steps
 
 #### Scenario: Windows configuration scope is applied
@@ -31,6 +39,7 @@ The repository SHALL use chezmoi to manage configuration files while keeping ope
 - **WHEN** a Windows user applies the dotfiles with chezmoi
 - **THEN** Windows Terminal, the minimal PowerShell profile, VS Code, and Oh My Posh configuration SHALL be managed
 - **AND** PowerShell installation helper scripts SHALL NOT be required
+- **AND** `Documents/PowerShell/Scripts` helper content SHALL NOT be managed
 
 #### Scenario: Windows PowerShell profile is loaded
 
@@ -242,6 +251,7 @@ The repository SHALL provide local and CI validation for managed configuration.
 - **WHEN** a contributor runs `pnpm test`
 - **THEN** JSON files, TOML files, and chezmoi templates SHALL be validated
 - **AND** OpenSpec specifications SHALL be validated
+- **AND** chezmoi managed-file scope SHALL be validated for Linux, Windows, and unsupported operating-system targets
 
 #### Scenario: Command-based configuration validation runs
 
@@ -263,9 +273,18 @@ The repository SHALL provide local and CI validation for managed configuration.
 #### Scenario: Devcontainer is used
 
 - **WHEN** the repository is opened in its devcontainer
-- **THEN** Node.js 22.22.2, PowerShell, jq, Vim, Neovim, zsh, and tmux SHALL be provided through devcontainer features
+- **THEN** Node.js 22.22.2, PowerShell, Python 3.12, uv, jq, Vim, Neovim, zsh, tmux, and Docker-in-Docker SHALL be provided through devcontainer features
 - **AND** the devcontainer SHALL NOT add tools through a Dockerfile
 - **AND** command-based Vim, Neovim, zsh, and tmux validation SHALL run in CI and devcontainer environments
+
+#### Scenario: Devcontainer post-create initialization runs
+
+- **WHEN** the devcontainer post-create command runs
+- **THEN** Corepack SHALL be enabled
+- **AND** the repository root SHALL install pnpm dependencies with the frozen lockfile when `package.json` is present
+- **AND** the repository root SHALL synchronize uv development dependencies with Python 3.12 when `pyproject.toml` is present
+- **AND** immediate child Node.js and Python projects SHALL be initialized according to their detected lockfiles and configuration files
+- **AND** Serena project index setup SHALL run only when the cache is not already present
 
 ### Requirement: Dependency maintenance is pull-request based
 

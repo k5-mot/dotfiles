@@ -10,6 +10,7 @@ Gitの開発規約は`CONTRIBUTING.md`に従います。
 
 LinuxではVim、Neovim、zsh、bash、tmux、mise、git、VS Codeをchezmoiで管理します。
 WindowsではWindows Terminal、PowerShellプロファイル、VS Code、Oh My Posh設定だけをchezmoiで管理し、インストール作業は`docs/usage/windows-setup.md`の手順で行います。
+docs、OpenSpec、CI、devcontainer、lockfileなどのリポジトリ運用ファイルはchezmoi適用対象にしません。
 
 基本操作:
 
@@ -20,6 +21,7 @@ chezmoi update
 pnpm test
 ```
 
+`pnpm test`はJSON/TOML/OpenSpecに加えて、chezmoi templateとOS別管理範囲を検証します。
 PowerShell profileや実際のshell/editor/tmux commandまで確認する場合は、devcontainerまたは該当commandが入ったLinux環境で追加検証します。
 
 ```bash

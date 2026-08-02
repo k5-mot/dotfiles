@@ -13,9 +13,12 @@ chezmoi適用時にインストール処理を自動実行せず、必要な操�
 - mise: `dot_config/mise/config.toml`
 - git: `dot_config/git/config`
 - VS Code: `dot_config/Code`
+- 補助設定: `dot_config/dircolors`、`dot_config/fzshell`、`dot_config/latexmk`、`dot_config/starship.toml`
+- 補助script: `dot_local/bin`、`dot_local/script`
 
 Vimは軽量編集用の設定だけを管理し、プラグインは導入しません。
 NeovimはIDE用途として`lazy.nvim`でLSP、補完、UI、colorschemeを管理します。
+Emacs init、GVim、rootの`.vimrc`は互換性維持のため現行管理対象に残しています。
 
 ## 1. 基本パッケージを入れる
 

@@ -1,5 +1,27 @@
 
 README.md
+AGENTS.md
+CONTEXT.md
+CONTRIBUTING.md
+main.py
+package.json
+pnpm-lock.yaml
+pnpm-workspace.yaml
+pyproject.toml
+skills-lock.json
+uv.lock
+.agents/
+.devcontainer/
+.editorconfig
+.git-cz.json
+.github/
+.gitignore
+.python-version
+.venv/
+docs/
+node_modules/
+openspec/
+scripts/
 
 {{ if ne .chezmoi.os "darwin" -}}
 {{ end -}}
@@ -8,6 +30,10 @@ README.md
 .bash_profile
 .bashrc
 .zshenv
+.config/
+.gvimrc
+.local/
+.vimrc
 {{ end -}}
 {{ if ne .chezmoi.os "windows" -}}
 AppData

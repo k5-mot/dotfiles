@@ -4,6 +4,7 @@
 
 - Linux: Vim、Neovim、zsh、bash、tmux、mise、git、VS Code
 - Windows: Windows Terminal、PowerShellプロファイル、VS Code、Oh My Posh
+- Linux補助設定: dircolors、fzshell、latexmk、Starship、local bin/script、Emacs/GVim互換設定
 
 Vimは軽量編集用としてプラグインレスで運用し、IDE相当の補完、LSP、UI拡張はNeovimへ寄せます。
 
