@@ -27,6 +27,8 @@ tmux source-file ~/.config/tmux/tmux.conf
 
 slim設定はTPM、GitHub clone、xclip、外部テーマpluginに依存しません。
 airgap環境、初回ネットワークなし環境、切り分け用途で使います。
+statuslineは外部theme pluginを使わず、tmux標準機能だけでCatppuccin Mochaに近い配色にします。
+window tab、hostname、username、日付、秒付き時刻を表示し、通常設定と同じ1秒間隔で更新します。
 
 ```bash
 tmux -f ~/.config/tmux/tmux.slim.conf new-session

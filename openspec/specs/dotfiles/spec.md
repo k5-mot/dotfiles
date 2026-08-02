@@ -127,11 +127,15 @@ The repository SHALL make zsh and tmux plugin maintenance explicit and reviewabl
 - **THEN** tmux SHALL NOT require TPM, GitHub access, xclip, or external theme plugins
 - **AND** keybindings SHALL remain aligned with the normal tmux configuration where practical
 - **AND** the slim configuration SHALL avoid includes that would reintroduce plugin or network dependencies
+- **AND** the slim statusline SHALL use tmux-native style settings to approximate the Catppuccin Mocha palette without an external theme plugin
+- **AND** the slim statusline SHALL show window tabs, hostname, username, date, and time with seconds
+- **AND** the slim statusline refresh interval SHALL be 1 second
 
 #### Scenario: tmux copy mode is used
 
 - **WHEN** text is copied from tmux copy mode
 - **THEN** normal and slim configurations SHALL copy into the tmux buffer with `copy-selection-and-cancel`
+- **AND** normal and slim configurations SHALL bind `Enter` in copy mode to `copy-selection-and-cancel`
 - **AND** the copy binding SHALL NOT require `xclip`
 
 #### Scenario: tmux pane operations are used
