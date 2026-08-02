@@ -283,6 +283,15 @@ The repository SHALL provide local and CI validation for managed configuration.
 
 - **WHEN** a contributor or CI runs `pnpm run test:configs`
 - **THEN** Vim, Neovim, zsh, normal tmux, and slim tmux configurations SHALL be loaded through their real commands
+- **AND** validation scripts MAY pass temporary `HOME` or XDG environment variables to tested commands for process-local isolation
+- **AND** those temporary environment variables SHALL NOT be treated as persistent shell startup configuration
+- **AND** validation scripts SHOULD resolve mise-managed command paths before changing temporary XDG variables when a mise shim would otherwise read the temporary config home
+
+#### Scenario: Shell startup environment is configured
+
+- **WHEN** persistent Linux environment variables are needed
+- **THEN** they SHALL be configured through managed shell startup or shared env files such as `dot_zshenv`, `dot_bash_profile`, and `dot_config/env`
+- **AND** test isolation environment variables SHALL NOT be promoted into managed startup files unless they are needed during normal interactive shell startup
 
 #### Scenario: CI validation runs
 

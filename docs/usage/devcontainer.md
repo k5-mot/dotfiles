@@ -70,3 +70,5 @@ pnpm run test:configs
 ```
 
 `test:configs`はNeovim plugin同期とzinit plugin読み込みを含むため、通常の`pnpm test`より時間がかかります。
+検証scriptは実HOMEを汚さないため、一時的な`HOME`やXDG環境変数を対象commandへ渡します。
+これはtest isolation用途に限り、恒久的な環境変数設定はshell startup file側で管理します。

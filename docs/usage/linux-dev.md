@@ -121,6 +121,15 @@ git diff --check
 
 Neovimのplugin構成を変更した場合は`dot_config/nvim/lazy-lock.json`を確認し、意図しないplugin更新が混ざっていないことを確認します。
 
+## 環境変数の扱い
+
+恒久的に使う環境変数は、shell startup fileか共有env設定へ寄せます。
+Linuxでは`dot_zshenv`、`dot_bash_profile`、`dot_config/env`を優先し、個人環境だけの値はchezmoi管理外の`~/.env`へ置きます。
+
+テストscriptでは、実HOMEへplugin stateや一時設定を書かないために、一時的な`HOME`やXDG環境変数を使ってよいです。
+この一時環境変数は対象commandと子processだけに渡し、永続的な設定として扱いません。
+mise shimが一時XDGを読んで誤動作しないよう、検証scriptは必要に応じて実体commandを解決してから一時環境を渡します。
+
 ## 反映と切り戻し
 
 反映前:

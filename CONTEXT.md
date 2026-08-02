@@ -35,3 +35,11 @@ _Avoid_: Proposal, task memo
 **Task memo**:
 A local working note under `docs/tasks/` used for audit notes, proposal discussion, or implementation tracking before the result becomes accepted docs or spec.
 _Avoid_: Canonical Spec, rule document
+
+**Test isolation environment**:
+A temporary `HOME` or XDG directory passed only to a validation command so editor, shell, or plugin loading can be tested without writing generated state into the real user environment.
+_Avoid_: Shell startup environment, managed configuration
+
+**Shell startup environment**:
+Persistent environment variable configuration loaded from managed shell startup files such as `.zshenv`, `.bash_profile`, and shared env files.
+_Avoid_: Test isolation environment, one-shot command environment
