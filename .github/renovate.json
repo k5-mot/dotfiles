@@ -28,6 +28,30 @@
       ],
       "datasourceTemplate": "github-tags",
       "versioningTemplate": "semver"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/^dot_config/nvim/lua/plugins/init\\.lua$/"
+      ],
+      "matchStrings": [
+        "\"--branch=(?<currentValue>v[^\"]+)\",\\s*\\n\\s*lazypath"
+      ],
+      "depNameTemplate": "folke/lazy.nvim",
+      "datasourceTemplate": "github-tags",
+      "versioningTemplate": "semver"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/^dot_config/zsh/zinit\\.zsh$/"
+      ],
+      "matchStrings": [
+        "git clone --branch=(?<currentValue>[^\\s]+) https://github\\.com/(?<depName>[^\\s]+?)\\.git",
+        "zinit ice ver\"(?<currentValue>[^\"]+)\"[^\\n]*\\n\\s*zinit light (?<depName>[^\\s#]+)"
+      ],
+      "datasourceTemplate": "github-tags",
+      "versioningTemplate": "loose"
     }
   ],
   "packageRules": [
@@ -54,9 +78,9 @@
       "matchManagers": [
         "custom.regex"
       ],
-      "groupName": "TPM plugin tag updates",
+      "groupName": "managed plugin tag updates",
       "semanticCommitType": "chore",
-      "semanticCommitScope": "tmux"
+      "semanticCommitScope": "plugins"
     },
     {
       "matchManagers": [

@@ -79,12 +79,13 @@ mise reshim
 ```
 
 `dot_config/mise/config.toml`では`latest`を使わず、現在の基盤ツールを固定版で管理します。
-Python、Node.js、Java、Luaに加えて、`cargo:herdr`、`npm:hunkdiff`、`npm:git-cz`もmise管理対象に含めます。
+Python、uv、Node.js、Java、Luaに加えて、`cargo:herdr`、`npm:hunkdiff`、`npm:git-cz`もmise管理対象に含めます。
 
 確認:
 
 ```bash
 mise current
+uv --version
 herdr --version
 hunk --version
 git-cz --version
@@ -93,6 +94,7 @@ git-cz --version
 miseのパッチ更新はRenovateが`.github/renovate.json`に基づいてPR化します。
 Renovateは`.github/workflows/renovate.yml`で毎週月曜05:00 JSTに実行します。
 メジャー更新とマイナー更新は環境差分が大きいため、自動PR対象から外しています。
+`lazy.nvim`、タグ固定済みzinitプラグイン、TPMプラグインもRenovateのタグ更新PR対象です。
 
 ## 6. VimとNeovimを確認する
 
@@ -126,6 +128,13 @@ tmux new-session
 
 ```bash
 tmux source-file ~/.config/tmux/tmux.conf
+```
+
+airgap環境やプラグイン導入を避けたい環境では、プラグインレスのslim設定を使います。
+この設定はTPM、GitHub clone、xclip、外部テーマへ依存しません。
+
+```bash
+tmux -f ~/.config/tmux/tmux.slim.conf new-session
 ```
 
 手動更新する場合は、tmux内で次を実行します。

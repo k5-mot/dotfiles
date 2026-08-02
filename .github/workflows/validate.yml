@@ -45,7 +45,9 @@ jobs:
           find dot_local/script -type f -name '*.zsh' -print0 | xargs -0 -r zsh -n
 
       - name: Validate tmux config
-        run: tmux -f /dev/null -L dotfiles-check start-server \; source-file -n dot_config/tmux/tmux.conf \; kill-server
+        run: |
+          tmux -f /dev/null -L dotfiles-check start-server \; source-file -n dot_config/tmux/tmux.conf \; kill-server
+          tmux -f /dev/null -L dotfiles-slim-check start-server \; source-file -n dot_config/tmux/tmux.slim.conf \; kill-server
 
       - name: Validate PowerShell profile
         shell: pwsh
