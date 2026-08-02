@@ -6,8 +6,8 @@
 
 - LinuxではVim、Neovim、zshを主、bashを副、tmux、mise、git、VS Codeをchezmoiで管理する。
 - WindowsではWindows Terminal、PowerShellプロファイル、VS Code、Oh My Posh設定をchezmoiで管理する。
-- WindowsのPowerShell補助スクリプトは廃棄し、インストール作業は`docs/manual/windows-setup.md`へ寄せる。
-- Linuxのパッケージ導入もchezmoi適用時には自動実行せず、`docs/manual/linux-setup.md`へ寄せる。
+- WindowsのPowerShell補助スクリプトは廃棄し、インストール作業は`docs/manuals/windows-setup.md`へ寄せる。
+- Linuxのパッケージ導入もchezmoi適用時には自動実行せず、`docs/manuals/linux-setup.md`へ寄せる。
 - プラグインマネージャはNeovimが`lazy.nvim`、zshが`zinit`、tmuxがTPM。
 - Vimは軽量編集用としてプラグインレスにする。
 - miseは`latest`を使わず固定版で管理し、`herdr`と`hunk`を追加する。
@@ -33,10 +33,12 @@
 - airgap向けにプラグインレスの`dot_config/tmux/tmux.slim.conf`を追加した。
 - miseのパッチ更新をRenovateとGitHub ActionsでPR化できるようにした。
 - GitHub ActionsでJSON、TOML、chezmoiテンプレート、shell、tmux、PowerShellプロファイルを検証するようにした。
-- `.gitconfig.local`の作成例を`docs/manual/gitconfig-local.example`に追加した。
-- リポジトリの使い方と開発環境セットアップを`docs/manual/repository-guide.md`へまとめた。
-- Python/TypeScript/Java/Bashの強制ルールを`docs/manual/coding-rules.md`へまとめた。
-- GitHub Flow、commit、tagの開発規約を`contributing.md`へまとめた。
+- `.gitconfig.local`の作成例を`docs/manuals/gitconfig-local.example`に追加した。
+- リポジトリの使い方と開発環境セットアップを`docs/manuals/repository-guide.md`へまとめた。
+- Python/TypeScript/Java/Bashの強制ルールを`docs/rules/coding-rules.md`へまとめた。
+- GitHub Flow、commit、tagの開発規約を`docs/rules/contributing.md`へまとめた。
+- 現行仕様を`openspec/specs/dotfiles/spec.md`へCanonical Specとして整理した。
+- docsを前提にAI agent向けの`AGENTS.md`を英語で追加した。
 
 ## プラグイン保守状況
 
@@ -69,7 +71,7 @@
 - 設定場所: `dot_config/zsh/dot_zshrc`、`dot_config/zsh/zinit.zsh`
 - 対応:
   - 初回起動時にzinit本体をcloneするフローは維持した。
-  - 更新と掃除は手動メンテナンスとして`docs/manual/linux-setup.md`に記載した。
+  - 更新と掃除は手動メンテナンスとして`docs/manuals/linux-setup.md`に記載した。
   - 更新タイミングは月次または不具合対応時に限定した。
   - タグがあるzinit本体と一部プラグインを`ice ver`で固定し、Renovate更新PR対象にした。
 - 残課題:
@@ -82,7 +84,7 @@
 - 対応:
   - TPMプラグインをタグ固定した。
   - Renovateのcustom regex managerと`.github/workflows/renovate.yml`でTPMプラグインタグの更新PRを作れるようにした。
-  - 手動更新タイミングと復旧手順を`docs/manual/linux-setup.md`に記載した。
+  - 手動更新タイミングと復旧手順を`docs/manuals/linux-setup.md`に記載した。
   - 復旧手順とは、更新後にtmux起動やプラグイン動作が壊れた場合、直前の固定タグへ戻すかローカルの壊れたプラグインディレクトリをバックアップ退避して固定タグから再導入する手順を指す。
   - airgap向けの`dot_config/tmux/tmux.slim.conf`を追加した。
 - 残課題:
