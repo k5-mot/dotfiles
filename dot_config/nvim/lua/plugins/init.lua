@@ -145,12 +145,14 @@ require("lazy").setup({
     },
 
     -- Colorscheme
+    {
+        "catppuccin/nvim",
+        name = "catppuccin",
+        priority = 1000,
+    },
     "sainnhe/gruvbox-material",
     "sainnhe/sonokai",
     "joshdick/onedark.vim",
-
-    -- For tmux
-    "edkolev/tmuxline.vim",
 }, {
     git = {
         timeout = 120,
@@ -173,4 +175,4 @@ require('plugins.syntax')
 require('plugins.filer')
 require('plugins.telescope')
 
-vim.cmd('colorscheme sonokai')
+vim.cmd('colorscheme catppuccin')
