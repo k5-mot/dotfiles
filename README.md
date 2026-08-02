@@ -29,6 +29,7 @@ Vimは軽量編集用としてプラグインレスで運用し、IDE相当の�
 | Glossary | [Context](CONTEXT.md) | このリポジトリの用語 |
 
 docsは手順と規約、OpenSpecは採用済み仕様を扱います。
+tooling proposalは採用判断が終わるまで設定変更とは分離します。
 chezmoi適用時にパッケージ導入スクリプトを自動実行しない方針です。
 OSパッケージ、PowerShellモジュール、VS Code拡張機能、miseツールの導入はusageの手順で明示的に実行します。
 

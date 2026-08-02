@@ -102,6 +102,9 @@ pnpm test
 pnpm run test:configs
 ```
 
+`test:configs`はNeovim plugin同期とzinit plugin読み込みを含むため、通常の`pnpm test`より時間がかかります。
+実HOMEを汚さないため、検証scriptは一時的な`HOME`やXDG環境変数を対象commandへ渡します。
+
 PowerShell profile検証:
 
 ```bash

@@ -5,6 +5,7 @@
 規約の詳細は`docs/rules/coding-rules.md`に従います。
 Gitの開発規約は`CONTRIBUTING.md`に従います。
 採用済み仕様は`openspec/specs/dotfiles/spec.md`で管理し、docsは手順と規約を説明します。
+tooling proposalは採用判断が終わるまで実装変更と分離し、設定ファイルへ直接反映しません。
 
 ## 1. このdotfilesの使い方
 
@@ -23,6 +24,7 @@ pnpm test
 
 `pnpm test`はJSON/TOML/OpenSpecに加えて、chezmoi templateとOS別管理範囲を検証します。
 PowerShell profileや実際のshell/editor/tmux commandまで確認する場合は、devcontainerまたは該当commandが入ったLinux環境で追加検証します。
+`pnpm run test:configs`はNeovim plugin同期とzinit plugin読み込みを含むため、通常の`pnpm test`より時間がかかります。
 
 ```bash
 pnpm run test:powershell
