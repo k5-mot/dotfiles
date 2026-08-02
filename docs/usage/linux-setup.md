@@ -95,6 +95,7 @@ miseのパッチ更新はRenovateが`.github/renovate.json`に基づいてPR化�
 Renovateは`.github/workflows/renovate.yml`で毎週月曜05:00 JSTに実行します。
 メジャー更新とマイナー更新は環境差分が大きいため、自動PR対象から外しています。
 `lazy.nvim`、タグ固定済みzinitプラグイン、TPMプラグインもRenovateのタグ更新PR対象です。
+miseの詳細は`docs/usage/mise.md`を参照します。
 
 ## 6. VimとNeovimを確認する
 
@@ -113,12 +114,14 @@ nvim --headless "+Lazy! sync" +qa
 
 Neovimプラグインの更新は必要なタイミングで明示的に実行します。
 通常は`lazy-lock.json`の差分をレビューできる状態で実行します。
+Vimの詳細は`docs/usage/vim.md`、Neovimの詳細は`docs/usage/neovim.md`を参照します。
 
 ## 7. tmuxプラグインを導入する
 
 tmux設定はTPM本体がない場合に自動でTPMをcloneし、プラグイン導入を実行します。
 TPMプラグインは`dot_config/tmux/tmux.conf`でタグ固定し、Renovateが更新PRを作れる形にしています。
 PR作成にはGitHub ActionsのPull Request作成権限、または`RENOVATE_TOKEN` secretが必要です。
+tmuxの詳細は`docs/usage/tmux.md`を参照します。
 
 ```bash
 tmux new-session
@@ -160,6 +163,8 @@ tmux source-file ~/.config/tmux/tmux.conf
 
 zinit本体は初回起動時に存在しなければcloneされます。
 初期化時に毎回更新や掃除を走らせる必要はありません。
+`dot_local/script/701_setup-zinit.zsh`はchezmoiの`run_` scriptではありません。
+chezmoi apply時に自動実行されるものではなく、`~/.local/script/701_setup-zinit.zsh`として配置される手動メンテナンス用scriptです。
 
 手動更新:
 
@@ -182,10 +187,10 @@ zinit compile --all
 ## 9. Gitローカル設定を作る
 
 共通設定は`dot_config/git/config`で管理し、個人情報は`~/.gitconfig.local`へ分離します。
-作成例は`docs/manuals/gitconfig-local.example`にあります。
+作成例は`docs/usage/gitconfig-local.example`にあります。
 
 ```bash
-cp "$(chezmoi source-path)/docs/manuals/gitconfig-local.example" ~/.gitconfig.local
+cp "$(chezmoi source-path)/docs/usage/gitconfig-local.example" ~/.gitconfig.local
 vim ~/.gitconfig.local
 ```
 
@@ -194,6 +199,7 @@ vim ~/.gitconfig.local
 LinuxのVS Code設定は`dot_config/Code`で、WindowsのVS Code設定は`AppData/Roaming/Code`で管理します。
 VS Code本体がOSごとに参照するユーザー設定ディレクトリが異なるためです。
 また、フォント、ターミナルシェル、Remote Development、Windows Terminal連携などはOS依存の値になりやすいため、同一ファイルへ無理に寄せると片方の環境で壊れやすくなります。
+VS Code拡張機能は`docs/usage/vscode.md`のリストから手動導入します。
 
 ## 11. WSLでWindows側の認証情報を使う場合
 

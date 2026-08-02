@@ -45,6 +45,7 @@ The repository SHALL make zsh and tmux plugin maintenance explicit and reviewabl
 - **WHEN** zsh starts and zinit is not installed
 - **THEN** the zinit bootstrap SHALL install zinit from the pinned tag
 - **AND** tagged zinit plugins SHALL be eligible for Renovate tag update pull requests
+- **AND** public zinit plugins without tags SHALL be pinned to commits when their upstream repository is accessible
 
 #### Scenario: TPM manages normal tmux plugins
 
@@ -81,17 +82,28 @@ The repository SHALL document setup, maintenance, coding rules, contribution rul
 #### Scenario: Setup guidance is needed
 
 - **WHEN** a user needs Linux setup instructions
-- **THEN** `docs/manuals/linux-setup.md` SHALL provide the procedure
+- **THEN** `docs/usage/linux-setup.md` SHALL provide the procedure
 
 #### Scenario: Windows setup guidance is needed
 
 - **WHEN** a user needs Windows setup instructions
-- **THEN** `docs/manuals/windows-setup.md` SHALL provide idempotent manual commands
+- **THEN** `docs/usage/windows-setup.md` SHALL provide idempotent manual commands
 
 #### Scenario: Development guidance is needed
 
 - **WHEN** a user needs Python, React or TypeScript, Java, Git, or CI guidance
-- **THEN** `docs/manuals/repository-guide.md`, `docs/rules/coding-rules.md`, and `docs/rules/contributing.md` SHALL provide the applicable guidance
+- **THEN** `docs/usage/repository-guide.md`, `docs/rules/coding-rules.md`, and `CONTRIBUTING.md` SHALL provide the applicable guidance
+
+#### Scenario: Tool-specific usage guidance is needed
+
+- **WHEN** a user needs Vim, Neovim, tmux, mise, or VS Code extension guidance
+- **THEN** dedicated documents under `docs/usage/` SHALL provide the applicable guidance
+
+#### Scenario: VS Code extensions are maintained
+
+- **WHEN** a user needs VS Code extensions
+- **THEN** extension lists SHALL be documented under `docs/usage/`
+- **AND** extension installation SHALL remain a manual setup step
 
 ### Requirement: Contribution rules are normative
 

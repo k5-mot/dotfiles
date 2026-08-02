@@ -12,6 +12,7 @@
 
 Linux側のVS Code設定は`dot_config/Code`で別管理します。
 VS CodeがOSごとに異なるユーザー設定ディレクトリを参照し、既定ターミナル、フォント、パス、Remote Developmentまわりの値もWindowsとLinuxで分かれるためです。
+VS Code拡張機能は`docs/usage/vscode.md`のリストから手動導入します。
 
 ## 事前条件
 

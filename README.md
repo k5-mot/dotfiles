@@ -1,4 +1,4 @@
-# :gear: dotfiles
+# dotfiles
 
 ## 管理対象
 
@@ -7,58 +7,32 @@
 
 Vimは軽量編集用としてプラグインレスで運用し、IDE相当の補完、LSP、UI拡張はNeovimへ寄せます。
 
-## セットアップ
+## ドキュメント
 
-- [Linux setup](docs/manuals/linux-setup.md)
-- [Windows setup](docs/manuals/windows-setup.md)
-- [Repository guide](docs/manuals/repository-guide.md)
-- [Coding rules](docs/rules/coding-rules.md)
-- [Contributing](docs/rules/contributing.md)
-- [Repository audit](docs/manuals/repository-audit.md)
+| 種別 | 文書 | 内容 |
+| --- | --- | --- |
+| Usage | [Repository guide](docs/usage/repository-guide.md) | 全体の使い方、開発環境、WSL、proxy |
+| Usage | [Linux setup](docs/usage/linux-setup.md) | Linux初期セットアップ |
+| Usage | [Windows setup](docs/usage/windows-setup.md) | Windows初期セットアップ |
+| Usage | [Vim](docs/usage/vim.md) | プラグインレスVim運用 |
+| Usage | [Neovim](docs/usage/neovim.md) | lazy.nvimとIDE運用 |
+| Usage | [tmux](docs/usage/tmux.md) | 通常設定、slim設定、TPM運用 |
+| Usage | [mise](docs/usage/mise.md) | 固定版ツールと更新方針 |
+| Usage | [VS Code extensions](docs/usage/vscode.md) | VS Code拡張リストと手動導入 |
+| Rules | [Coding rules](docs/rules/coding-rules.md) | 言語別コーディング規約 |
+| Rules | [Contributing](CONTRIBUTING.md) | GitHub Flow、commit、tag規約 |
+| Spec | [OpenSpec canonical spec](openspec/specs/dotfiles/spec.md) | 採用済み仕様 |
+| Glossary | [Context](CONTEXT.md) | このリポジトリの用語 |
 
+docsは手順と規約、OpenSpecは採用済み仕様を扱います。
 chezmoi適用時にパッケージ導入スクリプトを自動実行しない方針です。
-OSパッケージ、PowerShellモジュール、VS Code拡張機能、miseツールの導入はmanualの手順で明示的に実行します。
+OSパッケージ、PowerShellモジュール、VS Code拡張機能、miseツールの導入はusageの手順で明示的に実行します。
 
-## :bookmark_tabs: Note
-
-
-```powershell
- wsl --install Ubuntu
-ダウンロードしています: Ubuntu
-インストールしています: Ubuntu
-ディストリビューションが正常にインストールされました。'wsl.exe -d Ubuntu' を使用して起動できます
-Ubuntu を起動しています...
-Provisioning the new WSL instance Ubuntu
-This might take a while...
-Create a default Unix user account: user
-New password:
-Retype new password:
-passwd: password updated successfully
-To run a command as administrator (user "root"), use "sudo <command>".
-See "man sudo_root" for details.
-
-user@host:/mnt/c/Users/user$
-
-```
-
-### proxy
-
-```bash:~/.env
-export PROXY_USER="<ID>"
-export PROXY_PASS="<PASSWORD>"
-export PROXY_HOST="<HOST>"
-export PROXY_PORT="<PORT>"
-export HTTP_PROXY="http://${PROXY_USER}:${PROXY_PASS}@${PROXY_HOST}:${PROXY_PORT}"
-export HTTPS_PROXY="${HTTP_PROXY}"
-export http_proxy="${HTTP_PROXY}"
-export https_proxy="${HTTP_PROXY}"
-```
-
-## :busts_in_silhouette: Author
+## Author
 
 - [k5-mot](https://github.com/k5-mot/)
 
-## :shield: License
+## License
 
 Copyright (c) 2020-2022 [k5-mot](https://github.com/k5-mot/) All Rights Reserved.
 

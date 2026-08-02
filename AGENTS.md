@@ -4,11 +4,11 @@ This repository is a chezmoi-managed dotfiles project. The documents under `docs
 
 ## Read First
 
-- Use `docs/manuals/repository-guide.md` for the overall workflow and language-specific development setup.
-- Use `docs/manuals/linux-setup.md` for Linux setup and maintenance procedures.
-- Use `docs/manuals/windows-setup.md` for Windows setup. Windows installation is documented as manual, idempotent steps rather than executable setup scripts.
+- Use `docs/usage/repository-guide.md` for the overall workflow, language-specific development setup, WSL notes, and proxy examples.
+- Use `docs/usage/linux-setup.md` for Linux setup and maintenance procedures.
+- Use `docs/usage/windows-setup.md` for Windows setup. Windows installation is documented as manual, idempotent steps rather than executable setup scripts.
 - Use `docs/rules/coding-rules.md` for language and documentation rules.
-- Use `docs/rules/contributing.md` for branch, commit, and tag rules.
+- Use `CONTRIBUTING.md` for branch, commit, and tag rules.
 - Use `openspec/specs/dotfiles/spec.md` as the canonical product specification.
 
 ## Scope
@@ -32,7 +32,7 @@ This repository is a chezmoi-managed dotfiles project. The documents under `docs
 
 ## Git Rules
 
-- Commit messages must follow `docs/rules/contributing.md`.
+- Commit messages must follow `CONTRIBUTING.md`.
 - Use Japanese gitmoji Conventional Commits.
 - Keep each commit to one logical change.
 - Do not commit work in progress.
@@ -56,6 +56,6 @@ If a validation command is unavailable in the local environment, record that fac
 
 ## Documentation
 
-- Update `docs/manuals/repository-audit.md` when closing an audit finding.
+- Update task documents under `docs/tasks/` when closing an audit finding, if those ignored working notes exist locally.
 - Update `openspec/specs/dotfiles/spec.md` when the accepted behavior or policy changes.
 - Keep proposals that are not yet accepted separate from implementation changes.

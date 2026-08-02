@@ -3,11 +3,13 @@
 このガイドは、このdotfilesを適用した環境で開発リポジトリを作るときの標準手順です。
 個別プロジェクトの事情がある場合も、ここから外れる理由をREADMEかADRに残します。
 規約の詳細は`docs/rules/coding-rules.md`に従います。
+Gitの開発規約は`CONTRIBUTING.md`に従います。
+採用済み仕様は`openspec/specs/dotfiles/spec.md`で管理し、docsは手順と規約を説明します。
 
 ## 1. このdotfilesの使い方
 
 LinuxではVim、Neovim、zsh、bash、tmux、mise、git、VS Codeをchezmoiで管理します。
-WindowsではWindows Terminal、PowerShellプロファイル、VS Code、Oh My Posh設定だけをchezmoiで管理し、インストール作業は`docs/manuals/windows-setup.md`の手順で行います。
+WindowsではWindows Terminal、PowerShellプロファイル、VS Code、Oh My Posh設定だけをchezmoiで管理し、インストール作業は`docs/usage/windows-setup.md`の手順で行います。
 
 基本操作:
 
@@ -32,6 +34,16 @@ airgap環境、初回ネットワークなし環境、プラグインなしで�
 ```bash
 tmux -f ~/.config/tmux/tmux.slim.conf new-session
 ```
+
+global toolとproject-local toolの境界は`CONTEXT.md`の用語に従います。
+global toolはmiseで管理し、project-local toolは各プロジェクトのlockfileで管理します。
+
+| 分類 | 管理場所 | 例 |
+| --- | --- | --- |
+| global tool | `dot_config/mise/config.toml` | `uv`、`git-cz`、`herdr`、`hunkdiff` |
+| project-local tool | 各プロジェクトのlockfile | `ruff`、`pytest`、`taskipy`、`ty`、`vite`、`vitest`、`playwright` |
+| managed plugin | editor/shell/tmux設定 | `lazy.nvim` plugin、zinit plugin、TPM plugin |
+| manual setup | `docs/usage/` | OS package、PowerShell module、VS Code extension |
 
 ## 2. Python開発
 
@@ -217,7 +229,7 @@ Javaのコーディングルール:
 
 ## 5. Gitとコントリビューション
 
-GitHub Flow、commit message、commit粒度、tag戦略は`docs/rules/contributing.md`に従います。
+GitHub Flow、commit message、commit粒度、tag戦略は`CONTRIBUTING.md`に従います。
 commit作成はgit-czを使います。
 
 ```bash
@@ -238,3 +250,33 @@ git-cz
 
 ローカルでは`check`タスクを用意し、CIと同じ検証を1コマンドで再現できるようにします。
 このdotfiles自体は`.github/workflows/validate.yml`で設定ファイルを検証し、`.github/workflows/renovate.yml`で管理ツールの更新PRを作ります。
+
+## 7. WSL
+
+Windows上でWSLを使う場合は、Windows側でUbuntuを導入してからLinux setupを実行します。
+
+```powershell
+wsl --install Ubuntu
+```
+
+Ubuntu初回起動時にLinuxユーザー名とpasswordを設定します。
+その後、WSL内で`docs/usage/linux-setup.md`の手順を実行します。
+
+Windows側の認証情報をWSLから使う場合は、必要なものだけを個別にリンクします。
+既存ファイルを上書きする前に、リンク先と所有権を確認します。
+
+## 8. proxy
+
+proxy環境では、必要に応じて`~/.env`などのchezmoi管理外ファイルへ環境変数を置きます。
+credentialをこのリポジトリへcommitしてはいけません。
+
+```bash
+export PROXY_USER="<ID>"
+export PROXY_PASS="<PASSWORD>"
+export PROXY_HOST="<HOST>"
+export PROXY_PORT="<PORT>"
+export HTTP_PROXY="http://${PROXY_USER}:${PROXY_PASS}@${PROXY_HOST}:${PROXY_PORT}"
+export HTTPS_PROXY="${HTTP_PROXY}"
+export http_proxy="${HTTP_PROXY}"
+export https_proxy="${HTTP_PROXY}"
+```
