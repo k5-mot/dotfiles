@@ -1,20 +1,61 @@
 {
-  "name": "dotfiles",
-  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
+  "name": "devbox",
+  "image": "mcr.microsoft.com/devcontainers/base:noble",
+  "runArgs": [],
   "features": {
-    "ghcr.io/devcontainers/features/node:1": {
+    "ghcr.io/rocker-org/devcontainer-features/apt-packages:1": {
+      "packages": "curl,wget,git,jq,ca-certificates,build-essential,ripgrep,vim,neovim,zsh,tmux"
+    },
+    "ghcr.io/devcontainers/features/docker-in-docker:4": {},
+    "ghcr.io/devcontainers/features/node:2": {
       "version": "22.22.2"
     },
-    "ghcr.io/devcontainers/features/powershell:1": {}
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.12"
+    },
+    "ghcr.io/devcontainers/features/powershell:2": {},
+    "ghcr.io/devcontainer-community/devcontainer-features/astral.sh-uv:1": {}
   },
-  "postCreateCommand": "corepack enable && pnpm install --frozen-lockfile",
+  "postCreateCommand": "bash ./.devcontainer/postCreateCommand.sh",
+  "postStartCommand": "uname -a",
+  "mounts": [
+    "source=${localEnv:HOME}/.codex,target=/home/vscode/.codex,type=bind,consistency=cached",
+    "source=${localWorkspaceFolderBasename}-serena-cache,target=${containerWorkspaceFolder}/.serena/cache,type=volume",
+    "source=${localWorkspaceFolderBasename}-pnpm-cache,target=${containerWorkspaceFolder}/.pnpm-store,type=volume",
+    "source=${localWorkspaceFolderBasename}-uv-cache,target=/home/vscode/.cache/uv,type=volume"
+  ],
   "customizations": {
     "vscode": {
       "extensions": [
         "github.copilot",
         "github.copilot-chat",
-        "ms-vscode-remote.remote-containers"
-      ]
+        "openai.chatgpt",
+        "oxc.oxc-vscode",
+        "xabikos.JavaScriptSnippets",
+        "crystal-spider.jsdoc-generator",
+        "formulahendry.auto-rename-tag",
+        "formulahendry.auto-close-tag",
+        "dsznajder.es7-react-js-snippets",
+        "wix.vscode-import-cost",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-python.debugpy",
+        "ms-python.vscode-python-envs",
+        "charliermarsh.ruff",
+        "davidanson.vscode-markdownlint",
+        "yzhang.markdown-all-in-one",
+        "bierner.markdown-mermaid",
+        "pmcxs.vscode-mindmap",
+        "tamasfe.even-better-toml",
+        "redhat.vscode-yaml"
+      ],
+      "settings": {
+        "editor.codeActionsOnSave": {
+          "source.fixAll.oxc": "always"
+        },
+        "editor.defaultFormatter": "oxc.oxc-vscode",
+        "editor.formatOnSave": true
+      }
     }
   }
 }

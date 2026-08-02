@@ -20,7 +20,7 @@ Vimは軽量編集用としてプラグインレスで運用し、IDE相当の�
 | Usage | [tmux](docs/usage/tmux.md) | 通常設定、slim設定、TPM運用 |
 | Usage | [mise](docs/usage/mise.md) | 固定版ツールと更新方針 |
 | Usage | [VS Code](docs/usage/vscode.md) | 拡張リスト、分割settings、手動導入 |
-| Usage | [Devcontainer](docs/usage/devcontainer.md) | featuresのみのPowerShell検証環境 |
+| Usage | [Devcontainer](docs/usage/devcontainer.md) | featuresのみの設定検証環境 |
 | Rules | [Coding rules](docs/rules/coding-rules.md) | 言語別コーディング規約 |
 | Rules | [Contributing](CONTRIBUTING.md) | GitHub Flow、commit、tag規約 |
 | Spec | [OpenSpec canonical spec](openspec/specs/dotfiles/spec.md) | 採用済み仕様 |
