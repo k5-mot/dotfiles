@@ -9,12 +9,12 @@ Vimは軽量編集用としてプラグインレスで運用し、IDE相当の�
 
 ## セットアップ
 
-- [Linux setup](docs/manual/linux-setup.md)
-- [Windows setup](docs/manual/windows-setup.md)
-- [Repository guide](docs/manual/repository-guide.md)
-- [Coding rules](docs/manual/coding-rules.md)
-- [Contributing](contributing.md)
-- [Repository audit](docs/manual/repository-audit.md)
+- [Linux setup](docs/manuals/linux-setup.md)
+- [Windows setup](docs/manuals/windows-setup.md)
+- [Repository guide](docs/manuals/repository-guide.md)
+- [Coding rules](docs/rules/coding-rules.md)
+- [Contributing](docs/rules/contributing.md)
+- [Repository audit](docs/manuals/repository-audit.md)
 
 chezmoi適用時にパッケージ導入スクリプトを自動実行しない方針です。
 OSパッケージ、PowerShellモジュール、VS Code拡張機能、miseツールの導入はmanualの手順で明示的に実行します。

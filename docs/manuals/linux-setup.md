@@ -182,10 +182,10 @@ zinit compile --all
 ## 9. Gitローカル設定を作る
 
 共通設定は`dot_config/git/config`で管理し、個人情報は`~/.gitconfig.local`へ分離します。
-作成例は`docs/manual/gitconfig-local.example`にあります。
+作成例は`docs/manuals/gitconfig-local.example`にあります。
 
 ```bash
-cp "$(chezmoi source-path)/docs/manual/gitconfig-local.example" ~/.gitconfig.local
+cp "$(chezmoi source-path)/docs/manuals/gitconfig-local.example" ~/.gitconfig.local
 vim ~/.gitconfig.local
 ```
 

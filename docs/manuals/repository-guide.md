@@ -2,12 +2,12 @@
 
 このガイドは、このdotfilesを適用した環境で開発リポジトリを作るときの標準手順です。
 個別プロジェクトの事情がある場合も、ここから外れる理由をREADMEかADRに残します。
-規約の詳細は`docs/manual/coding-rules.md`に従います。
+規約の詳細は`docs/rules/coding-rules.md`に従います。
 
 ## 1. このdotfilesの使い方
 
 LinuxではVim、Neovim、zsh、bash、tmux、mise、git、VS Codeをchezmoiで管理します。
-WindowsではWindows Terminal、PowerShellプロファイル、VS Code、Oh My Posh設定だけをchezmoiで管理し、インストール作業は`docs/manual/windows-setup.md`の手順で行います。
+WindowsではWindows Terminal、PowerShellプロファイル、VS Code、Oh My Posh設定だけをchezmoiで管理し、インストール作業は`docs/manuals/windows-setup.md`の手順で行います。
 
 基本操作:
 
@@ -217,7 +217,7 @@ Javaのコーディングルール:
 
 ## 5. Gitとコントリビューション
 
-GitHub Flow、commit message、commit粒度、tag戦略は`contributing.md`に従います。
+GitHub Flow、commit message、commit粒度、tag戦略は`docs/rules/contributing.md`に従います。
 commit作成はgit-czを使います。
 
 ```bash
