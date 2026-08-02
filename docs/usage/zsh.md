@@ -27,7 +27,6 @@ chezmoiの`run_` script名ではないため、`chezmoi apply`では自動実行
 | `zdharma-continuum/fast-syntax-highlighting` | tag | command line syntax highlight | 維持 |
 | `zdharma-continuum/history-search-multi-word` | commit | 複数単語での履歴検索 | 履歴検索を使わないなら削除候補 |
 | `supercrabtree/k` | tag | directory listing補助 | `ls`/`eza`などで足りるなら削除候補 |
-| `b4b4r07/emoji-cli` | commit | emoji検索と挿入用CLI | 使用頻度が低ければ削除候補 |
 | `tj/git-extras` | tag | Git補助command集 | 使うcommandが明確なら維持 |
 
 ## tag固定とcommit固定

@@ -26,8 +26,6 @@ zinit ice atclone"git checkout --detach 55d8e061d52f4aa26aac8915d920d3b4f5649429
 zinit light zdharma-continuum/history-search-multi-word
 zinit ice ver"0.0.5"
 zinit light supercrabtree/k
-zinit ice atclone"git checkout --detach 0fbb2e48e07218c5a2776100a4c708b21cb06688" atpull"%atclone"
-zinit light b4b4r07/emoji-cli
 # zinit light mnowotnik/fzshell
 zinit ice ver"7.5.0" as"program" pick"$ZPFX/bin/git-*" make"PREFIX=$ZPFX"
 zinit light tj/git-extras
