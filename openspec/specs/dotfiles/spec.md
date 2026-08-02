@@ -108,6 +108,14 @@ The repository SHALL make zsh and tmux plugin maintenance explicit and reviewabl
 - **AND** tagged zinit plugins SHALL be eligible for Renovate tag update pull requests
 - **AND** public zinit plugins without tags SHALL be pinned to commits when their upstream repository is accessible
 
+#### Scenario: zsh history search uses fzf
+
+- **WHEN** zsh runs as the user's interactive shell
+- **THEN** `fzf --zsh` SHALL provide `Ctrl-R` history search after mise activates the shell environment
+- **AND** `zsh-autosuggestions` SHALL provide inline suggestions rather than interactive history search
+- **AND** `cdr` history and `ghq` repository selection SHALL use `fzf`
+- **AND** `peco` and `history-search-multi-word` SHALL NOT be used for zsh interactive filtering
+
 #### Scenario: zinit maintenance is needed
 
 - **WHEN** zinit self-update, plugin update, cleaning, or compilation is needed
@@ -166,7 +174,7 @@ The repository SHALL manage development tools through mise with fixed versions i
 #### Scenario: Core tools are installed
 
 - **WHEN** a user runs `mise install`
-- **THEN** Python, uv, Node.js, Java, Rust, Lua, jq, peco, fzf, GitHub CLI, Neovim, shellcheck, shfmt, stylua, taplo, actionlint, herdr, hunkdiff, and git-cz SHALL be installable from `dot_config/mise/config.toml`
+- **THEN** Python, uv, Node.js, Java, Rust, Lua, jq, fzf, GitHub CLI, Neovim, shellcheck, shfmt, stylua, taplo, actionlint, herdr, hunkdiff, and git-cz SHALL be installable from `dot_config/mise/config.toml`
 - **AND** project-local lint, test, format, and build tools SHALL remain outside mise unless accepted as global tools
 - **AND** Vim and tmux SHALL be installed as operating-system packages
 

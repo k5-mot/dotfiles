@@ -24,7 +24,6 @@ chezmoiの`run_` script名ではないため、`chezmoi apply`では自動実行
 | --- | --- | --- | --- |
 | `zsh-users/zsh-autosuggestions` | tag | 入力履歴に基づくautosuggestion | 維持 |
 | `zdharma-continuum/fast-syntax-highlighting` | tag | command line syntax highlight | 維持 |
-| `zdharma-continuum/history-search-multi-word` | commit | 複数単語での履歴検索 | 履歴検索を使わないなら削除候補 |
 | `supercrabtree/k` | tag | directory listing補助 | `ls`/`eza`などで足りるなら削除候補 |
 | `tj/git-extras` | tag | Git補助command集 | 使うcommandが明確なら維持 |
 
@@ -35,6 +34,16 @@ Renovateはtag固定のpluginを更新PR対象にします。
 
 tagがないpublic pluginはcommitへ固定します。
 commit固定pluginは自動更新PR対象ではないため、更新する場合はupstreamを確認してcommitを明示的に差し替えます。
+
+## fzf integration
+
+履歴検索とinteractive filteringは`fzf`へ寄せます。
+
+`dot_config/zsh/dot_zshrc`は`mise activate zsh`の後で`fzf --zsh`を読み込みます。
+`Ctrl-R`は`fzf`の履歴検索に割り当て、`zsh-autosuggestions`はinline suggestionだけを担当します。
+
+`cdr`履歴と`ghq` repository選択も`fzf`を使います。
+`peco`と`history-search-multi-word`は使いません。
 
 ## manual maintenance
 
@@ -53,4 +62,4 @@ zinit cclear
 zinit compile --all
 ```
 
-更新後は新しいzshを開き、prompt、completion、history search、autosuggestionが動くことを確認します。
+更新後は新しいzshを開き、prompt、completion、fzf history search、autosuggestionが動くことを確認します。

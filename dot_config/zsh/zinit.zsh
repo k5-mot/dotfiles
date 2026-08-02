@@ -20,8 +20,6 @@ zinit ice ver"v0.7.1"
 zinit light zsh-users/zsh-autosuggestions
 zinit ice ver"v1.56"
 zinit light zdharma-continuum/fast-syntax-highlighting
-zinit ice atclone"git checkout --detach 55d8e061d52f4aa26aac8915d920d3b4f5649429" atpull"%atclone"
-zinit light zdharma-continuum/history-search-multi-word
 zinit ice ver"0.0.5"
 zinit light supercrabtree/k
 # zinit light mnowotnik/fzshell

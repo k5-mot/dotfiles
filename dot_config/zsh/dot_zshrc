@@ -125,28 +125,20 @@ zstyle ':completion:*:*:(^rm):*:*files' ignored-patterns '*?.o' '*?.c~' \
 # ignore completion functions (until the _ignored completer)
 zstyle ':completion:*:functions' ignored-patterns '_*'
 
-## pecoで履歴を選び、選択したコマンドを編集バッファへ戻す。
-## 引数は受け取らず、選択した履歴文字列を返さずにZLEバッファを更新する。
-function peco-select-history() {
-  BUFFER=$(\history -n -r 1 | peco --query "$LBUFFER")
-  CURSOR=$#BUFFER
-  zle clear-screen
-}
-zle -N peco-select-history
-bindkey '^r' peco-select-history
-
-## cdrの履歴からpecoで移動先ディレクトリを選ぶ。
-## 引数は受け取らず、選択されたディレクトリのパスを標準出力へ返す。
-function peco-get-destination-from-cdr() {
+## cdrの履歴からfzfで移動先ディレクトリを選ぶ。
+## 引数: なし。
+## 戻り値: 選択時は0、未選択またはfzf失敗時は非0を返します。
+function fzf-get-destination-from-cdr() {
   cdr -l | \
   sed -e 's/^[[:digit:]]*[[:blank:]]*//' | \
-  peco --query "$LBUFFER"
+  fzf --query "$LBUFFER" --select-1 --exit-0
 }
 
-## cdrの履歴から移動先を選び、cdコマンドとして実行する。
-## 引数は受け取らず、移動先が選ばれた場合だけZLEへ副作用を与える。
-function peco-cdr() {
-  local destination="$(peco-get-destination-from-cdr)"
+## cdrの履歴からfzfで移動先を選び、cdコマンドとして実行する。
+## 引数: なし。
+## 戻り値: ZLE widgetとして実行され、明示的な戻り値は返しません。
+function fzf-cdr() {
+  local destination="$(fzf-get-destination-from-cdr)"
   if [ -n "$destination" ]; then
     BUFFER="cd $destination"
     zle accept-line
@@ -154,10 +146,34 @@ function peco-cdr() {
     zle reset-prompt
   fi
 }
-zle -N peco-cdr
-bindkey '^x' peco-cdr
-alias gh='cd $(ghq list -p | peco)'
-alias gho='gh-open $(ghq list -p | peco)'
+zle -N fzf-cdr
+bindkey '^x' fzf-cdr
+
+## ghq管理リポジトリをfzfで選び、選択先へ移動する。
+## 引数: なし。
+## 戻り値: 選択時はcdの終了code、未選択時は0を返します。
+function gh() {
+  local repository
+  repository="$(ghq list -p | fzf --query "$LBUFFER" --select-1 --exit-0)" || return 0
+  if [ -n "$repository" ]; then
+    cd "$repository"
+    return $?
+  fi
+  return 0
+}
+
+## ghq管理リポジトリをfzfで選び、gh-openで開く。
+## 引数: なし。
+## 戻り値: 選択時はgh-openの終了code、未選択時は0を返します。
+function gho() {
+  local repository
+  repository="$(ghq list -p | fzf --query "$LBUFFER" --select-1 --exit-0)" || return 0
+  if [ -n "$repository" ]; then
+    gh-open "$repository"
+    return $?
+  fi
+  return 0
+}
 ## Keybinding {{{
 ## Set up Vim key bindings.
 bindkey -v
@@ -227,6 +243,11 @@ fi
 ### Setup {{{
 ## mise: dev tools, env vars, task runner
 eval "$(${HOME}/.local/bin/mise activate zsh)"
+
+## fzf: Ctrl-R履歴検索、Ctrl-T file選択、Alt-C directory選択
+if [ -x "$(command -v fzf)" ]; then
+  source <(fzf --zsh)
+fi
 
 ## Starship
 if [ -x "$(command -v starship)" ]; then

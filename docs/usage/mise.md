@@ -18,7 +18,6 @@ miseはglobal toolを固定版で管理します。
 | `rust` | Rust toolchain |
 | `lua` | Lua runtime |
 | `jq` | JSON処理 |
-| `peco` | interactive filtering |
 | `fzf` | fuzzy finder |
 | `github-cli` | GitHub CLI |
 | `neovim` | IDE editor |
