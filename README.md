@@ -11,6 +11,9 @@ Vimは軽量編集用としてプラグインレスで運用し、IDE相当の�
 
 - [Linux setup](docs/manual/linux-setup.md)
 - [Windows setup](docs/manual/windows-setup.md)
+- [Repository guide](docs/manual/repository-guide.md)
+- [Coding rules](docs/manual/coding-rules.md)
+- [Contributing](contributing.md)
 - [Repository audit](docs/manual/repository-audit.md)
 
 chezmoi適用時にパッケージ導入スクリプトを自動実行しない方針です。

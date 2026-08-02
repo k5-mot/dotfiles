@@ -22,16 +22,21 @@
 - tmux設定内でTPMを自動導入するようにした。
 - tmuxのresurrect/continuum設定に対応するプラグインを一覧へ追加した。
 - miseのツール指定から`latest`と`stable`を外し、現在利用中の版へ固定した。
-- `cargo:herdr`、`npm:hunkdiff`、`npm:git-cz`をmise管理対象に追加した。
+- `uv`、`cargo:herdr`、`npm:hunkdiff`、`npm:git-cz`をmise管理対象に追加した。
 - `package.json`の`test`を実際のJSON検証とchezmoiテンプレート検証に置き換えた。
 - Neovimの`lazy-lock.json`を生成し、`telescope-packer.nvim`を削除した。
 - READMEから危険なDist-Clean手順を通常導線から外し、manualへの導線を作った。
 - Vimをプラグインレスへ変更し、`vim-plug`設定と旧Vim設定アーカイブを削除した。
 - NeovimのMason導入対象にPython、Node.js、Java、Lua向けのLSPを明記した。
 - tmuxプラグインをタグ固定し、Renovateのcustom regex managerとGitHub Actionsで更新PR化できるようにした。
+- `lazy.nvim`とタグ固定済みzinitプラグインをRenovateの更新PR対象に追加した。
+- airgap向けにプラグインレスの`dot_config/tmux/tmux.slim.conf`を追加した。
 - miseのパッチ更新をRenovateとGitHub ActionsでPR化できるようにした。
 - GitHub ActionsでJSON、TOML、chezmoiテンプレート、shell、tmux、PowerShellプロファイルを検証するようにした。
 - `.gitconfig.local`の作成例を`docs/manual/gitconfig-local.example`に追加した。
+- リポジトリの使い方と開発環境セットアップを`docs/manual/repository-guide.md`へまとめた。
+- Python/TypeScript/Java/Bashの強制ルールを`docs/manual/coding-rules.md`へまとめた。
+- GitHub Flow、commit、tagの開発規約を`contributing.md`へまとめた。
 
 ## プラグイン保守状況
 
@@ -42,6 +47,7 @@
 - 対応:
   - Masonで`pyright`、`ts_ls`、`eslint`、`jdtls`、`lua_ls`を導入対象に含めた。
   - Python、Node.js、Java、Lua本体はmiseで固定版管理する。
+  - `lazy.nvim` bootstrapのタグをRenovateで更新PR化できるようにした。
 - 残課題:
   - LSP、補完、UI、colorschemeが1ファイルに集約されている。
 
@@ -65,8 +71,9 @@
   - 初回起動時にzinit本体をcloneするフローは維持した。
   - 更新と掃除は手動メンテナンスとして`docs/manual/linux-setup.md`に記載した。
   - 更新タイミングは月次または不具合対応時に限定した。
+  - タグがあるzinit本体と一部プラグインを`ice ver`で固定し、Renovate更新PR対象にした。
 - 残課題:
-  - zinitプラグインはタグ固定ではないため、再現性を上げるなら個別pinning方針を別途決める。
+  - タグが無いzinitプラグインはタグ更新PR対象にできないため、必要ならcommit pinning方針を別途決める。
 
 ### tmux
 
@@ -77,6 +84,7 @@
   - Renovateのcustom regex managerと`.github/workflows/renovate.yml`でTPMプラグインタグの更新PRを作れるようにした。
   - 手動更新タイミングと復旧手順を`docs/manual/linux-setup.md`に記載した。
   - 復旧手順とは、更新後にtmux起動やプラグイン動作が壊れた場合、直前の固定タグへ戻すかローカルの壊れたプラグインディレクトリをバックアップ退避して固定タグから再導入する手順を指す。
+  - airgap向けの`dot_config/tmux/tmux.slim.conf`を追加した。
 - 残課題:
   - TPM本体の初回cloneはネットワーク依存のため、オフライン環境では手動準備が必要。
 
@@ -84,7 +92,7 @@
 
 - 管理方式: `dot_config/mise/config.toml`
 - 対応:
-  - `java`と`npm:git-cz`を追加した。
+  - `uv`、`java`、`npm:git-cz`を追加した。
   - Renovateのmise managerと`.github/workflows/renovate.yml`でパッチ更新だけをPR化する設定を追加した。
   - `package.json`は標準の`packageManager`へ寄せ、npm系バックエンドが`devEngines`で失敗しないようにした。
 - 残課題:
