@@ -31,6 +31,8 @@ Renovate対象はbootstrap tagだけとし、`lazy-lock.json`は手動で`Lazy s
 
 Masonの導入対象は`dot_config/nvim/lua/plugins/lsp.lua`で管理します。
 Python、Node.js/TypeScript、Java、Lua向けのLSPをNeovim側で扱います。
+nvim-lspconfigはserver default configの提供元として使い、server登録と有効化はNeovim 0.11以降の`vim.lsp.config`と`vim.lsp.enable`を使います。
+deprecatedな`require('lspconfig')[server].setup()`は使いません。
 LSP UIは`lspsaga.nvim`を使い、標準LSP keymapと衝突しにくい割り当てにします。
 
 主なLspsaga keymap:

@@ -4,8 +4,6 @@ local status, mason = pcall(require, "mason")
 if (not status) then return end
 local status, mason_lspconfig = pcall(require, "mason-lspconfig")
 if (not status) then return end
-local status, lspconfig = pcall(require, "lspconfig")
-if (not status) then return end
 
 -- LSP {{{
 
@@ -36,11 +34,10 @@ require("mason-lspconfig").setup({
     automatic_installation = true,
 })
 
--- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
+-- nvim-cmpの補完能力を全LSP serverへ通知する。
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
--- Mappings.
--- See `:help vim.diagnostic.*` for documentation on any of the below functions
+-- diagnostic操作はLSP attach前から使えるglobal keymapとして定義する。
 local opts = { noremap=true, silent=true }
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
@@ -52,11 +49,10 @@ vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 --- @param bufnr integer keymapを設定するbuffer番号です。
 --- @return nil
 local on_attach = function(client, bufnr)
-    -- Enable completion triggered by <c-x><c-o>
+    -- 標準補完の入口をLSPへ向ける。
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-    -- Mappings.
-    -- See `:help vim.lsp.*` for documentation on any of the below functions
+    -- buffer local keymapはLSPがattachしたbufferだけへ閉じる。
     local bufopts = { noremap=true, silent=true, buffer=bufnr }
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
@@ -65,6 +61,9 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
     vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
     vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
+    --- 現在のworkspace folder一覧を表示します。
+    --- 引数: なし。
+    --- @return nil
     vim.keymap.set('n', '<space>wl', function()
         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
     end, bufopts)
@@ -75,19 +74,17 @@ local on_attach = function(client, bufnr)
 end
 
 local lsp_flags = {
-    -- This is the default in Nvim 0.7+
+    -- 入力中の診断更新を抑えてLSP serverへの負荷を下げる。
     debounce_text_changes = 150,
 }
 
-for _, server_name in ipairs(lsp_servers) do
-    if lspconfig[server_name] then
-        lspconfig[server_name].setup({
-            capabilities = capabilities,
-            on_attach = on_attach,
-            flags = lsp_flags,
-        })
-    end
-end
+vim.lsp.config("*", {
+    capabilities = capabilities,
+    on_attach = on_attach,
+    flags = lsp_flags,
+})
+
+vim.lsp.enable(lsp_servers)
 
 -- Lspsaga Configuration
 local status, lspsaga = pcall(require, "lspsaga")

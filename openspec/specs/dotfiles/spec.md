@@ -71,6 +71,8 @@ The repository SHALL keep Vim as a pluginless lightweight editor and Neovim as t
 - **WHEN** Neovim configuration is synchronized
 - **THEN** `lazy.nvim` SHALL manage Neovim plugins
 - **AND** Mason SHALL include language server coverage for Python, Node.js or TypeScript, Java, and Lua workflows
+- **AND** nvim-lspconfig SHALL provide server default configurations while Neovim native `vim.lsp.config` and `vim.lsp.enable` SHALL register and enable servers
+- **AND** deprecated `require('lspconfig')[server].setup()` registration SHALL NOT be used
 
 #### Scenario: Neovim plugin responsibilities are maintained
 
