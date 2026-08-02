@@ -263,7 +263,9 @@ The repository SHALL provide local and CI validation for managed configuration.
 #### Scenario: Devcontainer is used
 
 - **WHEN** the repository is opened in its devcontainer
-- **THEN** PowerShell, Node.js, jq, Vim, Neovim, zsh, tmux, and Python SHALL be available for repository validation
+- **THEN** Node.js and PowerShell SHALL be provided through devcontainer features
+- **AND** the devcontainer SHALL NOT add tools through a Dockerfile
+- **AND** command-based Vim, Neovim, zsh, and tmux validation SHALL run in CI or in an environment where those commands are already available
 
 ### Requirement: Dependency maintenance is pull-request based
 

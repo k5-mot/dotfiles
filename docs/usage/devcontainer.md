@@ -1,22 +1,19 @@
 # Devcontainer usage
 
-このリポジトリのdevcontainerは、Linux dotfiles設定とPowerShell profile検証を同じ環境で実行するための開発環境です。
+このリポジトリのdevcontainerは、PowerShell profile検証とNode.js/pnpmによる軽量検証を実行するための開発環境です。
+機能追加はdevcontainer featuresだけで行います。
 
 ## 管理対象
 
 - `.devcontainer/devcontainer.json`
-- `.devcontainer/Dockerfile`
 
-## 含める主なtool
+## features
 
 - Node.js 22.22.2
 - PowerShell
-- jq
-- Vim
-- Neovim
-- zsh
-- tmux
-- Python 3
+
+Dockerfileによるapt package追加は行いません。
+Vim、Neovim、zsh、tmuxなど実commandでの設定読み込み検証は、GitHub Actionsまたは該当commandが入ったローカル環境で実行します。
 
 ## 初期化
 
@@ -48,3 +45,4 @@ pnpm run test:configs
 ```
 
 `test:configs`はNeovim plugin同期とzinit plugin読み込みを含むため、通常の`pnpm test`より時間がかかります。
+devcontainer内で実行する場合は、必要なcommandがbase imageまたは別途の手動準備で利用可能なことを確認します。
