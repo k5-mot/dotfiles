@@ -8,6 +8,18 @@ The dotfiles capability defines a reproducible, manually controlled personal dev
 
 The repository SHALL use chezmoi to manage configuration files while keeping operating-system installation work out of automatic chezmoi apply hooks.
 
+#### Scenario: Chezmoi ignores unsupported operating-system files
+
+- **WHEN** chezmoi evaluates ignore rules for a non-Linux host
+- **THEN** Linux shell configuration such as `.bash_profile`, `.bashrc`, `.zshenv`, and `.emacs.d/` SHALL NOT be applied
+- **AND** Windows-specific `AppData` and `Documents` configuration SHALL only be applied on Windows hosts
+
+#### Scenario: Chezmoi templates are evaluated
+
+- **WHEN** chezmoi evaluates repository templates
+- **THEN** PowerShell, shell, and cd interpreters SHALL be declared through `.chezmoi.toml.tmpl`
+- **AND** `.chezmoiexternal.toml` SHALL remain an intentionally empty reservation until an external managed dependency is accepted
+
 #### Scenario: Linux configuration scope is applied
 
 - **WHEN** a Linux user applies the dotfiles with chezmoi
@@ -20,6 +32,19 @@ The repository SHALL use chezmoi to manage configuration files while keeping ope
 - **THEN** Windows Terminal, the minimal PowerShell profile, VS Code, and Oh My Posh configuration SHALL be managed
 - **AND** PowerShell installation helper scripts SHALL NOT be required
 
+#### Scenario: Windows PowerShell profile is loaded
+
+- **WHEN** the PowerShell profile is loaded
+- **THEN** missing optional modules SHALL be skipped instead of failing profile load
+- **AND** Oh My Posh SHALL only be initialized when the command and configured theme file are available
+- **AND** XDG environment variables SHALL be set for the Windows user profile
+
+#### Scenario: Git local identity is configured
+
+- **WHEN** user-specific Git identity or secrets are needed
+- **THEN** they SHALL be kept in `~/.gitconfig.local`
+- **AND** the repository SHALL provide `docs/usage/gitconfig-local.example` as a template
+
 ### Requirement: Editor roles are explicit
 
 The repository SHALL keep Vim as a pluginless lightweight editor and Neovim as the IDE-oriented editor.
@@ -29,12 +54,25 @@ The repository SHALL keep Vim as a pluginless lightweight editor and Neovim as t
 - **WHEN** Vim configuration is loaded
 - **THEN** it SHALL NOT depend on vim-plug or repository-managed Vim plugins
 - **AND** it SHALL provide only configuration needed for lightweight editing
+- **AND** local Vim-only overrides MAY be placed in `~/.vimrc_local` outside chezmoi management
 
 #### Scenario: Neovim provides IDE features
 
 - **WHEN** Neovim configuration is synchronized
 - **THEN** `lazy.nvim` SHALL manage Neovim plugins
 - **AND** Mason SHALL include language server coverage for Python, Node.js or TypeScript, Java, and Lua workflows
+
+#### Scenario: Neovim plugin responsibilities are maintained
+
+- **WHEN** Neovim plugin configuration changes
+- **THEN** LSP, completion, colorscheme, statusline, editor, syntax, filer, and search responsibilities SHALL stay documented in `docs/usage/neovim.md`
+- **AND** future plugin spec splitting SHALL follow those responsibility boundaries
+
+#### Scenario: Neovim plugin lockfile changes
+
+- **WHEN** Neovim plugins are synchronized with Lazy
+- **THEN** `dot_config/nvim/lazy-lock.json` SHALL capture resolved plugin revisions
+- **AND** that lockfile SHALL be reviewed manually rather than updated by Renovate
 
 ### Requirement: Shell and terminal plugin maintenance is controlled
 
@@ -46,6 +84,13 @@ The repository SHALL make zsh and tmux plugin maintenance explicit and reviewabl
 - **THEN** the zinit bootstrap SHALL install zinit from the pinned tag
 - **AND** tagged zinit plugins SHALL be eligible for Renovate tag update pull requests
 - **AND** public zinit plugins without tags SHALL be pinned to commits when their upstream repository is accessible
+- **AND** authenticated personal zinit plugin repositories MAY remain unpinned when unauthenticated upstream access is unavailable
+
+#### Scenario: zinit maintenance is needed
+
+- **WHEN** zinit self-update, plugin update, cleaning, or compilation is needed
+- **THEN** `dot_local/script/701_setup-zinit.zsh` SHALL be treated as a manual maintenance script
+- **AND** chezmoi apply SHALL NOT automatically run the script unless its filename is changed to a chezmoi run script
 
 #### Scenario: TPM manages normal tmux plugins
 
@@ -53,12 +98,26 @@ The repository SHALL make zsh and tmux plugin maintenance explicit and reviewabl
 - **THEN** TPM SHALL bootstrap itself when missing
 - **AND** TPM plugins SHALL be pinned to tags where tags are available
 - **AND** tag updates SHALL be reviewable through Renovate pull requests
+- **AND** tmux resurrect and continuum SHALL store restore state under the user cache directory
 
 #### Scenario: tmux runs in an airgap environment
 
 - **WHEN** a user starts tmux with `tmux.slim.conf`
 - **THEN** tmux SHALL NOT require TPM, GitHub access, xclip, or external theme plugins
 - **AND** keybindings SHALL remain aligned with the normal tmux configuration where practical
+- **AND** the slim configuration SHALL avoid includes that would reintroduce plugin or network dependencies
+
+#### Scenario: tmux copy mode is used
+
+- **WHEN** text is copied from tmux copy mode
+- **THEN** normal and slim configurations SHALL copy into the tmux buffer with `copy-selection-and-cancel`
+- **AND** the copy binding SHALL NOT require `xclip`
+
+#### Scenario: tmux plugins are reviewed
+
+- **WHEN** TPM plugin inventory is reviewed
+- **THEN** each plugin SHALL have a documented purpose and maintenance judgment in `docs/usage/tmux.md`
+- **AND** plugins with weak value or unstable maintenance SHOULD be removed only after the proposal is accepted
 
 ### Requirement: mise versions are fixed and updateable
 
@@ -68,12 +127,31 @@ The repository SHALL manage development tools through mise with fixed versions i
 
 - **WHEN** a user runs `mise install`
 - **THEN** Python, uv, Node.js, Java, Rust, Lua, jq, peco, fzf, GitHub CLI, Vim, Neovim, tmux, herdr, hunkdiff, and git-cz SHALL be installable from `dot_config/mise/config.toml`
+- **AND** project-local lint, test, format, and build tools SHALL remain outside mise unless accepted as global tools
 
 #### Scenario: mise versions are maintained
 
 - **WHEN** Renovate runs
 - **THEN** patch updates for mise-managed tools SHALL be proposed as pull requests
 - **AND** major and minor updates SHALL NOT be automatically proposed for mise-managed tools
+
+#### Scenario: Node global tools are considered
+
+- **WHEN** a Node-based command-line tool is proposed for mise
+- **THEN** it SHALL be accepted only when it is useful across multiple projects
+- **AND** project-local tools such as Vite, TypeScript, Oxlint, Vitest, and Playwright SHALL remain project dependencies
+
+#### Scenario: Python project tooling is used
+
+- **WHEN** a Python project is created from this repository's guidance
+- **THEN** uv SHALL be the project entry point
+- **AND** ty, ruff, pytest, and taskipy SHALL be installed as project-local development dependencies
+
+#### Scenario: Java project tooling is used
+
+- **WHEN** Java formatting or linting is needed
+- **THEN** Java itself SHALL be provided by mise
+- **AND** google-java-format, Spotless, Checkstyle, or equivalent format and lint tools SHALL be managed by the Java project build
 
 ### Requirement: Documentation is the operating contract
 
@@ -93,6 +171,8 @@ The repository SHALL document setup, maintenance, coding rules, contribution rul
 
 - **WHEN** a user needs Python, React or TypeScript, Java, Git, or CI guidance
 - **THEN** `docs/usage/repository-guide.md`, `docs/rules/coding-rules.md`, and `CONTRIBUTING.md` SHALL provide the applicable guidance
+- **AND** language-specific mandatory coding rules SHALL remain in `docs/rules/coding-rules.md`
+- **AND** Git branch, commit, and tag rules SHALL remain in `CONTRIBUTING.md`
 
 #### Scenario: Tool-specific usage guidance is needed
 
@@ -104,6 +184,25 @@ The repository SHALL document setup, maintenance, coding rules, contribution rul
 - **WHEN** a user needs VS Code extensions
 - **THEN** extension lists SHALL be documented under `docs/usage/`
 - **AND** extension installation SHALL remain a manual setup step
+- **AND** Linux and Windows VS Code settings SHALL remain separate because VS Code uses OS-specific user settings locations
+
+#### Scenario: Repository terminology is needed
+
+- **WHEN** a reader needs canonical terminology for setup, tooling, plugins, or specs
+- **THEN** `CONTEXT.md` SHALL define the shared glossary
+- **AND** `CONTEXT.md` SHALL remain a glossary rather than an implementation spec
+
+#### Scenario: Task notes are written
+
+- **WHEN** audit notes, proposal notes, or implementation tracking notes are needed
+- **THEN** they MAY be kept under `docs/tasks/`
+- **AND** task notes SHALL NOT be treated as Canonical Spec until accepted content is moved into docs, rules, or OpenSpec
+
+#### Scenario: AI agent guidance is needed
+
+- **WHEN** an AI agent works in this repository
+- **THEN** `AGENTS.md` SHALL provide English, docs-first operating instructions
+- **AND** those instructions SHALL point agents to usage docs, coding rules, contribution rules, and OpenSpec before changing behavior
 
 ### Requirement: Contribution rules are normative
 
@@ -114,6 +213,8 @@ The repository SHALL treat contribution rules as normative according to RFC 8174
 - **WHEN** a contributor commits a change
 - **THEN** the commit message SHALL use Japanese gitmoji Conventional Commits
 - **AND** the commit SHALL contain one logical change
+- **AND** work-in-progress commits SHALL NOT be created without an explicit request
+- **AND** refactoring and behavior changes SHALL be separated into different commits
 
 #### Scenario: A release tag is created
 
@@ -129,25 +230,40 @@ The repository SHALL provide local and CI validation for managed configuration.
 
 - **WHEN** a contributor runs `pnpm test`
 - **THEN** JSON files, TOML files, and chezmoi templates SHALL be validated
+- **AND** OpenSpec specifications SHALL be validated
 
 #### Scenario: CI validation runs
 
 - **WHEN** GitHub Actions runs repository validation
 - **THEN** shell syntax, zsh syntax, tmux normal configuration, tmux slim configuration, and the PowerShell profile SHALL be validated where supported by the runner
+- **AND** CI SHALL install the system dependencies needed for those validation commands
 
 ### Requirement: Dependency maintenance is pull-request based
 
 The repository SHALL use Renovate and GitHub Actions to propose reviewable dependency updates.
 
+#### Scenario: Renovate is scheduled
+
+- **WHEN** the Renovate workflow runs on schedule
+- **THEN** it SHALL run before Monday 06:00 in the Asia/Tokyo timezone
+- **AND** it SHALL be runnable manually through `workflow_dispatch`
+
 #### Scenario: Plugin tags are updated
 
 - **WHEN** Renovate detects newer supported tags
 - **THEN** TPM plugins, the `lazy.nvim` bootstrap tag, and tagged zinit entries SHALL be proposed through pull requests
+- **AND** those updates SHALL be grouped as managed plugin tag updates
 
 #### Scenario: GitHub Actions are updated
 
 - **WHEN** Renovate detects newer GitHub Actions versions
 - **THEN** those updates SHALL be grouped as GitHub Actions update pull requests
+
+#### Scenario: Renovate permissions are needed
+
+- **WHEN** Renovate creates or updates dependency pull requests
+- **THEN** the workflow SHALL have permissions to write contents, issues, and pull requests
+- **AND** `RENOVATE_TOKEN` MAY be used when GitHub token permissions are insufficient
 
 ### Requirement: Tooling proposals are non-mutating until accepted
 

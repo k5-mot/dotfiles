@@ -6,6 +6,10 @@
 Gitの開発規約は`CONTRIBUTING.md`に従います。
 採用済み仕様は`openspec/specs/dotfiles/spec.md`で管理し、docsは手順と規約を説明します。
 
+`docs/tasks/`は監査メモ、提案メモ、作業中の論点を置くためのローカル作業領域です。
+この配下の内容は正典仕様ではありません。
+採用済みの内容だけをREADME、usage、rules、OpenSpecへ移します。
+
 ## 1. このdotfilesの使い方
 
 LinuxではVim、Neovim、zsh、bash、tmux、mise、git、VS Codeをchezmoiで管理します。
