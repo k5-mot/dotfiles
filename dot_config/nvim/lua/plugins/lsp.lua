@@ -105,53 +105,47 @@ if (status) then
         },
     })
 
-    -- Lspsaga keymaps
+    --- Lspsagaで前のerror diagnosticへ移動します。
+    --- 引数: なし。
+    --- @return nil
+    local function goto_previous_error()
+        require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })
+    end
+
+    --- Lspsagaで次のerror diagnosticへ移動します。
+    --- 引数: なし。
+    --- @return nil
+    local function goto_next_error()
+        require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
+    end
+
+    -- Lspsagaの主要操作を標準LSP keymapと衝突しにくい形で割り当てる。
     local keymap = vim.keymap.set
 
-    -- Lsp finder find the symbol definition implement reference
-    keymap("n", "gh", "<cmd>Lspsaga finder<CR>")
+    keymap("n", "gh", "<cmd>Lspsaga finder<CR>", { noremap = true, silent = true, desc = "Lspsaga finder" })
+    keymap("n", "gd", "<cmd>Lspsaga goto_definition<CR>", { noremap = true, silent = true, desc = "Lspsaga goto definition" })
+    keymap("n", "gp", "<cmd>Lspsaga peek_definition<CR>", { noremap = true, silent = true, desc = "Lspsaga peek definition" })
+    keymap("n", "gy", "<cmd>Lspsaga goto_type_definition<CR>", { noremap = true, silent = true, desc = "Lspsaga goto type definition" })
+    keymap("n", "gY", "<cmd>Lspsaga peek_type_definition<CR>", { noremap = true, silent = true, desc = "Lspsaga peek type definition" })
 
-    -- Code action
-    keymap({"n","v"}, "<leader>ca", "<cmd>Lspsaga code_action<CR>")
+    keymap({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<CR>", { noremap = true, silent = true, desc = "Lspsaga code action" })
+    keymap("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", { noremap = true, silent = true, desc = "Lspsaga rename" })
+    keymap("n", "<leader>o", "<cmd>Lspsaga outline<CR>", { noremap = true, silent = true, desc = "Lspsaga outline" })
+    keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", { noremap = true, silent = true, desc = "Lspsaga hover" })
+    keymap({ "n", "t" }, "<A-d>", "<cmd>Lspsaga term_toggle<CR>", { noremap = true, silent = true, desc = "Lspsaga floating terminal" })
 
-    -- Rename
-    keymap("n", "gr", "<cmd>Lspsaga rename<CR>")
+    keymap("n", "<leader>sl", "<cmd>Lspsaga show_line_diagnostics<CR>", { noremap = true, silent = true, desc = "Lspsaga line diagnostics" })
+    keymap("n", "<leader>sc", "<cmd>Lspsaga show_cursor_diagnostics<CR>", { noremap = true, silent = true, desc = "Lspsaga cursor diagnostics" })
+    keymap("n", "<leader>sb", "<cmd>Lspsaga show_buf_diagnostics<CR>", { noremap = true, silent = true, desc = "Lspsaga buffer diagnostics" })
+    keymap("n", "<leader>sw", "<cmd>Lspsaga show_workspace_diagnostics<CR>", { noremap = true, silent = true, desc = "Lspsaga workspace diagnostics" })
+    keymap("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { noremap = true, silent = true, desc = "Lspsaga previous diagnostic" })
+    keymap("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>", { noremap = true, silent = true, desc = "Lspsaga next diagnostic" })
 
-    -- Peek Definition
-    keymap("n", "gp", "<cmd>Lspsaga peek_definition<CR>")
+    keymap("n", "<leader>ci", "<cmd>Lspsaga incoming_calls<CR>", { noremap = true, silent = true, desc = "Lspsaga incoming calls" })
+    keymap("n", "<leader>co", "<cmd>Lspsaga outgoing_calls<CR>", { noremap = true, silent = true, desc = "Lspsaga outgoing calls" })
 
-    -- Go to Definition
-    keymap("n", "gd", "<cmd>Lspsaga goto_definition<CR>")
-
-    -- Show line diagnostics
-    keymap("n", "<leader>sl", "<cmd>Lspsaga show_line_diagnostics<CR>")
-
-    -- Show cursor diagnostic
-    keymap("n", "<leader>sc", "<cmd>Lspsaga show_cursor_diagnostics<CR>")
-
-    -- Show buffer diagnostics
-    keymap("n", "<leader>sb", "<cmd>Lspsaga show_buf_diagnostics<CR>")
-
-    -- Diagnostic jump
-    keymap("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>")
-    keymap("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>")
-
-    -- Only jump to error
-    keymap("n", "[E", function()
-        require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })
-    end)
-    keymap("n", "]E", function()
-        require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
-    end)
-
-    -- Outline
-    keymap("n","<leader>o", "<cmd>Lspsaga outline<CR>")
-
-    -- Hover Doc
-    keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>")
-
-    -- Float terminal
-    keymap({"n", "t"}, "<A-d>", "<cmd>Lspsaga term_toggle<CR>")
+    keymap("n", "[E", goto_previous_error, { noremap = true, silent = true, desc = "Lspsaga previous error" })
+    keymap("n", "]E", goto_next_error, { noremap = true, silent = true, desc = "Lspsaga next error" })
 end
 
 -- Reference highlight

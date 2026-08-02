@@ -31,6 +31,25 @@ Renovate対象はbootstrap tagだけとし、`lazy-lock.json`は手動で`Lazy s
 
 Masonの導入対象は`dot_config/nvim/lua/plugins/lsp.lua`で管理します。
 Python、Node.js/TypeScript、Java、Lua向けのLSPをNeovim側で扱います。
+LSP UIは`lspsaga.nvim`を使い、標準LSP keymapと衝突しにくい割り当てにします。
+
+主なLspsaga keymap:
+
+| key | action |
+| --- | --- |
+| `gh` | finder |
+| `gd` | goto definition |
+| `gp` | peek definition |
+| `gy` | goto type definition |
+| `gY` | peek type definition |
+| `<leader>rn` | rename |
+| `<leader>ca` | code action |
+| `<leader>sl` / `<leader>sc` / `<leader>sb` / `<leader>sw` | diagnostics |
+| `[e` / `]e` | previous/next diagnostic |
+| `[E` / `]E` | previous/next error diagnostic |
+| `<leader>ci` / `<leader>co` | incoming/outgoing calls |
+| `<leader>o` | outline |
+| `<A-d>` | floating terminal |
 
 ## plugin責務
 
