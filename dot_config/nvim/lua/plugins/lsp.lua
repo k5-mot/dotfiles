@@ -6,66 +6,38 @@ local status, mason_lspconfig = pcall(require, "mason-lspconfig")
 if (not status) then return end
 local status, lspconfig = pcall(require, "lspconfig")
 if (not status) then return end
-local status, null_ls = pcall(require, "null-ls")
-if (not status) then return end
 
 -- LSP {{{
 
 require('mason').setup()
+
+local lsp_servers = {
+    "bashls",
+    "clangd",
+    "denols",
+    "elmls",
+    "emmet_ls",
+    "eslint",
+    "grammarly",
+    "jdtls",
+    "jsonls",
+    "lua_ls",
+    "marksman",
+    "pyright",
+    "rust_analyzer",
+    "svlangserver",
+    "texlab",
+    "ts_ls",
+    "vimls",
+}
+
 require("mason-lspconfig").setup({
-    ensure_installed = {
-        "bashls",
-        "clangd",
-        "denols",
-        "elmls",
-        "emmet_ls",
-        "eslint",
-        "grammarly",
-        "jdtls",
-        "jsonls",
-        "lua_ls",
-        "marksman",
-        "pyright",
-        "rust_analyzer",
-        "svlangserver",
-        -- "svls",
-        "texlab",
-        "ts_ls",
-        "vimls",
-    },
+    ensure_installed = lsp_servers,
     automatic_installation = true,
 })
 
 -- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
--- The following example advertise capabilities to `clangd`.
-require('lspconfig').clangd.setup({
-  capabilities = capabilities,
-})
-
-local lspconfig = require('lspconfig')
-require('mason-lspconfig').setup_handlers({
-    function(server_name)
-        -- Handle tsserver -> ts_ls rename
-        if server_name == "tsserver" then
-            server_name = "ts_ls"
-        end
-        lspconfig[server_name].setup({
-            capabilities = capabilities,
-        })
-    end,
-})
-
-require("null-ls").setup({
-    sources = {
-        require("null-ls").builtins.formatting.stylua,
-        -- Note: eslint has been moved to none-ls-extras
-        -- require("none-ls.diagnostics.eslint_d"),
-        require("null-ls").builtins.completion.spell,
-    },
-})
-
 
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -75,8 +47,10 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
+--- LSP serverがbufferへattachされた直後にbuffer local keymapを設定します。
+--- @param client table attachされたLSP clientです。
+--- @param bufnr integer keymapを設定するbuffer番号です。
+--- @return nil
 local on_attach = function(client, bufnr)
     -- Enable completion triggered by <c-x><c-o>
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -98,47 +72,22 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
     vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
     vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-    vim.keymap.set('n', '<space>f',function() vim.lsp.buf.format { async = true } end, bufopts)
 end
 
 local lsp_flags = {
     -- This is the default in Nvim 0.7+
     debounce_text_changes = 150,
 }
--- require('lspconfig')['pyright'].setup{
---     on_attach = on_attach,
---     flags = lsp_flags,
--- }
-require('lspconfig')['ts_ls'].setup{
-    on_attach = on_attach,
-    flags = lsp_flags,
-}
-require('lspconfig')['rust_analyzer'].setup{
-    on_attach = on_attach,
-    flags = lsp_flags,
-    -- Server-specific settings...
-    settings = {
-        ["rust-analyzer"] = {}
-    }
-}
 
-
-local status, prettier = pcall(require, "prettier")
-if (not status) then return end
-
-prettier.setup({
-    bin = 'prettier',
-    filetypes = {
-        "css",
-        "javascript",
-        "javascriptreact",
-        "typescript",
-        "typescriptreact",
-        "json",
-        "scss",
-        "less"
-    }
-})
+for _, server_name in ipairs(lsp_servers) do
+    if lspconfig[server_name] then
+        lspconfig[server_name].setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+            flags = lsp_flags,
+        })
+    end
+end
 
 -- Lspsaga Configuration
 local status, lspsaga = pcall(require, "lspsaga")

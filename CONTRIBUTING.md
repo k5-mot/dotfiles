@@ -20,12 +20,15 @@
 - subjectは50文字以内で、句点で終えてはならない（MUST NOT）。
 - commitの理由がsubjectだけでは不足する場合、bodyを追加すべきである（SHOULD）。
 - commit作成にはgit-czを使うべきである（SHOULD）。
+- `git-cz`のtype、emoji、scope候補、message formatは`.git-cz.json`で管理すべきである（SHOULD）。
 
 形式:
 
 ```text
 <gitmoji> <type>(<scope>): <日本語のsubject>
 ```
+
+`git-cz`の対話入力ではsubjectを日本語で入力します。
 
 例:
 

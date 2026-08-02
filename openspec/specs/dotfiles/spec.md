@@ -65,8 +65,16 @@ The repository SHALL keep Vim as a pluginless lightweight editor and Neovim as t
 #### Scenario: Neovim plugin responsibilities are maintained
 
 - **WHEN** Neovim plugin configuration changes
-- **THEN** LSP, completion, colorscheme, statusline, editor, syntax, filer, and search responsibilities SHALL stay documented in `docs/usage/neovim.md`
+- **THEN** LSP, format, lint, completion, colorscheme, statusline, editor, syntax, filer, and search responsibilities SHALL stay documented in `docs/usage/neovim.md`
 - **AND** future plugin spec splitting SHALL follow those responsibility boundaries
+
+#### Scenario: Neovim formatting and linting are configured
+
+- **WHEN** Neovim handles formatting or linting
+- **THEN** `conform.nvim` SHALL provide formatting integration
+- **AND** `nvim-lint` SHALL provide lint integration
+- **AND** formatter and linter executable versions SHALL remain project-local where practical
+- **AND** `lazydev.nvim` SHALL provide lightweight assistance for Lua-based Neovim configuration
 
 #### Scenario: Neovim plugin lockfile changes
 
@@ -217,6 +225,7 @@ The repository SHALL treat contribution rules as normative according to RFC 8174
 - **AND** the commit SHALL contain one logical change
 - **AND** work-in-progress commits SHALL NOT be created without an explicit request
 - **AND** refactoring and behavior changes SHALL be separated into different commits
+- **AND** git-cz prompt behavior SHALL be configured through `.git-cz.json`
 
 #### Scenario: A release tag is created
 
@@ -234,11 +243,27 @@ The repository SHALL provide local and CI validation for managed configuration.
 - **THEN** JSON files, TOML files, and chezmoi templates SHALL be validated
 - **AND** OpenSpec specifications SHALL be validated
 
+#### Scenario: Command-based configuration validation runs
+
+- **WHEN** a contributor or CI runs `pnpm run test:configs`
+- **THEN** Vim, Neovim, zsh, normal tmux, and slim tmux configurations SHALL be loaded through their real commands
+
 #### Scenario: CI validation runs
 
 - **WHEN** GitHub Actions runs repository validation
 - **THEN** shell syntax, zsh syntax, tmux normal configuration, tmux slim configuration, and the PowerShell profile SHALL be validated where supported by the runner
 - **AND** CI SHALL install the system dependencies needed for those validation commands
+
+#### Scenario: PowerShell profile validation runs
+
+- **WHEN** `pnpm run test:powershell` runs
+- **THEN** `pwsh` SHALL parse `Documents/PowerShell/Profile.ps1`
+- **AND** syntax errors SHALL fail the command
+
+#### Scenario: Devcontainer is used
+
+- **WHEN** the repository is opened in its devcontainer
+- **THEN** PowerShell, Node.js, jq, Vim, Neovim, zsh, tmux, and Python SHALL be available for repository validation
 
 ### Requirement: Dependency maintenance is pull-request based
 

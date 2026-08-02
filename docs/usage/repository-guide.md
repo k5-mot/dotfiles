@@ -20,6 +20,13 @@ chezmoi update
 pnpm test
 ```
 
+PowerShell profileや実際のshell/editor/tmux commandまで確認する場合は、devcontainerまたは該当commandが入ったLinux環境で追加検証します。
+
+```bash
+pnpm run test:powershell
+pnpm run test:configs
+```
+
 ツール導入はmiseに寄せます。
 
 ```bash

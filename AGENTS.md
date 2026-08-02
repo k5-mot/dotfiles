@@ -44,10 +44,12 @@ Run the narrowest relevant validation before committing. For repository-wide cha
 
 ```bash
 pnpm test
+pnpm run test:configs
 bash -n dot_bash_profile dot_bashrc dot_config/env
 zsh -n dot_config/zsh/dot_zshrc dot_config/zsh/zinit.zsh
 tmux -f /dev/null -L dotfiles-check start-server \; source-file -n dot_config/tmux/tmux.conf \; kill-server
 tmux -f /dev/null -L dotfiles-slim-check start-server \; source-file -n dot_config/tmux/tmux.slim.conf \; kill-server
+pnpm run test:powershell
 pnpm exec openspec validate --specs
 git diff --check
 ```

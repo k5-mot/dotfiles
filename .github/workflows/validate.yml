@@ -24,7 +24,7 @@ jobs:
       - name: Install system dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y jq tmux vim zsh
+          sudo apt-get install -y jq neovim tmux vim zsh
 
       - name: Install chezmoi
         run: |
@@ -52,9 +52,8 @@ jobs:
       - name: Validate PowerShell profile
         shell: pwsh
         run: |
-          $errors = $null
-          [System.Management.Automation.Language.Parser]::ParseFile("Documents/PowerShell/Profile.ps1", [ref]$null, [ref]$errors) > $null
-          if ($errors.Count -gt 0) {
-            $errors | ForEach-Object { Write-Error $_.Message }
-            exit 1
-          }
+          pwsh --version
+          ./scripts/test-powershell-profile.ps1
+
+      - name: Validate config loading commands
+        run: pnpm run test:configs

@@ -1,0 +1,85 @@
+{
+  "disableEmoji": false,
+  "format": "{emoji} {type}{scope}: {subject}",
+  "list": [
+    "feat",
+    "fix",
+    "docs",
+    "refactor",
+    "test",
+    "ci",
+    "style",
+    "perf",
+    "chore"
+  ],
+  "maxMessageLength": 50,
+  "minMessageLength": 3,
+  "questions": [
+    "type",
+    "scope",
+    "subject",
+    "body",
+    "breaking",
+    "issues"
+  ],
+  "scopes": [
+    "setup",
+    "tooling",
+    "docs",
+    "nvim",
+    "vim",
+    "zsh",
+    "tmux",
+    "mise",
+    "vscode",
+    "windows",
+    "ci"
+  ],
+  "types": {
+    "feat": {
+      "description": "機能追加",
+      "emoji": "✨",
+      "value": "feat"
+    },
+    "fix": {
+      "description": "バグ修正",
+      "emoji": "🐛",
+      "value": "fix"
+    },
+    "docs": {
+      "description": "ドキュメントのみの変更",
+      "emoji": "📝",
+      "value": "docs"
+    },
+    "refactor": {
+      "description": "動作変更を伴わないリファクタリング",
+      "emoji": "♻️",
+      "value": "refactor"
+    },
+    "test": {
+      "description": "テスト追加または修正",
+      "emoji": "✅",
+      "value": "test"
+    },
+    "ci": {
+      "description": "CI設定の変更",
+      "emoji": "👷",
+      "value": "ci"
+    },
+    "style": {
+      "description": "フォーマットや空白の変更",
+      "emoji": "🎨",
+      "value": "style"
+    },
+    "perf": {
+      "description": "性能改善",
+      "emoji": "⚡️",
+      "value": "perf"
+    },
+    "chore": {
+      "description": "補助ツールや雑務",
+      "emoji": "🔧",
+      "value": "chore"
+    }
+  }
+}

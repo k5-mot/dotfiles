@@ -8,6 +8,8 @@ NeovimはIDE用途です。
 - `dot_config/nvim/init.lua`
 - `dot_config/nvim/lua/plugins/init.lua`
 - `dot_config/nvim/lua/plugins/lsp.lua`
+- `dot_config/nvim/lua/plugins/format.lua`
+- `dot_config/nvim/lua/plugins/lint.lua`
 - `dot_config/nvim/lua/plugins/completion.lua`
 - `dot_config/nvim/lua/plugins/colorscheme.lua`
 - `dot_config/nvim/lua/plugins/statusline.lua`
@@ -33,6 +35,8 @@ Python、Node.js/TypeScript、Java、Lua向けのLSPをNeovim側で扱います�
 ## plugin責務
 
 - LSP: `lsp.lua`
+- formatting: `format.lua`
+- lint: `lint.lua`
 - completion: `completion.lua`
 - UI/statusline: `statusline.lua`、`editor.lua`
 - colorscheme: `colorscheme.lua`
@@ -51,8 +55,15 @@ colorschemeは`sonokai`を主設定にします。
 
 ## formatter integration
 
-`none-ls.nvim`、`none-ls-extras.nvim`、`prettier.nvim`は、formatterをNeovimから呼び出すための候補として維持します。
+formatは`conform.nvim`、lintは`nvim-lint`で扱います。
 formatterやlinter本体のversionはproject-local toolとして管理し、Neovim plugin側へ寄せすぎない方針です。
+Luaで書いたNeovim設定の補助には、小規模な`lazydev.nvim`を使います。
+
+| workflow | plugin | tool解決 |
+| --- | --- | --- |
+| format | `conform.nvim` | project-local formatterをPATHから実行 |
+| lint | `nvim-lint` | project-local linterをPATHから実行 |
+| Neovim Lua補助 | `lazydev.nvim` | Neovim Lua APIの補完を補助 |
 
 ## 同期
 

@@ -34,6 +34,7 @@ miseはglobal toolを固定版で管理します。
 VimとtmuxはOS packageで導入します。
 Neovimはplugin互換性の再現性を重視してmiseで固定します。
 `npm:hunkdiff`は`hunk`と`hunkdiff`の両方のcommandを提供します。
+`npm:git-cz`は`.git-cz.json`の設定を使い、gitmoji Conventional Commits形式のcommit messageを作ります。
 
 ## project-local tool
 

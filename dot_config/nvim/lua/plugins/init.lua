@@ -24,14 +24,23 @@ require("lazy").setup({
     "williamboman/mason-lspconfig.nvim",
     "neovim/nvim-lspconfig",
     {
-        "nvimtools/none-ls.nvim",
-        dependencies = { "nvim-lua/plenary.nvim" }
+        "stevearc/conform.nvim",
+        event = { "BufWritePre" },
     },
     {
-        "nvimtools/none-ls-extras.nvim",
+        "mfussenegger/nvim-lint",
+        event = { "BufReadPost", "BufWritePost", "InsertLeave" },
+    },
+    {
+        "folke/lazydev.nvim",
+        ft = "lua",
+        opts = {
+            library = {
+                { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+            },
+        },
     },
     "onsails/lspkind-nvim",
-    "MunifTanjim/prettier.nvim",
     {
         "nvimdev/lspsaga.nvim",
         event = "LspAttach",
@@ -155,6 +164,8 @@ vim.opt.termguicolors = true
 
 require('plugins.statusline')
 require('plugins.lsp')
+require('plugins.format')
+require('plugins.lint')
 require('plugins.completion')
 require('plugins.colorscheme')
 require('plugins.editor')
