@@ -1,8 +1,143 @@
 #!/usr/bin/env bash
+set -euo pipefail
 
-case $1 in
-  "1" ) tmux-ide-mode1 ;;
-  "2" ) tmux-ide-mode2 ;;
-  "3" ) tmux-ide-mode3 ;;
-  * ) tmux-ide-mode1 ;;
-esac
+# 使い方を標準出力へ表示します。
+# 引数:
+#   なし。
+# 戻り値:
+#   成功した場合は0を返します。
+function show_usage() {
+    printf "Usage: tmux-ide [--mode 1|2|3]\n"
+}
+
+# tmux commandを実行できることを検証します。
+# 引数:
+#   なし。
+# 戻り値:
+#   tmuxを実行できる場合は0、できない場合は非0を返します。
+function require_tmux() {
+    if ! command -v tmux > /dev/null 2>&1; then
+        printf "tmux command was not found.\n" >&2
+        return 1
+    fi
+}
+
+# 3ペイン構成のIDE layoutを作成します。
+# 引数:
+#   なし。
+# 戻り値:
+#   tmux layout作成に成功した場合は0、失敗した場合は非0を返します。
+function apply_mode_one() {
+    tmux split-window -v
+    tmux split-window -h
+    tmux resize-pane -D 7
+    tmux select-pane -t 1
+}
+
+# 下部ペインを広めに取る2ペイン構成を作成します。
+# 引数:
+#   なし。
+# 戻り値:
+#   tmux layout作成に成功した場合は0、失敗した場合は非0を返します。
+function apply_mode_two() {
+    tmux split-window -v
+    tmux resize-pane -D 20
+    tmux select-pane -t 1
+}
+
+# 左右2ペイン構成を作成します。
+# 引数:
+#   なし。
+# 戻り値:
+#   tmux layout作成に成功した場合は0、失敗した場合は非0を返します。
+function apply_mode_three() {
+    tmux split-window -h
+    tmux select-pane -t 1
+}
+
+# 指定されたmodeに対応するtmux layoutを作成します。
+# 引数:
+#   $1: layout mode。1、2、3のいずれかを指定します。
+# 戻り値:
+#   layout作成に成功した場合は0、未知のmodeなら非0を返します。
+function apply_mode() {
+    local mode=$1
+
+    case "$mode" in
+        1) apply_mode_one ;;
+        2) apply_mode_two ;;
+        3) apply_mode_three ;;
+        *)
+            printf "Unknown tmux-ide mode: %s\n" "$mode" >&2
+            show_usage >&2
+            return 1
+            ;;
+    esac
+}
+
+# command line引数からlayout modeを取り出します。
+# 引数:
+#   "$@": tmux-ideへ渡されたcommand line引数。
+# 戻り値:
+#   解析に成功した場合は0を返し、modeを標準出力へ出力します。
+function parse_mode() {
+    local mode=1
+
+    while [ "$#" -gt 0 ]; do
+        case "$1" in
+            --mode)
+                if [ "$#" -lt 2 ]; then
+                    printf "--mode requires a value.\n" >&2
+                    show_usage >&2
+                    return 1
+                fi
+                mode=$2
+                shift 2
+                ;;
+            -m)
+                if [ "$#" -lt 2 ]; then
+                    printf "-m requires a value.\n" >&2
+                    show_usage >&2
+                    return 1
+                fi
+                mode=$2
+                shift 2
+                ;;
+            -h|--help)
+                printf "help\n"
+                return 0
+                ;;
+            1|2|3)
+                mode=$1
+                shift
+                ;;
+            *)
+                printf "Unknown argument: %s\n" "$1" >&2
+                show_usage >&2
+                return 1
+                ;;
+        esac
+    done
+
+    printf "%s\n" "$mode"
+}
+
+# tmux-ideのentry pointです。
+# 引数:
+#   "$@": command line引数。
+# 戻り値:
+#   layout作成に成功した場合は0、失敗した場合は非0を返します。
+function main() {
+    local mode
+    mode="$(parse_mode "$@")"
+
+    if [ "$mode" = "help" ]; then
+        show_usage
+        return 0
+    fi
+
+    require_tmux
+    apply_mode "$mode"
+}
+
+main "$@"
