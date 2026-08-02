@@ -19,11 +19,10 @@
 - Neovim
 - zsh
 - tmux
-- Docker-in-Docker
 
 Dockerfileによるapt package追加は行いません。
 jq、Vim、Neovim、zsh、tmuxはapt package featureで導入します。
-Node.js、PowerShell、Python、uv、Docker-in-Dockerはdevcontainer featureで導入します。
+Node.js、PowerShell、Python、uvはdevcontainer featureで導入します。
 
 ## mount
 

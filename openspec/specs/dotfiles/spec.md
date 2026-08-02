@@ -273,7 +273,7 @@ The repository SHALL provide local and CI validation for managed configuration.
 #### Scenario: Devcontainer is used
 
 - **WHEN** the repository is opened in its devcontainer
-- **THEN** Node.js 22.22.2, PowerShell, Python 3.12, uv, jq, Vim, Neovim, zsh, tmux, and Docker-in-Docker SHALL be provided through devcontainer features
+- **THEN** Node.js 22.22.2, PowerShell, Python 3.12, uv, jq, Vim, Neovim, zsh, and tmux SHALL be provided through devcontainer features
 - **AND** the devcontainer SHALL NOT add tools through a Dockerfile
 - **AND** command-based Vim, Neovim, zsh, and tmux validation SHALL run in CI and devcontainer environments
 

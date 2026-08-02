@@ -6,7 +6,6 @@
     "ghcr.io/rocker-org/devcontainer-features/apt-packages:1": {
       "packages": "curl,wget,git,jq,ca-certificates,build-essential,ripgrep,vim,neovim,zsh,tmux"
     },
-    "ghcr.io/devcontainers/features/docker-in-docker:4": {},
     "ghcr.io/devcontainers/features/node:2": {
       "version": "22.22.2"
     },
