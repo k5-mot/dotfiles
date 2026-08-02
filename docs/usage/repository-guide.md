@@ -54,7 +54,7 @@ global toolはmiseで管理し、project-local toolは各プロジェクトのlo
 | global tool | `dot_config/mise/config.toml` | `uv`、`git-cz`、`herdr`、`hunkdiff`、repo検証用CLI |
 | project-local tool | 各プロジェクトのlockfile | `ruff`、`pytest`、`taskipy`、`ty`、`vite`、`vitest`、`playwright` |
 | managed plugin | editor/shell/tmux設定 | `lazy.nvim` plugin、zinit plugin、TPM plugin |
-| manual setup | `docs/usage/` | OS package、PowerShell module、VS Code extension |
+| manual setup | `docs/usage/` | OS package、PowerShell module、VS Code extension、mise tool install |
 
 ## 2. Python開発
 

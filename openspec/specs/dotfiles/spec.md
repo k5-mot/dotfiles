@@ -14,6 +14,7 @@ The repository SHALL use chezmoi to manage configuration files while keeping ope
 - **THEN** Linux shell configuration such as `.bash_profile`, `.bashrc`, `.zshenv`, and `.emacs.d/` SHALL NOT be applied
 - **AND** Linux `.config/` and `.local/` managed configuration SHALL NOT be applied
 - **AND** Windows-specific `AppData` and `Documents` configuration SHALL only be applied on Windows hosts
+- **AND** Darwin hosts SHALL NOT receive managed files until macOS support is explicitly accepted
 
 #### Scenario: Chezmoi ignores repository support files
 
@@ -41,6 +42,7 @@ The repository SHALL use chezmoi to manage configuration files while keeping ope
 - **THEN** Windows Terminal, the minimal PowerShell profile, VS Code, and Oh My Posh configuration SHALL be managed
 - **AND** PowerShell installation helper scripts SHALL NOT be required
 - **AND** `Documents/PowerShell/Scripts` helper content SHALL NOT be managed
+- **AND** OS package, PowerShell module, VS Code extension, and mise tool installation SHALL remain explicit manual setup rather than automatic chezmoi apply behavior
 
 #### Scenario: Windows PowerShell profile is loaded
 
@@ -48,6 +50,7 @@ The repository SHALL use chezmoi to manage configuration files while keeping ope
 - **THEN** configured PowerShell modules SHALL be imported with errors surfaced when they are missing
 - **AND** Oh My Posh SHALL only be initialized when the command and configured theme file are available
 - **AND** XDG environment variables SHALL be set for the Windows user profile
+- **AND** helper functions SHALL use comment-based help that explains purpose, parameters, return values, and side effects where applicable
 
 #### Scenario: Git local identity is configured
 
@@ -228,6 +231,12 @@ The repository SHALL document setup, maintenance, coding rules, contribution rul
 - **AND** language-specific mandatory coding rules SHALL remain in `docs/rules/coding-rules.md`
 - **AND** Git branch, commit, and tag rules SHALL remain in `CONTRIBUTING.md`
 
+#### Scenario: WSL or proxy guidance is needed
+
+- **WHEN** a user needs WSL setup guidance or proxy examples
+- **THEN** `docs/usage/repository-guide.md` SHALL provide the shared guidance
+- **AND** credential-bearing proxy values SHALL be kept outside managed repository files
+
 #### Scenario: Tool-specific usage guidance is needed
 
 - **WHEN** a user needs Vim, Neovim, tmux, mise, or VS Code extension guidance
@@ -239,6 +248,8 @@ The repository SHALL document setup, maintenance, coding rules, contribution rul
 - **THEN** extension lists SHALL be documented under `docs/usage/`
 - **AND** extension installation SHALL remain a manual setup step
 - **AND** Linux and Windows VS Code settings SHALL remain separate because VS Code uses OS-specific user settings locations
+- **AND** Linux VS Code keybindings and snippets MAY be managed with the Linux VS Code user configuration
+- **AND** Windows VS Code keybindings and snippets SHALL NOT be managed until explicitly accepted
 - **AND** extension-specific settings SHALL be kept as non-loaded examples under `docs/usage/vscode-settings/`
 
 #### Scenario: Editor defaults are needed
@@ -288,6 +299,7 @@ The repository SHALL provide local and CI validation for managed configuration.
 - **THEN** JSON files, TOML files, and chezmoi templates SHALL be validated
 - **AND** OpenSpec specifications SHALL be validated
 - **AND** chezmoi managed-file scope SHALL be validated for Linux, Windows, and unsupported operating-system targets
+- **AND** non-loaded VS Code example settings under `docs/usage/vscode-settings/` SHALL be included in JSON validation
 
 #### Scenario: Command-based configuration validation runs
 
@@ -318,8 +330,11 @@ The repository SHALL provide local and CI validation for managed configuration.
 #### Scenario: Devcontainer is used
 
 - **WHEN** the repository is opened in its devcontainer
-- **THEN** Node.js 22.22.2, PowerShell, Python 3.12, uv, jq, Vim, Neovim, zsh, and tmux SHALL be provided through devcontainer features
+- **THEN** Node.js 22.22.2, PowerShell, Python 3.12, uv, curl, wget, Git, jq, ca-certificates, build-essential, ripgrep, Vim, Neovim, zsh, and tmux SHALL be provided through devcontainer features
 - **AND** the devcontainer SHALL NOT add tools through a Dockerfile
+- **AND** devcontainer-managed VS Code extensions and settings SHALL be limited to the devcontainer customization surface
+- **AND** Codex settings MAY be bind-mounted from the host while credentials SHALL NOT be recorded in the repository
+- **AND** Serena, pnpm, and uv caches SHALL be mounted as persistent volumes
 - **AND** command-based Vim, Neovim, zsh, and tmux validation SHALL run in CI and devcontainer environments
 
 #### Scenario: Devcontainer post-create initialization runs
@@ -328,7 +343,8 @@ The repository SHALL provide local and CI validation for managed configuration.
 - **THEN** Corepack SHALL be enabled
 - **AND** the repository root SHALL install pnpm dependencies with the frozen lockfile when `package.json` is present
 - **AND** the repository root SHALL synchronize uv development dependencies with Python 3.12 when `pyproject.toml` is present
-- **AND** immediate child Node.js and Python projects SHALL be initialized according to their detected lockfiles and configuration files
+- **AND** immediate child Node.js projects SHALL be initialized according to `pnpm-lock.yaml`, `yarn.lock`, or `package-lock.json`
+- **AND** immediate child Python projects SHALL be initialized according to `poetry.lock`, `pyproject.toml`, or `requirements.txt`
 - **AND** Serena project index setup SHALL run only when the cache is not already present
 
 ### Requirement: Dependency maintenance is pull-request based

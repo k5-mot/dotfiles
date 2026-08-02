@@ -10,19 +10,28 @@
 
 ## features
 
+- curl
+- wget
+- Git
 - Node.js 22.22.2
 - PowerShell
 - Python 3.12
 - uv
 - jq
+- ca-certificates
+- build-essential
+- ripgrep
 - Vim
 - Neovim
 - zsh
 - tmux
 
 Dockerfileによるapt package追加は行いません。
-jq、Vim、Neovim、zsh、tmuxはapt package featureで導入します。
+curl、wget、Git、jq、ca-certificates、build-essential、ripgrep、Vim、Neovim、zsh、tmuxはapt package featureで導入します。
 Node.js、PowerShell、Python、uvはdevcontainer featureで導入します。
+
+VS Code拡張機能とdevcontainer内だけで使うVS Code settingsは、`.devcontainer/devcontainer.json`のcustomizationsとして扱います。
+chezmoiで管理する通常のVS Code user settingsとは別の適用面です。
 
 ## mount
 
@@ -37,11 +46,13 @@ Codex設定は`${localEnv:HOME}/.codex`から`/home/vscode/.codex`へbind mount�
 
 ## 初期化
 
-devcontainer作成後に`postCreateCommand.sh`がCorepackを有効化し、リポジトリrootの依存関係を導入します。
+devcontainer作成後に`postCreateCommand.sh`がCorepackを有効化し、cache directoryの所有権を現在のユーザーへ寄せ、リポジトリrootの依存関係を導入します。
 rootに`package.json`がある場合は`pnpm install --frozen-lockfile`を実行します。
 rootに`pyproject.toml`がある場合は`uv python install 3.12`と`uv sync --dev`を実行します。
 
 直下のサブディレクトリにNode.jsまたはPythonプロジェクトがある場合も、検出したlockfileや設定ファイルに応じて依存関係を導入します。
+Node.jsは`pnpm-lock.yaml`、`yarn.lock`、`package-lock.json`を見ます。
+Pythonは`poetry.lock`、`pyproject.toml`、`requirements.txt`を見ます。
 Serena cacheが未作成の場合は、Serenaのproject indexも作成します。
 
 ```bash
