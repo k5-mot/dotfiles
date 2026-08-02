@@ -16,16 +16,19 @@ autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 ### End of Zinit's installer chunk
 
-# タグが無い公開リポジトリと個人用リポジトリは、タグ更新PRの対象外として扱う。
+# 認証が必要な個人用リポジトリは、現在の取得経路を優先する。
 zinit light k5-mot/zsh-completions
 zinit ice ver"v0.7.1"
 zinit light zsh-users/zsh-autosuggestions
+zinit ice atclone"git checkout --detach 559fee48bb74b75cec8b9887f8f3e046f01d5d8f" atpull"%atclone"
 zinit light chrissicool/zsh-256color
 zinit ice ver"v1.56"
 zinit light zdharma-continuum/fast-syntax-highlighting
+zinit ice atclone"git checkout --detach 55d8e061d52f4aa26aac8915d920d3b4f5649429" atpull"%atclone"
 zinit light zdharma-continuum/history-search-multi-word
 zinit ice ver"0.0.5"
 zinit light supercrabtree/k
+zinit ice atclone"git checkout --detach 0fbb2e48e07218c5a2776100a4c708b21cb06688" atpull"%atclone"
 zinit light b4b4r07/emoji-cli
 # zinit light mnowotnik/fzshell
 zinit ice ver"7.5.0" as"program" pick"$ZPFX/bin/git-*" make"PREFIX=$ZPFX"
