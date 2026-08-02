@@ -23,7 +23,6 @@ chezmoiの`run_` script名ではないため、`chezmoi apply`では自動実行
 | plugin | 固定方式 | 用途 | 維持判断 |
 | --- | --- | --- | --- |
 | `zsh-users/zsh-autosuggestions` | tag | 入力履歴に基づくautosuggestion | 維持 |
-| `chrissicool/zsh-256color` | commit | terminalの256色関連補助 | 利用端末で表示問題がなければ削除候補 |
 | `zdharma-continuum/fast-syntax-highlighting` | tag | command line syntax highlight | 維持 |
 | `zdharma-continuum/history-search-multi-word` | commit | 複数単語での履歴検索 | 履歴検索を使わないなら削除候補 |
 | `supercrabtree/k` | tag | directory listing補助 | `ls`/`eza`などで足りるなら削除候補 |

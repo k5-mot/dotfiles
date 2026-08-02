@@ -18,8 +18,6 @@ autoload -Uz _zinit
 
 zinit ice ver"v0.7.1"
 zinit light zsh-users/zsh-autosuggestions
-zinit ice atclone"git checkout --detach 559fee48bb74b75cec8b9887f8f3e046f01d5d8f" atpull"%atclone"
-zinit light chrissicool/zsh-256color
 zinit ice ver"v1.56"
 zinit light zdharma-continuum/fast-syntax-highlighting
 zinit ice atclone"git checkout --detach 55d8e061d52f4aa26aac8915d920d3b4f5649429" atpull"%atclone"
