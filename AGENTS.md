@@ -6,6 +6,7 @@ This repository is a chezmoi-managed dotfiles project. The documents under `docs
 
 - Use `docs/usage/repository-guide.md` for the overall workflow, language-specific development setup, WSL notes, and proxy examples.
 - Use `docs/usage/linux-setup.md` for Linux setup and maintenance procedures.
+- Use `docs/usage/linux-dev.md` for chezmoi source editing, diff, apply, validation, and commit workflow while developing this repository on Linux.
 - Use `docs/usage/windows-setup.md` for Windows setup. Windows installation is documented as manual, idempotent steps rather than executable setup scripts.
 - Use `docs/rules/coding-rules.md` for language and documentation rules.
 - Use `CONTRIBUTING.md` for branch, commit, and tag rules.

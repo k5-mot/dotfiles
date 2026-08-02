@@ -68,9 +68,11 @@ plugin specの一覧は現在`plugins/init.lua`に残っています。
 
 ## colorscheme
 
-colorschemeは`sonokai`を主設定にします。
-代替として`onedark.vim`と`gruvbox-material`だけを残します。
+colorschemeは`catppuccin/nvim`を主設定にします。
+代替として`sonokai`、`onedark.vim`、`gruvbox-material`をインストールだけ残します。
 その他のcolorscheme pluginはlockfile reviewと取得対象を増やすため採用しません。
+`tmuxline.vim`は採用しません。
+tmux statuslineはtmux側の`catppuccin/tmux`で管理します。
 
 ## formatter integration
 

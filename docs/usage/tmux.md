@@ -32,6 +32,19 @@ airgap環境、初回ネットワークなし環境、切り分け用途で使�
 tmux -f ~/.config/tmux/tmux.slim.conf new-session
 ```
 
+## tmux-ide
+
+`tmux-ide`は手動でIDE風のtmux layoutを作る補助commandです。
+mode別scriptは持たず、単一entry pointに集約します。
+
+```bash
+tmux-ide --mode 1
+tmux-ide --mode 2
+tmux-ide --mode 3
+```
+
+`--mode`を省略した場合はmode 1を使います。
+
 ## copy mode
 
 通常設定もslim設定も、copy modeではtmux bufferへコピーします。
@@ -50,13 +63,14 @@ xclipへのpipeは使いません。
 | `tmux-plugins/tpm` | TPM本体 | 必須 |
 | `catppuccin/tmux` | statusline theme | 視認性のため維持 |
 | `tmux-plugins/tmux-sensible` | tmuxの無難な既定値 | 維持 |
-| `tmux-plugins/tmux-pain-control` | pane操作補助 | 自前keybindで足りるか判断保留 |
 | `tmux-plugins/tmux-battery` | battery表示 | laptop利用を前提に維持 |
 | `tmux-plugins/tmux-resurrect` | session復元 | 維持 |
 | `tmux-plugins/tmux-continuum` | resurrect自動保存 | 自動restoreは無効化して維持 |
 
 `tmux-yank`は採用しません。
 copy modeはtmux bufferへのコピーへ統一し、system clipboard連携は必要になった時点で別途検討します。
+`tmux-pain-control`は採用しません。
+必要だったpane操作keybindは`tmux.conf`と`tmux.slim.conf`へ直接定義します。
 
 tagが無いpluginは、必要性と安定性を個別に判断します。
 必要性が薄いpluginは追加しません。
@@ -67,25 +81,19 @@ continuumはsessionの自動保存だけを使います。
 自動restoreは古い作業contextや壊れたsession stateを戻す可能性があるため無効にします。
 復元が必要な場合はresurrectの操作で明示的に戻します。
 
-## tmux-pain-controlの判断基準
+## pane keybindings
 
-自前keybindを残すか`tmux-pain-control`を残すかは、使う操作面で決めます。
-現在の設定にあるpane移動、resize、splitだけで足りるならpluginを外す方が単純です。
-plugin独自の細かなpane操作や既定keybindを使っているなら、自前keybindを減らしてpluginへ寄せる方が保守しやすくなります。
+`tmux-pain-control`由来の有用なkeybindは、pluginなしで使えるように直接定義します。
 
-現時点の差分:
+| 操作 | key |
+| --- | --- |
+| pane移動 | prefix + `h/j/k/l`、prefix + `C-h/C-j/C-k/C-l` |
+| pane resize | prefix + `H/J/K/L` |
+| split | prefix + `\|`、`-`、`%`、`"`、`\`、`_` |
+| new window | prefix + `c` |
+| window swap | prefix + `<` / `>` |
 
-| 操作 | 自前設定 | `tmux-pain-control` |
-| --- | --- | --- |
-| pane移動 | prefix + `h/j/k/l` | prefix + `h/j/k/l` と `C-h/C-j/C-k/C-l` |
-| pane resize | prefix + `H/J/K/L`、5 cell固定 | prefix + `H/J/K/L`、`@pane_resize`で幅を変更可能 |
-| split | prefix + `\|`、`-`、`%`、`"` | 同等に加えて `\` と `_` のfull-size split |
-| new window | prefix + `c`で現在pathを引き継ぐ | 同等 |
-| window swap | 自前設定なし | prefix + `<` / `>` |
-
-`C-h/C-j/C-k/C-l`、full-size split、window swapを使うならplugin維持が有利です。
-使わないなら自前設定だけで足ります。
-このリポジトリでは、現時点では判断保留として両方を維持します。
+pane分割とnew windowは現在pathを引き継ぎます。
 
 ## 更新
 

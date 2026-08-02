@@ -31,7 +31,8 @@ The repository SHALL use chezmoi to manage configuration files while keeping ope
 
 - **WHEN** a Linux user applies the dotfiles with chezmoi
 - **THEN** Vim, Neovim, zsh, bash, tmux, mise, git, and VS Code configuration SHALL be managed
-- **AND** Linux support configuration for dircolors, fzshell, latexmk, Starship, local bin scripts, local maintenance scripts, Emacs init, GVim, and root `.vimrc` compatibility SHALL be managed until a removal proposal is accepted
+- **AND** Linux support configuration for dircolors, fzshell, latexmk, Starship, `tmux-ide`, local maintenance scripts, minimal Emacs init, GVim, and root `.vimrc` compatibility SHALL be managed
+- **AND** legacy statusline helper scripts and decorative local bin scripts SHALL NOT be managed after their removal is accepted
 - **AND** package installation SHALL remain documented as manual setup steps
 
 #### Scenario: Windows configuration scope is applied
@@ -76,6 +77,9 @@ The repository SHALL keep Vim as a pluginless lightweight editor and Neovim as t
 - **WHEN** Neovim plugin configuration changes
 - **THEN** LSP, format, lint, completion, colorscheme, statusline, editor, syntax, filer, and search responsibilities SHALL stay documented in `docs/usage/neovim.md`
 - **AND** future plugin spec splitting SHALL follow those responsibility boundaries
+- **AND** `catppuccin/nvim` SHALL be the active Neovim colorscheme
+- **AND** alternate colorscheme plugins MAY remain installed without being the active colorscheme
+- **AND** `tmuxline.vim` SHALL NOT be used because tmux statusline ownership belongs to tmux configuration
 
 #### Scenario: Neovim formatting and linting are configured
 
@@ -130,6 +134,19 @@ The repository SHALL make zsh and tmux plugin maintenance explicit and reviewabl
 - **THEN** normal and slim configurations SHALL copy into the tmux buffer with `copy-selection-and-cancel`
 - **AND** the copy binding SHALL NOT require `xclip`
 
+#### Scenario: tmux pane operations are used
+
+- **WHEN** a user needs pane movement, pane resize, split, or window swap keybindings
+- **THEN** normal and slim tmux configurations SHALL define the keybindings directly
+- **AND** `tmux-pain-control` SHALL NOT be used
+
+#### Scenario: tmux IDE layout is created
+
+- **WHEN** a user runs `tmux-ide`
+- **THEN** a tmux layout SHALL be created from the selected `--mode`
+- **AND** modes 1, 2, and 3 SHALL be handled by the single `tmux-ide` command
+- **AND** separate mode-specific `tmux-ide-mode*` commands SHALL NOT be managed
+
 #### Scenario: tmux plugins are reviewed
 
 - **WHEN** TPM plugin inventory is reviewed
@@ -179,6 +196,11 @@ The repository SHALL document setup, maintenance, coding rules, contribution rul
 
 - **WHEN** a user needs Linux setup instructions
 - **THEN** `docs/usage/linux-setup.md` SHALL provide the procedure
+
+#### Scenario: Linux dotfiles development guidance is needed
+
+- **WHEN** a contributor develops this dotfiles repository on Linux
+- **THEN** `docs/usage/linux-dev.md` SHALL document chezmoi edit, diff, apply, validation, local-only data, and commit workflow
 
 #### Scenario: Windows setup guidance is needed
 

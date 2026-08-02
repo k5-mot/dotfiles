@@ -4,7 +4,7 @@
 
 - Linux: Vim、Neovim、zsh、bash、tmux、mise、git、VS Code
 - Windows: Windows Terminal、PowerShellプロファイル、VS Code、Oh My Posh
-- Linux補助設定: dircolors、fzshell、latexmk、Starship、local bin/script、Emacs/GVim互換設定
+- Linux補助設定: dircolors、fzshell、latexmk、Starship、tmux補助script、最小Emacs/GVim互換設定
 
 Vimは軽量編集用としてプラグインレスで運用し、IDE相当の補完、LSP、UI拡張はNeovimへ寄せます。
 
@@ -14,6 +14,7 @@ Vimは軽量編集用としてプラグインレスで運用し、IDE相当の�
 | --- | --- | --- |
 | Usage | [Repository guide](docs/usage/repository-guide.md) | 全体の使い方、開発環境、WSL、proxy |
 | Usage | [Linux setup](docs/usage/linux-setup.md) | Linux初期セットアップ |
+| Usage | [Linux dev](docs/usage/linux-dev.md) | dotfiles開発時のchezmoi運用 |
 | Usage | [Windows setup](docs/usage/windows-setup.md) | Windows初期セットアップ |
 | Usage | [Vim](docs/usage/vim.md) | プラグインレスVim運用 |
 | Usage | [Neovim](docs/usage/neovim.md) | lazy.nvimとIDE運用 |
