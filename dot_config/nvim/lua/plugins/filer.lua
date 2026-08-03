@@ -1,135 +1,89 @@
+-- [[ plugins/filer ]]
 
-local status, nvimtree = pcall(require, "nvim-tree")
-if (not status) then return end
+local status, neotree = pcall(require, "neo-tree")
+if not status then
+    return
+end
 
-vim.g.loaded = 1
+vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
--- empty setup using defaults
-require("nvim-tree").setup({
-    hijack_cursor = true,
-    -- focus_empty_on_setup = true,
-    sync_root_with_cwd = true,
-    view = {
-        adaptive_size = false,
-        --mappings = {
-        --    list = {
-        --        { key = { "<2-RightMouse>", "<C-]>" }, action = "" }, -- cd
-        --        { key = "<C-v>", action = "" }, -- vsplit
-        --        { key = "<C-x>", action = "" }, -- split
-        --        { key = "<C-t>", action = "" }, -- tabnew
-        --        { key = "<BS>", action = "" }, -- close_node
-        --        { key = "<Tab>", action = "" }, -- preview
-        --        { key = "D", action = "" }, -- trash
-        --        { key = "[e", action = "" }, -- prev_diag_item
-        --        { key = "]e", action = "" }, -- next_diag_item
-        --        { key = "[c", action = "" }, -- prev_git_item
-        --        { key = "]c", action = "" }, -- next_git_item
-        --        { key = "-", action = "" }, -- dir_up
-        --        { key = "s", action = "" }, -- system_open
-        --        { key = "W", action = "" }, -- collapse_all
-        --        { key = "g?", action = "help" }, -- toggle_help
+--- neo-tree bufferで現在行を見失いにくくするためcursorlineを有効化します。
+--- 引数: なし。
+--- @return nil
+--- 副作用: 現在windowのlocal cursorline設定を変更します。
+local function enable_filer_cursorline()
+    vim.opt_local.cursorline = true
+end
 
-        --        { key = "d", action = "cd" }, -- remove
-        --        { key = "x", action = "remove" }, -- cut
-
-        --        { key = "t", action = "cut" },
-        --        { key = "<Space>p", action = "prev_diag_item" },
-        --        { key = "<Space>.", action = "next_diag_item" },
-        --        { key = "<Space>k", action = "prev_git_item" },
-        --        { key = "<Space>j", action = "next_git_item" },
-        --        { key = "u", action = "dir_up" },
-        --        { key = "'", action = "close_node" },
-        --        { key = '"', action = "collapse_all" },
-        --        { key = "?", action = "toggle_help" },
-        --    },
-        --},
-    },
-    renderer = {
-        full_name = true,
-        group_empty = true,
-        special_files = {},
-        symlink_destination = false,
-        indent_markers = {
-            enable = true,
+neotree.setup {
+    close_if_last_window = false,
+    popup_border_style = "rounded",
+    enable_git_status = true,
+    enable_diagnostics = true,
+    default_component_configs = {
+        indent = {
+            with_markers = true,
+            with_expanders = true,
         },
-        icons = {
-            webdev_colors = true,
-            git_placement = "signcolumn",
-            show = {
-                file = true,
-                folder = true,
-                folder_arrow = true,
-                git = true,
+        git_status = {
+            symbols = {
+                added = " ",
+                modified = " ",
+                deleted = " ",
+                renamed = " ",
+                untracked = " ",
+                ignored = " ",
+                unstaged = " ",
+                staged = " ",
+                conflict = " ",
             },
-            glyphs ={
-                default = "",
-                symlink = "",
-                git = {
-                    unstaged  = " ", -- \ueadc
-                    staged    = " ", -- \uf068
-                    unmerged  = " ", -- \ueafe
-                    renamed   = " ", -- \ueae0
-                    deleted   = " ", -- \ueadf
-                    untracked = " ", -- \uf067
-                    ignored   = " ", -- \ueadd
-                },
-                folder = {
-                    default    = " ",
-                    open       = " ",
-                    empty      = " ",
-                    empty_open = " ",
-                    symlink    = " ",
-                },
-            }
         },
     },
-    update_focused_file = {
-        enable = true,
-        update_root = true,
-        ignore_list = { "help" },
+    window = {
+        position = "left",
+        width = 30,
+        mappings = {
+            ["l"] = "open",
+            ["h"] = "close_node",
+            ["<space>"] = "toggle_node",
+            ["<2-LeftMouse>"] = "open",
+            ["<cr>"] = "open",
+        },
+    },
+    filesystem = {
+        bind_to_cwd = true,
+        cwd_target = {
+            sidebar = "tab",
+            current = "window",
+        },
+        follow_current_file = {
+            enabled = true,
+            leave_dirs_open = false,
+        },
+        filtered_items = {
+            visible = true,
+            hide_dotfiles = false,
+            hide_gitignored = false,
+            hide_by_name = {
+                ".git",
+            },
+        },
+        group_empty_dirs = true,
+        use_libuv_file_watcher = true,
     },
     diagnostics = {
-        enable = true,
-        show_on_dirs = false,
-        icons = {
-            error   = " ", -- \uea87
-            warning = " ", -- \uea6c
-            hint    = " ", -- \uf400
-            info    = " ", -- \uf449
-        }
-    },
-    filters = {
-        custom = {
-            "^.git$",
+        symbols = {
+            hint = " ",
+            info = " ",
+            warn = " ",
+            error = " ",
         },
     },
-    actions = {
-        change_dir = {
-            enable = false,
-            restrict_above_cwd = true,
-        },
-        open_file = {
-            resize_window = true,
-            window_picker = {
-                chars = "aoeui",
-            },
-        },
-        remove_file = {
-            close_window = false,
+    event_handlers = {
+        {
+            event = "neo_tree_buffer_enter",
+            handler = enable_filer_cursorline,
         },
     },
-    log = {
-        enable = false,
-        truncate = true,
-        types = {
-            all = false,
-            config = false,
-            copy_paste = false,
-            diagnostics = false,
-            git = false,
-            profile = false,
-            watcher = false,
-        },
-    },
-})
+}

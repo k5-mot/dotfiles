@@ -1,11 +1,11 @@
 local has = vim.fn.has
-local is_win = has('win16') or has('win32') or has('win64')
-local is_mac = has('mac')   or has('macunix')
+local is_win = has "win16" == 1 or has "win32" == 1 or has "win64" == 1
+local is_mac = has "mac" == 1 or has "macunix" == 1
 
-if is_win == 1 then
-    require('env.win')
-elseif is_mac == 1 then
-    require('env.mac')
+if is_win then
+    require "env.win"
+elseif is_mac then
+    require "env.mac"
 else
-    require('env.linuxos')
+    require "env.linuxos"
 end

@@ -1,16 +1,16 @@
--- [[ statusline.lua ]]
+-- [[ plugins/statusline ]]
 
 local status, lualine = pcall(require, "lualine")
-if (not status) then return end
+if not status then
+    return
+end
 
-lualine.setup({
+lualine.setup {
     options = {
         icons_enabled = true,
-        theme = 'auto',
-        -- component_separators = { left = '', right = '' },
-        -- section_separators   = { left = ' ', right = ' ' },
-        component_separators = { left = ' ', right = ' ' },
-        section_separators   = { left = ' ', right = ' ' },
+        theme = "auto",
+        component_separators = { left = " ", right = " " },
+        section_separators = { left = " ", right = " " },
         disabled_filetypes = {
             statusline = {},
             winbar = {},
@@ -22,73 +22,58 @@ lualine.setup({
             statusline = 1000,
             tabline = 1000,
             winbar = 1000,
-        }
+        },
     },
     sections = {
-        lualine_a = {'mode'},
+        lualine_a = { "mode" },
         lualine_b = {
-            'branch',
+            "branch",
             {
-                'diff',
+                "diff",
                 colored = true,
-                symbols = { added = ' ', modified = ' ', removed = ' ' },
+                symbols = { added = " ", modified = " ", removed = " " },
             },
             {
-                'diagnostics',
-                sections = { 'error', 'warn', 'info', 'hint' },
-                symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' },
+                "diagnostics",
+                sections = { "error", "warn", "info", "hint" },
+                symbols = { error = " ", warn = " ", info = " ", hint = " " },
                 colored = true,
-                update_in_insert = false, -- Update diagnostics in insert mode.
-                always_visible = true,   -- Show diagnostics even if there are none.
+                update_in_insert = false,
+                always_visible = true,
             },
         },
-        lualine_c = {'filename'},
-        lualine_x = {'encoding', 'fileformat', 'filetype'},
-        lualine_y = {'progress'},
-        lualine_z = {'location'}
+        lualine_c = { "filename" },
+        lualine_x = { "encoding", "fileformat", "filetype" },
+        lualine_y = { "progress" },
+        lualine_z = { "location" },
     },
     inactive_sections = {
         lualine_a = {},
         lualine_b = {},
-        lualine_c = {'filename'},
-        lualine_x = {'location'},
+        lualine_c = { "filename" },
+        lualine_x = { "location" },
         lualine_y = {},
-        lualine_z = {}
+        lualine_z = {},
     },
     tabline = {
-        --lualine_a = {
-        --    {
-        --        'tabs',
-        --        mode = 2,
-        --    },
-        --},
-        --lualine_a = {'filetype'},
-        --lualine_b = {'filename'},
-        --lualine_c = {},
-        --lualine_x = {'close'},
-        --lualine_y = {'filename'},--'buffers'},
-        --lualine_z = {'tabs'},
+        lualine_a = {
+            {
+                "buffers",
+                mode = 2,
+                symbols = {
+                    alternate_file = "",
+                    modified = " ●",
+                },
+            },
+        },
+        lualine_z = {
+            {
+                "tabs",
+                mode = 2,
+            },
+        },
     },
     winbar = {},
     inactive_winbar = {},
-    extensions = {}
-})
-
-
---local lsp = require('feline.providers.lsp')
---local vi_mode_utils = require('feline.providers.vi_mode')
---local gps = require("nvim-gps")
---
---require('feline').setup({
---  theme = gruvbox,
-----  default_bg = bg,
-----  default_fg = fg,
-----  vi_mode_colors = vi_mode_colors,
-----  components = components,
-----  force_inactive = force_inactive,
---})
---
-----require('feline').winbar.setup({
-----  components = winbar_components,
-----  force_inactive = force_inactive,
-----})
+    extensions = { "lazy", "mason", "neo-tree", "quickfix" },
+}

@@ -87,10 +87,15 @@ The repository SHALL keep Vim as a pluginless lightweight editor and Neovim as t
 - **AND** future plugin spec splitting SHALL follow those responsibility boundaries
 - **AND** `catppuccin/nvim` SHALL be the active Neovim colorscheme with the `frappe` flavor
 - **AND** alternate colorscheme plugins MAY remain installed without being the active colorscheme
-- **AND** `nvim-treesitter` SHALL stay on the `master` branch while the syntax configuration uses the legacy `nvim-treesitter.configs` API
+- **AND** completion SHALL use `blink.cmp` while preserving the existing major completion keymaps
+- **AND** emoji completion SHALL NOT be enabled because emoji insertion belongs to the Telescope emoji picker
+- **AND** filer functionality SHALL use `neo-tree.nvim`
+- **AND** tabline functionality SHALL be provided by `lualine.nvim` without `barbar.nvim`
+- **AND** LSP UI functionality SHALL use Neovim native LSP and Telescope without `lspsaga.nvim`
+- **AND** `nvim-treesitter` SHALL stay on the `main` branch while syntax highlighting starts through native `vim.treesitter.start()`
+- **AND** the legacy `nvim-treesitter.configs` API SHALL NOT be used
 - **AND** `tmuxline.vim` SHALL NOT be used because tmux statusline ownership belongs to tmux configuration
 - **AND** unused Node, Perl, and Ruby Neovim providers SHALL be disabled while the Python provider remains enabled
-- **AND** LuaSnip SHALL build `jsregexp` for placeholder transformations
 - **AND** `cargo:tree-sitter-cli` SHALL be managed by mise for Treesitter parser generation
 - **AND** lazy.nvim LuaRocks support SHALL be disabled while no plugin requires LuaRocks
 

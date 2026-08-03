@@ -1,1 +1,1 @@
-print("macos")
+-- macOS向けの追加設定が必要になった場合は、このmoduleへ閉じ込める。

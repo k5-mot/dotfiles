@@ -1,6 +1,6 @@
 -- [[ init.lua ]]
 
-require('base')
-require('keymaps')
-require('plugins')
-require('env')
+require "base"
+require "keymaps"
+require "plugins"
+require "env"

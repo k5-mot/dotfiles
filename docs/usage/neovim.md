@@ -33,25 +33,25 @@ Masonの導入対象は`dot_config/nvim/lua/plugins/lsp.lua`で管理します�
 Python、Node.js/TypeScript、Java、Lua向けのLSPをNeovim側で扱います。
 nvim-lspconfigはserver default configの提供元として使い、server登録と有効化はNeovim 0.11以降の`vim.lsp.config`と`vim.lsp.enable`を使います。
 deprecatedな`require('lspconfig')[server].setup()`は使いません。
-LSP UIは`lspsaga.nvim`を使い、標準LSP keymapと衝突しにくい割り当てにします。
+LSP UIはnative LSPを基本にし、一覧表示やpreviewが必要な操作だけTelescopeへ寄せます。
+`lspsaga.nvim`は使いません。
 
-主なLspsaga keymap:
+主な追加LSP keymap:
 
 | key | action |
 | --- | --- |
-| `gh` | finder |
-| `gd` | goto definition |
-| `gp` | peek definition |
+| `gh` | references |
+| `gp` | definitions picker |
 | `gy` | goto type definition |
-| `gY` | peek type definition |
+| `gY` | type definitions picker |
 | `<leader>rn` | rename |
 | `<leader>ca` | code action |
 | `<leader>sl` / `<leader>sc` / `<leader>sb` / `<leader>sw` | diagnostics |
 | `[e` / `]e` | previous/next diagnostic |
 | `[E` / `]E` | previous/next error diagnostic |
 | `<leader>ci` / `<leader>co` | incoming/outgoing calls |
-| `<leader>o` | outline |
-| `<A-d>` | floating terminal |
+
+`<leader>o` outlineと`<A-d>` floating terminalは割り当てません。
 
 ## plugin責務
 
@@ -67,8 +67,12 @@ LSP UIは`lspsaga.nvim`を使い、標準LSP keymapと衝突しにくい割り�
 
 plugin specの一覧は現在`plugins/init.lua`に残っています。
 今後分割する場合は、上記の責務境界に合わせます。
-`nvim-treesitter`は`master` branchへ固定します。
-現行の`syntax.lua`は`nvim-treesitter.configs`を使うため、互換性のない`main` branch rewriteへは設定移行と同時に切り替えます。
+補完は`blink.cmp`で扱い、従来の主要keymapは維持します。
+emojiは補完sourceには含めず、既存のTelescope emoji pickerで扱います。
+ファイラは`neo-tree.nvim`で扱います。
+tablineは`barbar.nvim`を使わず、`lualine.nvim`のtablineへ統合します。
+`nvim-treesitter`は`main` branchへ固定し、legacy `nvim-treesitter.configs` APIは使いません。
+highlight開始はNeovim nativeの`vim.treesitter.start()`で行います。
 
 ## colorscheme
 
@@ -86,7 +90,6 @@ conform.nvimへ登録するformatterは、Neovim起動時にPATH上で実行で�
 Luaで書いたNeovim設定の補助には、小規模な`lazydev.nvim`を使います。
 Node、Perl、RubyのNeovim providerは使わないため無効化します。
 Python providerは`pynvim`を使うため維持します。
-LuaSnipのplaceholder transformation用に`jsregexp`をbuildします。
 Treesitter parser generation用の`tree-sitter` commandはmiseで管理します。
 LuaRocks必須pluginを使わないため、lazy.nvimのLuaRocks supportは無効化します。
 

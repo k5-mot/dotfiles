@@ -90,8 +90,16 @@ LSP keymapはLSP serverがbufferへattachされた後に有効になります。
 | workspace folder一覧 | `<space>wl` |
 | type definitionへ移動 | `<space>D` |
 | rename | `<space>rn` |
+| rename | `<leader>rn` |
 | code action | `<space>ca` |
+| code action | `<leader>ca` |
 | references | `gr` |
+| references | `gh` |
+| definitions picker | `gp` |
+| type definitionへ移動 | `gy` |
+| type definitions picker | `gY` |
+| incoming calls | `<leader>ci` |
+| outgoing calls | `<leader>co` |
 
 diagnostics keymapはLSP attach前から使えます。
 
@@ -101,18 +109,6 @@ diagnostics keymapはLSP attach前から使えます。
 | previous diagnostic | `[d` |
 | next diagnostic | `]d` |
 | diagnosticsをlocation listへ送る | `<space>q` |
-
-Lspsagaが有効な現行設定では、以下の追加keymapも使えます。
-今後Lspsagaを削除する場合は、この表も移行先に合わせて更新します。
-
-| 操作 | key |
-| --- | --- |
-| finder | `gh` |
-| peek definition | `gp` |
-| goto type definition | `gy` |
-| peek type definition | `gY` |
-| outline | `<leader>o` |
-| floating terminal | `<A-d>` |
 | line diagnostics | `<leader>sl` |
 | cursor diagnostics | `<leader>sc` |
 | buffer diagnostics | `<leader>sb` |

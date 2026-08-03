@@ -1,7 +1,9 @@
 -- [[ plugins/lint ]]
 
 local status, lint = pcall(require, "lint")
-if (not status) then return end
+if not status then
+    return
+end
 
 lint.linters_by_ft = {
     python = { "ruff" },

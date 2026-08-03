@@ -1,10 +1,14 @@
+local ibl_status, ibl = pcall(require, "ibl")
+if not ibl_status then
+    return
+end
 
-local status, ibl = pcall(require, "ibl")
-if (not status) then return end
-local status, gitsigns = pcall(require, "gitsigns")
-if (not status) then return end
+local gitsigns_status, gitsigns = pcall(require, "gitsigns")
+if not gitsigns_status then
+    return
+end
 
-require("ibl").setup()
+ibl.setup()
 
 -- vim.cmd([[highlight IndentBlanklineIndent1 guifg=#E06C75 gui=nocombine]])
 -- vim.cmd([[highlight IndentBlanklineIndent2 guifg=#E5C07B gui=nocombine]])
@@ -28,16 +32,16 @@ require("ibl").setup()
 --     },
 -- })
 
-require('gitsigns').setup({
-    signcolumn = false,  -- Toggle with `:Gitsigns toggle_signs`
-    numhl      = true, -- Toggle with `:Gitsigns toggle_numhl`
-    linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
-    word_diff  = false, -- Toggle with `:Gitsigns toggle_word_diff`
+gitsigns.setup {
+    signcolumn = false, -- `:Gitsigns toggle_signs`で切り替える。
+    numhl = true, -- `:Gitsigns toggle_numhl`で切り替える。
+    linehl = false, -- `:Gitsigns toggle_linehl`で切り替える。
+    word_diff = false, -- `:Gitsigns toggle_word_diff`で切り替える。
     signs = {
-    add          = {hl = 'GitSignsAdd'   , text = '│', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},
-    change       = {hl = 'GitSignsChange', text = '│', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
-    delete       = {hl = 'GitSignsDelete', text = '_', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
-    topdelete    = {hl = 'GitSignsDelete', text = '‾', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
-    changedelete = {hl = 'GitSignsChange', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
-  },
-})
+        add = { hl = "GitSignsAdd", text = "│", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
+        change = { hl = "GitSignsChange", text = "│", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
+        delete = { hl = "GitSignsDelete", text = "_", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
+        topdelete = { hl = "GitSignsDelete", text = "‾", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
+        changedelete = { hl = "GitSignsChange", text = "~", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
+    },
+}

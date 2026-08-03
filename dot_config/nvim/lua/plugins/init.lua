@@ -1,8 +1,8 @@
 -- [[ plugins.lua ]]
 
--- Lazy.nvim Installation Function
+-- lazy.nvimを未導入環境でも起動できるようにbootstrapする。
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
     vim.fn.system {
         "git",
         "clone",
@@ -14,9 +14,33 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Lazy.nvim Setup
+--- 全角曖昧幅文字の表示幅を標準プロファイルで調整します。
+--- 引数: なし。
+--- @return nil
+--- 副作用: cellwidths.nvimの文字幅設定をNeovimへ反映します。
+local function setup_cellwidths()
+    -- 'listchars' と 'fillchars' を事前に設定しておくのがお勧めです。
+    -- vim.opt.listchars = { eol = "⏎" }
+    -- vim.opt.fillchars = { eob = "‣" }
+    require("cellwidths").setup {
+        name = "default",
+        -- name = "empty",          -- 空の設定です。
+        -- name = "default",        -- vim-ambiwidth のデフォルトです。
+        -- name = "cica",           -- vim-ambiwidth の Cica 用設定です。
+        -- name = "sfmono_square",  -- SF Mono Square 用設定です。
+    }
+end
+
+--- 括弧や引用符の自動補完を有効化します。
+--- 引数: なし。
+--- @return nil
+--- 副作用: nvim-autopairsのinsert mode補助を有効化します。
+local function setup_autopairs()
+    require("nvim-autopairs").setup {}
+end
+
 require("lazy").setup({
-    -- Lazy.nvim can manage itself
+    -- lazy.nvim自身もlazy.nvimで管理する。
     "folke/lazy.nvim",
 
     -- LSP
@@ -40,40 +64,15 @@ require("lazy").setup({
             },
         },
     },
-    "onsails/lspkind-nvim",
-    {
-        "nvimdev/lspsaga.nvim",
-        event = "LspAttach",
-        dependencies = {
-            "nvim-treesitter/nvim-treesitter",
-            "nvim-tree/nvim-web-devicons",
-        },
-    },
-
     {
         "delphinus/cellwidths.nvim",
-        config = function()
-            -- 'listchars' と 'fillchars' を事前に設定しておくのがお勧めです。
-            -- vim.opt.listchars = { eol = "⏎" }
-            -- vim.opt.fillchars = { eob = "‣" }
-            require("cellwidths").setup {
-                name = "default",
-                -- name = "empty",          -- 空の設定です。
-                -- name = "default",        -- vim-ambiwidth のデフォルトです。
-                -- name = "cica",           -- vim-ambiwidth の Cica 用設定です。
-                -- name = "sfmono_square",  -- SF Mono Square 用設定です。
-            }
-        end,
+        config = setup_cellwidths,
     },
 
     -- Treesitter
     {
         "nvim-treesitter/nvim-treesitter",
-        branch = "master",
-        -- run = ':TSUpdate',
-        build = function()
-            require("nvim-treesitter.install").update { with_sync = true }
-        end,
+        branch = "main",
     },
 
     -- Telescope
@@ -100,56 +99,35 @@ require("lazy").setup({
     },
     -- Filer
     {
-        "nvim-tree/nvim-tree.lua",
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v3.x",
         dependencies = {
-            "nvim-tree/nvim-web-devicons", -- optional, for file icons
+            "nvim-lua/plenary.nvim",
+            "MunifTanjim/nui.nvim",
+            "nvim-tree/nvim-web-devicons",
         },
     },
 
     -- Completion
-    "hrsh7th/cmp-nvim-lsp",
-    "hrsh7th/cmp-buffer",
-    "hrsh7th/cmp-path",
-    "hrsh7th/cmp-cmdline",
-    "hrsh7th/nvim-cmp",
-    "hrsh7th/cmp-nvim-lua",
-    "hrsh7th/cmp-emoji",
     {
-        "L3MON4D3/LuaSnip",
-        build = "make install_jsregexp",
+        "Saghen/blink.cmp",
+        version = "1.*",
     },
-    "saadparwaiz1/cmp_luasnip",
-    "hrsh7th/cmp-nvim-lsp-document-symbol",
-    "hrsh7th/cmp-nvim-lsp-signature-help",
-    "ray-x/cmp-treesitter",
 
     -- Autopairs
     {
         "windwp/nvim-autopairs",
-        config = function()
-            require("nvim-autopairs").setup {}
-        end,
+        config = setup_autopairs,
     },
     -- Indent Visualization
     "lukas-reineke/indent-blankline.nvim",
 
     -- Statusline
     "nvim-tree/nvim-web-devicons",
-    {
-        "lewis6991/gitsigns.nvim",
-        config = function()
-            require("gitsigns").setup()
-        end,
-    },
+    "lewis6991/gitsigns.nvim",
     {
         "nvim-lualine/lualine.nvim",
         dependencies = { "nvim-tree/nvim-web-devicons", optional = true },
-    },
-
-    -- Tabline
-    {
-        "romgrk/barbar.nvim",
-        dependencies = { "nvim-tree/nvim-web-devicons" },
     },
 
     -- Colorscheme

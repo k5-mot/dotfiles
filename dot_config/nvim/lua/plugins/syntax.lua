@@ -1,82 +1,94 @@
+-- [[ plugins/syntax ]]
 
 local status, treesitter = pcall(require, "nvim-treesitter")
-if (not status) then return end
+if not status then
+    return
+end
 
-require('nvim-treesitter.install').prefer_git = false
-require('nvim-treesitter.install').compilers = { "cl", "gcc" }
-require("nvim-treesitter.configs").setup({
-    -- A list of parser names, or "all"
-    ensure_installed = {
-        "bash",
-        "bibtex",
-        "c",
-        "c_sharp",
-        "cmake",
-        "cpp",
-        "css",
-        "dockerfile",
-        "fortran",
-        "go",
-        "graphql",
-        "html",
-        "http",
-        "java",
-        -- "javascript",
-        "json",
-        -- "julia",
-        -- "latex",
-        "lua",
-        "make",
-        "markdown",
-        "markdown_inline",
-        "ninja",
-        "perl",
-        "php",
-        "python",
-        "r",
-        "ruby",
-        "rust",
-        "scss",
-        -- "sql",
-        "toml",
-        -- "tsx",
-        -- "typescript",
-        -- "verilog",
-        -- "vim",
-        "vue",
-        "yaml",
-        "zig",
-    },
+local parser_names = {
+    "bash",
+    "bibtex",
+    "c",
+    "c_sharp",
+    "cmake",
+    "cpp",
+    "css",
+    "dockerfile",
+    "fortran",
+    "go",
+    "graphql",
+    "html",
+    "http",
+    "java",
+    "json",
+    "lua",
+    "make",
+    "markdown",
+    "markdown_inline",
+    "ninja",
+    "perl",
+    "php",
+    "python",
+    "r",
+    "ruby",
+    "rust",
+    "scss",
+    "toml",
+    "vue",
+    "yaml",
+    "zig",
+}
 
-    -- Install parsers synchronously (only applied to `ensure_installed`)
-    sync_install = false,
+--- nvim-treesitterで利用可能なparserだけを抽出します。
+--- @param candidates string[] 導入候補のparser名一覧です。
+--- @return string[] 利用可能なparser名一覧です。
+local function filter_available_parsers(candidates)
+    if type(treesitter.get_available) ~= "function" then
+        return candidates
+    end
 
-    -- Automatically install missing parsers when entering buffer
-    -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
-    auto_install = true,
+    local available = {}
+    for _, parser_name in ipairs(treesitter.get_available()) do
+        available[parser_name] = true
+    end
 
-    -- List of parsers to ignore installing (for "all")
-    -- ignore_install = { "javascript" },
+    local filtered = {}
+    for _, parser_name in ipairs(candidates) do
+        if available[parser_name] then
+            table.insert(filtered, parser_name)
+        end
+    end
 
-    highlight = {
-        -- `false` will disable the whole extension
-        enable = true,
+    return filtered
+end
 
-        -- list of language that will be disabled
-        -- disable = { "c", "rust" },
-        -- Or use a function for more flexibility, e.g. to disable slow treesitter highlight for large files
-        disable = function(lang, buf)
-            local max_filesize = 100 * 1024 -- 100 KB
-            local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-            if ok and stats and stats.size > max_filesize then
-                return true
-            end
-        end,
+--- 大きいbufferでTree-sitter highlightを避けるべきか判定します。
+--- @param bufnr integer 判定対象のbuffer番号です。
+--- @return boolean 100KiBを超える通常ファイルならtrue、それ以外はfalseです。
+local function is_large_buffer(bufnr)
+    local filename = vim.api.nvim_buf_get_name(bufnr)
+    if filename == "" then
+        return false
+    end
 
-        -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-        -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-        -- Using this option may slow down your editor, and you may see some duplicate highlights.
-        -- Instead of true it can also be a list of languages
-        additional_vim_regex_highlighting = false,
-    },
+    local ok, stats = pcall(vim.uv.fs_stat, filename)
+    return ok and stats ~= nil and stats.size > 100 * 1024
+end
+
+--- FileType検出後にTree-sitter highlightを開始します。
+--- @param event table autocmdから渡されるevent情報です。
+--- @return nil
+local function start_treesitter(event)
+    if is_large_buffer(event.buf) then
+        return
+    end
+
+    pcall(vim.treesitter.start, event.buf)
+end
+
+treesitter.install(filter_available_parsers(parser_names))
+
+vim.api.nvim_create_autocmd("FileType", {
+    group = vim.api.nvim_create_augroup("dotfiles_treesitter", { clear = true }),
+    callback = start_treesitter,
 })
