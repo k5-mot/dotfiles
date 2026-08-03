@@ -27,6 +27,7 @@ miseはglobal toolを固定版で管理します。
 | `taplo` | TOML formatter/linter |
 | `actionlint` | GitHub Actions linter |
 | `cargo:herdr` | global CLI |
+| `cargo:tree-sitter-cli` | Neovim Treesitter parser generation |
 | `npm:hunkdiff` | global CLI |
 | `npm:git-cz` | commit helper |
 

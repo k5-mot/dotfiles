@@ -82,7 +82,13 @@ tmux statuslineはtmux側の`catppuccin/tmux`で管理します。
 
 formatは`conform.nvim`、lintは`nvim-lint`で扱います。
 formatterやlinter本体のversionはproject-local toolとして管理し、Neovim plugin側へ寄せすぎない方針です。
+conform.nvimへ登録するformatterは、Neovim起動時にPATH上で実行できるものだけに絞ります。
 Luaで書いたNeovim設定の補助には、小規模な`lazydev.nvim`を使います。
+Node、Perl、RubyのNeovim providerは使わないため無効化します。
+Python providerは`pynvim`を使うため維持します。
+LuaSnipのplaceholder transformation用に`jsregexp`をbuildします。
+Treesitter parser generation用の`tree-sitter` commandはmiseで管理します。
+LuaRocks必須pluginを使わないため、lazy.nvimのLuaRocks supportは無効化します。
 
 | workflow | plugin | tool解決 |
 | --- | --- | --- |

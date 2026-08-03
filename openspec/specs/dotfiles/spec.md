@@ -89,6 +89,10 @@ The repository SHALL keep Vim as a pluginless lightweight editor and Neovim as t
 - **AND** alternate colorscheme plugins MAY remain installed without being the active colorscheme
 - **AND** `nvim-treesitter` SHALL stay on the `master` branch while the syntax configuration uses the legacy `nvim-treesitter.configs` API
 - **AND** `tmuxline.vim` SHALL NOT be used because tmux statusline ownership belongs to tmux configuration
+- **AND** unused Node, Perl, and Ruby Neovim providers SHALL be disabled while the Python provider remains enabled
+- **AND** LuaSnip SHALL build `jsregexp` for placeholder transformations
+- **AND** `cargo:tree-sitter-cli` SHALL be managed by mise for Treesitter parser generation
+- **AND** lazy.nvim LuaRocks support SHALL be disabled while no plugin requires LuaRocks
 
 #### Scenario: Neovim formatting and linting are configured
 
@@ -96,6 +100,7 @@ The repository SHALL keep Vim as a pluginless lightweight editor and Neovim as t
 - **THEN** `conform.nvim` SHALL provide formatting integration
 - **AND** `nvim-lint` SHALL provide lint integration
 - **AND** formatter and linter executable versions SHALL remain project-local where practical
+- **AND** conform.nvim SHALL register only formatter commands that are executable at Neovim startup
 - **AND** `lazydev.nvim` SHALL provide lightweight assistance for Lua-based Neovim configuration
 
 #### Scenario: Neovim plugin lockfile changes
@@ -186,7 +191,7 @@ The repository SHALL manage development tools through mise with fixed versions i
 #### Scenario: Core tools are installed
 
 - **WHEN** a user runs `mise install`
-- **THEN** Python, uv, Node.js, Java, Rust, Lua, jq, fzf, GitHub CLI, Neovim, shellcheck, shfmt, stylua, taplo, actionlint, herdr, hunkdiff, and git-cz SHALL be installable from `dot_config/mise/config.toml`
+- **THEN** Python, uv, Node.js, Java, Rust, Lua, jq, fzf, GitHub CLI, Neovim, tree-sitter CLI, shellcheck, shfmt, stylua, taplo, actionlint, herdr, hunkdiff, and git-cz SHALL be installable from `dot_config/mise/config.toml`
 - **AND** project-local lint, test, format, and build tools SHALL remain outside mise unless accepted as global tools
 - **AND** Vim and tmux SHALL be installed as operating-system packages
 
