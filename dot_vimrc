@@ -1,1 +1,419 @@
-source $HOME/.config/vim/init.vim
+" 初期化 {{{
+if 0 | endif
+set encoding=utf-8
+scriptencoding utf-8
+
+if &compatible
+  set nocompatible
+endif
+
+let g:is_windows = has('win16') || has('win32') || has('win64')
+let g:is_mac = has('mac')
+
+augroup MyAugroup
+  autocmd!
+augroup END
+" }}}
+
+
+" 環境 {{{
+let g:vim_cache_dir = expand('$HOME/.cache/vim')
+let g:vim_state_dir = expand('$HOME/.local/state/vim')
+let g:vim_data_dir = expand('$HOME/.local/share/vim')
+let g:viminfo = expand(g:vim_cache_dir . '/viminfo')
+let g:backup_dir = expand(g:vim_cache_dir . '/backup')
+let g:swap_dir = expand(g:vim_cache_dir . '/swap')
+let g:undo_dir = expand(g:vim_cache_dir . '/undo')
+let g:view_dir = expand(g:vim_cache_dir . '/view')
+let g:local_vimrc = expand('$HOME/.vimrc_local')
+" }}}
+
+
+" セットアップ {{{
+" 目的: Vimが利用するキャッシュ用ディレクトリを必要な場合だけ作成する。
+" 引数: dirname 作成対象のディレクトリパス。
+" 戻り値: なし。対象ディレクトリが存在しない場合はファイルシステムを変更する。
+function! s:makedir(dirname) abort
+    if !isdirectory(a:dirname)
+        call mkdir(a:dirname, 'p')
+    endif
+endfunction
+
+call s:makedir(g:vim_cache_dir)
+call s:makedir(g:vim_state_dir)
+call s:makedir(g:vim_data_dir)
+call s:makedir(g:backup_dir)
+call s:makedir(g:swap_dir)
+call s:makedir(g:undo_dir)
+call s:makedir(g:view_dir)
+" }}}
+
+
+" GUIと端末 {{{
+if !has('gui_running')
+    let &t_ti .= "\e[1 q"
+    let &t_SI .= "\e[5 q"
+    let &t_EI .= "\e[1 q"
+    let &t_te .= "\e[0 q"
+
+    set termguicolors
+    " set t_Co=256
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum" " 文字色
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum" " 背景色
+endif
+" }}}
+
+
+" 編集オプション {{{
+" 編集中でもファイルを開けるようにする。
+set hidden
+
+" 他で編集したファイルを自動で再読み込みする。
+set autoread
+
+" 補完時の挙動を指定する。
+"set completeopt=menuone,noselect
+
+" スクロール時の余白行数を確保する。
+set scrolloff=5
+set sidescrolloff=6
+
+" バッファスクロールへマウスを使う。
+set mouse=a
+
+" バックスペースでインデント、改行、挿入開始位置を消せるようにする。
+set backspace=indent,eol,start
+
+" テキスト整形オプションを軽量編集向けに固定する。
+set formatoptions=lmq
+autocmd Filetype * setlocal formatoptions-=ro
+
+" ビープを無効にする。
+set visualbell t_vb=
+set vb t_vb=
+if (705 <= v:version)
+  set belloff=all
+endif
+
+" エラーメッセージ表示時にビープを鳴らさない。
+set noerrorbells
+
+" ファイル閲覧ダイアログは現在のバッファのディレクトリから開始する。
+set browsedir=buffer
+
+" カーソルを行をまたいで移動できるようにする。
+set whichwrap=b,s,h,l,<,>,[,],~
+
+" Windowsでパスの区切り文字をスラッシュで扱う。
+if g:is_windows
+  set shellslash
+endif
+
+" コマンドをステータスに表示する。
+set showcmd
+
+" 現在のモード表示はステータスライン側へ任せる。
+set noshowmode
+
+" モードラインは任意コード実行の入口になり得るため無効にする。
+set modelines=0
+
+" 端末タイトルは外側の環境に任せる。
+set notitle
+
+" ヤンクでシステムクリップボードを使用する。
+set clipboard=unnamedplus
+
+" 折り返し時に単語内で折り返さない。
+" set nowrap
+set linebreak
+
+" ルーラーを表示する。
+set ruler
+
+" 最終行を省略せずに表示する。
+set display=lastline
+
+" 不可視文字を表示する。
+set list
+set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
+" set listchars=tab:▹\ ,trail:-,extends:»,precedes:«,eol:\ ,nbsp:%
+
+" 開始時の挨拶を表示しない。
+set shortmess+=I
+
+" 検索ループ時のメッセージを表示しない。
+set shortmess+=s
+
+" カレント行のハイライトは必要になったときだけ有効にする。
+" set cursorline
+
+" 対応する括弧をハイライト表示する。
+set showmatch
+set matchtime=3
+
+" C言語系インデントのラベル位置を左端に寄せない。
+set cinoptions+=:0
+
+" メッセージ表示欄を1行にする。
+"set cmdheight=2
+set cmdheight=1
+
+" ステータス行は標準挙動を使う。
+" set laststatus=2
+
+" 行番号を表示する。
+set number
+
+" 相対行番号は軽量編集では既定無効にする。
+"set relativenumber
+
+" スペルチェックはコメントにも適用されるため既定無効にする。
+"set spell
+
+" コマンド実行中は再描画しない。
+set lazyredraw
+
+" 高速ターミナル接続として扱う。
+set ttyfast
+
+" タブ幅とインデント幅を固定する。
+set tabstop=4
+set expandtab
+"set cindent
+" set smartindent
+set autoindent
+set nrformats=
+set softtabstop=2
+set shiftwidth=2
+
+" marker形式の折りたたみを使い、初期表示では有効化しない。
+set foldmethod=marker
+set foldlevel=1
+set foldcolumn=0
+set nofoldenable
+
+" 検索をファイル先頭へループさせ、大文字を含む検索だけ大小を区別する。
+set wrapscan
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
+
+" ウィンドウサイズの自動均等化を有効にする。
+set equalalways
+"set noequalalways
+
+" concealは必要なfiletype側で判断する。
+"set conceallevel=0
+
+" JSONを開いたときのconcealを無効にする。
+let g:vim_json_syntax_conceal = 0
+
+" Windowsでは既存環境のgrep代替commandを使う。
+if has('win32')
+  set grepprg=jvgrep
+endif
+
+" 全角文字幅を日本語端末で崩れにくい設定にする。
+" set ambiwidth=single
+set ambiwidth=double
+
+" タグファイルをカレントディレクトリから上位へ探索する。
+set tags+=tags;
+set showfulltag
+set wildoptions=tagfile
+
+" 文字コード関係は日本語ファイルの既存資産を優先して読む。
+" set fileencodings=utf-8,cp932,euc-jp,iso-20220-jp,default,latin,sjis
+" set fileencodings=ucs-bom,utf-8,iso-2022-jp,euc-jp,ucs-2le,ucs-2,cp932
+" set fileencodings=utf-8,euc-jp,sjis,cp932,iso-2022-jp
+" set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
+" set fileencoding=utf-8
+" set fileformat=unix
+set encoding=utf-8
+set fileencodings=utf-8,cp932,euc-jp,iso-2022-jp,default,latin
+set fileformats=unix,dos,mac
+
+" コマンドライン補完をメニュー表示にする。
+set wildmode=longest:full,full
+set wildmenu
+set wildignorecase
+
+" 矩形選択で文字が無い位置にも進めるようにする。
+set virtualedit=block
+
+" シンタックスハイライトを有効にする。
+syntax enable
+" }}}
+
+
+" キャッシュ {{{
+" バックアップファイルをキャッシュ配下へ保存する。
+set backup
+execute 'set backupdir=' . g:backup_dir
+set backupext=.backup
+
+" スワップファイルをキャッシュ配下へ保存する。
+set swapfile
+execute 'set directory=' . g:swap_dir
+set updatetime=30000
+set updatecount=500
+
+" コマンド履歴とアンドゥ履歴を永続化する。
+set history=10000
+set undofile
+execute 'set undodir=' . g:undo_dir
+
+" 折り畳みの保存と復元をキャッシュ配下へ保存する。
+set viewoptions-=options
+execute 'set viewdir=' . g:view_dir
+
+" viminfoをキャッシュ配下へ保存する。
+execute 'set viminfo+=n' . g:viminfo
+" }}}
+
+
+" キーマップ {{{
+" Leaderをカンマへ固定する。
+let mapleader = ','
+
+" */#をsmartcaseに対応できる検索へ置き換える。
+nmap * /<C-r><C-w><CR>N
+nmap # ?<C-r><C-w><CR>N
+
+" Ctrl + hjklでウィンドウ間を移動する。
+" Ctrl-Hが効かない場合は端末のterminfo側でkbsを調整する。
+" infocmp $TERM | sed 's/kbs=^[hH]/kbs=\\177/' > $TERM.ti
+" tic $TERM.ti
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" Shift + 矢印でウィンドウサイズを変更する。
+nnoremap <S-Left>  <C-w><
+nnoremap <S-Right> <C-w>>
+nnoremap <S-Up>    <C-w>-
+nnoremap <S-Down>  <C-w>+
+
+" Escを2回押して検索ハイライトを消す。
+nnoremap <Esc><Esc> :nohlsearch<CR><ESC>
+
+" Tabで対応ペアにジャンプする。
+nmap <Tab> %
+vmap <Tab> %
+
+" コマンドラインモードをEmacs風の移動キーで操作する。
+cnoremap <C-a> <Home>
+cnoremap <C-b> <Left>
+cnoremap <C-d> <Del>
+cnoremap <C-e> <End>
+cnoremap <C-f> <Right>
+cnoremap <C-n> <Down>
+cnoremap <C-p> <Up>
+cnoremap <M-b> <S-Left>
+cnoremap <M-f> <S-Right>
+
+" 空白文字の整形を短い操作で実行する。
+nnoremap <Leader>dt :<C-u>retab<CR>
+"nnoremap <Leader>dc :<C-u>%s/<C-v><C-m>//g<CR>
+nnoremap <Leader>dc :<C-u>%s/<C-v><C-m>//ge<CR>:noh<CR>:retab<CR>gg
+
+" タブ操作はt prefixへ集約する。
+nnoremap [tab] <Nop>
+nmap t [tab]
+map <silent> [tab]n :tabnew<CR>
+map <silent> [tab]l :tabnext<CR>
+map <silent> [tab]h :tabprevious<CR>
+
+" 検索開始文字を検索文字列として入力しやすくする。
+cnoremap <expr> / getcmdtype() == '/' ? '\/' : '/'
+cnoremap <expr> ? getcmdtype() == '?' ? '\?' : '?'
+
+" vimrcやgvimrcを編集するためのキーマップを定義する。
+nnoremap <silent> <Space>ev  :<C-u>edit $MYVIMRC<CR>
+nnoremap <silent> <Space>eg  :<C-u>edit $MYGVIMRC<CR>
+
+" vimrcやgvimrcの変更を反映するためのキーマップを定義する。
+nnoremap <silent> <Space>rv :<C-u>source $MYVIMRC \| if has('gui_running') \| source $MYGVIMRC \| endif <CR>
+nnoremap <silent> <Space>rg :<C-u>source $MYGVIMRC<CR>
+
+" インサートモードをEmacs風の移動キーで操作する。
+inoremap <C-b> <Up>
+inoremap <C-f> <Down>
+inoremap <C-p> <Left>
+inoremap <C-n> <Right>
+" }}}
+
+
+" コマンドと自動コマンド {{{
+" 現在のファイルパスをクリップボードへコピーする。
+command! CopyPath
+      \ let @*=expand('%') | echo 'copied'
+
+" colorscheme変更後も背景を透過する。
+augroup AutoColorscheme
+    autocmd!
+    autocmd Colorscheme * highlight Normal      ctermbg=NONE guibg=NONE
+    autocmd Colorscheme * highlight NonText     ctermbg=NONE guibg=NONE
+    autocmd Colorscheme * highlight LineNr      ctermbg=NONE guibg=NONE
+    autocmd Colorscheme * highlight Folded      ctermbg=NONE guibg=NONE
+    autocmd Colorscheme * highlight EndOfBuffer ctermbg=NONE guibg=NONE
+    autocmd Colorscheme * highlight Comment     gui=NONE term=NONE cterm=NONE
+augroup END
+
+" JSONを整形し、Unicode escapeを読める文字へ戻す。
+command! JsonFormat :execute '%!python -m json.tool'
+      \ | :execute '%!python -c "import re,sys;chr=__builtins__.__dict__.get(\"unichr\", chr);sys.stdout.write(re.sub(r\"\\\\u[0-9a-f]{4}\", lambda x: chr(int(\"0x\" + x.group(0)[2:], 16)).encode(\"utf-8\"), sys.stdin.read()))"'
+      \ | :set ft=json
+      \ | :1
+
+" 保存時に行末スペースを削除する。
+augroup saveFile
+  autocmd!
+  autocmd BufWritePre * %s/\s\+$//e
+augroup END
+
+" vimrc保存後に設定を読み直す。
+augroup source-vimrc
+  autocmd!
+  autocmd BufWritePost *vimrc source $MYVIMRC | set foldmethod=marker
+  autocmd BufWritePost *gvimrc if has('gui_running') source $MYGVIMRC
+augroup END
+
+" 改行時の自動コメント継続を無効にする。
+augroup auto_comment_off
+  autocmd!
+  autocmd BufEnter * setlocal formatoptions-=r
+  autocmd BufEnter * setlocal formatoptions-=o
+augroup END
+
+" HTML/XMLの閉じタグ補完を軽量に設定する。
+augroup MyXML
+  autocmd!
+  autocmd Filetype xml inoremap <buffer> </ </<C-x><C-o>
+  autocmd Filetype html inoremap <buffer> </ </<C-x><C-o>
+augroup END
+
+" .mdファイルをModula2形式ではなくMarkdown形式で開く。
+autocmd BufNewFile,BufRead *.md set filetype=markdown
+
+" テキストファイル幅と編集位置復元だけを自動化する。
+if has("autocmd")
+  augroup redhat
+    autocmd BufRead *.txt set tw=78
+    autocmd BufReadPost *
+          \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+          \   exe "normal! g'\"" |
+          \ endif
+  augroup END
+endif
+" }}}
+
+
+" ローカル設定 {{{
+if filereadable(g:local_vimrc)
+  execute 'source ' . fnameescape(g:local_vimrc)
+endif
+" }}}

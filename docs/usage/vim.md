@@ -6,8 +6,6 @@ Vimは軽量編集用です。
 
 ## 管理対象
 
-- `dot_config/vim/init.vim`
-- `dot_config/vim/common/`
 - `dot_vimrc`
 - `dot_gvimrc`
 - `dot_config/nvim/ginit.vim`
@@ -20,9 +18,9 @@ Vimは軽量編集用です。
 
 ## Vim、GVim、Neovim GUIの違い
 
-`dot_config/vim/init.vim`はVim本体の主設定です。
-`dot_vimrc`は古いVimやpluginが`~/.vimrc`だけを見る場合の互換入口で、Vimの主設定を読み込ませるために残します。
-`dot_gvimrc`はGVim専用のGUI設定です。
+`dot_vimrc`はVim本体の主設定です。
+Vim設定はtmux slim設定と同じくincludeで分割せず、`~/.vimrc`へ一本化します。
+`dot_gvimrc`はGVim専用のGUI差分設定です。
 `dot_config/nvim/ginit.vim`はNeovim GUI client向けで、GVimとは別物です。
 
 このため、Vim/GVim互換設定はtmux依存ではありません。
@@ -31,7 +29,7 @@ Vimは軽量編集用です。
 ## 確認
 
 ```bash
-vim -Nu ~/.config/vim/init.vim +qall
+vim -Nu ~/.vimrc +qall
 ```
 
 ## ローカル上書き

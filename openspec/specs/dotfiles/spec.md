@@ -32,7 +32,7 @@ The repository SHALL use chezmoi to manage configuration files while keeping ope
 
 - **WHEN** a Linux user applies the dotfiles with chezmoi
 - **THEN** Vim, Neovim, zsh, bash, tmux, mise, git, and VS Code configuration SHALL be managed
-- **AND** Linux support configuration for dircolors, fzshell, latexmk, Starship, `tmux-ide`, local maintenance scripts, minimal Emacs init, GVim, and root `.vimrc` compatibility SHALL be managed
+- **AND** Linux support configuration for dircolors, fzshell, latexmk, Starship, `tmux-ide`, local maintenance scripts, minimal Emacs init, and GVim SHALL be managed
 - **AND** legacy statusline helper scripts and decorative local bin scripts SHALL NOT be managed after their removal is accepted
 - **AND** package installation SHALL remain documented as manual setup steps
 
@@ -67,6 +67,8 @@ The repository SHALL keep Vim as a pluginless lightweight editor and Neovim as t
 - **WHEN** Vim configuration is loaded
 - **THEN** it SHALL NOT depend on vim-plug or repository-managed Vim plugins
 - **AND** it SHALL provide only configuration needed for lightweight editing
+- **AND** Vim configuration SHALL be consolidated in `~/.vimrc` without includes into `~/.config/vim`
+- **AND** Vim-specific `~/.config/vim` files SHALL NOT be managed
 - **AND** local Vim-only overrides MAY be placed in `~/.vimrc_local` outside chezmoi management
 
 #### Scenario: Neovim provides IDE features

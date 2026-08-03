@@ -5,7 +5,7 @@ chezmoi適用時にインストール処理を自動実行せず、必要な操�
 
 ## 管理対象
 
-- Vim: `dot_config/vim`
+- Vim: `dot_vimrc`、`dot_gvimrc`
 - Neovim: `dot_config/nvim`
 - zsh: `dot_config/zsh`、`dot_zshenv`
 - bash: `dot_bashrc`、`dot_bash_profile`
@@ -17,9 +17,10 @@ chezmoi適用時にインストール処理を自動実行せず、必要な操�
 - 補助script: `dot_local/bin/tmux-ide`、`dot_local/script`
 
 Vimは軽量編集用の設定だけを管理し、プラグインは導入しません。
+Vim本体の設定は`~/.vimrc`へ一本化し、includeで分割しません。
 NeovimはIDE用途として`lazy.nvim`でLSP、補完、UI、colorschemeを管理します。
 Emacs initは最小設定のみ管理します。
-GVim、rootの`.vimrc`はVim互換性維持のため現行管理対象に残しています。
+GVimのGUI差分設定もVim互換性維持のため現行管理対象に残しています。
 dotfiles自体を開発するときのchezmoi操作は`docs/usage/linux-dev.md`を参照します。
 
 ## 1. 基本パッケージを入れる
@@ -115,7 +116,7 @@ Vimはプラグインレスです。
 設定読み込みだけを確認します。
 
 ```bash
-vim -Nu ~/.config/vim/init.vim +qall
+vim -Nu ~/.vimrc +qall
 ```
 
 Neovim:

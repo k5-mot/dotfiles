@@ -26,7 +26,7 @@ test_vim_config() {
     local vim_command
     vim_command="$(resolve_command_path vim)"
 
-    "${vim_command}" -Nu "${repo_root}/dot_config/vim/init.vim" -n -es +'set nomore' +qall
+    "${vim_command}" -Nu "${repo_root}/dot_vimrc" -n -es +'set nomore' +qall
 }
 
 # Neovim設定とlazy.nvim pluginを実際のnvim commandで同期して読み込めることを確認します。

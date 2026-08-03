@@ -1,5 +1,13 @@
 gui
 
+if !exists('g:is_windows')
+    let g:is_windows = has('win16') || has('win32') || has('win64')
+endif
+
+if !exists('g:is_mac')
+    let g:is_mac = has('mac')
+endif
+
 if has('gui_running')
     set guioptions-=a
     set guioptions-=i
@@ -25,5 +33,3 @@ if has('gui_running')
         set transparency=10
     endif
 endif
-
-source $HOME/.config/vim/init.vim
