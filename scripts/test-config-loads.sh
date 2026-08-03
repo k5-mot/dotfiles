@@ -68,25 +68,6 @@ assert_file_contains_literal() {
     fi
 }
 
-# commandの標準出力が期待値と一致することを検証します。
-# 引数:
-#   $1: 期待する標準出力。
-#   $@: 実行するcommandと引数。
-# 戻り値:
-#   標準出力が一致する場合は0、一致しない場合は非0を返します。
-assert_command_output_equals() {
-    local expected_output=$1
-    shift
-    local actual_output
-    actual_output="$("$@")"
-
-    if [ "${actual_output}" != "${expected_output}" ]; then
-        printf 'expected command output: %s\n' "${expected_output}"
-        printf 'actual command output: %s\n' "${actual_output}"
-        return 1
-    fi
-}
-
 # Vim設定を実際のvim commandで読み込めることを確認します。
 # 引数: なし。
 # 戻り値: 読み込みに成功した場合は0、失敗した場合は非0を返します。
@@ -157,20 +138,15 @@ test_zsh_config() {
 # 戻り値: 読み込みに成功した場合は0、失敗した場合は非0を返します。
 test_tmux_config() {
     local tmux_command
-    local temp_dir
     tmux_command="$(resolve_command_path tmux)"
-    temp_dir="$(mktemp -d)"
 
     assert_file_contains_literal "${repo_root}/dot_config/tmux/tmux.conf" 'set -g @catppuccin_status_connect_separator "no"'
     assert_file_contains_literal "${repo_root}/dot_config/tmux/tmux.conf" 'set -g @catppuccin_date_time_text " %Y/%m/%d %H:%M:%S"'
     assert_file_contains_literal "${repo_root}/dot_config/tmux/tmux.conf" 'set -agF status-right "#{E:@catppuccin_status_battery}"'
-    assert_file_contains_literal "${repo_root}/dot_config/tmux/tmux.conf" 'battery-icon-or-fallback.sh'
-    assert_file_contains_literal "${repo_root}/dot_config/tmux/tmux.conf" 'battery-percentage-or-fallback.sh'
-
-    TMUX_PLUGIN_MANAGER_PATH="${temp_dir}/plugins" \
-        assert_command_output_equals "󰂑" "${repo_root}/dot_config/tmux/scripts/battery-icon-or-fallback.sh"
-    TMUX_PLUGIN_MANAGER_PATH="${temp_dir}/plugins" \
-        assert_command_output_equals "--" "${repo_root}/dot_config/tmux/scripts/battery-percentage-or-fallback.sh"
+    assert_file_contains_literal "${repo_root}/dot_config/tmux/tmux.conf" 'tmux-battery/scripts/battery_icon.sh'
+    assert_file_contains_literal "${repo_root}/dot_config/tmux/tmux.conf" 'tmux-battery/scripts/battery_percentage.sh'
+    assert_file_contains_literal "${repo_root}/dot_config/tmux/tmux.conf" 'echo "󰂑"'
+    assert_file_contains_literal "${repo_root}/dot_config/tmux/tmux.conf" 'echo "--"'
 
     "${tmux_command}" -f /dev/null -L dotfiles-command-check start-server \; \
         source-file -n "${repo_root}/dot_config/tmux/tmux.conf" \; \
