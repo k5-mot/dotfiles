@@ -1,8 +1,7 @@
 
 -- ColorScheme {{{
 
-local augroup = vim.api.nvim_create_augroup -- Create/get autocommand group
-local autocmd = vim.api.nvim_create_autocmd -- Create autocommand
+local autocmd = vim.api.nvim_create_autocmd -- 自動コマンドを作成する
 
 autocmd("ColorScheme", {pattern = "*", command = "highlight Normal         ctermbg=NONE guibg=NONE"})
 autocmd("ColorScheme", {pattern = "*", command = "highlight NonText        ctermbg=NONE guibg=NONE"})
@@ -30,7 +29,12 @@ autocmd("ColorScheme", {pattern = "*", command = "highlight Structure      cterm
 autocmd("ColorScheme", {pattern = "*", command = "highlight SignColumn     ctermbg=NONE guibg=NONE"})
 autocmd("ColorScheme", {pattern = "*", command = "highlight CursorLineNr   ctermbg=NONE guibg=NONE"})
 
--- Diagnostics
+require("catppuccin").setup({
+    flavour = "frappe",
+    transparent_background = true,
+})
+
+-- 診断表示
 vim.fn.sign_define('DiagnosticSignError', {text = "", texthl = 'DiagnosticSignError', numhl = 'DiagnosticSignError'})
 vim.fn.sign_define('DiagnosticSignWarn',  {text = "", texthl = 'DiagnosticSignWarn',  numhl = 'DiagnosticSignWarn' })
 vim.fn.sign_define('DiagnosticSignHint',  {text = "", texthl = 'DiagnosticSignHint',  numhl = 'DiagnosticSignHint' })

@@ -85,7 +85,7 @@ The repository SHALL keep Vim as a pluginless lightweight editor and Neovim as t
 - **WHEN** Neovim plugin configuration changes
 - **THEN** LSP, format, lint, completion, colorscheme, statusline, editor, syntax, filer, and search responsibilities SHALL stay documented in `docs/usage/neovim.md`
 - **AND** future plugin spec splitting SHALL follow those responsibility boundaries
-- **AND** `catppuccin/nvim` SHALL be the active Neovim colorscheme
+- **AND** `catppuccin/nvim` SHALL be the active Neovim colorscheme with the `frappe` flavor
 - **AND** alternate colorscheme plugins MAY remain installed without being the active colorscheme
 - **AND** `nvim-treesitter` SHALL stay on the `master` branch while the syntax configuration uses the legacy `nvim-treesitter.configs` API
 - **AND** `tmuxline.vim` SHALL NOT be used because tmux statusline ownership belongs to tmux configuration

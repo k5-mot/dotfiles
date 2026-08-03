@@ -72,7 +72,7 @@ plugin specの一覧は現在`plugins/init.lua`に残っています。
 
 ## colorscheme
 
-colorschemeは`catppuccin/nvim`を主設定にします。
+colorschemeは`catppuccin/nvim`を主設定にし、flavorはtmuxと同じ`frappe`へ固定します。
 代替として`sonokai`、`onedark.vim`、`gruvbox-material`をインストールだけ残します。
 その他のcolorscheme pluginはlockfile reviewと取得対象を増やすため採用しません。
 `tmuxline.vim`は採用しません。

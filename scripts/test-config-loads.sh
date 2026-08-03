@@ -33,6 +33,25 @@ assert_no_nvim_startup_error() {
     fi
 }
 
+# NeovimのCatppuccin flavorがFrappeであることを検証します。
+# 引数:
+#   $1: 実行するnvim commandのpath。
+#   $2: 検証ログの出力先ファイルパス。
+# 戻り値:
+#   Catppuccin flavorがFrappeの場合は0、それ以外の場合は非0を返します。
+assert_nvim_catppuccin_frappe() {
+    local nvim_command=$1
+    local log_file=$2
+
+    "${nvim_command}" --headless \
+        +'lua local flavor = require("catppuccin").flavour; if flavor ~= "frappe" then error("catppuccin flavor must be frappe, got " .. tostring(flavor)) end' \
+        +qa >>"${log_file}" 2>&1 || {
+            cat "${log_file}"
+            return 1
+        }
+    assert_no_nvim_startup_error "${log_file}"
+}
+
 # Vim設定を実際のvim commandで読み込めることを確認します。
 # 引数: なし。
 # 戻り値: 読み込みに成功した場合は0、失敗した場合は非0を返します。
@@ -72,6 +91,7 @@ test_nvim_config() {
             return 1
         }
         assert_no_nvim_startup_error "${log_file}"
+        assert_nvim_catppuccin_frappe "${nvim_command}" "${log_file}"
     )
 }
 
