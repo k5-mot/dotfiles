@@ -143,10 +143,6 @@ test_tmux_config() {
     assert_file_contains_literal "${repo_root}/dot_config/tmux/tmux.conf" 'set -g @catppuccin_status_connect_separator "no"'
     assert_file_contains_literal "${repo_root}/dot_config/tmux/tmux.conf" 'set -g @catppuccin_date_time_text " %Y/%m/%d %H:%M:%S"'
     assert_file_contains_literal "${repo_root}/dot_config/tmux/tmux.conf" 'set -agF status-right "#{E:@catppuccin_status_battery}"'
-    assert_file_contains_literal "${repo_root}/dot_config/tmux/tmux.conf" 'tmux-battery/scripts/battery_icon.sh'
-    assert_file_contains_literal "${repo_root}/dot_config/tmux/tmux.conf" 'tmux-battery/scripts/battery_percentage.sh'
-    assert_file_contains_literal "${repo_root}/dot_config/tmux/tmux.conf" 'echo "󰂑"'
-    assert_file_contains_literal "${repo_root}/dot_config/tmux/tmux.conf" 'echo "--"'
 
     "${tmux_command}" -f /dev/null -L dotfiles-command-check start-server \; \
         source-file -n "${repo_root}/dot_config/tmux/tmux.conf" \; \

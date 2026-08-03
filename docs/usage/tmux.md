@@ -15,7 +15,6 @@ TPM本体がない場合はtmux起動時にcloneし、plugin導入を実行し�
 statuslineはCatppuccin Frappeのmoduleを項目ごとのブロックとして表示します。
 右側にはapplication、session、user、host、battery、date/timeを表示します。
 batteryは`tmux-battery`の`#{battery_icon}`と`#{battery_percentage}`をCatppuccin module経由で表示します。
-情報を取得できない環境では`󰂑 --`をfallbackとして表示します。
 date/timeは`YYYY/mm/dd hh:MM:ss`形式です。
 
 ```bash

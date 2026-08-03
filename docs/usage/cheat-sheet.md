@@ -40,7 +40,6 @@ copy modeはvi keybindです。
 statuslineは上部に表示します。
 右側にはapplication、session、user、host、battery、date/timeをblock表示します。
 date/timeは`YYYY/mm/dd hh:MM:ss`です。
-batteryが取得できない場合は`󰂑 --`を表示します。
 
 ## zsh
 
