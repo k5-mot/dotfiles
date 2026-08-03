@@ -69,6 +69,7 @@ The repository SHALL keep Vim as a pluginless lightweight editor and Neovim as t
 - **AND** it SHALL provide only configuration needed for lightweight editing
 - **AND** Vim configuration SHALL be consolidated in `~/.vimrc` without includes into `~/.config/vim`
 - **AND** Vim-specific `~/.config/vim` files SHALL NOT be managed
+- **AND** the active Vim colorscheme SHALL be the Vim-bundled `slate` colorscheme to stay visually close to the Catppuccin Mocha tmux palette without adding plugins
 - **AND** local Vim-only overrides MAY be placed in `~/.vimrc_local` outside chezmoi management
 
 #### Scenario: Neovim provides IDE features
