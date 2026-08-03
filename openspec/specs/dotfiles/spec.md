@@ -69,7 +69,7 @@ The repository SHALL keep Vim as a pluginless lightweight editor and Neovim as t
 - **AND** it SHALL provide only configuration needed for lightweight editing
 - **AND** Vim configuration SHALL be consolidated in `~/.vimrc` without includes into `~/.config/vim`
 - **AND** Vim-specific `~/.config/vim` files SHALL NOT be managed
-- **AND** the active Vim colorscheme SHALL be the Vim-bundled `slate` colorscheme to stay visually close to the Catppuccin Mocha tmux palette without adding plugins
+- **AND** the active Vim colorscheme SHALL be the Vim-bundled `slate` colorscheme to stay visually close to the Catppuccin Frappe tmux palette without adding plugins
 - **AND** local Vim-only overrides MAY be placed in `~/.vimrc_local` outside chezmoi management
 
 #### Scenario: Neovim provides IDE features
@@ -133,6 +133,7 @@ The repository SHALL make zsh and tmux plugin maintenance explicit and reviewabl
 - **WHEN** tmux starts with the normal configuration
 - **THEN** TPM SHALL bootstrap itself when missing
 - **AND** TPM plugins SHALL be pinned to tags where tags are available
+- **AND** `catppuccin/tmux` SHALL use the Frappe flavor
 - **AND** tag updates SHALL be reviewable through Renovate pull requests
 - **AND** tmux resurrect and continuum SHALL store restore state under the user cache directory
 - **AND** tmux continuum SHALL keep automatic save enabled while automatic restore remains disabled
@@ -143,7 +144,7 @@ The repository SHALL make zsh and tmux plugin maintenance explicit and reviewabl
 - **THEN** tmux SHALL NOT require TPM, GitHub access, xclip, or external theme plugins
 - **AND** keybindings SHALL remain aligned with the normal tmux configuration where practical
 - **AND** the slim configuration SHALL avoid includes that would reintroduce plugin or network dependencies
-- **AND** the slim statusline SHALL use tmux-native style settings to approximate the Catppuccin Mocha palette without an external theme plugin
+- **AND** the slim statusline SHALL use tmux-native style settings to approximate the Catppuccin Frappe palette without an external theme plugin
 - **AND** the slim statusline SHALL show window tabs, hostname, username, date, and time with seconds
 - **AND** the slim statusline refresh interval SHALL be 1 second
 

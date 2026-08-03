@@ -363,7 +363,7 @@ augroup AutoColorscheme
     autocmd Colorscheme * highlight Comment     gui=NONE term=NONE cterm=NONE
 augroup END
 
-" tmuxのCatppuccin Mocha配色に近い暗色基調へ寄せるため、Vim同梱のslateを使う。
+" tmuxのCatppuccin Frappe配色に近い暗色基調へ寄せるため、Vim同梱のslateを使う。
 set background=dark
 try
   colorscheme slate

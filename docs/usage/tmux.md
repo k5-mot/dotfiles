@@ -27,7 +27,7 @@ tmux source-file ~/.config/tmux/tmux.conf
 
 slim設定はTPM、GitHub clone、xclip、外部テーマpluginに依存しません。
 airgap環境、初回ネットワークなし環境、切り分け用途で使います。
-statuslineは外部theme pluginを使わず、tmux標準機能だけでCatppuccin Mochaに近い配色にします。
+statuslineは外部theme pluginを使わず、tmux標準機能だけでCatppuccin Frappeに近い配色にします。
 window tab、hostname、username、日付、秒付き時刻を表示し、通常設定と同じ1秒間隔で更新します。
 
 ```bash
@@ -63,7 +63,7 @@ xclipへのpipeは使いません。
 | plugin | 用途 | 維持判断 |
 | --- | --- | --- |
 | `tmux-plugins/tpm` | TPM本体 | 必須 |
-| `catppuccin/tmux` | statusline theme | 視認性のため維持 |
+| `catppuccin/tmux` | Frappeステータスラインテーマ | 視認性のため維持 |
 | `tmux-plugins/tmux-sensible` | tmuxの無難な既定値 | 維持 |
 | `tmux-plugins/tmux-battery` | battery表示 | laptop利用を前提に維持 |
 | `tmux-plugins/tmux-resurrect` | session復元 | 維持 |

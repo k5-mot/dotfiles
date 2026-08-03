@@ -16,7 +16,7 @@ Vimは軽量編集用です。
 - IDE相当の補完、LSP、UI拡張はNeovimへ寄せます。
 - `vim-plug`、`PlugInstall`、`PlugUpdate`、`PlugSnapshot`は使いません。
 - colorschemeはVim同梱の`slate`を使います。
-  tmuxのCatppuccin Mocha系配色と並べたときに違和感が少ない暗色基調を優先し、外部theme pluginは追加しません。
+  tmuxのCatppuccin Frappe系配色と並べたときに違和感が少ない暗色基調を優先し、外部theme pluginは追加しません。
 
 ## Vim、GVim、Neovim GUIの違い
 
