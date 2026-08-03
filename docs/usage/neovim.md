@@ -67,6 +67,8 @@ LSP UIは`lspsaga.nvim`を使い、標準LSP keymapと衝突しにくい割り�
 
 plugin specの一覧は現在`plugins/init.lua`に残っています。
 今後分割する場合は、上記の責務境界に合わせます。
+`nvim-treesitter`は`master` branchへ固定します。
+現行の`syntax.lua`は`nvim-treesitter.configs`を使うため、互換性のない`main` branch rewriteへは設定移行と同時に切り替えます。
 
 ## colorscheme
 

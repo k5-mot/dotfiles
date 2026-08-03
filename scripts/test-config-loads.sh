@@ -19,6 +19,20 @@ resolve_command_path() {
     command -v "${command_name}"
 }
 
+# Neovim起動ログにLua startup errorが含まれないことを検証します。
+# 引数:
+#   $1: 検証対象のログファイルパス。
+# 戻り値:
+#   起動エラーが含まれない場合は0、含まれる場合は非0を返します。
+assert_no_nvim_startup_error() {
+    local log_file=$1
+
+    if grep -Eq 'Error in .*/nvim/init\.lua|E5113:' "$log_file"; then
+        grep -En 'Error in .*/nvim/init\.lua|E5113:' "$log_file"
+        return 1
+    fi
+}
+
 # Vim設定を実際のvim commandで読み込めることを確認します。
 # 引数: なし。
 # 戻り値: 読み込みに成功した場合は0、失敗した場合は非0を返します。
@@ -57,6 +71,7 @@ test_nvim_config() {
             cat "${log_file}"
             return 1
         }
+        assert_no_nvim_startup_error "${log_file}"
     )
 }
 
