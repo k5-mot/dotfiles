@@ -12,6 +12,10 @@ includeで共通化せず、用途ごとのポータビリティを優先しま�
 
 通常設定はTPMを使います。
 TPM本体がない場合はtmux起動時にcloneし、plugin導入を実行します。
+statuslineはCatppuccin Frappeのmoduleを項目ごとのブロックとして表示します。
+右側にはapplication、session、user、host、battery、date/timeを表示します。
+batteryは`tmux-battery`の`#{battery_icon}`と`#{battery_percentage}`をCatppuccin module経由で表示します。
+date/timeは`YYYY/mm/dd hh:MM:ss`形式です。
 
 ```bash
 tmux new-session

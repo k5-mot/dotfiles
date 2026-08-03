@@ -52,6 +52,22 @@ assert_nvim_catppuccin_frappe() {
     assert_no_nvim_startup_error "${log_file}"
 }
 
+# 設定ファイルに期待する文字列が含まれることを検証します。
+# 引数:
+#   $1: 検証対象のファイルパス。
+#   $2: 期待する文字列。
+# 戻り値:
+#   期待する文字列が含まれる場合は0、含まれない場合は非0を返します。
+assert_file_contains_literal() {
+    local file_path=$1
+    local expected_text=$2
+
+    if ! grep -Fq "${expected_text}" "${file_path}"; then
+        printf 'expected to find in %s: %s\n' "${file_path}" "${expected_text}"
+        return 1
+    fi
+}
+
 # Vim設定を実際のvim commandで読み込めることを確認します。
 # 引数: なし。
 # 戻り値: 読み込みに成功した場合は0、失敗した場合は非0を返します。
@@ -123,6 +139,10 @@ test_zsh_config() {
 test_tmux_config() {
     local tmux_command
     tmux_command="$(resolve_command_path tmux)"
+
+    assert_file_contains_literal "${repo_root}/dot_config/tmux/tmux.conf" 'set -g @catppuccin_status_connect_separator "no"'
+    assert_file_contains_literal "${repo_root}/dot_config/tmux/tmux.conf" 'set -g @catppuccin_date_time_text " %Y/%m/%d %H:%M:%S"'
+    assert_file_contains_literal "${repo_root}/dot_config/tmux/tmux.conf" 'set -agF status-right "#{E:@catppuccin_status_battery}"'
 
     "${tmux_command}" -f /dev/null -L dotfiles-command-check start-server \; \
         source-file -n "${repo_root}/dot_config/tmux/tmux.conf" \; \

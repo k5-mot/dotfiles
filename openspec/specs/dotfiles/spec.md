@@ -135,6 +135,10 @@ The repository SHALL make zsh and tmux plugin maintenance explicit and reviewabl
 - **THEN** TPM SHALL bootstrap itself when missing
 - **AND** TPM plugins SHALL be pinned to tags where tags are available
 - **AND** `catppuccin/tmux` SHALL use the Frappe flavor
+- **AND** the normal statusline SHALL render displayed items as separated Catppuccin blocks
+- **AND** the normal statusline SHALL show application, session, user, host, battery, and date/time modules on the right side
+- **AND** the normal statusline SHALL show tmux-battery output through the Catppuccin battery module
+- **AND** the normal statusline SHALL show date/time in `YYYY/mm/dd hh:MM:ss` format
 - **AND** tag updates SHALL be reviewable through Renovate pull requests
 - **AND** tmux resurrect and continuum SHALL store restore state under the user cache directory
 - **AND** tmux continuum SHALL keep automatic save enabled while automatic restore remains disabled
