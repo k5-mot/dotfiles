@@ -1,44 +1,62 @@
 {
-  "editor.detectIndentation": false,
-  "editor.insertSpaces": true,
-  "editor.mouseWheelScrollSensitivity": 0.7,
-  "editor.quickSuggestions": {
-    "comments": false,
-    "strings": true,
-    "other": true
-  },
-  "editor.renderControlCharacters": true,
-  "editor.renderLineHighlight": "all",
-  "editor.suggestSelection": "first",
-  "editor.tabSize": 2,
-  "editor.wordSeparators": "./\\()\"'-:,.;<>~!@#$%^&*|+=[]{}`~?　、。「」【】『』（）！？てにをはがのともへでや",
-  "editor.wordWrap": "off",
-  "workbench.colorCustomizations": {},
-  "workbench.editor.tabSizing": "fit",
-  "workbench.startupEditor": "none",
-  "window.menuBarVisibility": "toggle",
-  "window.title": "${dirty}${activeEditorShort} / ${rootName}",
-  "window.zoomLevel": 0,
-  "files.autoGuessEncoding": true,
-  "files.eol": "\n",
-  "files.exclude": {
-    "**/.git": true,
-    "**/.svn": true,
-    "**/.hg": true,
-    "**/CVS": true,
-    "**/.DS_Store": true,
-    "**/*.o": true,
-    "**/*.obj": true,
-    "**/*.ilk": true,
-    "**/*.pdb": true,
-    "**/*.tlog": true,
-    "**/*.idb": true,
-    "**/*.dll": true
-  },
-  "files.insertFinalNewline": true,
-  "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\wsl.exe",
-  "terminal.integrated.shell.linux": "/bin/zsh",
-  "telemetry.enableCrashReporter": false,
-  "telemetry.enableTelemetry": false,
-  "git.ignoreLegacyWarning": true
+    "editor.detectIndentation": false,
+    "editor.insertSpaces": true,
+    "editor.mouseWheelScrollSensitivity": 0.7,
+    "editor.quickSuggestions": {
+        "comments": false,
+        "strings": true,
+        "other": true
+    },
+    "editor.renderControlCharacters": true,
+    "editor.renderLineHighlight": "all",
+    "editor.suggestSelection": "first",
+    "editor.tabSize": 2,
+    "editor.wordSeparators": "./\\()\"'-:,.;<>~!@#$%^&*|+=[]{}`~?　、。「」【】『』（）！？てにをはがのともへでや",
+    "editor.wordWrap": "off",
+    "workbench.colorCustomizations": {},
+    "workbench.editor.tabSizing": "fit",
+    "workbench.startupEditor": "none",
+    "window.menuBarVisibility": "toggle",
+    "window.title": "${dirty}${activeEditorShort} / ${rootName}",
+    "window.zoomLevel": 0,
+    "files.autoGuessEncoding": true,
+    "files.eol": "\n",
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/*.o": true,
+        "**/*.obj": true,
+        "**/*.ilk": true,
+        "**/*.pdb": true,
+        "**/*.tlog": true,
+        "**/*.idb": true,
+        "**/*.dll": true
+    },
+    "files.insertFinalNewline": true,
+    "telemetry.telemetryLevel": "off",
+    "git.ignoreLegacyWarning": true,
+    "terminal.integrated.profiles.linux": {
+        "zsh": {
+            "path": "zsh"
+        },
+        "bash": {
+            "path": "bash",
+            "icon": "terminal-bash"
+        },
+        "fish": {
+            "path": "fish",
+        },
+        "tmux": {
+            "path": "tmux",
+            "icon": "terminal-tmux"
+        },
+        "pwsh": {
+            "path": "pwsh",
+            "icon": "terminal-powershell"
+        }
+    },
+    "terminal.integrated.defaultProfile.linux": "zsh",
 }

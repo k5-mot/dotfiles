@@ -43,7 +43,8 @@ $packages = @(
     "Microsoft.VisualStudioCode",
     "Git.Git",
     "twpayne.chezmoi",
-    "JanDeDobbeleer.OhMyPosh"
+    "JanDeDobbeleer.OhMyPosh",
+    "jdx.mise"
 )
 
 foreach ($package in $packages) {
