@@ -6,25 +6,17 @@ defaultBranch = main
 ui            = auto
 
 [core]
-editor        = vim
 filemode      = false
 autocrlf      = false
 
 [merge]
-tool          = vim
 ff            = false
-
-[ghq]
-root          = ~/.local/share/ghq
 
 [push]
 autoSetupRemote = true
 
 [pull]
 rebase        = true
-
-[safe]
-directory = ~/.local/share/chezmoi
 
 [alias]
 changelog     = log --decorate --date=short --pretty=format:'- %s (%cd) [%h] %d'
@@ -76,6 +68,9 @@ rb            = rebase
 mg            = merge --no-ff
 mgff          = merge --ff
 cp            = cherry-pick
+
+[safe]
+directory = ~/.local/share/chezmoi
 
 [filter "lfs"]
 clean = git-lfs clean -- %f
