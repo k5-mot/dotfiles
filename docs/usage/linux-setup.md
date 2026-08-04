@@ -29,7 +29,7 @@ Ubuntu系:
 
 ```bash
 sudo apt-get update
-sudo apt-get install --assume-yes bash zsh curl git jq tmux vim build-essential pkg-config libreadline-dev libncurses-dev
+sudo apt-get install --assume-yes bash zsh curl git jq tmux vim build-essential pkg-config libreadline-dev libncurses-dev clang
 sudo apt-get upgrade -y
 sudo apt-get autoremove -y
 ```
@@ -38,7 +38,7 @@ Fedora系:
 
 ```bash
 sudo dnf group install -y "Development Tools"
-sudo dnf install -y bash zsh curl git jq tmux vim pkgconf-pkg-config readline-devel ncurses-devel
+sudo dnf install -y bash zsh curl git jq tmux vim pkgconf-pkg-config readline-devel ncurses-devel clang-libs
 sudo dnf upgrade -y
 sudo dnf autoremove -y
 ```
