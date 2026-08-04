@@ -28,14 +28,19 @@ dotfiles自体を開発するときのchezmoi操作は`docs/usage/linux-dev.md`�
 Ubuntu系:
 
 ```bash
-sudo apt update
-sudo apt install -y bash curl git jq tmux vim zsh
+sudo apt-get update
+sudo apt-get install --assume-yes bash zsh curl git jq tmux vim build-essential pkg-config libreadline-dev libncurses-dev
+sudo apt-get upgrade -y
+sudo apt-get autoremove -y
 ```
 
 Fedora系:
 
 ```bash
-sudo dnf install -y bash curl git jq tmux vim zsh
+sudo dnf group install -y "Development Tools"
+sudo dnf install -y bash zsh curl git jq tmux vim pkgconf-pkg-config readline-devel ncurses-devel
+sudo dnf upgrade -y
+sudo dnf autoremove -y
 ```
 
 ## 2. chezmoiを入れる
