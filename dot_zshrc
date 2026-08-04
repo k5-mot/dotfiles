@@ -4,15 +4,27 @@
 export ZDOTCACHE="${XDG_CACHE_HOME}/zsh"
 export ZDOTSTATE="${XDG_STATE_HOME}/zsh"
 export ZSH_VERSION="$(zsh --version | awk '{print $2}')"
+
+### XDG Base Directory
+export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-${HOME}/.config}"
+export XDG_CACHE_HOME="${XDG_CACHE_HOME:-${HOME}/.cache}"
+export XDG_STATE_HOME="${XDG_STATE_HOME:-${HOME}/.local/state}"
+export XDG_DATA_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}"
+export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-${XDG_CACHE_HOME}/xdg}"
+
+## tmuxプラグインマネージャ
+export TMUX_HOME="${XDG_DATA_HOME}/tmux"
+export TMUX_PLUGIN_MANAGER_PATH="${TMUX_HOME}/plugins"
+export TPM_HOME="${TMUX_PLUGIN_MANAGER_PATH}/tpm"
 ### }}}
 
 
 ### Init {{{
 if [ ! -d "${ZDOTCACHE}" ]; then
-    mkdir -p "${ZDOTCACHE}"
+    mkdir -pv "${ZDOTCACHE}"
 fi
 if [ ! -d "${ZDOTSTATE}" ]; then
-    mkdir -p "${ZDOTSTATE}"
+    mkdir -pv "${ZDOTSTATE}"
 fi
 ### }}}
 
