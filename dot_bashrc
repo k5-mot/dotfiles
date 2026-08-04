@@ -71,9 +71,13 @@ if ! shopt -oq posix; then
     fi
 fi
 
+## starship; CROSS-SHELL PROMPT
+if [ -x "starship" ]; then
+    eval "$(starship init bash)"
+fi
+
+
 ## mise: dev tools, env vars, task runner
 if [ -x "${HOME}/.local/bin/mise" ]; then
     eval "$("${HOME}/.local/bin/mise" activate bash)"
-else
-    printf '%s\n' 'mise is not installed. Run docs/usage/linux-setup.md step 5.' >&2
 fi
