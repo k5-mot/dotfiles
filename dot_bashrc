@@ -71,6 +71,11 @@ if ! shopt -oq posix; then
     fi
 fi
 
+# Vite+ bin (https://viteplus.dev)
+if [ -f "${HOME}/.vite-plus/env" ]; then
+    . "${HOME}/.vite-plus/env"
+fi
+
 ## starship; CROSS-SHELL PROMPT
 if [ -x "starship" ]; then
     eval "$(starship init bash)"

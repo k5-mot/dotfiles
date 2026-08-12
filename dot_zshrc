@@ -263,6 +263,11 @@ elif [[ -o interactive ]]; then
   print -u2 "mise is not installed. Run docs/usage/linux-setup.md step 5."
 fi
 
+# Vite+ bin (https://viteplus.dev)
+if [ -f "${HOME}/.vite-plus/env" ]; then
+    . "${HOME}/.vite-plus/env"
+fi
+
 ## fzf: Ctrl-R履歴検索、Ctrl-T file選択、Alt-C directory選択
 fzf_command="$(command -v fzf 2>/dev/null)"
 if [ -n "${fzf_command}" ] && [ -x "${fzf_command}" ]; then
