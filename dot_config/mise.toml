@@ -1,21 +1,21 @@
 [tools]
 python = "3.12.13"
-uv = "0.12.1"
+uv = "0.12.5"
 node = "22.22.2"
-java = "21.0.2"
+java = "21.0.12+101.0.LTS"
 rust = "1.95.0"
 lua = { version = "5.1", os = ["linux"] }
-jq = "1.8.1"
+jq = "1.8.2"
 fzf = "0.72.0"
-neovim = "0.12.4"
+neovim = "0.12.5"
 shellcheck = "0.11.0"
 shfmt = "3.13.1"
 stylua = "2.5.2"
 taplo = "0.10.0"
 actionlint = "1.7.12"
-"pipx:ruff" = "0.16.1"
+"pipx:ruff" = "0.16.4"
 "cargo:herdr" = "0.1.0"
-"cargo:tree-sitter-cli" = { version = "0.26.11", os = ["linux"] }
+"cargo:tree-sitter-cli" = { version = "0.26.13", os = ["linux"] }
 "cargo:starship" = { version = "v1.26.0", os = ["linux"] }
 "npm:hunkdiff" = "0.17.7"
 "npm:git-cz" = "4.9.0"
