@@ -2,7 +2,7 @@
   "name": "dotfiles",
   "version": "1.0.0",
   "description": "",
-  "packageManager": "pnpm@11.18.0",
+  "packageManager": "pnpm@11.23.0",
   "main": "index.js",
   "scripts": {
     "test": "pnpm run test:json && pnpm run test:toml && pnpm run test:chezmoi && pnpm run test:openspec",
